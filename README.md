@@ -7,5 +7,5 @@ Link GitLab Repository: https://gitlab.com/Edu2805/supermarket-frontend
 
 ### New features
 * Initial commits 
-
+ 
 ### 🚧 Project under construction 🚧
