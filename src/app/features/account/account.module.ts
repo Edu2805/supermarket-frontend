@@ -7,6 +7,8 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AccountAppComponent } from './account.app.component';
+import { AccountService } from './services/account.service';
+import { NarikCustomValidatorsModule } from '@narik/custom-validators';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,11 @@ import { AccountAppComponent } from './account.app.component';
     AccountRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NarikCustomValidatorsModule
+  ],
+  providers: [
+    AccountService
   ]
 })
 export class AccountModule { }
