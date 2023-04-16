@@ -5,6 +5,7 @@ import { AccountService } from '../services/account.service';
 import { DisplayMessage, GenericValidator, ValidationMessages } from 'src/app/utils/generic-form-validation';
 import { CustomValidators } from '@narik/custom-validators';
 import { Observable, fromEvent, merge } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -15,7 +16,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
 
   @ViewChildren(FormControlName, {read: ElementRef}) formInputElements: ElementRef[];
 
-  erros: any[] = [];
+  errors: any[] = [];
   registerForm: FormGroup;
   user: UserData;
   validationMessages: ValidationMessages;
@@ -23,7 +24,8 @@ export class RegisterComponent implements OnInit, AfterViewInit {
   displayMessage: DisplayMessage = {};
 
   constructor(private fb: FormBuilder, 
-    private accountService: AccountService) { 
+    private accountService: AccountService, private router: Router) { 
+
       this.validationMessages = {
         userName: {
           required: 'Informe o usuário',
@@ -81,11 +83,15 @@ export class RegisterComponent implements OnInit, AfterViewInit {
   }
 
   processSuccess(response: any) {
+    this.registerForm.reset();
+    this.errors = [];
 
+    this.accountService.LocalStorage.saveLocalDataUser(response);
+    this.router.navigate(['/home']);
   }
 
-  processFail(response: any) {
-    
+  processFail(fail: any) {
+    this.errors = fail.error.errors;
   }
 
 }
