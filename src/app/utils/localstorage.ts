@@ -5,8 +5,11 @@ export class LocalStorageUtils {
     }
 
     public saveLocalDataUser(response: any) {
-        this.saveUserToken(response);
         this.saveUser(response);
+    }
+
+    public saveLocalDataToken(response: any) {
+        this.saveUserToken(response.token);
     }
 
     public clearUserLocationData() {
