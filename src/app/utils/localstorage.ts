@@ -5,8 +5,11 @@ export class LocalStorageUtils {
     }
 
     public saveLocalDataUser(response: any) {
-        this.saveUserToken(response);
         this.saveUser(response);
+    }
+
+    public saveLocalDataToken(response: any) {
+        this.saveUserToken(response.token);
     }
 
     public clearUserLocationData() {
@@ -20,6 +23,7 @@ export class LocalStorageUtils {
 
     public saveUserToken(token: string) {
         localStorage.setItem('devio.token', token);
+        debugger
     }
 
     public saveUser(user: string) {

@@ -6,6 +6,7 @@ import { DisplayMessage, GenericValidator, ValidationMessages } from 'src/app/ut
 import { CustomValidators } from '@narik/custom-validators';
 import { Observable, fromEvent, merge } from 'rxjs';
 import { Router } from '@angular/router';
+import { AuthUser } from '../models/auth-user';
 
 @Component({
   selector: 'app-register',
@@ -19,6 +20,10 @@ export class RegisterComponent implements OnInit, AfterViewInit {
   errors: any[] = [];
   registerForm: FormGroup;
   user: UserData;
+  auth: AuthUser = {
+    login: '',
+    password: ''
+  };
   validationMessages: ValidationMessages;
   genericValidator: GenericValidator;
   displayMessage: DisplayMessage = {};
@@ -76,18 +81,38 @@ export class RegisterComponent implements OnInit, AfterViewInit {
 
       this.accountService.registerUser(this.user)
         .subscribe(
-          success => {this.processSuccess(success)},
+          success => {
+            this.processSuccessAccount(success);
+            this.authenticate(this.user);
+          },
           fail => {this.processFail(fail)}
         );
     }
   }
 
-  processSuccess(response: any) {
+  authenticate(user: UserData) {
+    this.auth.login = user.userName;
+    this.auth.password = user.password;
+    this.accountService.login(this.auth)
+      .subscribe(
+        success => {
+          this.processSuccessAuth(success);
+        },
+        fail => {this.processFail(fail)}
+      )
+  }
+
+  processSuccessAccount(response: any) {
     this.registerForm.reset();
     this.errors = [];
 
     this.accountService.LocalStorage.saveLocalDataUser(response);
     this.router.navigate(['/home']);
+  }
+
+  processSuccessAuth(response: any) {
+    this.errors = [];
+    this.accountService.LocalStorage.saveLocalDataToken(response);
   }
 
   processFail(fail: any) {
