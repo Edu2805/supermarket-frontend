@@ -105,14 +105,13 @@ export class RegisterComponent implements OnInit, AfterViewInit {
   processSuccessAccount(response: any) {
     this.registerForm.reset();
     this.errors = [];
-
     this.accountService.LocalStorage.saveLocalDataUser(response);
-    this.router.navigate(['/home']);
   }
 
   processSuccessAuth(response: any) {
     this.errors = [];
     this.accountService.LocalStorage.saveLocalDataToken(response);
+    this.router.navigate(['/home']);
   }
 
   processFail(fail: any) {
