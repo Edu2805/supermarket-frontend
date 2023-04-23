@@ -12,10 +12,12 @@ export class AppComponent {
   DEFAULT_LANGUAGE = 'en-US';
 
   constructor(public translate: TranslateService) {
-    translate.setDefaultLang(this.DEFAULT_LANGUAGE);
-    translate.use(this.language);
-    console.log(this.language);
     
+  }
+
+  ngOnInit() {
+    this.translate.setDefaultLang(this.DEFAULT_LANGUAGE);
+    this.translate.use(this.language);
   }
 
 }
