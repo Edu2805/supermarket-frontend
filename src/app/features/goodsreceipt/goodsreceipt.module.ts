@@ -2,6 +2,7 @@ import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { GoodsreceiptComponent } from "./goodsreceipt.component";
 import { GoodsreceiptRoutingModule } from "./goodsreceipt.route";
+import { TranslateModule } from "@ngx-translate/core";
 
 @NgModule({
     declarations:[
@@ -9,7 +10,8 @@ import { GoodsreceiptRoutingModule } from "./goodsreceipt.route";
     ],
     imports:[
         CommonModule,
-        GoodsreceiptRoutingModule
+        GoodsreceiptRoutingModule,
+        TranslateModule
     ],
     exports:[]
 })

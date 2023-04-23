@@ -2,6 +2,7 @@ import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { JobpositionComponent } from "./jobposition.component";
 import { JobpositionRoutingModule } from "./jobposition.route";
+import { TranslateModule } from "@ngx-translate/core";
 
 @NgModule({
     declarations:[
@@ -9,7 +10,8 @@ import { JobpositionRoutingModule } from "./jobposition.route";
     ],
     imports:[
         CommonModule,
-        JobpositionRoutingModule
+        JobpositionRoutingModule,
+        TranslateModule
     ],
     exports:[]
 })

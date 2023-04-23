@@ -2,6 +2,7 @@ import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { SubsectionComponent } from "./subsection.component";
 import { SubsectionRoutingModule } from "./subsection.route";
+import { TranslateModule } from "@ngx-translate/core";
 
 @NgModule({
     declarations:[
@@ -9,7 +10,8 @@ import { SubsectionRoutingModule } from "./subsection.route";
     ],
     imports:[
         CommonModule,
-        SubsectionRoutingModule
+        SubsectionRoutingModule,
+        TranslateModule
     ],
     exports:[]
 })

@@ -2,6 +2,7 @@ import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { EstablishmentComponent } from "./establishment.component";
 import { EstablishmentRoutingModule } from "./establishment.route";
+import { TranslateModule } from "@ngx-translate/core";
 
 @NgModule({
     declarations:[
@@ -9,7 +10,8 @@ import { EstablishmentRoutingModule } from "./establishment.route";
     ],
     imports:[
         CommonModule,
-        EstablishmentRoutingModule
+        EstablishmentRoutingModule,
+        TranslateModule
     ],
     exports:[]
 })
