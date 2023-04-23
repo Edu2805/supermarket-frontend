@@ -14,9 +14,6 @@ import {
 } from '@ngx-translate/core';
 
 describe('AppComponent', () => {
-
-  let translateService: TranslateService;
-  
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
