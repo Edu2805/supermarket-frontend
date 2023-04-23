@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AccountAppComponent } from './account.app.component';
 import { AccountService } from './services/account.service';
 import { NarikCustomValidatorsModule } from '@narik/custom-validators';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { NarikCustomValidatorsModule } from '@narik/custom-validators';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NarikCustomValidatorsModule
+    NarikCustomValidatorsModule,
+    TranslateModule
   ],
   providers: [
     AccountService
