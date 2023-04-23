@@ -7,6 +7,7 @@ import { CustomValidators } from '@narik/custom-validators';
 import { Observable, fromEvent, merge } from 'rxjs';
 import { Router } from '@angular/router';
 import { AuthUser } from '../models/auth-user';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
@@ -29,7 +30,8 @@ export class RegisterComponent implements OnInit, AfterViewInit {
   displayMessage: DisplayMessage = {};
 
   constructor(private fb: FormBuilder, 
-    private accountService: AccountService, private router: Router) { 
+    private accountService: AccountService, private router: Router, 
+    private toastr: ToastrService) { 
 
       this.validationMessages = {
         userName: {
@@ -111,11 +113,18 @@ export class RegisterComponent implements OnInit, AfterViewInit {
   processSuccessAuth(response: any) {
     this.errors = [];
     this.accountService.LocalStorage.saveLocalDataToken(response);
-    this.router.navigate(['/home']);
+
+    let toast = this.toastr.success('Registro realizado com sucesso!', 'Bem vindo!');
+    if (toast) {
+      toast.onHidden.subscribe(() => {
+        this.router.navigate(['/home']);
+      })
+    }
   }
 
   processFail(fail: any) {
     this.errors = fail.error.errors;
+    this.toastr.error('Ocorreu um erro ao realizar o cadastro. Tente novamente em alguns instantes.', 'Ocorreu um erro');
   }
 
 }
