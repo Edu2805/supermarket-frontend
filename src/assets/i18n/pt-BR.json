@@ -1,4 +1,40 @@
 {
+    "br_com_supermarket_MY_PRODUCTS": "Meus Produtos",
     "br_com_supermarket_HOME": "Home",
-    "br_com_supermarket_PROVIDERS": "Fornecedores"
+    "br_com_supermarket_PROVIDERS": "Fornecedores",
+    "br_com_supermarket_PRODUCTS": "Produtos",
+    "br_com_supermarket_CREATE_YOUR_ACCOUNT": "Crie sua conta",
+    "br_com_supermarket_USER_NAME": "Nome de usuário",
+    "br_com_supermarket_PASSWORD": "Senha",
+    "br_com_supermarket_CONFIRM_THE_PASSWORD": "Confirme a Senha",
+    "br_com_supermarket_USER_ROLE": "Papel do usuário",
+    "br_com_supermarket_USER_NAME_REQUIRED": "Nome de usuário (requerido)",
+    "br_com_supermarket_PASSWORD_REQUIRED": "Senha (requerido)",
+    "br_com_supermarket_CONFIRM_THE_PASSWORD_REQUIRED": "Confirme a Senha (requerido)",
+    "br_com_supermarket_USER_ROLE_REQUIRED": "Papel do usuário (requerido)",
+    "br_com_supermarket_INFORM_THE_USER": "Informe o usuário",
+    "br_com_supermarket_INVALID_USER": "Usuário inválido",
+    "br_com_supermarket_INFORM_THE_PASSWORD": "Informe a senha",
+    "br_com_supermarket_PASSWORD_CANNOT_BE_LESS_THAN_6_AND_GREATER_THAN_8": "A senha deve possuir entre 6 e 8 caracteres",
+    "br_com_supermarket_INFORM_THE_PASSWORD_AGAIN": "Informe novamente a senha",
+    "br_com_supermarket_PASSWORD_DONOT_MATCH": "As senhas não conferem",
+    "br_com_supermarket_ENTER_USE_ROLE": "Informe o papel do usuário",
+    "br_com_supermarket_REGISTER_SUCCESSFUL": "Registro realizado com sucesso!', 'Bem vindo!",
+    "br_com_supermarket_AN_ERROR_OCCURRED_WHILE_REGISTERING": "Ocorreu um erro ao realizar o cadastro. Tente novamente em alguns instantes.', 'Ocorreu um erro",
+    "br_com_supermarket_CONFIRM_UNSAVE_CHANGES": "Tem certeza que deseja abandonar o preenchimento do formulário?",
+    "br_com_supermarket_HOME_PAGE_OPTIONS": "Página de opções",
+    "br_com_supermarket_HOME_SUPERMARKET_SYSTEM": "Sistema de supermercado",
+    "br_com_supermarket_HOME_PROFILE_AND_PERSONAL_SERVICES": "Perfil e serviços pessoais",
+    "br_com_supermarket_HOME_OPERATIONAL": "Operacional",
+    "br_com_supermarket_HOME_SEVERAL": "Diversos",
+
+
+    "br_com_supermarket_BUTTON_REGISTER": "Registrar",
+    "br_com_supermarket_BUTTON_ACCESS": "Acessar",
+    "br_com_supermarket_BUTTON_ENTER": "Entrar",
+    "br_com_supermarket_BUTTON_CREATE_YOUR_ACCOUNT": "Crie sua conta",
+
+    "br_com_supermarket_MSG_GENERIC_PAGE_NOT_FOUND": "Página não encontrada",
+    "br_com_supermarket_MSG_GENERIC_ERROR": "Opa! Alguma coisa não deu certo:",
+    "br_com_supermarket_MSG_UNKNOWN_ERROR": "Ocorreu um erro desconhecido"
 }

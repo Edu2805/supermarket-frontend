@@ -1,4 +1,40 @@
 {
+    "br_com_supermarket_MY_PRODUCTS": "My Products",
     "br_com_supermarket_HOME": "Home",
-    "br_com_supermarket_PROVIDERS": "Providers"
+    "br_com_supermarket_PROVIDERS": "Providers",
+    "br_com_supermarket_PRODUCTS": "Products",
+    "br_com_supermarket_CREATE_YOUR_ACCOUNT": "Create your account",
+    "br_com_supermarket_USER_NAME": "User name",
+    "br_com_supermarket_PASSWORD": "Password",
+    "br_com_supermarket_CONFIRM_THE_PASSWORD": "Confirm the Password",
+    "br_com_supermarket_USER_ROLE": "User Role",
+    "br_com_supermarket_USER_NAME_REQUIRED": "User name (required)",
+    "br_com_supermarket_PASSWORD_REQUIRED": "Password (required)",
+    "br_com_supermarket_CONFIRM_THE_PASSWORD_REQUIRED": "Confirm the Password (required)",
+    "br_com_supermarket_USER_ROLE_REQUIRED": "User Role (required)",
+    "br_com_supermarket_INFORM_THE_USER": "Inform the user",
+    "br_com_supermarket_INVALID_USER": "Invalid user",
+    "br_com_supermarket_INFORM_THE_PASSWORD": "Enter the password",
+    "br_com_supermarket_PASSWORD_CANNOT_BE_LESS_THAN_6_AND_GREATER_THAN_8": "Password must be between 6 and 8 characters long",
+    "br_com_supermarket_INFORM_THE_PASSWORD_AGAIN": "Re-enter the password",
+    "br_com_supermarket_PASSWORD_DONOT_MATCH": "Passwords don't match",
+    "br_com_supermarket_ENTER_USE_ROLE": "Enter user role",
+    "br_com_supermarket_REGISTER_SUCCESSFUL": "Registration successful!', 'Welcome!",
+    "br_com_supermarket_AN_ERROR_OCCURRED_WHILE_REGISTERING": "An error occurred while registering. Please try again in a moment.', 'An error occurred",
+    "br_com_supermarket_CONFIRM_UNSAVE_CHANGES": "Are you sure you want to abandon filling in the form?",
+    "br_com_supermarket_HOME_PAGE_OPTIONS": "Options page",
+    "br_com_supermarket_HOME_SUPERMARKET_SYSTEM": "Supermarket System",
+    "br_com_supermarket_HOME_PROFILE_AND_PERSONAL_SERVICES": "Perfil e serviços pessoais",
+    "br_com_supermarket_HOME_OPERATIONAL": "Operational",
+    "br_com_supermarket_HOME_SEVERAL": "Several",
+
+
+    "br_com_supermarket_BUTTON_REGISTER": "Register",
+    "br_com_supermarket_BUTTON_ACCESS": "Access",
+    "br_com_supermarket_BUTTON_ENTER": "Enter",
+    "br_com_supermarket_BUTTON_CREATE_YOUR_ACCOUNT": "Create your account",
+
+    "br_com_supermarket_MSG_GENERIC_PAGE_NOT_FOUND": "Page not found",
+    "br_com_supermarket_MSG_GENERIC_ERROR": "Oops! Something didn't work:",
+    "br_com_supermarket_MSG_UNKNOWN_ERROR": "An unknown error has occurred"
 }

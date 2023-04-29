@@ -8,6 +8,7 @@ import { Observable, fromEvent, merge } from 'rxjs';
 import { Router } from '@angular/router';
 import { AuthUser } from '../models/auth-user';
 import { ToastrService } from 'ngx-toastr';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-register',
@@ -29,26 +30,29 @@ export class RegisterComponent implements OnInit, AfterViewInit {
   genericValidator: GenericValidator;
   displayMessage: DisplayMessage = {};
 
+  unsaveChanges: boolean;
+
   constructor(private fb: FormBuilder, 
     private accountService: AccountService, private router: Router, 
-    private toastr: ToastrService) { 
+    private toastr: ToastrService,
+    private translateService: TranslateService) { 
 
       this.validationMessages = {
         userName: {
-          required: 'Informe o usuário',
-          userName: 'Usuário inválido'
+          required: this.translateService.instant('br_com_supermarket_INFORM_THE_USER'),
+          userName: this.translateService.instant('br_com_supermarket_INVALID_USER'),
         },
         password: {
-          required: 'Informe a senha',
-          rangeLength: 'A senha deve possuir entre 6 e 8 caracteres'
+          required: this.translateService.instant('br_com_supermarket_INFORM_THE_PASSWORD'),
+          rangeLength: this.translateService.instant('br_com_supermarket_PASSWORD_CANNOT_BE_LESS_THAN_6_AND_GREATER_THAN_8')
         },
         confirmPassword: {
-          required: 'Informe novamente a senha',
-          rangeLength: 'A senha deve possuir entre 6 e 8 caracteres',
-          equalTo: 'As senhas não conferem'
+          required: this.translateService.instant('br_com_supermarket_INFORM_THE_PASSWORD_AGAIN'),
+          rangeLength: this.translateService.instant('br_com_supermarket_PASSWORD_CANNOT_BE_LESS_THAN_6_AND_GREATER_THAN_8'),
+          equalTo: this.translateService.instant('br_com_supermarket_PASSWORD_DONOT_MATCH')
         },
         role: {
-          required: 'Informe o papel do usuário'
+          required: this.translateService.instant('br_com_supermarket_ENTER_USE_ROLE')
         }
       };
 
@@ -57,7 +61,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     let password = new FormControl('', [Validators.required, CustomValidators.rangeLength([6, 8])]);
-    let confirmPassword = new FormControl('', [Validators.required, CustomValidators.rangeLength([6, 8])]);
+    let confirmPassword = new FormControl('', [Validators.required, CustomValidators.equalTo(password), CustomValidators.rangeLength([6, 8])]);
 
     this.registerForm = this.fb.group({
       userName: ['', [Validators.required, Validators.email]],
@@ -73,6 +77,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
 
     merge(...controlBlurs).subscribe(() => {
       this.displayMessage = this.genericValidator.proccessMenssage(this.registerForm);
+      this.unsaveChanges = true;
     })
 
   }
@@ -89,6 +94,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
           },
           fail => {this.processFail(fail)}
         );
+        this.unsaveChanges = false;
     }
   }
 
@@ -114,7 +120,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
     this.errors = [];
     this.accountService.LocalStorage.saveLocalDataToken(response);
 
-    let toast = this.toastr.success('Registro realizado com sucesso!', 'Bem vindo!');
+    let toast = this.toastr.success(this.translateService.instant('br_com_supermarket_REGISTER_SUCCESSFUL'));
     if (toast) {
       toast.onHidden.subscribe(() => {
         this.router.navigate(['/home']);
@@ -124,7 +130,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
 
   processFail(fail: any) {
     this.errors = fail.error.errors;
-    this.toastr.error('Ocorreu um erro ao realizar o cadastro. Tente novamente em alguns instantes.', 'Ocorreu um erro');
+    this.toastr.error(this.translateService.instant('br_com_supermarket_AN_ERROR_OCCURRED_WHILE_REGISTERING'));
   }
 
 }
