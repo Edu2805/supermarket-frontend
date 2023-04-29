@@ -10,6 +10,7 @@ import { AccountAppComponent } from './account.app.component';
 import { AccountService } from './services/account.service';
 import { NarikCustomValidatorsModule } from '@narik/custom-validators';
 import { TranslateModule } from '@ngx-translate/core';
+import { AccountGuard } from './services/account.guard';
 
 @NgModule({
   declarations: [
@@ -25,10 +26,11 @@ import { TranslateModule } from '@ngx-translate/core';
     ReactiveFormsModule,
     HttpClientModule,
     NarikCustomValidatorsModule,
-    TranslateModule
+    TranslateModule,
   ],
   providers: [
-    AccountService
+    AccountService,
+    AccountGuard
   ]
 })
 export class AccountModule { }
