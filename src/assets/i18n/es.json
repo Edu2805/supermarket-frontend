@@ -3,6 +3,7 @@
     "br_com_supermarket_HOME": "Home",
     "br_com_supermarket_PROVIDERS": "Proveedores",
     "br_com_supermarket_PRODUCTS": "Productos",
+    "br_com_supermarket_CREATE_YOUR_ACCOUNT_TITLE": "Registro",
     "br_com_supermarket_CREATE_YOUR_ACCOUNT": "Crea tu cuenta",
     "br_com_supermarket_USER_NAME": "Nombre de usuario",
     "br_com_supermarket_PASSWORD": "Contraseña",
@@ -27,12 +28,17 @@
     "br_com_supermarket_HOME_PROFILE_AND_PERSONAL_SERVICES": "Perfil e serviços pessoais",
     "br_com_supermarket_HOME_OPERATIONAL": "Operacional",
     "br_com_supermarket_HOME_SEVERAL": "Varios",
+    "br_com_supermarket_LOGIN_SIGN_IN_TITLE": "Acceso",
+    "br_com_supermarket_LOGIN_SIGN_IN": "Inicia sesión con tu cuenta",
+    "br_com_supermarket_LOGIN_SUCCESSFUL": "¡Inicio de sesión exitoso!', '¡Bienvenido!",
+    "br_com_supermarket_LOGIN_AN_ERROR_OCCURRED_WHILE_LOGGING_IN": "Ocurrió un error al iniciar sesión. Vuelva a intentarlo en un momento.', 'Ocurrió un error",
 
 
     "br_com_supermarket_BUTTON_REGISTER": "Registro",
     "br_com_supermarket_BUTTON_ACCESS": "Acceso",
     "br_com_supermarket_BUTTON_ENTER": "Entrar",
     "br_com_supermarket_BUTTON_CREATE_YOUR_ACCOUNT": "Crea tu cuenta",
+    "br_com_supermarket_BUTTON_LOGIN": "Entrar",
 
     "br_com_supermarket_MSG_GENERIC_PAGE_NOT_FOUND": "Página no encontrada",
     "br_com_supermarket_MSG_GENERIC_ERROR": "¡Ups! Algo no funcionó:",

@@ -1,1 +1,63 @@
-<p>login works!</p>
+<div class="container main-container">
+    <h1>{{ 'br_com_supermarket_LOGIN_SIGN_IN_TITLE' | translate }}</h1>
+
+    <form novalidate (ngSubmit)="login()" [formGroup]="loginForm">
+
+        <h4>{{ 'br_com_supermarket_LOGIN_SIGN_IN' | translate }}</h4>
+        <hr>
+
+        <div class="alert alert-danger" *ngIf="errors.length > 0">
+            <h3 id="msgRetorno">{{ 'br_com_supermarket_MSG_GENERIC_ERROR' | translate }}</h3>
+            <ul>
+                <li *ngFor="let error of errors">{{ error }}</li>
+            </ul>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-2 control-label">{{ 'br_com_supermarket_USER_NAME' | translate }}</label>
+            <div class="col-md-10">
+                <input 
+                    class="form-control" 
+                    id="login" 
+                    type="text" 
+                    placeholder="{{ 'br_com_supermarket_USER_NAME_REQUIRED' | translate }}" 
+                    formControlName="login" 
+                    [ngClass]="{'is-invalid': displayMessage.login}" 
+                />
+                <span class="text-danger" *ngIf="displayMessage.login">
+                    <p [innerHTML]="displayMessage.login"></p>
+                </span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-2 control-label">{{ 'br_com_supermarket_PASSWORD' | translate }}</label>
+            <div class="col-md-10">
+                <input 
+                    class="form-control" 
+                    id="password" 
+                    type="password" 
+                    placeholder="{{ 'br_com_supermarket_PASSWORD_REQUIRED' | translate }}" 
+                    formControlName="password" 
+                    [ngClass]="{'is-invalid': displayMessage.password }" 
+                />
+                <span class="text-danger" *ngIf="displayMessage.password">
+                    <p [innerHTML]="displayMessage.password"></p>
+                </span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-4 col-md-offset-2">
+                <span>
+                    <button 
+                        class="btn btn-success" 
+                        id="login-button" 
+                        [disabled]="!loginForm.valid" 
+                        type="submit">{{ 'br_com_supermarket_BUTTON_LOGIN' | translate }}
+                    </button>
+                </span>
+            </div>
+        </div>
+    </form>
+</div>
