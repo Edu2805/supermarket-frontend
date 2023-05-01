@@ -14,6 +14,7 @@ import {
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { FormGroup } from '@angular/forms';
 import { of, throwError } from 'rxjs';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -21,8 +22,18 @@ describe('LoginComponent', () => {
   let postSpy: jasmine.Spy;
   let accountService: AccountService;
 
+  let toastrService: ToastrService
+  let showSuccess: jasmine.Spy;
+  let showError: jasmine.Spy;
+
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [
+        ToastrModule.forRoot(),
+        TranslateModule.forRoot(),
+        BrowserAnimationsModule
+      ],
       declarations: [ LoginComponent ],
       providers: [ 
         { provide: USE_DEFAULT_LANG, useValue: undefined },
@@ -34,10 +45,6 @@ describe('LoginComponent', () => {
         HttpHandler,
         ToastrService,
         TranslateService,
-      ],
-      imports: [
-        ToastrModule.forRoot(),
-        TranslateModule.forRoot()
       ]
     })
     .compileComponents();
@@ -50,6 +57,10 @@ describe('LoginComponent', () => {
   beforeEach(() => {
     accountService = TestBed.get(AccountService);
     postSpy = spyOn(accountService, 'login');
+
+    toastrService = TestBed.get(ToastrService);
+    showSuccess = spyOn(toastrService, 'success');
+    showError = spyOn(toastrService, 'error');
   });
 
   const USER_TOKEN = {
@@ -61,7 +72,7 @@ describe('LoginComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should login successfully when login is correct', async() => {
+  it('should login successfully when login is correct', () => {
     const loginForm: FormGroup = component.loginForm;
     loginForm.get('login').setValue('test@teste.com');
     loginForm.get('password').setValue('123456');
@@ -74,17 +85,11 @@ describe('LoginComponent', () => {
       return of(USER_TOKEN);
     });
     
-    const toastrService = TestBed.get(ToastrService);
-
-    const showSuccess = spyOn(toastrService, 'success').and.callFake((message: string, title: string) => {
-      expect(message).toBe('br_com_supermarket_LOGIN_SUCCESSFUL');
-    })
-
     fixture.detectChanges();
     component.login();
 
     expect(postSpy).toHaveBeenCalled();
-    expect(showSuccess).toHaveBeenCalled();
+    expect(showSuccess).toHaveBeenCalledWith('br_com_supermarket_LOGIN_SUCCESSFUL');
   });
 
   it('should not login successfully when login is not correct', () => {
@@ -104,15 +109,10 @@ describe('LoginComponent', () => {
 
     postSpy.and.returnValue(throwError(errors));
 
-    const toastrService = TestBed.get(ToastrService);
-
-    const showError = spyOn(toastrService, 'error').and.callFake((message: string, title: string) => {
-      expect(message).toBe('br_com_supermarket_LOGIN_AN_ERROR_OCCURRED_WHILE_LOGGING_IN');
-    })
     component.login();
     fixture.detectChanges();
 
     expect(postSpy).toHaveBeenCalled();
-    expect(showError).toHaveBeenCalled();
+    expect(showError).toHaveBeenCalledWith('br_com_supermarket_LOGIN_AN_ERROR_OCCURRED_WHILE_LOGGING_IN');
   });
 });
