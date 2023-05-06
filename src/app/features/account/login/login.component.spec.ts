@@ -115,4 +115,60 @@ describe('LoginComponent', () => {
     expect(postSpy).toHaveBeenCalled();
     expect(showError).toHaveBeenCalledWith('br_com_supermarket_LOGIN_AN_ERROR_OCCURRED_WHILE_LOGGING_IN');
   });
+
+  it('should required user', () => {
+    const loginForm: FormGroup = component.loginForm;
+    loginForm.get('login').setValue('');
+    loginForm.get('password').setValue('123456');
+    
+    component.ngAfterViewInit();
+
+    expect(loginForm.get('login').valid).toEqual(false);
+    expect(component.validationMessages.login.required).toEqual('br_com_supermarket_INFORM_THE_USER');
+  });
+
+  it('should invalidate the form when login is incorrect', () => {
+    const loginForm: FormGroup = component.loginForm;
+    loginForm.get('login').setValue('teste/*!');
+    loginForm.get('password').setValue('123456');
+    
+    component.ngAfterViewInit();
+
+    expect(loginForm.get('login').valid).toEqual(false);
+    expect(component.validationMessages.login.userName).toEqual('br_com_supermarket_INVALID_USER');
+  });
+
+  it('should required password', () => {
+    const loginForm: FormGroup = component.loginForm;
+    loginForm.get('login').setValue('teste@teste.com');
+    loginForm.get('password').setValue('');
+    
+    component.ngAfterViewInit();
+
+    expect(loginForm.get('password').valid).toEqual(false);
+    expect(component.validationMessages.password.required).toEqual('br_com_supermarket_INFORM_THE_PASSWORD');
+  });
+
+  it('should invalidate the form when password is less than 6 characters', () => {
+    const loginForm: FormGroup = component.loginForm;
+    loginForm.get('login').setValue('teste@teste.com');
+    loginForm.get('password').setValue('1');
+    
+    component.ngAfterViewInit();
+
+    expect(loginForm.get('password').valid).toEqual(false);
+    expect(component.validationMessages.password.rangeLength).toEqual('br_com_supermarket_PASSWORD_CANNOT_BE_LESS_THAN_6_AND_GREATER_THAN_8');
+  });
+
+  it('should invalidate the form when password is greater than 8 characters', () => {
+    const loginForm: FormGroup = component.loginForm;
+    loginForm.get('login').setValue('teste@teste.com');
+    loginForm.get('password').setValue('123456789');
+    
+    component.ngAfterViewInit();
+
+    expect(loginForm.get('password').valid).toEqual(false);
+    expect(component.validationMessages.password.rangeLength).toEqual('br_com_supermarket_PASSWORD_CANNOT_BE_LESS_THAN_6_AND_GREATER_THAN_8');
+  });
+  
 });
