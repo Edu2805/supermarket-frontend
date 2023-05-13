@@ -76,6 +76,11 @@ const routes: Routes = [
                         .then(m => m.UserDataModule)
         },
         {
+                path: 'provider',
+                loadChildren: () => import('./features/provider/provider.module')
+                        .then(m => m.ProviderModule)
+        },
+        {
                 path: '**', component: NotFoundComponent
         }
 ];

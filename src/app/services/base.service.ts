@@ -22,7 +22,7 @@ export abstract class BaseService {
         return response || {};
     }
 
-        protected extractDataAuth(response: any) {
+    protected extractDataAuth(response: any) {
         return response || {};
     }
 

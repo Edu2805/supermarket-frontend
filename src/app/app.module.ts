@@ -12,6 +12,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { CommonModule } from '@angular/common';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -27,6 +28,11 @@ export function HttpLoaderFactory(http: HttpClient) {
     NavigationModule,
     NgbModule,
     BrowserAnimationsModule,
+    NgxSpinnerModule.forRoot( 
+      {  
+        type : 'ball-scale-multiple'  
+      } 
+    ),
     HttpClientModule,
     ToastrModule.forRoot(),
     TranslateModule.forRoot({
