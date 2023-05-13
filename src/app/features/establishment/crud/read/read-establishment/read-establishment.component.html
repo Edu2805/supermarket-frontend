@@ -1,0 +1,74 @@
+<div class="container main-container">
+
+    <ngx-spinner 
+        bdColor = "rgba(0, 0, 0, 0.8)" 
+        size = "medium" 
+        color = "#fff" 
+        type = "ball-beat" 
+        [fullScreen] = "true"
+    ><p style="color: white" > Aguarde... </p>
+    </ngx-spinner>
+
+    <h1>Lista de Empresas/Filiais</h1>
+
+    <p>
+        <a class="btn btn-info" [routerLink]="['/establishment/new']">Novo Fornecedor</a>
+    </p>
+
+    <table class="table table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th>Nome</th>
+                <th>Código</th>
+                <th>Cnpj</th>
+                <th>Inscrição estadual</th>
+                <th>Inscrição municipal?</th>
+                <th>Endereço</th>
+                <th>Telefone</th>
+                <th>Responsável</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tr *ngFor="let establishment of establishments">
+            <td>
+                {{ establishment.nome }}
+            </td>
+            <td>
+                {{ establishment.code }}
+            </td>
+            <td>
+                {{ establishment.cnpj }}
+            </td>
+            <td>
+                {{ establishment.stateRegistration }}
+            </td>
+            <td>
+                {{ establishment.municipalRegistration }}
+            </td>
+            <td>
+                {{ establishment.address }}
+            </td>
+            <td>
+                {{ establishment.phone }}
+            </td>
+            <td>
+                {{ establishment.manager }}
+            </td>
+            <td>
+                <input [checked]="provider.ativo" class="check-box" disabled="disabled" type="checkbox">
+            </td>
+            <td class="text-right">
+                <a class="btn btn-info" [routerLink]="['/establishment/details',provider.id]">
+                    <span class="fa fa-search"></span>
+                </a>&nbsp;
+                <a class="btn btn-warning" [routerLink]="['/establishment/edit',provider.id]">
+                    <span class="fa fa-pencil-alt"></span>
+                </a>&nbsp;
+                <a class="btn btn-danger" [routerLink]="['/establishment/delete',provider.id]">
+                    <span class="fa fa-trash"></span>
+                </a>
+            </td>
+        </tr>
+    </table>
+</div>
+

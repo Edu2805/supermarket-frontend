@@ -104,7 +104,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
     this.accountService.login(this.auth)
       .subscribe(
         success => {
-          this.processSuccessAuth(success);
+          this.processSuccessAuth(success, user.userName, user.role);
         },
         fail => {this.processFail(fail)}
       )
@@ -116,9 +116,10 @@ export class RegisterComponent implements OnInit, AfterViewInit {
     this.accountService.LocalStorage.saveLocalDataUser(response);
   }
 
-  processSuccessAuth(response: any) {
+  processSuccessAuth(response: any, user: any, role: any) {
     this.errors = [];
     this.accountService.LocalStorage.saveLocalDataToken(response);
+    this.accountService.LocalStorage.saveLocalDateUserRole(role);
 
     let toast = this.toastr.success(this.translateService.instant('br_com_supermarket_REGISTER_SUCCESSFUL'));
     if (toast) {
