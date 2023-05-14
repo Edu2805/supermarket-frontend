@@ -6,6 +6,7 @@ import { catchError, map } from 'rxjs/operators'
 import { BaseService } from "src/app/services/base.service";
 import { AuthUser } from "../models/auth-user";
 import { TranslateService } from "@ngx-translate/core";
+import { UserNameData } from "../models/username-data";
 
 @Injectable()
 export class AccountService extends BaseService { 
@@ -18,7 +19,7 @@ export class AccountService extends BaseService {
     registerUser(user: UserData): Observable<UserData> {
         let response = this.http.post(this.UrlServiceV1 + 'user', user, this.GetHeaderJson())
         .pipe(
-            map(this.extractDataUser),
+            map(this.extractData),
             catchError(this.serviceError));
 
         return response;
@@ -30,6 +31,22 @@ export class AccountService extends BaseService {
             map(this.extractDataAuth),
             catchError(this.serviceError));
 
+        return response;
+    }
+
+    getUserRole(userName: UserNameData): Observable<UserData> {
+        let response = this.http.post(this.UrlServiceV1 + 'user/username', userName, this.GetHeaderJson())
+        .pipe(
+            map(this.extractData),
+            catchError(this.serviceError));
+        return response;
+    }
+
+    getAllRoles(){
+        let response = this.http.get<string[]>(this.UrlServiceV1 + 'role')
+        .pipe(
+            map(this.extractData),
+            catchError(this.serviceError));
         return response;
     }
  }

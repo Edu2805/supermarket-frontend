@@ -48,6 +48,22 @@
         </div>
 
         <div class="form-group">
+            <label class="col-md-2 control-label">{{ 'br_com_supermarket_USER_ROLE' | translate }}</label>
+            <div class="col-md-10">
+                <select
+                    class="form-control" 
+                    id="role" 
+                    formControlName="role" 
+                >
+                    <option *ngFor="let role of roles">{{ role }}</option>
+                </select>
+                <span class="text-danger" *ngIf="displayMessage.role">
+                    <p [innerHTML]="displayMessage.role"></p>
+                </span>
+            </div>
+        </div>
+
+        <div class="form-group">
             <div class="col-md-4 col-md-offset-2">
                 <span>
                     <button 

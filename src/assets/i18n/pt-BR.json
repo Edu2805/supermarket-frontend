@@ -18,6 +18,8 @@
     "br_com_supermarket_INFORM_THE_PASSWORD": "Informe a senha",
     "br_com_supermarket_PASSWORD_CANNOT_BE_LESS_THAN_6_AND_GREATER_THAN_8": "A senha deve possuir entre 6 e 8 caracteres",
     "br_com_supermarket_INFORM_THE_PASSWORD_AGAIN": "Informe novamente a senha",
+    "br_com_supermarket_INFORM_THE_ROLE": "Informe o papel do usuário",
+    "br_com_supermarket_AN_ERROR_OCCURRED_WHILE_GET_ROLES": "Ocorreu um erro ao buscar a lista de papeis de usuário, tente novamente mais tarde.",
     "br_com_supermarket_PASSWORD_DONOT_MATCH": "As senhas não conferem",
     "br_com_supermarket_ENTER_USE_ROLE": "Informe o papel do usuário",
     "br_com_supermarket_REGISTER_SUCCESSFUL": "Registro realizado com sucesso!', 'Bem vindo!",

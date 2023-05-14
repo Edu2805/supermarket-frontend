@@ -18,6 +18,8 @@
     "br_com_supermarket_INFORM_THE_PASSWORD": "Introduce la contraseña",
     "br_com_supermarket_PASSWORD_CANNOT_BE_LESS_THAN_6_AND_GREATER_THAN_8": "La contraseña debe tener entre 6 y 8 caracteres",
     "br_com_supermarket_INFORM_THE_PASSWORD_AGAIN": "Vuelva a introducir la contraseña",
+    "br_com_supermarket_INFORM_THE_ROLE": "Ingrese el rol de usuario",
+    "br_com_supermarket_AN_ERROR_OCCURRED_WHILE_GET_ROLES": "Se produjo un error al obtener la lista de funciones de usuario. Vuelva a intentarlo más tarde.",
     "br_com_supermarket_PASSWORD_DONOT_MATCH": "Las contraseñas no coinciden",
     "br_com_supermarket_ENTER_USE_ROLE": "Ingrese el rol de usuario",
     "br_com_supermarket_REGISTER_SUCCESSFUL": "¡Registro exitoso!', '¡Bienvenido!",

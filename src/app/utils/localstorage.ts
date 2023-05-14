@@ -42,7 +42,6 @@ export class LocalStorageUtils {
     }
 
     public addRole(role: string) {
-        debugger
         let userEdit = JSON.parse(localStorage.getItem('devio.user'));
     
         userEdit = role;

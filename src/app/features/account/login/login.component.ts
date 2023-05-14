@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { AuthUser } from '../models/auth-user';
 import { ToastrService } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
+import { UserNameData } from '../models/username-data';
 
 
 @Component({
@@ -23,8 +24,13 @@ export class LoginComponent {
   loginForm: FormGroup;
   auth: AuthUser = {
     login: '',
-    password: ''
+    password: '',
+    role: ''
   };
+  userName: UserNameData = {
+    userName: ''
+  }
+  roles: string[];
   validationMessages: ValidationMessages;
   genericValidator: GenericValidator;
   displayMessage: DisplayMessage = {};
@@ -42,6 +48,9 @@ export class LoginComponent {
         password: {
           required: this.translateService.instant('br_com_supermarket_INFORM_THE_PASSWORD'),
           rangeLength: this.translateService.instant('br_com_supermarket_PASSWORD_CANNOT_BE_LESS_THAN_6_AND_GREATER_THAN_8')
+        },
+        role: {
+          required: this.translateService.instant('br_com_supermarket_INFORM_THE_ROLE'),
         }
       };
 
@@ -49,9 +58,11 @@ export class LoginComponent {
      }
 
   ngOnInit() {
+    this.getAllRolesSelect();
     this.loginForm = this.fb.group({
       login: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, CustomValidators.rangeLength([6, 8])]]
+      password: ['', [Validators.required, CustomValidators.rangeLength([6, 8])]],
+      role: ['', [Validators.required]]
     });
   }
 
@@ -69,10 +80,14 @@ export class LoginComponent {
     if (this.loginForm.dirty && this.loginForm.valid) {
       this.auth = Object.assign({}, this.auth, this.loginForm.value);
 
+      this.userName.userName = this.auth.login;
       this.accountService.login(this.auth)
         .subscribe(
           success => {
+            console.log(success);
+            
             this.processSuccessLogin(success);
+            this.getUserRole(this.userName);
           },
           fail => {this.processFail(fail)}
         );
@@ -91,6 +106,30 @@ export class LoginComponent {
         this.router.navigate(['/home']);
       })
     }
+  }
+
+  getUserRole(user: UserNameData) {
+    this.accountService.getUserRole(user).subscribe(response => {
+      this.accountService.LocalStorage.addRole(response.role)
+    }, (error: any) => {
+      if (error && error.errors) {
+        this.toastr.error(this.translateService.instant(error.errors));
+      }
+      this.toastr.error(this.translateService.instant('br_com_supermarket_LOGIN_AN_ERROR_OCCURRED_WHILE_LOGGING_IN'));
+    });
+  }
+
+  getAllRolesSelect() {
+    this.accountService.getAllRoles().subscribe((response) => {
+      this.roles = response.names;
+      console.log(this.roles);
+      
+    },(error: any) => {
+      if (error && error.errors) {
+        this.toastr.error(this.translateService.instant(error.errors));
+      }
+      this.toastr.error(this.translateService.instant('br_com_supermarket_AN_ERROR_OCCURRED_WHILE_GET_ROLES'));
+    });
   }
 
   processFail(fail: any) {
