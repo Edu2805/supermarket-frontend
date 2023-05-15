@@ -24,7 +24,8 @@ export class RegisterComponent implements OnInit, AfterViewInit {
   user: UserData;
   auth: AuthUser = {
     login: '',
-    password: ''
+    password: '',
+    role: ''
   };
   validationMessages: ValidationMessages;
   genericValidator: GenericValidator;

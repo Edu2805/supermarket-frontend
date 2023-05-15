@@ -76,6 +76,7 @@ describe('LoginComponent', () => {
     const loginForm: FormGroup = component.loginForm;
     loginForm.get('login').setValue('test@teste.com');
     loginForm.get('password').setValue('123456');
+    loginForm.get('role').setValue('ADMIN');
     loginForm.markAsDirty();
     loginForm.valid;
 
@@ -96,6 +97,7 @@ describe('LoginComponent', () => {
     const loginForm: FormGroup = component.loginForm;
     loginForm.get('login').setValue('test@teste.com');
     loginForm.get('password').setValue('123456');
+    loginForm.get('role').setValue('ADMIN');
     loginForm.markAsDirty();
     loginForm.valid;
 
@@ -120,6 +122,7 @@ describe('LoginComponent', () => {
     const loginForm: FormGroup = component.loginForm;
     loginForm.get('login').setValue('');
     loginForm.get('password').setValue('123456');
+    loginForm.get('role').setValue('ADMIN');
     
     component.ngAfterViewInit();
 
@@ -131,6 +134,7 @@ describe('LoginComponent', () => {
     const loginForm: FormGroup = component.loginForm;
     loginForm.get('login').setValue('teste/*!');
     loginForm.get('password').setValue('123456');
+    loginForm.get('role').setValue('ADMIN');
     
     component.ngAfterViewInit();
 
@@ -142,6 +146,7 @@ describe('LoginComponent', () => {
     const loginForm: FormGroup = component.loginForm;
     loginForm.get('login').setValue('teste@teste.com');
     loginForm.get('password').setValue('');
+    loginForm.get('role').setValue('ADMIN');
     
     component.ngAfterViewInit();
 
@@ -153,6 +158,7 @@ describe('LoginComponent', () => {
     const loginForm: FormGroup = component.loginForm;
     loginForm.get('login').setValue('teste@teste.com');
     loginForm.get('password').setValue('1');
+    loginForm.get('role').setValue('ADMIN');
     
     component.ngAfterViewInit();
 
@@ -164,11 +170,24 @@ describe('LoginComponent', () => {
     const loginForm: FormGroup = component.loginForm;
     loginForm.get('login').setValue('teste@teste.com');
     loginForm.get('password').setValue('123456789');
+    loginForm.get('role').setValue('ADMIN');
     
     component.ngAfterViewInit();
 
     expect(loginForm.get('password').valid).toEqual(false);
     expect(component.validationMessages.password.rangeLength).toEqual('br_com_supermarket_PASSWORD_CANNOT_BE_LESS_THAN_6_AND_GREATER_THAN_8');
+  });
+
+  it('should invalidate the form when role is empty', () => {
+    const loginForm: FormGroup = component.loginForm;
+    loginForm.get('login').setValue('teste@teste.com');
+    loginForm.get('password').setValue('1');
+    loginForm.get('role').setValue('');
+    
+    component.ngAfterViewInit();
+
+    expect(loginForm.get('password').valid).toEqual(false);
+    expect(component.validationMessages.role.required).toEqual('br_com_supermarket_INFORM_THE_ROLE');
   });
   
 });
