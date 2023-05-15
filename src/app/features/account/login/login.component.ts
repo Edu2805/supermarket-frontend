@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChildren } from '@angular/core';
+import { Component, ElementRef, ViewChildren } from '@angular/core';
 import { FormBuilder, FormControlName, FormGroup, Validators } from '@angular/forms';
 import { AccountService } from '../services/account.service';
 import { DisplayMessage, GenericValidator, ValidationMessages } from 'src/app/utils/generic-form-validation';
@@ -80,12 +80,10 @@ export class LoginComponent {
     if (this.loginForm.dirty && this.loginForm.valid) {
       this.auth = Object.assign({}, this.auth, this.loginForm.value);
 
-      this.userName.userName = this.auth.login;
       this.accountService.login(this.auth)
         .subscribe(
           success => {
             this.processSuccessLogin(success);
-            this.getUserRole(this.userName);
           },
           fail => {this.processFail(fail)}
         );
@@ -104,17 +102,6 @@ export class LoginComponent {
         this.router.navigate(['/home']);
       })
     }
-  }
-
-  getUserRole(user: UserNameData) {
-    this.accountService.getUserRole(user).subscribe(response => {
-      this.accountService.LocalStorage.addRole(response.role)
-    }, (error: any) => {
-      if (error && error.errors) {
-        this.toastr.error(this.translateService.instant(error.errors));
-      }
-      this.toastr.error(this.translateService.instant('br_com_supermarket_LOGIN_AN_ERROR_OCCURRED_WHILE_LOGGING_IN'));
-    });
   }
 
   getAllRolesSelect() {
