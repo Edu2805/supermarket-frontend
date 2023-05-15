@@ -84,8 +84,6 @@ export class LoginComponent {
       this.accountService.login(this.auth)
         .subscribe(
           success => {
-            console.log(success);
-            
             this.processSuccessLogin(success);
             this.getUserRole(this.userName);
           },
@@ -122,8 +120,6 @@ export class LoginComponent {
   getAllRolesSelect() {
     this.accountService.getAllRoles().subscribe((response) => {
       this.roles = response.names;
-      console.log(this.roles);
-      
     },(error: any) => {
       if (error && error.errors) {
         this.toastr.error(this.translateService.instant(error.errors));
