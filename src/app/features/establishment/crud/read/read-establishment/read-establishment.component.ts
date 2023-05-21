@@ -24,7 +24,7 @@ export class ReadEstablishmentComponent implements OnInit {
     this.establishmentService.getAllEstablishments()
     .subscribe(
       establishment => {
-        this.establishments = establishment,
+        this.establishments = establishment['content'],
         this.spinner.hide();
       },
       fail => { 

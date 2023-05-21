@@ -22,7 +22,7 @@
                 <th>Código</th>
                 <th>Cnpj</th>
                 <th>Inscrição estadual</th>
-                <th>Inscrição municipal?</th>
+                <th>Inscrição municipal</th>
                 <th>Endereço</th>
                 <th>Telefone</th>
                 <th>Responsável</th>
@@ -31,7 +31,7 @@
         </thead>
         <tr *ngFor="let establishment of establishments">
             <td>
-                {{ establishment.nome }}
+                {{ establishment.name }}
             </td>
             <td>
                 {{ establishment.code }}
@@ -54,17 +54,14 @@
             <td>
                 {{ establishment.manager }}
             </td>
-            <td>
-                <input [checked]="provider.ativo" class="check-box" disabled="disabled" type="checkbox">
-            </td>
             <td class="text-right">
-                <a class="btn btn-info" [routerLink]="['/establishment/details',provider.id]">
+                <a class="btn btn-info" [routerLink]="['/establishment/details',establishment.id]">
                     <span class="fa fa-search"></span>
                 </a>&nbsp;
-                <a class="btn btn-warning" [routerLink]="['/establishment/edit',provider.id]">
+                <a class="btn btn-warning" [routerLink]="['/establishment/edit',establishment.id]">
                     <span class="fa fa-pencil-alt"></span>
                 </a>&nbsp;
-                <a class="btn btn-danger" [routerLink]="['/establishment/delete',provider.id]">
+                <a class="btn btn-danger" [routerLink]="['/establishment/delete',establishment.id]">
                     <span class="fa fa-trash"></span>
                 </a>
             </td>

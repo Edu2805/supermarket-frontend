@@ -9,7 +9,7 @@ export class EstablishmentResolve implements Resolve<Establishment> {
     constructor(private establishmentService: EstablishmentService) {}
 
     resolve(route: ActivatedRouteSnapshot) {
-        return this.establishmentService.findProviderById(route.params['id']);
+        return this.establishmentService.findEstablishmentById(route.params['id']);
     }
     
 }
