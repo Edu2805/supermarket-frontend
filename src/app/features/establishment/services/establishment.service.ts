@@ -24,11 +24,11 @@ export class EstablishmentService extends BaseService {
 
   getAllEstablishments(): Observable<Establishment[]> {
     return this.http
-      .get<Establishment[]>(this.UrlServiceV1 + 'establishment')
+      .get<Establishment[]>(this.UrlServiceV1 + 'establishment', super.GetHeaderJson())
       .pipe(catchError(super.serviceError));
   }
 
-  findProviderById(id: string): Observable<Establishment> {
+  findEstablishmentById(id: string): Observable<Establishment> {
     return this.http
       .get<Establishment>(this.UrlServiceV1 + 'establishment/' + id, super.GetHeaderJson())
       .pipe(catchError(super.serviceError));

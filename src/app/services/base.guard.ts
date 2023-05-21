@@ -18,19 +18,13 @@ export abstract class BaseGuard {
 
         if (role !== undefined) {
             if (role) {
-                if (!user.role) {
-                    this.navegateToAccessDenied();
-                }
-                
-                let userRoles = user.role.find(x => x.type === role.role);
-
-                if (!userRoles) {
+                if (!user.roleType) {
                     this.navegateToAccessDenied();
                 }
 
-                let valuesRoles = userRoles.value as string;
+                let valuesRoles = user.roleType as string;
 
-                if (!valuesRoles.includes(role.value)) {
+                if (!valuesRoles.includes(role)) {
                     this.navegateToAccessDenied();
                 }
             }
