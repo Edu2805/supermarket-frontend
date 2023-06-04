@@ -4,6 +4,7 @@ import { BaseService } from 'src/app/services/base.service';
 import { Establishment } from '../model/establishment';
 import { HttpClient } from '@angular/common/http';
 import { Observable, catchError, map } from 'rxjs';
+import { Page } from 'src/app/utils/pagination/model/models';
 
 @Injectable()
 export class EstablishmentService extends BaseService {
@@ -24,7 +25,13 @@ export class EstablishmentService extends BaseService {
 
   getAllEstablishments(): Observable<Establishment[]> {
     return this.http
-      .get<Establishment[]>(this.UrlServiceV1 + 'establishment', super.GetHeaderJson())
+      .get<Establishment[]>(`${this.UrlServiceV1}establishment`, super.GetHeaderJson())
+      .pipe(catchError(super.serviceError));
+  }
+
+  getAllEstablishmentsPaged(page, size): Observable<Page<Establishment>> {
+    return this.http
+      .get<Page<Establishment>>(`${this.UrlServiceV1}establishment?page=${page}&size=${size}`, super.GetHeaderJson())
       .pipe(catchError(super.serviceError));
   }
 

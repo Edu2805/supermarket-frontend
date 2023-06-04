@@ -14,6 +14,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { CommonModule } from '@angular/common';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { TokenInterceptor } from './services/token.interceptor';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -28,6 +29,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppRoutingModule,
     NavigationModule,
     NgbModule,
+    TranslateModule,
     BrowserAnimationsModule,
     NgxSpinnerModule.forRoot( 
       {  
@@ -45,8 +47,7 @@ export function HttpLoaderFactory(http: HttpClient) {
       })
   ],
   exports: [
-        CommonModule,
-        TranslateModule
+        CommonModule
   ],
   providers: [
     {

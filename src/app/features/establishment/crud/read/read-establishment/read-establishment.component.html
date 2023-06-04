@@ -55,17 +55,11 @@
                 {{ establishment.manager }}
             </td>
             <td class="text-right">
-                <a class="btn btn-info" [routerLink]="['/establishment/details',establishment.id]">
-                    <span class="fa fa-search"></span>
-                </a>&nbsp;
-                <a class="btn btn-warning" [routerLink]="['/establishment/edit',establishment.id]">
-                    <span class="fa fa-pencil-alt"></span>
-                </a>&nbsp;
-                <a class="btn btn-danger" [routerLink]="['/establishment/delete',establishment.id]">
-                    <span class="fa fa-trash"></span>
-                </a>
+                <a class="fa fa-search" [routerLink]="['/establishment/details',establishment.id]"></a>&nbsp;
+                <a class="fa fa-pencil-alt" [routerLink]="['/establishment/edit',establishment.id]"></a>&nbsp;
+                <a class="fa fa-trash" [routerLink]="['/establishment/delete',establishment.id]"></a>
             </td>
         </tr>
     </table>
+    <pagination [page]="page" (paginationEvent)="changePage($event)"></pagination>
 </div>
-

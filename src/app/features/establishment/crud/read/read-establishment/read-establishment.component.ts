@@ -3,6 +3,7 @@ import { Establishment } from '../../../model/establishment';
 import { EstablishmentService } from '../../../services/establishment.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
+import { Page } from 'src/app/utils/pagination/model/models';
 
 @Component({
   selector: 'app-read-establishment',
@@ -11,7 +12,10 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ReadEstablishmentComponent implements OnInit {
 
-  public establishments: Establishment[];
+  public establishments: Array<Establishment> = [];
+  public page: Page<Establishment>;
+  PAGE = 0;
+  SIZE = 10;
   errorMessage: string;
   errors: any[] = [];
 
@@ -20,11 +24,16 @@ export class ReadEstablishmentComponent implements OnInit {
     private toastr: ToastrService) { }
 
   ngOnInit(): void {
+    this.getAllPaged(this.PAGE, this.SIZE);
+  }
+
+  getAllPaged(page, size) {
     this.spinner.show();
-    this.establishmentService.getAllEstablishments()
+    this.establishmentService.getAllEstablishmentsPaged(page, size)
     .subscribe(
       establishment => {
-        this.establishments = establishment['content'],
+        this.page = establishment;
+        this.establishments = this.page['content'];
         this.spinner.hide();
       },
       fail => { 
@@ -42,5 +51,11 @@ export class ReadEstablishmentComponent implements OnInit {
     this.toastr.error(this.errors.toString(), 'Opa :(');
     this.spinner.hide();
   }
+
+  changePage(event){
+    console.log(event);
+    
+    this.getAllPaged(event.page, event.size);
+   }
 }
 

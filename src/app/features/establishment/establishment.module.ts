@@ -9,6 +9,9 @@ import { UpdateEstablishmentComponent } from './crud/update/update-establishment
 import { DeleteEstablishmentComponent } from './crud/delete/delete-establishment/delete-establishment.component';
 import { EstablishmentService } from "./services/establishment.service";
 import { EstablishmentGuardService } from "./services/establishment.guard";
+import { NgxPaginationModule } from "ngx-pagination";
+import { PaginationComponent } from "src/app/utils/pagination/pagination.component";
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
     declarations:[
@@ -16,12 +19,13 @@ import { EstablishmentGuardService } from "./services/establishment.guard";
         CreateEstablishmentComponent,
         ReadEstablishmentComponent,
         UpdateEstablishmentComponent,
-        DeleteEstablishmentComponent
+        DeleteEstablishmentComponent,
+        PaginationComponent
     ],
     imports:[
         CommonModule,
         EstablishmentRoutingModule,
-        TranslateModule
+        FormsModule
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     providers: [
