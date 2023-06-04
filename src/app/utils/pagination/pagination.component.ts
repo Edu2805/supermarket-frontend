@@ -20,8 +20,6 @@ export class PaginationComponent implements OnInit {
     ngOnInit() {}
 
     changePage(page?){
-        console.log(this.size);
-        
         setTimeout(()=>{
             this.paginationEvent.emit({page: page? page : 0, size: this.size} );
         });

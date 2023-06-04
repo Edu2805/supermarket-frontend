@@ -6,7 +6,7 @@
                 <a  class="page-link" *ngIf="page.first" aria-label="Previous">
                     <span aria-hidden="true">&laquo;</span>
                 </a>
-                <a  class="page-link" style="cursor: pointer" *ngIf="!page.first" (click)="changePage(page.number - 1)" aria-label="Previous">
+                <a  class="page-link" style="cursor: pointer" *ngIf="!page.first" (click)="changePage(page.number)" aria-label="Previous">
                     <span aria-hidden="true">&laquo;</span>
                 </a>
             </li>
@@ -19,7 +19,7 @@
                 <a  class="page-link" *ngIf="page.last" aria-label="Next">
                     <span aria-hidden="true">&raquo;</span>
                 </a>
-                <a  class="page-link" style="cursor: pointer" *ngIf="!page.last" (click)="changePage(page.number + 1)" aria-label="Next">
+                <a  class="page-link" style="cursor: pointer" *ngIf="!page.last" (click)="changePage(page.number + 2)" aria-label="Next">
                     <span aria-hidden="true">&raquo;</span>
                 </a>
             </li>
@@ -29,7 +29,8 @@
                   <option value="15">15</option>
                   <option value="20">20</option>
             </select>
+            
         </ul>
     </nav>
-
+    <p class="count-list">Total de lojas {{ page.totalElements }}</p>
 </div>
