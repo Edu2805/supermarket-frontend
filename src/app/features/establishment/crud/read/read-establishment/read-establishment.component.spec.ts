@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReadEstablishmentComponent } from './read-establishment.component';
 import { EstablishmentService } from '../../../services/establishment.service';
 import { HttpClient, HttpHandler } from '@angular/common/http';
-import { DEFAULT_LANGUAGE, MissingTranslationHandler, TranslateCompiler, TranslateLoader, TranslateParser, TranslateService, TranslateStore, USE_DEFAULT_LANG, USE_EXTEND, USE_STORE } from '@ngx-translate/core';
+import { DEFAULT_LANGUAGE, TranslateModule, TranslateService, USE_DEFAULT_LANG, USE_EXTEND, USE_STORE } from '@ngx-translate/core';
 import { ToastrModule } from 'ngx-toastr';
 
 describe('ReadEstablishmentComponent', () => {
@@ -19,16 +19,14 @@ describe('ReadEstablishmentComponent', () => {
         { provide: USE_EXTEND, useValue: undefined },
         { provide: DEFAULT_LANGUAGE, useValue: undefined },
         EstablishmentService,
-        HttpClient,
+        HttpClient, 
         HttpHandler,
         TranslateService,
-        TranslateStore,
-        TranslateLoader,
-        TranslateCompiler,
-        TranslateParser,
-        MissingTranslationHandler, 
       ],
-      imports: [ ToastrModule.forRoot() ]
+      imports: [ 
+        ToastrModule.forRoot(),
+        TranslateModule.forRoot(), 
+      ]
     })
     .compileComponents();
 

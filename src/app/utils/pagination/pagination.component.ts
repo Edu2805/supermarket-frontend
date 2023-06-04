@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'pagination',
@@ -15,7 +16,7 @@ export class PaginationComponent implements OnInit {
     }
     @Output() public paginationEvent: EventEmitter<any> = new EventEmitter();
 
-    constructor() { }
+    constructor(private translateService: TranslateService) { }
 
     ngOnInit() {}
 
