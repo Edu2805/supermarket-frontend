@@ -55,6 +55,7 @@
                     id="role" 
                     formControlName="role" 
                 >
+                    <option value="" selected></option>
                     <option *ngFor="let role of roles">{{ role }}</option>
                 </select>
                 <span class="text-danger" *ngIf="displayMessage.role">
