@@ -34,6 +34,16 @@
     "br_com_supermarket_LOGIN_SIGN_IN": "Sign in with your account",
     "br_com_supermarket_LOGIN_SUCCESSFUL": "Login successful!', 'Welcome!",
     "br_com_supermarket_LOGIN_AN_ERROR_OCCURRED_WHILE_LOGGING_IN": "An error occurred when logging in. Try it again in a moment.', 'An error occurred",
+    "br_com_supermarket_ESTABLISHMENT_TOTAL_ELEMENTS": "Total stores",
+    "br_com_supermarket_ESTABLISHMENT_LIST_STORES_BRANCHES": "List of Companies/Branches",
+    "br_com_supermarket_ESTABLISHMENT_NAME": "Name",
+    "br_com_supermarket_ESTABLISHMENT_CODE": "Code",
+    "br_com_supermarket_ESTABLISHMENT_CNPJ": "Cnpj",
+    "br_com_supermarket_ESTABLISHMENT_STATE_REGISTRATION": "State registration",
+    "br_com_supermarket_ESTABLISHMENT_MUNICIPAL_REGISTRATION": "Municipal registration",
+    "br_com_supermarket_ESTABLISHMENT_ADDRESS": "Address",
+    "br_com_supermarket_ESTABLISHMENT_PHONE": "Phone",
+    "br_com_supermarket_ESTABLISHMENT_MANAGER": "Manager",
 
 
     "br_com_supermarket_BUTTON_REGISTER": "Register",
@@ -41,6 +51,7 @@
     "br_com_supermarket_BUTTON_ENTER": "Enter",
     "br_com_supermarket_BUTTON_CREATE_YOUR_ACCOUNT": "Create your account",
     "br_com_supermarket_BUTTON_LOGIN": "Login",
+    "br_com_supermarket_BUTTON_NEW_PROVIDER": "New provider",
 
     "br_com_supermarket_MSG_GENERIC_PAGE_NOT_FOUND": "Page not found",
     "br_com_supermarket_MSG_GENERIC_ERROR": "Oops! Something didn't work:",

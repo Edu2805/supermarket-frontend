@@ -34,6 +34,17 @@
     "br_com_supermarket_LOGIN_SIGN_IN": "Inicia sesión con tu cuenta",
     "br_com_supermarket_LOGIN_SUCCESSFUL": "¡Inicio de sesión exitoso!', '¡Bienvenido!",
     "br_com_supermarket_LOGIN_AN_ERROR_OCCURRED_WHILE_LOGGING_IN": "Ocurrió un error al iniciar sesión. Vuelva a intentarlo en un momento.', 'Ocurrió un error",
+    "br_com_supermarket_ESTABLISHMENT_TOTAL_ELEMENTS": "Tiendas totales",
+    "br_com_supermarket_ESTABLISHMENT_LIST_STORES_BRANCHES": "Lista de Empresas/Sucursales",
+    "br_com_supermarket_ESTABLISHMENT_NAME": "Nombre",
+    "br_com_supermarket_ESTABLISHMENT_CODE": "Código",
+    "br_com_supermarket_ESTABLISHMENT_CNPJ": "Cnpj",
+    "br_com_supermarket_ESTABLISHMENT_STATE_REGISTRATION": "Inscripción Estadual",
+    "br_com_supermarket_ESTABLISHMENT_MUNICIPAL_REGISTRATION": "Registro Municipal",
+    "br_com_supermarket_ESTABLISHMENT_ADDRESS": "Dirección",
+    "br_com_supermarket_ESTABLISHMENT_PHONE": "Teléfono",
+    "br_com_supermarket_ESTABLISHMENT_MANAGER": "Gerente",
+
 
 
     "br_com_supermarket_BUTTON_REGISTER": "Registro",
@@ -41,6 +52,7 @@
     "br_com_supermarket_BUTTON_ENTER": "Entrar",
     "br_com_supermarket_BUTTON_CREATE_YOUR_ACCOUNT": "Crea tu cuenta",
     "br_com_supermarket_BUTTON_LOGIN": "Entrar",
+    "br_com_supermarket_BUTTON_NEW_PROVIDER": "Nuevo proveedor",
 
     "br_com_supermarket_MSG_GENERIC_PAGE_NOT_FOUND": "Página no encontrada",
     "br_com_supermarket_MSG_GENERIC_ERROR": "¡Ups! Algo no funcionó:",

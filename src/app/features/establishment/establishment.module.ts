@@ -25,7 +25,8 @@ import { FormsModule } from "@angular/forms";
     imports:[
         CommonModule,
         EstablishmentRoutingModule,
-        FormsModule
+        FormsModule,
+        TranslateModule,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     providers: [
