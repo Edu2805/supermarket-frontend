@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import { AuthUser } from '../models/auth-user';
 import { ToastrService } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-register',
@@ -30,13 +31,15 @@ export class RegisterComponent implements OnInit, AfterViewInit {
   validationMessages: ValidationMessages;
   genericValidator: GenericValidator;
   displayMessage: DisplayMessage = {};
+  roles: string[];
 
   unsaveChanges: boolean;
 
   constructor(private fb: FormBuilder, 
     private accountService: AccountService, private router: Router, 
     private toastr: ToastrService,
-    private translateService: TranslateService) { 
+    private translateService: TranslateService,
+    private spinner: NgxSpinnerService) { 
 
       this.validationMessages = {
         userName: {
@@ -61,6 +64,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
      }
 
   ngOnInit() {
+    this.getAllRolesSelect();
     let password = new FormControl('', [Validators.required, CustomValidators.rangeLength([6, 8])]);
     let confirmPassword = new FormControl('', [Validators.required, CustomValidators.equalTo(password), CustomValidators.rangeLength([6, 8])]);
 
@@ -85,6 +89,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
 
   addAccount() {
     if (this.registerForm.dirty && this.registerForm.valid) {
+      this.spinner.show();
       this.user = Object.assign({}, this.user, this.registerForm.value);
 
       this.accountService.registerUser(this.user)
@@ -102,6 +107,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
   authenticate(user: UserData) {
     this.auth.login = user.userName;
     this.auth.password = user.password;
+    this.auth.role = user.role;
     this.accountService.login(this.auth)
       .subscribe(
         success => {
@@ -112,26 +118,41 @@ export class RegisterComponent implements OnInit, AfterViewInit {
   }
 
   processSuccessAccount(response: any) {
-    this.registerForm.reset();
     this.errors = [];
     this.accountService.LocalStorage.saveLocalDataUser(response);
+
   }
 
   processSuccessAuth(response: any, user: any, role: any) {
     this.errors = [];
     this.accountService.LocalStorage.saveLocalDataToken(response);
+    this.registerForm.reset();
 
     let toast = this.toastr.success(this.translateService.instant('br_com_supermarket_REGISTER_SUCCESSFUL'));
     if (toast) {
       toast.onHidden.subscribe(() => {
+        this.spinner.hide();
         this.router.navigate(['/home']);
       })
     }
+    
   }
 
   processFail(fail: any) {
     this.errors = fail.error.errors;
-    this.toastr.error(this.translateService.instant('br_com_supermarket_AN_ERROR_OCCURRED_WHILE_REGISTERING'));
+    this.errors = [this.translateService.instant('br_com_supermarket_AN_ERROR_OCCURRED_WHILE_REGISTERING')];
+    this.spinner.hide();
+  }
+
+  getAllRolesSelect() {
+    this.accountService.getAllRoles().subscribe((response) => {
+      this.roles = response.names;
+    },(error: any) => {
+      if (error && error.errors) {
+        this.toastr.error(this.translateService.instant(error.errors));
+      }
+      this.toastr.error(this.translateService.instant('br_com_supermarket_AN_ERROR_OCCURRED_WHILE_GET_ROLES'));
+    });
   }
 
 }

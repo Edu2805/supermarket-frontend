@@ -11,6 +11,7 @@ import { AccountService } from './services/account.service';
 import { NarikCustomValidatorsModule } from '@narik/custom-validators';
 import { TranslateModule } from '@ngx-translate/core';
 import { AccountGuard } from './services/account.guard';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { AccountGuard } from './services/account.guard';
     HttpClientModule,
     NarikCustomValidatorsModule,
     TranslateModule,
+    NgxSpinnerModule,
   ],
   providers: [
     AccountService,

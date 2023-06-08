@@ -1,1 +1,165 @@
-<p>create-establishment works!</p>
+<div class="container main-container">
+
+    <ngx-spinner 
+        bdColor = "rgba(0, 0, 0, 0.8)" 
+        size = "medium" 
+        color = "#fff" 
+        type = "ball-beat" 
+        [fullScreen] = "true"
+    ><p style="color: white" > {{ 'br_com_supermarket_MSG_WAIT' | translate }} </p>
+    </ngx-spinner>
+
+    <h1>{{ 'br_com_supermarket_ESTABLISHMENT_NEW' | translate }}</h1>
+    
+    <hr>
+    <div class="row">
+        <div class="col-md-10">
+            <form novalidate="novalidate" (ngSubmit)="addEstablishment()" [formGroup]="establishmentForm">
+
+                <div class="alert alert-danger" *ngIf="errors?.length > 0">
+                    <h3 id="msgRetorno">{{ 'br_com_supermarket_MSG_GENERIC_ERROR' | translate }}</h3>
+                    <ul>
+                        <li *ngFor="let error of errors">{{ error }}</li>
+                    </ul>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">{{ 'br_com_supermarket_ESTABLISHMENT_NAME' | translate }}</label>
+                    <div>
+                        <input 
+                            class="form-control" 
+                            id="name" type="text" 
+                            placeholder="{{ 'br_com_supermarket_ESTABLISHMENT_NAME_REQUIRED_PLACEHOLDER' | translate }}" 
+                            formControlName="name" 
+                            [ngClass]="{'is-invalid': displayMessage.name }"
+                        />
+                        <span class="text-danger" *ngIf="displayMessage.name">
+                            <p [innerHTML]="displayMessage.name"></p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">{{ 'br_com_supermarket_ESTABLISHMENT_DOCUMENT' | translate }}</label>
+                    <div>
+                        <input 
+                            class="form-control" 
+                            id="cnpj"
+                            type="text" 
+                            placeholder="{{ 'br_com_supermarket_ESTABLISHMENT_DOCUMENT_REQUIRED_PLACEHOLDER' | translate }}" 
+                            formControlName="cnpj" 
+                            mask="00.000.000/0000-00"
+                            [ngClass]="{'is-invalid': displayMessage.cnpj }" 
+                        />
+
+                        <span class="text-danger" *ngIf="displayMessage.cnpj">
+                            <p [innerHTML]="displayMessage.cnpj"></p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">{{ 'br_com_supermarket_ESTABLISHMENT_STATE_REGISTRATION' | translate }}</label>
+                    <div>
+                        <input 
+                            class="form-control" 
+                            id="stateRegistration"
+                            type="text" 
+                            placeholder="{{ 'br_com_supermarket_ESTABLISHMENT_STATE_REGISTRATION_REQUIRED_PLACEHOLDER' | translate }}" 
+                            formControlName="stateRegistration" 
+                            [ngClass]="{'is-invalid': displayMessage.stateRegistration}" 
+                        />
+
+                        <span class="text-danger" *ngIf="displayMessage.stateRegistration">
+                            <p [innerHTML]="displayMessage.stateRegistration"></p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">{{ 'br_com_supermarket_ESTABLISHMENT_MUNICIPAL_REGISTRATION' | translate }}</label>
+                    <div>
+                        <input 
+                            class="form-control" 
+                            id="municipalRegistration"
+                            type="text" 
+                            placeholder="{{ 'br_com_supermarket_ESTABLISHMENT_MUNICIPAL_REGISTRATION_OPTIONAL_PLACEHOLDER' | translate }}" 
+                            formControlName="municipalRegistration" 
+                            [ngClass]="{'is-invalid': displayMessage.municipalRegistration}" 
+                        />
+
+                        <span class="text-danger" *ngIf="displayMessage.municipalRegistration">
+                            <p [innerHTML]="displayMessage.municipalRegistration"></p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">{{ 'br_com_supermarket_ESTABLISHMENT_ADDRESS' | translate }}</label>
+                    <div>
+                        <input 
+                            class="form-control" 
+                            id="address"
+                            type="text" 
+                            placeholder="{{ 'br_com_supermarket_ESTABLISHMENT_ADDRESS_REQUIRED_PLACEHOLDER' | translate }}" 
+                            formControlName="address" 
+                            [ngClass]="{'is-invalid': displayMessage.address}" 
+                        />
+
+                        <span class="text-danger" *ngIf="displayMessage.address">
+                            <p [innerHTML]="displayMessage.address"></p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">{{ 'br_com_supermarket_ESTABLISHMENT_PHONE' | translate }}</label>
+                    <div>
+                        <input 
+                            class="form-control" 
+                            id="phone"
+                            type="text" 
+                            placeholder="{{ 'br_com_supermarket_ESTABLISHMENT_PHONE_REQUIRED_PLACEHOLDER' | translate }}" 
+                            mask="(00) 0000-0000||(00) 00000-0000"
+                            formControlName="phone" 
+                            [ngClass]="{'is-invalid': displayMessage.phone}" 
+                        />
+
+                        <span class="text-danger" *ngIf="displayMessage.phone">
+                            <p [innerHTML]="displayMessage.phone"></p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">{{ 'br_com_supermarket_ESTABLISHMENT_MANAGER' | translate }}</label>
+                    <div>
+                        <input 
+                            class="form-control" 
+                            id="manager"
+                            type="text" 
+                            placeholder="{{ 'br_com_supermarket_ESTABLISHMENT_MANAGER_REQUIRED_PLACEHOLDER' | translate }}" 
+                            formControlName="manager" 
+                            [ngClass]="{'is-invalid': displayMessage.manager}" 
+                        />
+
+                        <span class="text-danger" *ngIf="displayMessage.manager">
+                            <p [innerHTML]="displayMessage.manager"></p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <input 
+                        type="submit" 
+                        value="{{ 'br_com_supermarket_BUTTON_REGISTER' | translate }}" 
+                        [disabled]="!establishmentForm.valid" 
+                        class="btn btn-primary"
+                        >
+                    &nbsp;
+                    <a class="btn btn-info" [routerLink]="[ '/establishment/getAll']">{{ 'br_com_supermarket_BUTTON_BACK' | translate }}</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

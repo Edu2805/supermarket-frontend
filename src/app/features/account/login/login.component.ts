@@ -9,6 +9,7 @@ import { AuthUser } from '../models/auth-user';
 import { ToastrService } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
 import { UserNameData } from '../models/username-data';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 
 @Component({
@@ -38,7 +39,8 @@ export class LoginComponent {
   constructor(private fb: FormBuilder, 
     private accountService: AccountService, private router: Router, 
     private toastr: ToastrService,
-    private translateService: TranslateService) { 
+    private translateService: TranslateService,
+    private spinner: NgxSpinnerService) { 
 
       this.validationMessages = {
         login: {
@@ -77,7 +79,9 @@ export class LoginComponent {
   }
 
   login() {
+    
     if (this.loginForm.dirty && this.loginForm.valid) {
+      this.spinner.show();
       this.auth = Object.assign({}, this.auth, this.loginForm.value);
 
       this.accountService.login(this.auth)
@@ -99,9 +103,11 @@ export class LoginComponent {
     let toast = this.toastr.success(this.translateService.instant('br_com_supermarket_LOGIN_SUCCESSFUL'));
     if (toast) {
       toast.onHidden.subscribe(() => {
+        this.spinner.hide();
         this.router.navigate(['/home']);
       })
     }
+    
   }
 
   getAllRolesSelect() {
@@ -118,6 +124,7 @@ export class LoginComponent {
   processFail(fail: any) {
     this.errors = fail.error.errors;
     this.toastr.error(this.translateService.instant('br_com_supermarket_LOGIN_AN_ERROR_OCCURRED_WHILE_LOGGING_IN'));
+    this.spinner.hide();
   }
 
 }
