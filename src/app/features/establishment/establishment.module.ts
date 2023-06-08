@@ -9,9 +9,18 @@ import { UpdateEstablishmentComponent } from './crud/update/update-establishment
 import { DeleteEstablishmentComponent } from './crud/delete/delete-establishment/delete-establishment.component';
 import { EstablishmentService } from "./services/establishment.service";
 import { EstablishmentGuardService } from "./services/establishment.guard";
-import { NgxPaginationModule } from "ngx-pagination";
 import { PaginationComponent } from "src/app/utils/pagination/pagination.component";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { HttpClientModule } from "@angular/common/http";
+import { NarikCustomValidatorsModule } from "@narik/custom-validators";
+import { NgxSpinnerModule } from "ngx-spinner";
+import { NgxMaskModule, IConfig } from 'ngx-mask'
+
+const maskConfigFunction: () => Partial<IConfig> = () => {
+    return {
+      validation: false,
+    };
+};
 
 @NgModule({
     declarations:[
@@ -26,7 +35,12 @@ import { FormsModule } from "@angular/forms";
         CommonModule,
         EstablishmentRoutingModule,
         FormsModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        NarikCustomValidatorsModule,
         TranslateModule,
+        NgxSpinnerModule,
+        NgxMaskModule.forRoot(maskConfigFunction),
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     providers: [

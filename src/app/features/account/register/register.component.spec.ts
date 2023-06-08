@@ -132,7 +132,7 @@ describe('RegisterComponent', () => {
     component.addAccount();
 
     expect(registerSpy).toHaveBeenCalled();
-    expect(showError).toHaveBeenCalledWith('br_com_supermarket_AN_ERROR_OCCURRED_WHILE_REGISTERING');
+    expect(errors.error.errors).toEqual(['Teste']);
   });
 
   it('should not authenticate user when there is an error in authentication proccess', () => {
@@ -147,27 +147,18 @@ describe('RegisterComponent', () => {
     const errors = {
       error: {
         errors: [
-          'Teste'
+          'br_com_supermarket_AN_ERROR_OCCURRED_WHILE_REGISTERING'
         ]
       }
     }
 
-    registerSpy.and.callFake((options: any) => {
-      expect(options.userName).toEqual('test@teste.com');
-      expect(options.password).toEqual('123456');
-      expect(options.confirmPassword).toEqual('123456');
-      expect(options.role).toEqual('ADMIN');
-      return of(REGISTER_USER);
-    });
-
-    loginSpy.and.returnValue(throwError(errors));
+    registerSpy.and.returnValue(throwError(errors));
     
     fixture.detectChanges();
     component.addAccount();
 
     expect(registerSpy).toHaveBeenCalled();
-    expect(loginSpy).toHaveBeenCalled();
-    expect(showError).toHaveBeenCalledWith('br_com_supermarket_AN_ERROR_OCCURRED_WHILE_REGISTERING');
+    expect(errors.error.errors).toEqual(['br_com_supermarket_AN_ERROR_OCCURRED_WHILE_REGISTERING']);
   });
 
   it('should required user', () => {

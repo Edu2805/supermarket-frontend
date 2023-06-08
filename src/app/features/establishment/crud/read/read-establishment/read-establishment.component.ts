@@ -53,8 +53,6 @@ export class ReadEstablishmentComponent implements OnInit {
   }
 
   changePage(event){
-    console.log(event);
-    
     this.getAllPaged(event.page, event.size);
    }
 }
