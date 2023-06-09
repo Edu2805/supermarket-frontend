@@ -10,6 +10,7 @@ export class MenuLoginComponent {
 
   token: string = "";
   user: any;
+  login: any;
   userName: string = "";
   localStorageUtils = new LocalStorageUtils();
 
@@ -19,9 +20,12 @@ export class MenuLoginComponent {
     this.token = this.localStorageUtils.getUserToken();
     this.user = this.localStorageUtils.getUser();
     
-    if (this.user)
+    if (this.user && this.user.userName) {
       this.userName = this.user.userName;
-
+    } else if (this.user && this.user.login){
+      this.userName = this.user.login;
+    }
+      
     return this.token !== null;
   }
 

@@ -139,9 +139,14 @@ export class RegisterComponent implements OnInit, AfterViewInit {
   }
 
   processFail(fail: any) {
-    this.errors = fail.error.errors;
-    this.errors = [this.translateService.instant('br_com_supermarket_AN_ERROR_OCCURRED_WHILE_REGISTERING')];
     this.spinner.hide();
+    if (fail && fail.error && fail.error.errors) {
+      fail.error.errors.forEach(error => {
+        this.toastr.error(this.translateService.instant(error));
+      });
+      return;
+    }
+    this.toastr.error(this.translateService.instant('br_com_supermarket_AN_ERROR_OCCURRED_WHILE_REGISTERING'));
   }
 
   getAllRolesSelect() {
