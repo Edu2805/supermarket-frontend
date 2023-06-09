@@ -48,7 +48,9 @@
     "br_com_supermarket_ESTABLISHMENT_PHONE": "Phone",
     "br_com_supermarket_ESTABLISHMENT_MANAGER": "Manager",
     "br_com_supermarket_ESTABLISHMENT_NEW": "New Establishment",
+    "br_com_supermarket_ESTABLISHMENT_EDIT": "Edit Establishment",
     "br_com_supermarket_ESTABLISHMENT_NEW_SUCCESS": "Establishment successfully registered!",
+    "br_com_supermarket_ESTABLISHMENT_EDIT_SUCCESS": "Property updated successfully!",
     "br_com_supermarket_ESTABLISHMENT_NAME_REQUIRED_PLACEHOLDER": "Name (required)",
     "br_com_supermarket_ESTABLISHMENT_DOCUMENT_REQUIRED_PLACEHOLDER": "CNPJ (required)",
     "br_com_supermarket_ESTABLISHMENT_STATE_REGISTRATION_REQUIRED_PLACEHOLDER": "State registration (required)",
@@ -78,6 +80,7 @@
 
 
     "br_com_supermarket_BUTTON_REGISTER": "Register",
+    "br_com_supermarket_BUTTON_EDIT": "Edit",
     "br_com_supermarket_BUTTON_ACCESS": "Access",
     "br_com_supermarket_BUTTON_ENTER": "Enter",
     "br_com_supermarket_BUTTON_CREATE_YOUR_ACCOUNT": "Create your account",

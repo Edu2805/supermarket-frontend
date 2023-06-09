@@ -9,6 +9,7 @@ import { FormBaseComponent } from 'src/app/features/base-components/form-base.co
 import { CpfCnpjValidators } from 'src/app/utils/document-validators-form';
 import { Observable, fromEvent, merge } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
+import { LocalStorageUtils } from 'src/app/utils/localstorage';
 
 @Component({
   selector: 'app-create-establishment',
@@ -22,6 +23,7 @@ export class CreateEstablishmentComponent extends FormBaseComponent implements O
   errors: any[] = [];
   establishmentForm: FormGroup;
   establishment: Establishment;
+  localStorageUtils = new LocalStorageUtils();
 
   vaidateDocument: any;
 
@@ -131,6 +133,8 @@ export class CreateEstablishmentComponent extends FormBaseComponent implements O
     } else {
       if (fail.status === 403) {
         this.errors = [this.translateService.instant('br_com_supermarket_LOGIN_AN_ERROR_OCCURRED_EXPIRED_LOGIN')];
+        this.localStorageUtils.clearUserLocationData();
+        this.router.navigate(['/account/login']);
       } else {
         this.errors = fail.message;
       }

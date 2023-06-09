@@ -37,13 +37,13 @@ export class EstablishmentService extends BaseService {
 
   findEstablishmentById(id: string): Observable<Establishment> {
     return this.http
-      .get<Establishment>(this.UrlServiceV1 + 'establishment/' + id, super.GetHeaderJson())
+      .get<Establishment>(`${this.UrlServiceV1}establishment/${id}`, super.GetHeaderJson())
       .pipe(catchError(super.serviceError));
   }
 
   updateEstablishment(establishment: Establishment): Observable<Establishment> {
     return this.http
-      .put(this.UrlServiceV1 + 'establishment/' + establishment.id, establishment, super.GetHeaderJson())
+      .put(`${this.UrlServiceV1}establishment/${establishment.id}`, establishment, super.GetHeaderJson())
       .pipe(
         map(super.extractDataAuth),
         catchError(super.serviceError));
@@ -51,7 +51,7 @@ export class EstablishmentService extends BaseService {
 
   deleteEstablishment(id: string): Observable<Establishment> {
     return this.http
-      .delete(this.UrlServiceV1 + 'establishment/' + id, super.GetHeaderJson())
+      .delete(`${this.UrlServiceV1}establishment/${id}`, super.GetHeaderJson())
       .pipe(
         map(super.extractDataAuth),
         catchError(super.serviceError));

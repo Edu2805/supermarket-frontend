@@ -15,6 +15,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { NarikCustomValidatorsModule } from "@narik/custom-validators";
 import { NgxSpinnerModule } from "ngx-spinner";
 import { NgxMaskModule, IConfig } from 'ngx-mask'
+import { EstablishmentResolve } from "./services/establishment.resolve";
 
 const maskConfigFunction: () => Partial<IConfig> = () => {
     return {
@@ -45,7 +46,8 @@ const maskConfigFunction: () => Partial<IConfig> = () => {
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     providers: [
         EstablishmentService,
-        EstablishmentGuardService
+        EstablishmentGuardService,
+        EstablishmentResolve
     ],
     exports:[]
 })

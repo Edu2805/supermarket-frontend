@@ -4,6 +4,9 @@ import { EstablishmentService } from '../../../services/establishment.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { Page } from 'src/app/utils/pagination/model/models';
+import { LocalStorageUtils } from 'src/app/utils/localstorage';
+import { TranslateService } from '@ngx-translate/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-read-establishment',
@@ -18,10 +21,13 @@ export class ReadEstablishmentComponent implements OnInit {
   SIZE = 10;
   errorMessage: string;
   errors: any[] = [];
+  localStorageUtils = new LocalStorageUtils();
 
   constructor(private establishmentService: EstablishmentService,
     private spinner: NgxSpinnerService,
-    private toastr: ToastrService) { }
+    private toastr: ToastrService,
+    private translateService: TranslateService,
+    private router: Router,) { }
 
   ngOnInit(): void {
     this.getAllPaged(this.PAGE, this.SIZE);
@@ -46,9 +52,15 @@ export class ReadEstablishmentComponent implements OnInit {
     if (fail.error !== null && fail.error !== undefined) {
       this.errors = fail.error.errors;
     } else {
-      this.errors = fail.message;
+      if (fail.status === 403) {
+        this.errors = [this.translateService.instant('br_com_supermarket_LOGIN_AN_ERROR_OCCURRED_EXPIRED_LOGIN')];
+        this.localStorageUtils.clearUserLocationData();
+        this.router.navigate(['/account/login']);
+      } else {
+        this.errors = fail.message;
+      }
     }
-    this.toastr.error(this.errors.toString(), 'Opa :(');
+    this.toastr.error(this.errors.toString(), this.translateService.instant('br_com_supermarket_MSG_ERROR'));
     this.spinner.hide();
   }
 
