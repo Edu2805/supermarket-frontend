@@ -101,13 +101,7 @@ describe('LoginComponent', () => {
     loginForm.markAsDirty();
     loginForm.valid;
 
-    const errors = {
-      error: {
-        errors: [
-          'Teste'
-        ]
-      }
-    }
+    const errors = null;
 
     postSpy.and.returnValue(throwError(errors));
 

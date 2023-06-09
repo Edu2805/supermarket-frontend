@@ -79,7 +79,6 @@ export class LoginComponent {
   }
 
   login() {
-    
     if (this.loginForm.dirty && this.loginForm.valid) {
       this.spinner.show();
       this.auth = Object.assign({}, this.auth, this.loginForm.value);
@@ -122,9 +121,19 @@ export class LoginComponent {
   }
 
   processFail(fail: any) {
-    this.errors = fail.error.errors;
-    this.toastr.error(this.translateService.instant('br_com_supermarket_LOGIN_AN_ERROR_OCCURRED_WHILE_LOGGING_IN'));
     this.spinner.hide();
+    if (fail && fail.status === 401) {
+      this.toastr.error(this.translateService.instant('br_com_supermarket_LOGIN_INVALID_PASSWORD'),
+      this.translateService.instant(fail.statusText));
+      return;
+    }
+    if (fail && fail.error && fail.error.errors) {
+      fail.error.errors.forEach(error => {
+        this.toastr.error(this.translateService.instant(error));
+      });
+      return;
+    }
+    this.toastr.error(this.translateService.instant('br_com_supermarket_LOGIN_AN_ERROR_OCCURRED_WHILE_LOGGING_IN'));
   }
 
 }
