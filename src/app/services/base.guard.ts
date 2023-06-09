@@ -8,29 +8,32 @@ export abstract class BaseGuard {
     constructor(protected router: Router){}
     
     protected validateRoles(routeAc: ActivatedRouteSnapshot) : boolean {
-
+        let validateCurrentRole: boolean = false;
         if(!this.localStorageUtils.getUserToken()){
             this.router.navigate(['/account/login/'], { queryParams: { returnUrl: this.router.url }});
         }  
 
         let user = this.localStorageUtils.getUser();
-        let role: any = routeAc.data.roles[0];
-
-        if (role !== undefined) {
-            if (role) {
-                if (!user.roleType) {
-                    this.navegateToAccessDenied();
+        routeAc.data.roles.forEach((role: any) => {
+            if (role !== undefined) {
+                if (role) {
+                    if (!user.roleType) {
+                        this.navegateToAccessDenied();
+                    }
+    
+                    let valuesRoles = user.roleType as string;
+    
+                    if (valuesRoles.includes(role)) {
+                        validateCurrentRole = true;
+                    }
                 }
-
-                let valuesRoles = user.roleType as string;
-
-                if (!valuesRoles.includes(role)) {
-                    this.navegateToAccessDenied();
-                }
-            }
+            }  
+        });
+        if (!validateCurrentRole) {
+            this.navegateToAccessDenied();
         }
 
-        return true;
+        return validateCurrentRole;
     }
 
     private navegateToAccessDenied() {

@@ -23,7 +23,7 @@ describe('ReadEstablishmentComponent', () => {
         HttpHandler,
         TranslateService,
       ],
-      imports: [ 
+      imports: [
         ToastrModule.forRoot(),
         TranslateModule.forRoot(), 
       ]

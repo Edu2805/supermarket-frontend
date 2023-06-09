@@ -17,7 +17,7 @@ const establishmentRouterConfig: Routes = [
                 canDeactivate: [EstablishmentGuardService],
                 canActivate: [EstablishmentGuardService],
                 data: {
-                    roles: ['ADMIN']
+                    roles: ['ADMIN', 'HEAD']
                 } 
             },
             {
@@ -25,21 +25,23 @@ const establishmentRouterConfig: Routes = [
                 canDeactivate: [EstablishmentGuardService],
                 canActivate: [EstablishmentGuardService],
                 data: {
-                    roles: ['ADMIN']
+                    roles: ['ADMIN', 'HEAD']
                 }
             },
             {
                 path: 'edit/:id', component: UpdateEstablishmentComponent,
                 canActivate: [EstablishmentGuardService],
-                data: [{ claim: { name: 'Fornecedor', value: 'Atualizar' } }],
+                data: {
+                    roles: ['ADMIN', 'HEAD']
+                },
                 resolve: {
-                    provider: EstablishmentResolve
+                    establishment: EstablishmentResolve
                 }
             },
             { 
                 path: 'details/:id', component: ReadEstablishmentComponent,
                 resolve: {
-                    provider: EstablishmentResolve
+                    establishment: EstablishmentResolve
                 }
             },
             {
@@ -47,7 +49,7 @@ const establishmentRouterConfig: Routes = [
                 canActivate: [EstablishmentGuardService],
                 data: [{ claim: { name: 'Fornecedor', value: 'Excluir' } }],
                 resolve: {
-                    provider: EstablishmentResolve
+                    establishment: EstablishmentResolve
                 }
             }
         ]

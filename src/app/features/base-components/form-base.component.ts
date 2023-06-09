@@ -8,6 +8,7 @@ export abstract class FormBaseComponent {
     displayMessage: DisplayMessage = {};
     genericValidators: GenericValidator;
     validationMessages: ValidationMessages;
+    activeButton: boolean = true;
 
     unsaveChanges: boolean;
 
@@ -30,6 +31,7 @@ export abstract class FormBaseComponent {
     protected validateForm(formGroup: FormGroup) {
         this.displayMessage = this.genericValidators.proccessMenssage(formGroup);
         this.unsaveChanges = true;
+        this.activeButton = false;
     }
     
 }

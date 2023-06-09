@@ -48,7 +48,9 @@
     "br_com_supermarket_ESTABLISHMENT_PHONE": "Telefone",
     "br_com_supermarket_ESTABLISHMENT_MANAGER": "Responsável",
     "br_com_supermarket_ESTABLISHMENT_NEW": "Novo Estabelecimento",
+    "br_com_supermarket_ESTABLISHMENT_EDIT": "Editar Estabelecimento",
     "br_com_supermarket_ESTABLISHMENT_NEW_SUCCESS": "Estabelecimento cadastrado com sucesso!",
+    "br_com_supermarket_ESTABLISHMENT_EDIT_SUCCESS": "Estabelecimento atualizado com sucesso!",
     "br_com_supermarket_ESTABLISHMENT_NAME_REQUIRED_PLACEHOLDER": "Nome (requerido)",
     "br_com_supermarket_ESTABLISHMENT_DOCUMENT_REQUIRED_PLACEHOLDER": "CNPJ (requerido)",
     "br_com_supermarket_ESTABLISHMENT_STATE_REGISTRATION_REQUIRED_PLACEHOLDER": "Inscrição estadual (requerido)",
@@ -77,6 +79,7 @@
     "br_com_supermarket_ESTABLISHMENT_ERROR_FORM_MUNICIPAL_REGISTRATION_MAX_LENGTH_MESSAGE": "A inscrição municipal não pode ter menos do que 20 caracteres.",
 
     "br_com_supermarket_BUTTON_REGISTER": "Cadastrar",
+    "br_com_supermarket_BUTTON_EDIT": "Editar",
     "br_com_supermarket_BUTTON_ACCESS": "Acessar",
     "br_com_supermarket_BUTTON_ENTER": "Entrar",
     "br_com_supermarket_BUTTON_CREATE_YOUR_ACCOUNT": "Crie sua conta",
