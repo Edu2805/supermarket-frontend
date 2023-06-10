@@ -49,8 +49,10 @@
     "br_com_supermarket_ESTABLISHMENT_MANAGER": "Responsável",
     "br_com_supermarket_ESTABLISHMENT_NEW": "Novo Estabelecimento",
     "br_com_supermarket_ESTABLISHMENT_EDIT": "Editar Estabelecimento",
+    "br_com_supermarket_ESTABLISHMENT_DELETE_CONFIRMATION": "Tem certeza que deseja excluir o estabelecimento",
     "br_com_supermarket_ESTABLISHMENT_NEW_SUCCESS": "Estabelecimento cadastrado com sucesso!",
     "br_com_supermarket_ESTABLISHMENT_EDIT_SUCCESS": "Estabelecimento atualizado com sucesso!",
+    "br_com_supermarket_ESTABLISHMENT_DELETE_SUCCESS": "Estabelecimento excluído com sucesso!",
     "br_com_supermarket_ESTABLISHMENT_NAME_REQUIRED_PLACEHOLDER": "Nome (requerido)",
     "br_com_supermarket_ESTABLISHMENT_DOCUMENT_REQUIRED_PLACEHOLDER": "CNPJ (requerido)",
     "br_com_supermarket_ESTABLISHMENT_STATE_REGISTRATION_REQUIRED_PLACEHOLDER": "Inscrição estadual (requerido)",
@@ -86,6 +88,7 @@
     "br_com_supermarket_BUTTON_LOGIN": "Entrar",
     "br_com_supermarket_BUTTON_NEW_PROVIDER": "Novo fornecedor",
     "br_com_supermarket_BUTTON_BACK": "Voltar",
+    "br_com_supermarket_BUTTON_DELETE": "Excluir",
 
     "br_com_supermarket_MSG_GENERIC_SUCCESS": "Sucesso",
     "br_com_supermarket_MSG_GENERIC_PAGE_NOT_FOUND": "Página não encontrada",

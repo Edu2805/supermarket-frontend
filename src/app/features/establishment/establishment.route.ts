@@ -40,6 +40,10 @@ const establishmentRouterConfig: Routes = [
             },
             { 
                 path: 'details/:id', component: ReadEstablishmentComponent,
+                canActivate: [EstablishmentGuardService],
+                data: {
+                    roles: ['ADMIN', 'HEAD']
+                },
                 resolve: {
                     establishment: EstablishmentResolve
                 }
@@ -47,7 +51,9 @@ const establishmentRouterConfig: Routes = [
             {
                 path: 'delete/:id', component: DeleteEstablishmentComponent,
                 canActivate: [EstablishmentGuardService],
-                data: [{ claim: { name: 'Fornecedor', value: 'Excluir' } }],
+                data: {
+                    roles: ['ADMIN', 'HEAD']
+                },
                 resolve: {
                     establishment: EstablishmentResolve
                 }
