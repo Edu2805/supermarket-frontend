@@ -21,9 +21,6 @@
                 <th>{{ 'br_com_supermarket_ESTABLISHMENT_NAME' | translate }}</th>
                 <th>{{ 'br_com_supermarket_ESTABLISHMENT_CODE' | translate }}</th>
                 <th>{{ 'br_com_supermarket_ESTABLISHMENT_CNPJ' | translate }}</th>
-                <th>{{ 'br_com_supermarket_ESTABLISHMENT_STATE_REGISTRATION' | translate }}</th>
-                <th>{{ 'br_com_supermarket_ESTABLISHMENT_MUNICIPAL_REGISTRATION' | translate }}</th>
-                <th>{{ 'br_com_supermarket_ESTABLISHMENT_ADDRESS' | translate }}</th>
                 <th>{{ 'br_com_supermarket_ESTABLISHMENT_PHONE' | translate }}</th>
                 <th>{{ 'br_com_supermarket_ESTABLISHMENT_MANAGER' | translate }}</th>
                 <th></th>
@@ -38,15 +35,6 @@
             </td>
             <td>
                 {{ establishment.cnpj |  cnpj }}
-            </td>
-            <td>
-                {{ establishment.stateRegistration }}
-            </td>
-            <td>
-                {{ establishment.municipalRegistration }}
-            </td>
-            <td>
-                {{ establishment.address }}
             </td>
             <td>
                 {{ establishment.phone.length > 10 ? (establishment.phone | cellPhone) : (establishment.phone | phone)}}

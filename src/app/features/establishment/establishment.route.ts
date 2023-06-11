@@ -7,6 +7,7 @@ import { UpdateEstablishmentComponent } from "./crud/update/update-establishment
 import { CreateEstablishmentComponent } from "./crud/create/create-establishment/create-establishment.component";
 import { EstablishmentResolve } from "./services/establishment.resolve";
 import { DeleteEstablishmentComponent } from "./crud/delete/delete-establishment/delete-establishment.component";
+import { DetailsEstablishmentComponent } from "./crud/details/details-establishment.component";
 
 const establishmentRouterConfig: Routes = [
     {
@@ -39,7 +40,7 @@ const establishmentRouterConfig: Routes = [
                 }
             },
             { 
-                path: 'details/:id', component: ReadEstablishmentComponent,
+                path: 'details/:id', component: DetailsEstablishmentComponent,
                 canActivate: [EstablishmentGuardService],
                 data: {
                     roles: ['ADMIN', 'HEAD']
