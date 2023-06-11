@@ -50,6 +50,7 @@
     "br_com_supermarket_ESTABLISHMENT_NEW": "Nuevo Establecimiento",
     "br_com_supermarket_ESTABLISHMENT_EDIT": "Editar establecimiento",
     "br_com_supermarket_ESTABLISHMENT_DELETE_CONFIRMATION": "¿Está seguro de que desea eliminar la propiedad",
+    "br_com_supermarket_ESTABLISHMENT_DETAILS": "Detalles del establecimiento",
     "br_com_supermarket_ESTABLISHMENT_NEW_SUCCESS": "¡Establecimiento registrado con éxito!",
     "br_com_supermarket_ESTABLISHMENT_EDIT_SUCCESS": "¡Establecimiento actualizada con éxito!",
     "br_com_supermarket_ESTABLISHMENT_DELETE_SUCCESS": "¡Establecimiento eliminado con éxito!",

@@ -18,6 +18,7 @@ import { NgxMaskModule, IConfig } from 'ngx-mask'
 import { EstablishmentResolve } from "./services/establishment.resolve";
 import { CnpjPipe, CpfPipe } from "src/app/utils/pipe/document";
 import { CellPhonePipe, PhonePipe } from "src/app/utils/pipe/phone";
+import { DetailsEstablishmentComponent } from './crud/details/details-establishment.component';
 
 const maskConfigFunction: () => Partial<IConfig> = () => {
     return {
@@ -32,6 +33,7 @@ const maskConfigFunction: () => Partial<IConfig> = () => {
         ReadEstablishmentComponent,
         UpdateEstablishmentComponent,
         DeleteEstablishmentComponent,
+        DetailsEstablishmentComponent,
         PaginationComponent,
         CpfPipe,
         CnpjPipe,
