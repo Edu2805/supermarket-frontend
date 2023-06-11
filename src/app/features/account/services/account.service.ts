@@ -5,15 +5,13 @@ import { Observable } from "rxjs";
 import { catchError, map } from 'rxjs/operators'
 import { BaseService } from "src/app/services/base.service";
 import { AuthUser } from "../models/auth-user";
-import { TranslateService } from "@ngx-translate/core";
 import { UserNameData } from "../models/username-data";
 
 @Injectable()
 export class AccountService extends BaseService { 
 
-    constructor(private http: HttpClient, translateService: TranslateService) { 
-        super(translateService);
-        this.translateService = this.translateService;
+    constructor(private http: HttpClient) { 
+        super();
     }
 
     registerUser(user: UserData): Observable<UserData> {

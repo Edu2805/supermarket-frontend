@@ -68,4 +68,3 @@ export class ReadEstablishmentComponent implements OnInit {
     this.getAllPaged(event.page, event.size);
    }
 }
-

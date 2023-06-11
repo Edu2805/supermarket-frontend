@@ -5,7 +5,7 @@ import { LocalStorageUtils } from 'src/app/utils/localstorage';
 import { Establishment } from '../../model/establishment';
 
 @Component({
-  selector: 'app-details',
+  selector: 'app-details-establishment',
   templateUrl: './details-establishment.component.html',
   styleUrls: ['./details-establishment.component.scss']
 })
