@@ -37,7 +37,7 @@
                 {{ establishment.code }}
             </td>
             <td>
-                {{ establishment.cnpj }}
+                {{ establishment.cnpj |  cnpj }}
             </td>
             <td>
                 {{ establishment.stateRegistration }}
@@ -49,7 +49,7 @@
                 {{ establishment.address }}
             </td>
             <td>
-                {{ establishment.phone }}
+                {{ establishment.phone.length > 10 ? (establishment.phone | cellPhone) : (establishment.phone | phone)}}
             </td>
             <td>
                 {{ establishment.manager }}

@@ -37,6 +37,6 @@ export abstract class BaseGuard {
     }
 
     private navegateToAccessDenied() {
-        this.router.navigate(['/acesso-negado']);
+        this.router.navigate(['/access-denied']);
     }    
 }

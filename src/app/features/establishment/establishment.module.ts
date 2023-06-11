@@ -16,6 +16,8 @@ import { NarikCustomValidatorsModule } from "@narik/custom-validators";
 import { NgxSpinnerModule } from "ngx-spinner";
 import { NgxMaskModule, IConfig } from 'ngx-mask'
 import { EstablishmentResolve } from "./services/establishment.resolve";
+import { CnpjPipe, CpfPipe } from "src/app/utils/pipe/document";
+import { CellPhonePipe, PhonePipe } from "src/app/utils/pipe/phone";
 
 const maskConfigFunction: () => Partial<IConfig> = () => {
     return {
@@ -30,7 +32,11 @@ const maskConfigFunction: () => Partial<IConfig> = () => {
         ReadEstablishmentComponent,
         UpdateEstablishmentComponent,
         DeleteEstablishmentComponent,
-        PaginationComponent
+        PaginationComponent,
+        CpfPipe,
+        CnpjPipe,
+        CellPhonePipe,
+        PhonePipe
     ],
     imports:[
         CommonModule,
