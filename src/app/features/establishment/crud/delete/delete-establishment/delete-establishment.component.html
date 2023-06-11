@@ -8,7 +8,7 @@
     ><p style="color: white" > {{ 'br_com_supermarket_MSG_WAIT' | translate }} </p>
     </ngx-spinner>
 
-    <h3>{{ 'br_com_supermarket_ESTABLISHMENT_DELETE_CONFIRMATION' | translate }} {{ establishment.name }} ?</h3>
+    <h3>{{ 'br_com_supermarket_ESTABLISHMENT_DELETE_CONFIRMATION' | translate }} {{ establishment?.name }} ?</h3>
     <hr />
 
     <div class="alert alert-danger" *ngIf="errors?.length > 0">
@@ -24,49 +24,49 @@
                 <label class="control-label">{{ 'br_com_supermarket_ESTABLISHMENT_NAME' | translate }}</label>
             </dt>
             <dd class="col-sm-10">
-                {{ establishment.name }}
+                {{ establishment?.name }}
             </dd>
             <dt class="col-sm-2">
                 <label class="control-label">{{ 'br_com_supermarket_ESTABLISHMENT_CODE' | translate }}</label>
             </dt>
             <dd class="col-sm-10">
-                {{ establishment.code }}
+                {{ establishment?.code }}
             </dd>
             <dt class="col-sm-2">
                 <label class="control-label">{{ 'br_com_supermarket_ESTABLISHMENT_CNPJ' | translate }}</label>
             </dt>
             <dd class="col-sm-10">
-                {{ establishment.cnpj | cnpj }}
+                {{ establishment?.cnpj | cnpj }}
             </dd>
             <dt class="col-sm-2">
                 <label class="control-label">{{ 'br_com_supermarket_ESTABLISHMENT_STATE_REGISTRATION' | translate }}</label>
             </dt>
             <dd class="col-sm-10">
-                {{ establishment.stateRegistration }}
+                {{ establishment?.stateRegistration }}
             </dd>
             <dt class="col-sm-2">
                 <label class="control-label">{{ 'br_com_supermarket_ESTABLISHMENT_MUNICIPAL_REGISTRATION' | translate }}</label>
             </dt>
             <dd class="col-sm-10">
-                {{ establishment.municipalRegistration }}
+                {{ establishment?.municipalRegistration }}
             </dd>
             <dt class="col-sm-2">
                 <label class="control-label">{{ 'br_com_supermarket_ESTABLISHMENT_ADDRESS' | translate }}</label>
             </dt>
             <dd class="col-sm-10">
-                {{ establishment.address }}
+                {{ establishment?.address }}
             </dd>
             <dt class="col-sm-2">
                 <label class="control-label">{{ 'br_com_supermarket_ESTABLISHMENT_PHONE' | translate }}</label>
             </dt>
             <dd class="col-sm-10">
-                {{ establishment.phone.length > 10 ? (establishment.phone | cellPhone) : (establishment.phone | phone)}}
+                {{ establishment?.phone.length > 10 ? (establishment?.phone | cellPhone) : (establishment?.phone | phone)}}
             </dd>
             <dt class="col-sm-2">
                 <label class="control-label">{{ 'br_com_supermarket_ESTABLISHMENT_MANAGER' | translate }}</label>
             </dt>
             <dd class="col-sm-10">
-                {{ establishment.manager }}
+                {{ establishment?.manager }}
             </dd>
         </dl>
     </div>

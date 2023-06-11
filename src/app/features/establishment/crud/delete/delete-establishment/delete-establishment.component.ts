@@ -3,7 +3,6 @@ import { Establishment } from '../../../model/establishment';
 import { EstablishmentService } from '../../../services/establishment.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { DomSanitizer } from '@angular/platform-browser';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { TranslateService } from '@ngx-translate/core';
 import { LocalStorageUtils } from 'src/app/utils/localstorage';
@@ -24,7 +23,6 @@ export class DeleteEstablishmentComponent {
     private route: ActivatedRoute,
     private router: Router,
     private toastr: ToastrService,
-    private sanitizer: DomSanitizer,
     private spinner: NgxSpinnerService,
     private translateService: TranslateService) {
 

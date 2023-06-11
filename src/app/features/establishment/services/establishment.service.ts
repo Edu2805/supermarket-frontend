@@ -17,7 +17,7 @@ export class EstablishmentService extends BaseService {
 
   newEstablishment(establishment: Establishment): Observable<Establishment> {
     return this.http
-      .post(this.UrlServiceV1 + 'establishment', establishment, this.GetHeaderJson())
+      .post(`${this.UrlServiceV1}establishment`, establishment, this.GetHeaderJson())
       .pipe(
         map(super.extractDataAuth),
         catchError(super.serviceError));

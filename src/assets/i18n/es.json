@@ -95,5 +95,6 @@
     "br_com_supermarket_MSG_GENERIC_ERROR": "¡Ups! Algo no funcionó:",
     "br_com_supermarket_MSG_ERROR": "Un error a ocurrido",
     "br_com_supermarket_MSG_UNKNOWN_ERROR": "Un error desconocido a ocurrido",
-    "br_com_supermarket_MSG_WAIT": "Esperar..."
+    "br_com_supermarket_MSG_WAIT": "Esperar...",
+    "br_com_supermarket_MSG_ABANDON_FILLING_FORM": "¿Estás seguro de que quieres dejar de rellenar el formulario?"
 }

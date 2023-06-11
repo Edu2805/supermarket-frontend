@@ -96,5 +96,6 @@
     "br_com_supermarket_MSG_GENERIC_ERROR": "Oops! Something didn't work:",
     "br_com_supermarket_MSG_ERROR": "An error has occurred",
     "br_com_supermarket_MSG_UNKNOWN_ERROR": "An unknown error has occurred",
-    "br_com_supermarket_MSG_WAIT": "Wait please..."
+    "br_com_supermarket_MSG_WAIT": "Wait please...",
+    "br_com_supermarket_MSG_ABANDON_FILLING_FORM": "Are you sure you want to abandon filling in the form?"
 }
