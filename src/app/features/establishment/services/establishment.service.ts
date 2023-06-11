@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
 import { BaseService } from 'src/app/services/base.service';
 import { Establishment } from '../model/establishment';
 import { HttpClient } from '@angular/common/http';
@@ -11,8 +10,8 @@ export class EstablishmentService extends BaseService {
 
   establishment: Establishment;
 
-  constructor(private http: HttpClient, translateService: TranslateService) {
-    super(translateService);
+  constructor(private http: HttpClient) {
+    super();
   }
 
   newEstablishment(establishment: Establishment): Observable<Establishment> {
