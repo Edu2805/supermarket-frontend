@@ -1,6 +1,6 @@
 import { ActivatedRouteSnapshot, CanActivate, CanDeactivate, Router } from "@angular/router";
 import { BaseGuard } from "src/app/services/base.guard";
-import { CreateEstablishmentComponent } from "../crud/create/create-establishment/create-establishment.component";
+import { CreateEstablishmentComponent } from "../crud/create/create-establishment.component";
 import { Injectable } from "@angular/core";
 import { TranslateService } from "@ngx-translate/core";
 

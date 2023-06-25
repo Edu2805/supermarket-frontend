@@ -1,22 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UpdateEstablishmentComponent } from './update-establishment.component';
+import { ReadEstablishmentComponent } from './read-establishment.component';
+import { EstablishmentService } from '../../services/establishment.service';
 import { HttpClient, HttpHandler } from '@angular/common/http';
-import { USE_DEFAULT_LANG, USE_STORE, USE_EXTEND, DEFAULT_LANGUAGE, TranslateService, TranslateModule } from '@ngx-translate/core';
+import { DEFAULT_LANGUAGE, TranslateModule, TranslateService, USE_DEFAULT_LANG, USE_EXTEND, USE_STORE } from '@ngx-translate/core';
 import { ToastrModule } from 'ngx-toastr';
-import { EstablishmentService } from '../../../services/establishment.service';
-import { ActivatedRoute } from '@angular/router';
 
-describe('UpdateEstablishmentComponent', () => {
-  let component: UpdateEstablishmentComponent;
-  let fixture: ComponentFixture<UpdateEstablishmentComponent>;
-  const fakeActivatedRoute = {
-    snapshot: { data: { } }
-  } as ActivatedRoute;
+describe('ReadEstablishmentComponent', () => {
+  let component: ReadEstablishmentComponent;
+  let fixture: ComponentFixture<ReadEstablishmentComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UpdateEstablishmentComponent ],
+      declarations: [ ReadEstablishmentComponent ],
       providers: [ 
         { provide: USE_DEFAULT_LANG, useValue: undefined },
         { provide: USE_STORE, useValue: undefined },
@@ -26,7 +22,6 @@ describe('UpdateEstablishmentComponent', () => {
         HttpClient, 
         HttpHandler,
         TranslateService,
-        {provide: ActivatedRoute, useValue: fakeActivatedRoute}
       ],
       imports: [
         ToastrModule.forRoot(),
@@ -35,7 +30,7 @@ describe('UpdateEstablishmentComponent', () => {
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(UpdateEstablishmentComponent);
+    fixture = TestBed.createComponent(ReadEstablishmentComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

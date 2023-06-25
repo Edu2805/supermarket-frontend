@@ -3,8 +3,8 @@ import { FormControlName, FormGroup, FormBuilder, Validators, AbstractControl } 
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
-import { Establishment } from '../../../model/establishment';
-import { EstablishmentService } from '../../../services/establishment.service';
+import { Establishment } from '../../model/establishment';
+import { EstablishmentService } from '../../services/establishment.service';
 import { FormBaseComponent } from 'src/app/features/base-components/form-base.component';
 import { CpfCnpjValidators } from 'src/app/utils/document-validators-form';
 import { Observable, fromEvent, merge } from 'rxjs';

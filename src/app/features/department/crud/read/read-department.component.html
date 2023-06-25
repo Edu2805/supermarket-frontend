@@ -18,18 +18,18 @@
     <table class="table table-hover">
         <thead class="thead-dark">
             <tr>
-                <th>{{ 'br_com_supermarket_DEPARTMENT_NAME' | translate }}</th>
                 <th>{{ 'br_com_supermarket_DEPARTMENT_CODE' | translate }}</th>
+                <th>{{ 'br_com_supermarket_DEPARTMENT_NAME' | translate }}</th>
                 <th>{{ 'br_com_supermarket_DEPARTMENT_ESTABLISHMENT_NAME' | translate }}</th>
                 <th></th>
             </tr>
         </thead>
         <tr *ngFor="let department of departments">
             <td>
-                {{ department.name }}
+                {{ department.code }}
             </td>
             <td>
-                {{ department.code }}
+                {{ department.name }}
             </td>
             <td>
                 {{ department.establishment.name }}

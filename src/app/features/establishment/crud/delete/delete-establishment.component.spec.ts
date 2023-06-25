@@ -1,15 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DeleteDepartmentComponent } from './delete-department.component';
+import { DeleteEstablishmentComponent } from './delete-establishment.component';
 import { HttpClient, HttpHandler } from '@angular/common/http';
-import { ActivatedRoute } from '@angular/router';
 import { USE_DEFAULT_LANG, USE_STORE, USE_EXTEND, DEFAULT_LANGUAGE, TranslateService, TranslateModule } from '@ngx-translate/core';
-import { DepartmentService } from '../../services/department.service';
 import { ToastrModule } from 'ngx-toastr';
+import { EstablishmentService } from '../../services/establishment.service';
+import { ActivatedRoute } from '@angular/router';
+import { CnpjPipe, CpfPipe } from 'src/app/utils/pipe/document';
+import { CellPhonePipe, PhonePipe } from 'src/app/utils/pipe/phone';
 
-describe('DeleteDepartmentComponent', () => {
-  let component: DeleteDepartmentComponent;
-  let fixture: ComponentFixture<DeleteDepartmentComponent>;
+describe('DeleteEstablishmentComponent', () => {
+  let component: DeleteEstablishmentComponent;
+  let fixture: ComponentFixture<DeleteEstablishmentComponent>;
   const fakeActivatedRoute = {
     snapshot: { data: { } }
   } as ActivatedRoute;
@@ -17,14 +19,18 @@ describe('DeleteDepartmentComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ 
-        DeleteDepartmentComponent 
+        DeleteEstablishmentComponent,
+        CpfPipe,
+        CnpjPipe,
+        CellPhonePipe,
+        PhonePipe 
       ],
       providers: [ 
         { provide: USE_DEFAULT_LANG, useValue: undefined },
         { provide: USE_STORE, useValue: undefined },
         { provide: USE_EXTEND, useValue: undefined },
         { provide: DEFAULT_LANGUAGE, useValue: undefined },
-        DepartmentService,
+        EstablishmentService,
         HttpClient, 
         HttpHandler,
         TranslateService,
@@ -37,7 +43,7 @@ describe('DeleteDepartmentComponent', () => {
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(DeleteDepartmentComponent);
+    fixture = TestBed.createComponent(DeleteEstablishmentComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

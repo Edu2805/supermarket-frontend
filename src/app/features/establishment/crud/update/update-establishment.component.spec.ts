@@ -1,30 +1,22 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DeleteEstablishmentComponent } from './delete-establishment.component';
+import { UpdateEstablishmentComponent } from './update-establishment.component';
 import { HttpClient, HttpHandler } from '@angular/common/http';
 import { USE_DEFAULT_LANG, USE_STORE, USE_EXTEND, DEFAULT_LANGUAGE, TranslateService, TranslateModule } from '@ngx-translate/core';
 import { ToastrModule } from 'ngx-toastr';
-import { EstablishmentService } from '../../../services/establishment.service';
+import { EstablishmentService } from '../../services/establishment.service';
 import { ActivatedRoute } from '@angular/router';
-import { CnpjPipe, CpfPipe } from 'src/app/utils/pipe/document';
-import { CellPhonePipe, PhonePipe } from 'src/app/utils/pipe/phone';
 
-describe('DeleteEstablishmentComponent', () => {
-  let component: DeleteEstablishmentComponent;
-  let fixture: ComponentFixture<DeleteEstablishmentComponent>;
+describe('UpdateEstablishmentComponent', () => {
+  let component: UpdateEstablishmentComponent;
+  let fixture: ComponentFixture<UpdateEstablishmentComponent>;
   const fakeActivatedRoute = {
     snapshot: { data: { } }
   } as ActivatedRoute;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ 
-        DeleteEstablishmentComponent,
-        CpfPipe,
-        CnpjPipe,
-        CellPhonePipe,
-        PhonePipe 
-      ],
+      declarations: [ UpdateEstablishmentComponent ],
       providers: [ 
         { provide: USE_DEFAULT_LANG, useValue: undefined },
         { provide: USE_STORE, useValue: undefined },
@@ -39,11 +31,11 @@ describe('DeleteEstablishmentComponent', () => {
       imports: [
         ToastrModule.forRoot(),
         TranslateModule.forRoot(), 
-      ],
+      ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(DeleteEstablishmentComponent);
+    fixture = TestBed.createComponent(UpdateEstablishmentComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
