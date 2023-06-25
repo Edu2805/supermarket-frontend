@@ -36,7 +36,7 @@ const departmentRouterConfig: Routes = [
                     roles: ['ADMIN', 'HEAD']
                 },
                 resolve: {
-                    establishment: DepartmentResolve
+                    department: DepartmentResolve
                 }
             },
             { 
@@ -46,7 +46,7 @@ const departmentRouterConfig: Routes = [
                     roles: ['ADMIN', 'HEAD']
                 },
                 resolve: {
-                    establishment: DepartmentResolve
+                    department: DepartmentResolve
                 }
             },
             {
@@ -56,7 +56,7 @@ const departmentRouterConfig: Routes = [
                     roles: ['ADMIN', 'HEAD']
                 },
                 resolve: {
-                    establishment: DepartmentResolve
+                    department: DepartmentResolve
                 }
             }
         ]

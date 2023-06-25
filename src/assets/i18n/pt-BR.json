@@ -87,6 +87,9 @@
     "br_com_supermarket_DEPARTMENT_ESTABLISHMENT_NAME": "Nome do estabelecimento",
     "br_com_supermarket_DEPARTMENT_NAME": "Nome",
     "br_com_supermarket_DEPARTMENT_CODE": "Código",
+    "br_com_supermarket_DEPARTMENT_DETAILS": "Detalhes do departamento",
+    "br_com_supermarket_DEPARTMENT_ESTABLISHMENT_DETAILS": "Está cadastrado no estabelecimento ",
+    "br_com_supermarket_DEPARTMENT_DELETE_SUCCESS": "Departamento excluído com sucesso!",
 
 
     "br_com_supermarket_BUTTON_REGISTER": "Cadastrar",

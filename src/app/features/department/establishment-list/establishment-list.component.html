@@ -1,0 +1,72 @@
+<div class="container main-container">
+    <ngx-spinner 
+        bdColor = "rgba(0, 0, 0, 0.8)" 
+        size = "medium" 
+        color = "#fff" 
+        type = "ball-beat" 
+        [fullScreen] = "true"
+    ><p style="color: white" > {{ 'br_com_supermarket_MSG_WAIT' | translate }} </p>
+    </ngx-spinner>
+
+    <h3>{{ 'br_com_supermarket_DEPARTMENT_ESTABLISHMENT_DETAILS' | translate }} {{ establishment?.name }}</h3>
+
+    <div class="alert alert-danger" *ngIf="errors?.length > 0">
+        <h3 id="msgRetorno">{{ 'br_com_supermarket_MSG_GENERIC_ERROR' | translate }}</h3>
+        <ul>
+            <li *ngFor="let error of errors">{{ error }}</li>
+        </ul>
+    </div>
+
+    <div>
+        <dl class="row">
+            <dt class="col-sm-2">
+                <label class="control-label">{{ 'br_com_supermarket_ESTABLISHMENT_NAME' | translate }}</label>
+            </dt>
+            <dd class="col-sm-10">
+                {{ establishment?.name }}
+            </dd>
+            <dt class="col-sm-2">
+                <label class="control-label">{{ 'br_com_supermarket_ESTABLISHMENT_CODE' | translate }}</label>
+            </dt>
+            <dd class="col-sm-10">
+                {{ establishment?.code }}
+            </dd>
+            <dt class="col-sm-2">
+                <label class="control-label">{{ 'br_com_supermarket_ESTABLISHMENT_CNPJ' | translate }}</label>
+            </dt>
+            <dd class="col-sm-10">
+                {{ establishment?.cnpj | cnpj }}
+            </dd>
+            <dt class="col-sm-2">
+                <label class="control-label">{{ 'br_com_supermarket_ESTABLISHMENT_STATE_REGISTRATION' | translate }}</label>
+            </dt>
+            <dd class="col-sm-10">
+                {{ establishment?.stateRegistration }}
+            </dd>
+            <dt class="col-sm-2">
+                <label class="control-label">{{ 'br_com_supermarket_ESTABLISHMENT_MUNICIPAL_REGISTRATION' | translate }}</label>
+            </dt>
+            <dd class="col-sm-10">
+                {{ establishment?.municipalRegistration }}
+            </dd>
+            <dt class="col-sm-2">
+                <label class="control-label">{{ 'br_com_supermarket_ESTABLISHMENT_ADDRESS' | translate }}</label>
+            </dt>
+            <dd class="col-sm-10">
+                {{ establishment?.address }}
+            </dd>
+            <dt class="col-sm-2">
+                <label class="control-label">{{ 'br_com_supermarket_ESTABLISHMENT_PHONE' | translate }}</label>
+            </dt>
+            <dd class="col-sm-10">
+                {{ establishment?.phone.length > 10 ? (establishment?.phone | cellPhone) : (establishment?.phone | phone)}}
+            </dd>
+            <dt class="col-sm-2">
+                <label class="control-label">{{ 'br_com_supermarket_ESTABLISHMENT_MANAGER' | translate }}</label>
+            </dt>
+            <dd class="col-sm-10">
+                {{ establishment?.manager }}
+            </dd>
+        </dl>
+    </div>
+</div>

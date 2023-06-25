@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Establishment } from '../../../model/establishment';
-import { EstablishmentService } from '../../../services/establishment.service';
+import { Establishment } from '../../model/establishment';
+import { EstablishmentService } from '../../services/establishment.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { NgxSpinnerService } from 'ngx-spinner';

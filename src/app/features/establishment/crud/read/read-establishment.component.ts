@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Establishment } from '../../../model/establishment';
-import { EstablishmentService } from '../../../services/establishment.service';
+import { Establishment } from '../../model/establishment';
+import { EstablishmentService } from '../../services/establishment.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { Page } from 'src/app/utils/pagination/model/models';

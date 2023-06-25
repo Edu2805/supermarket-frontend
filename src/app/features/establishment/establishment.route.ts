@@ -1,12 +1,12 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { EstablishmentAppComponent } from "./establishment.app.component";
-import { ReadEstablishmentComponent } from "./crud/read/read-establishment/read-establishment.component";
+import { ReadEstablishmentComponent } from "./crud/read/read-establishment.component";
 import { EstablishmentGuardService } from "./services/establishment.guard";
-import { UpdateEstablishmentComponent } from "./crud/update/update-establishment/update-establishment.component";
-import { CreateEstablishmentComponent } from "./crud/create/create-establishment/create-establishment.component";
+import { UpdateEstablishmentComponent } from "./crud/update/update-establishment.component";
+import { CreateEstablishmentComponent } from "./crud/create/create-establishment.component";
 import { EstablishmentResolve } from "./services/establishment.resolve";
-import { DeleteEstablishmentComponent } from "./crud/delete/delete-establishment/delete-establishment.component";
+import { DeleteEstablishmentComponent } from "./crud/delete/delete-establishment.component";
 import { DetailsEstablishmentComponent } from "./crud/details/details-establishment.component";
 
 const establishmentRouterConfig: Routes = [

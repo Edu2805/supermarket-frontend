@@ -18,8 +18,8 @@
     <table class="table table-hover">
         <thead class="thead-dark">
             <tr>
-                <th>{{ 'br_com_supermarket_ESTABLISHMENT_NAME' | translate }}</th>
                 <th>{{ 'br_com_supermarket_ESTABLISHMENT_CODE' | translate }}</th>
+                <th>{{ 'br_com_supermarket_ESTABLISHMENT_NAME' | translate }}</th>
                 <th>{{ 'br_com_supermarket_ESTABLISHMENT_CNPJ' | translate }}</th>
                 <th>{{ 'br_com_supermarket_ESTABLISHMENT_PHONE' | translate }}</th>
                 <th>{{ 'br_com_supermarket_ESTABLISHMENT_MANAGER' | translate }}</th>
@@ -28,10 +28,10 @@
         </thead>
         <tr *ngFor="let establishment of establishments">
             <td>
-                {{ establishment.name }}
+                {{ establishment.code }}
             </td>
             <td>
-                {{ establishment.code }}
+                {{ establishment.name }}
             </td>
             <td>
                 {{ establishment.cnpj |  cnpj }}
