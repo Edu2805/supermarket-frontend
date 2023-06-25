@@ -82,6 +82,11 @@
     "br_com_supermarket_ESTABLISHMENT_ERROR_FORM_MUNICIPAL_REGISTRATION_MIN_LENGTH_MESSAGE": "A inscrição municipal não pode ter menos do que 2 caracteres.",
     "br_com_supermarket_ESTABLISHMENT_ERROR_FORM_MUNICIPAL_REGISTRATION_MAX_LENGTH_MESSAGE": "A inscrição municipal não pode ter menos do que 20 caracteres.",
     "br_com_supermarket_DEPARTMENTS": "Departamentos",
+    "br_com_supermarket_DEPARTMENT_LIST": "Lista de Departamentos",
+    "br_com_supermarket_DEPARTMENT_TOTAL_ELEMENTS": "Total de departamentos",
+    "br_com_supermarket_DEPARTMENT_ESTABLISHMENT_NAME": "Nome do estabelecimento",
+    "br_com_supermarket_DEPARTMENT_NAME": "Nome",
+    "br_com_supermarket_DEPARTMENT_CODE": "Código",
 
 
     "br_com_supermarket_BUTTON_REGISTER": "Cadastrar",
@@ -91,6 +96,7 @@
     "br_com_supermarket_BUTTON_CREATE_YOUR_ACCOUNT": "Crie sua conta",
     "br_com_supermarket_BUTTON_LOGIN": "Entrar",
     "br_com_supermarket_BUTTON_NEW_PROVIDER": "Novo fornecedor",
+    "br_com_supermarket_BUTTON_NEW_DEPARTMENT": "Novo departamento",
     "br_com_supermarket_BUTTON_BACK": "Voltar",
     "br_com_supermarket_BUTTON_DELETE": "Excluir",
 
