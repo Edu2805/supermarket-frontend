@@ -9,9 +9,6 @@ import { DetailsDepartmentComponent } from './crud/details/details-department.co
 import { ReadDepartmentComponent } from './crud/read/read-department.component';
 import { UpdateDepartmentComponent } from './crud/update/update-department.component';
 import { DepartmentService } from "./services/department.service";
-import { PaginationComponent } from "src/app/utils/pagination/pagination.component";
-import { CpfPipe, CnpjPipe } from "src/app/utils/pipe/document";
-import { CellPhonePipe, PhonePipe } from "src/app/utils/pipe/phone";
 import { HttpClientModule } from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { NarikCustomValidatorsModule } from "@narik/custom-validators";
