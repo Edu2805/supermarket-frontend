@@ -36,6 +36,7 @@
     "br_com_supermarket_LOGIN_AN_ERROR_OCCURRED_WHILE_LOGGING_IN": "An error occurred when logging in. Try it again in a moment.",
     "br_com_supermarket_LOGIN_AN_ERROR_OCCURRED_EXPIRED_LOGIN": "Your user's login time has expired, log in to the platform again.",
     "br_com_supermarket_LOGIN_INVALID_PASSWORD": "The entered password is incorrect.",
+    "br_com_supermarket_ESTABLISHMENTS": "Establishments",
     "br_com_supermarket_ESTABLISHMENT_TOTAL_ELEMENTS": "Total stores",
     "br_com_supermarket_ESTABLISHMENT_LIST_STORES_BRANCHES": "List of Companies/Branches",
     "br_com_supermarket_ESTABLISHMENT_NAME": "Name",
@@ -80,7 +81,7 @@
     "br_com_supermarket_ESTABLISHMENT_ERROR_FORM_MANAGER_MAX_LENGTH_MESSAGE": "The responsible name cannot be longer than 20 characters.",
     "br_com_supermarket_ESTABLISHMENT_ERROR_FORM_MUNICIPAL_REGISTRATION_MIN_LENGTH_MESSAGE": "The municipal inscription cannot be less than 2 characters long.",
     "br_com_supermarket_ESTABLISHMENT_ERROR_FORM_MUNICIPAL_REGISTRATION_MAX_LENGTH_MESSAGE": "The municipal inscription cannot be less than 20 characters.",
-
+    "br_com_supermarket_DEPARTMENTS": "Departments",
 
     "br_com_supermarket_BUTTON_REGISTER": "Register",
     "br_com_supermarket_BUTTON_EDIT": "Edit",
