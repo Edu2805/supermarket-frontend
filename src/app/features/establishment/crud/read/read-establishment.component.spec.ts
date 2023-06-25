@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ReadEstablishmentComponent } from './read-establishment.component';
-import { EstablishmentService } from '../../../services/establishment.service';
+import { EstablishmentService } from '../../services/establishment.service';
 import { HttpClient, HttpHandler } from '@angular/common/http';
 import { DEFAULT_LANGUAGE, TranslateModule, TranslateService, USE_DEFAULT_LANG, USE_EXTEND, USE_STORE } from '@ngx-translate/core';
 import { ToastrModule } from 'ngx-toastr';
