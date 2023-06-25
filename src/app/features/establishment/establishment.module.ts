@@ -9,16 +9,15 @@ import { UpdateEstablishmentComponent } from './crud/update/update-establishment
 import { DeleteEstablishmentComponent } from './crud/delete/delete-establishment/delete-establishment.component';
 import { EstablishmentService } from "./services/establishment.service";
 import { EstablishmentGuardService } from "./services/establishment.guard";
-import { PaginationComponent } from "src/app/utils/pagination/pagination.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { NarikCustomValidatorsModule } from "@narik/custom-validators";
 import { NgxSpinnerModule } from "ngx-spinner";
 import { NgxMaskModule, IConfig } from 'ngx-mask'
 import { EstablishmentResolve } from "./services/establishment.resolve";
-import { CnpjPipe, CpfPipe } from "src/app/utils/pipe/document";
-import { CellPhonePipe, PhonePipe } from "src/app/utils/pipe/phone";
 import { DetailsEstablishmentComponent } from './crud/details/details-establishment.component';
+import { PaginationModule } from "src/app/utils/pagination/pagination.module";
+import { PipeModule } from "src/app/utils/pipe/pipe.module";
 
 const maskConfigFunction: () => Partial<IConfig> = () => {
     return {
@@ -33,12 +32,7 @@ const maskConfigFunction: () => Partial<IConfig> = () => {
         ReadEstablishmentComponent,
         UpdateEstablishmentComponent,
         DeleteEstablishmentComponent,
-        DetailsEstablishmentComponent,
-        PaginationComponent,
-        CpfPipe,
-        CnpjPipe,
-        CellPhonePipe,
-        PhonePipe
+        DetailsEstablishmentComponent
     ],
     imports:[
         CommonModule,
@@ -50,6 +44,8 @@ const maskConfigFunction: () => Partial<IConfig> = () => {
         TranslateModule,
         NgxSpinnerModule,
         NgxMaskModule.forRoot(maskConfigFunction),
+        PaginationModule,
+        PipeModule
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     providers: [

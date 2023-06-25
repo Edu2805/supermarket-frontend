@@ -36,6 +36,7 @@
     "br_com_supermarket_LOGIN_AN_ERROR_OCCURRED_WHILE_LOGGING_IN": "Ocurrió un error al iniciar sesión. Vuelva a intentarlo en un momento.",
     "br_com_supermarket_LOGIN_AN_ERROR_OCCURRED_EXPIRED_LOGIN": "El tiempo de inicio de sesión de su usuario ha expirado, vuelva a iniciar sesión en la plataforma.",
     "br_com_supermarket_LOGIN_INVALID_PASSWORD": "La contraseña ingresada es incorrecta.",
+    "br_com_supermarket_ESTABLISHMENTS": "Tiendas",
     "br_com_supermarket_ESTABLISHMENT_TOTAL_ELEMENTS": "Tiendas totales",
     "br_com_supermarket_ESTABLISHMENT_LIST_STORES_BRANCHES": "Lista de Empresas/Sucursales",
     "br_com_supermarket_ESTABLISHMENT_NAME": "Nombre",
@@ -80,6 +81,7 @@
     "br_com_supermarket_ESTABLISHMENT_ERROR_FORM_MANAGER_MAX_LENGTH_MESSAGE": "El nombre del responsable no puede tener más de 20 caracteres.",
     "br_com_supermarket_ESTABLISHMENT_ERROR_FORM_MUNICIPAL_REGISTRATION_MIN_LENGTH_MESSAGE": "La inscripción municipal no puede tener menos de 2 caracteres.",
     "br_com_supermarket_ESTABLISHMENT_ERROR_FORM_MUNICIPAL_REGISTRATION_MAX_LENGTH_MESSAGE": "La inscripción municipal no puede tener menos de 20 caracteres.",
+    "br_com_supermarket_DEPARTMENTS": "Departamentos",
 
     "br_com_supermarket_BUTTON_REGISTER": "Registro",
     "br_com_supermarket_BUTTON_EDIT": "Editar",
