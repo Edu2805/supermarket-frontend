@@ -19,6 +19,7 @@ import { PipeModule } from "src/app/utils/pipe/pipe.module";
 import { DepartmentGuardService } from "./services/department.guard";
 import { DepartmentResolve } from "./services/department.resolve";
 import { EstablishmentListComponent } from "./establishment-list/establishment-list.component";
+import { EstablishmentService } from "../establishment/services/establishment.service";
 
 const maskConfigFunction: () => Partial<IConfig> = () => {
     return {
@@ -40,7 +41,8 @@ const maskConfigFunction: () => Partial<IConfig> = () => {
     providers: [
         DepartmentService,
         DepartmentGuardService,
-        DepartmentResolve
+        DepartmentResolve,
+        EstablishmentService
     ],
     imports:[
         CommonModule,

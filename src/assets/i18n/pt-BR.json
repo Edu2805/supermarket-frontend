@@ -87,9 +87,18 @@
     "br_com_supermarket_DEPARTMENT_ESTABLISHMENT_NAME": "Nome do estabelecimento",
     "br_com_supermarket_DEPARTMENT_NAME": "Nome",
     "br_com_supermarket_DEPARTMENT_CODE": "Código",
+    "br_com_supermarket_DEPARTMENT_ESTABLISHMENT": "Estabelecimento",
     "br_com_supermarket_DEPARTMENT_DETAILS": "Detalhes do departamento",
     "br_com_supermarket_DEPARTMENT_ESTABLISHMENT_DETAILS": "Está cadastrado no estabelecimento ",
     "br_com_supermarket_DEPARTMENT_DELETE_SUCCESS": "Departamento excluído com sucesso!",
+    "br_com_supermarket_DEPARTMENT_ERROR_FORM_NAME_REQUIRED_MESSAGE": "Informe o Nome",
+    "br_com_supermarket_DEPARTMENT_ERROR_FORM_NAME_MIN_LENGTH_MESSAGE": "O nome não pode ter menos do que 2 caracteres.",
+    "br_com_supermarket_DEPARTMENT_ERROR_FORM_NAME_MAX_LENGTH_MESSAGE": "O nome não pode ter mais do que 50 caracteres.",
+    "br_com_supermarket_DEPARTMENT_ERROR_FORM_ESTABLISHMENT_REQUIRED_MESSAGE": "Informe o estabelecimento.",
+    "br_com_supermarket_DEPARTMENT_AN_ERROR_OCCURRED_WHILE_GET_ESTABLISHMENTS": "Ocorreu um erro ao buscar a lista de estabelecimentos, tente novamente mais tarde.",
+    "br_com_supermarket_DEPARTMENT_NEW_SUCCESS": "Departamento cadastrado com sucesso!",
+    "br_com_supermarket_DEPARTMENT_NEW": "Novo Departamento",
+    "br_com_supermarket_DEPARTMENT_NAME_REQUIRED_PLACEHOLDER": "Nome (requerido)",
 
 
     "br_com_supermarket_BUTTON_REGISTER": "Cadastrar",
