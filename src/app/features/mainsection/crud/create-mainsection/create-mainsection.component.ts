@@ -1,14 +1,131 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChildren } from '@angular/core';
+import { FormBuilder, FormControlName, FormGroup, Validators } from '@angular/forms';
 import { FormBaseComponent } from 'src/app/features/base-components/form-base.component';
+import { MainSection } from '../../model/mainsection';
+import { Department } from 'src/app/features/department/model/department';
+import { LocalStorageUtils } from 'src/app/utils/localstorage';
+import { MainsectionService } from '../../services/mainsection.service';
+import { DepartmentService } from 'src/app/features/department/services/department.service';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { TranslateService } from '@ngx-translate/core';
+import { Observable, fromEvent, merge } from 'rxjs';
 
 @Component({
   selector: 'app-create-mainsection',
   templateUrl: './create-mainsection.component.html',
   styleUrls: ['./create-mainsection.component.scss']
 })
-export class CreateMainsectionComponent extends FormBaseComponent implements OnInit{
-  ngOnInit(): void {
-    
+export class CreateMainsectionComponent extends FormBaseComponent implements OnInit {
+
+  @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[];
+
+  errors: any[] = [];
+  mainsectionForm: FormGroup;
+  mainsection: MainSection;
+  departments: Department[];
+  localStorageUtils = new LocalStorageUtils();
+
+  vaidateDocument: any;
+
+  formResult: string= '';
+  
+  constructor(private fb: FormBuilder,
+    private mainsectionService: MainsectionService,
+    private departmentService: DepartmentService,
+    private router: Router,
+    private toastr: ToastrService,
+    private spinner: NgxSpinnerService,
+    private translateService: TranslateService) {
+
+    super();
+    this.validationMessages = {
+      name: {
+        required: this.translateService.instant('br_com_supermarket_MAIN_SECTION_ERROR_FORM_NAME_REQUIRED_MESSAGE'),
+        minLength: this.translateService.instant('br_com_supermarket_MAIN_SECTION_ERROR_FORM_NAME_MIN_LENGTH_MESSAGE'),
+        maxLength: this.translateService.instant('br_com_supermarket_MAIN_SECTION_ERROR_FORM_NAME_MAX_LENGTH_MESSAGE'),
+      },
+      id: {
+        required: this.translateService.instant('br_com_supermarket_MAIN_SECTION_ERROR_FORM_DEPARTMENT_REQUIRED_MESSAGE'),
+      }
+    };
+    super.messageConfigValidatorBase(this.validationMessages);
   }
 
+  ngOnInit() {
+    this.getDepartments();
+    this.mainsectionForm = this.fb.group({
+      name: ['', Validators.compose([Validators.required, Validators.minLength(2), Validators.maxLength(50)])],
+      department: this.fb.group({
+        id: ['', Validators.required]
+      })
+    });
+  }
+
+  ngAfterViewInit(): void {
+    let controlBlurs: Observable<any>[] = this.formInputElements
+      .map((formControl: ElementRef) => fromEvent(formControl.nativeElement, 'blur'));
+
+    merge(...controlBlurs).subscribe(() => {
+      this.displayMessage = this.genericValidators.proccessMenssage(this.mainsectionForm);
+    })
+    super.formConfigValidatorsBase(this.formInputElements, this.mainsectionForm);
+  }
+
+  getDepartments() {
+    this.departmentService.getAllDepartments().subscribe((response) => {
+      this.departments = response['content'];
+    },(error: any) => {
+      if (error && error.errors) {
+        this.toastr.error(this.translateService.instant(error.errors));
+      }
+      this.toastr.error(this.translateService.instant('br_com_supermarket_MAIN_SECTION_AN_ERROR_OCCURRED_WHILE_GET_DEPARTMENTS'));
+    });
+  }
+
+  addMainsection() {
+    
+    if (this.mainsectionForm.dirty && this.mainsectionForm.valid) {
+      this.spinner.show();
+      this.mainsection = Object.assign({}, this.mainsection, this.mainsectionForm.value);
+      this.mainsectionService.newMainsection(this.mainsection)
+        .subscribe(
+          success => { this.processSuccess(success) },
+          fail => { this.processFail(fail) }
+        );
+    }
+  }
+
+  processSuccess(response: any) {
+    this.mainsectionForm.reset();
+    this.errors = [];
+    this.unsaveChanges = false;
+
+    let toast = this.toastr.success(
+        this.translateService.instant('br_com_supermarket_MAIN_SECTION_NEW_SUCCESS'), 
+        this.translateService.instant('br_com_supermarket_MSG_GENERIC_SUCCESS'));
+    if (toast) {
+      toast.onHidden.subscribe(() => {
+        this.spinner.hide();
+        this.router.navigate(['/main-section/getAll'])
+      });
+    }
+  }
+
+  processFail(fail: any) {
+    if (fail.error !== null && fail.error !== undefined) {
+      this.errors = fail.error.errors;
+    } else {
+      if (fail.status === 403) {
+        this.errors = [this.translateService.instant('br_com_supermarket_LOGIN_AN_ERROR_OCCURRED_EXPIRED_LOGIN')];
+        this.localStorageUtils.clearUserLocationData();
+        this.router.navigate(['/account/login']);
+      } else {
+        this.errors = fail.message;
+      }
+    }
+    this.toastr.error(this.errors.toString(), this.translateService.instant('br_com_supermarket_MSG_ERROR'));
+    this.spinner.hide();
+  }
 }
