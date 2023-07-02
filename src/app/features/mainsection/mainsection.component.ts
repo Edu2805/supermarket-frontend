@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-mainsection',
-  templateUrl: './mainsection.component.html',
-  styleUrls: ['./mainsection.component.scss']
+  template: '<router-outlet></router-outlet>'
 })
 export class MainsectionComponent implements OnInit {
 
