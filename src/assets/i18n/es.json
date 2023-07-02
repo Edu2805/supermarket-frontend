@@ -108,6 +108,7 @@
     "br_com_supermarket_MAIN_SECTION_TOTAL_ELEMENTS": "Secciones principales totales",
     "br_com_supermarket_MAIN_SECTION_DETAILS": "Detalles de la sección principal",
     "br_com_supermarket_MAIN_SECTION_DEPARTMENT_DETAILS": "Está registrado en el departamento. ",
+    "br_com_supermarket_MAIN_SECTION_DELETE_SUCCESS": "¡La sección principal se eliminó con éxito!",
 
     "br_com_supermarket_BUTTON_REGISTER": "Registro",
     "br_com_supermarket_BUTTON_EDIT": "Editar",
