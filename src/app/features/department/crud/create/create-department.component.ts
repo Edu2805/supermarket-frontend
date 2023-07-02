@@ -89,7 +89,6 @@ export class CreateDepartmentComponent extends FormBaseComponent implements OnIn
     if (this.departmentForm.dirty && this.departmentForm.valid) {
       this.spinner.show();
       this.department = Object.assign({}, this.department, this.departmentForm.value);
-debugger
       this.departmentService.newDepartment(this.department)
         .subscribe(
           success => { this.processSuccess(success) },
