@@ -102,6 +102,12 @@
     "br_com_supermarket_DEPARTMENT_EDIT": "Edit Department",
     "br_com_supermarket_DEPARTMENT_NAME_REQUIRED_PLACEHOLDER": "Name (required)",
     "br_com_supermarket_MAIN_SECTIONS": "Main Sections",
+    "br_com_supermarket_MAIN_SECTION_NAME": "Name",
+    "br_com_supermarket_MAIN_SECTION_CODE": "Code",
+    "br_com_supermarket_MAIN_SECTION_DEPARTMENT": "Department",
+    "br_com_supermarket_MAIN_SECTION_TOTAL_ELEMENTS": "Total main sections",
+    "br_com_supermarket_MAIN_SECTION_DETAILS": "Main section details",
+    "br_com_supermarket_MAIN_SECTION_DEPARTMENT_DETAILS": "Is registered in the department ",
 
     "br_com_supermarket_BUTTON_REGISTER": "Register",
     "br_com_supermarket_BUTTON_EDIT": "Edit",
@@ -111,6 +117,7 @@
     "br_com_supermarket_BUTTON_LOGIN": "Login",
     "br_com_supermarket_BUTTON_NEW_PROVIDER": "New provider",
     "br_com_supermarket_BUTTON_NEW_DEPARTMENT": "New department",
+    "br_com_supermarket_BUTTON_NEW_MAIN_SECTION": "New Main Section",
     "br_com_supermarket_BUTTON_BACK": "Back",
     "br_com_supermarket_BUTTON_DELETE": "Delete",
 

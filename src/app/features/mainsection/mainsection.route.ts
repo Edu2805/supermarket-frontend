@@ -36,7 +36,7 @@ const mainsectionRouterConfig: Routes = [
                     roles: ['ADMIN', 'HEAD']
                 },
                 resolve: {
-                    department: MainSectionResolve
+                    mainsection: MainSectionResolve
                 }
             },
             { 
@@ -46,7 +46,7 @@ const mainsectionRouterConfig: Routes = [
                     roles: ['ADMIN', 'HEAD']
                 },
                 resolve: {
-                    department: MainSectionResolve
+                    mainsection: MainSectionResolve
                 }
             },
             {
@@ -56,7 +56,7 @@ const mainsectionRouterConfig: Routes = [
                     roles: ['ADMIN', 'HEAD']
                 },
                 resolve: {
-                    department: MainSectionResolve
+                    mainsection: MainSectionResolve
                 }
             }
         ]
