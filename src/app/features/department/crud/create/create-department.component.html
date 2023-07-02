@@ -48,8 +48,15 @@
                                 id="id" 
                                 formControlName="id" 
                             >
-                                <option value="" selected></option>
-                                <option *ngFor="let establishment of establishments" value="{{ establishment.id }}">{{ establishment.code }} - {{ establishment.name }}</option>
+                                <option 
+                                    value="" 
+                                    selected
+                                ></option>
+                                <option 
+                                    *ngFor="let establishment of establishments" 
+                                    value="{{ establishment.id }}"
+                                >{{ establishment.code }} - {{ establishment.name }}
+                                </option>
                             </select>
                             <span class="text-danger" *ngIf="displayMessage.id">
                                 <p [innerHTML]="displayMessage.id"></p>

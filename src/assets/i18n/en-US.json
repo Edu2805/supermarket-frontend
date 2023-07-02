@@ -97,7 +97,9 @@
     "br_com_supermarket_DEPARTMENT_ERROR_FORM_ESTABLISHMENT_REQUIRED_MESSAGE": "Inform the establishment.",
     "br_com_supermarket_DEPARTMENT_AN_ERROR_OCCURRED_WHILE_GET_ESTABLISHMENTS": "An error occurred while fetching the list of establishments, please try again later.",
     "br_com_supermarket_DEPARTMENT_NEW_SUCCESS": "Department successfully registered!",
+    "br_com_supermarket_DEPARTMENT_EDIT_SUCCESS": "Department updated successfully!",
     "br_com_supermarket_DEPARTMENT_NEW": "New Department",
+    "br_com_supermarket_DEPARTMENT_EDIT": "Edit Department",
     "br_com_supermarket_DEPARTMENT_NAME_REQUIRED_PLACEHOLDER": "Name (required)",
 
     "br_com_supermarket_BUTTON_REGISTER": "Register",
