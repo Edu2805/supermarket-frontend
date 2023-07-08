@@ -1,7 +1,6 @@
 <header>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow">
         <div class="container">
-            <a class="navbar-brand" [routerLink]="['/home']">{{ 'br_com_supermarket_MY_PRODUCTS' | translate }}</a>
             <button 
                 class="navbar-toggler" 
                 type="button" 
@@ -21,21 +20,6 @@
                 <ul class="navbar-nav flex-grow-1">
                     <li class="nav-item">
                         <a class="nav-link text-dark" href="/">{{ 'br_com_supermarket_HOME' | translate }}</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" href="#">{{ 'br_com_supermarket_PROVIDERS' | translate }}</a>
-                    </li>
-                    <li class=" nav-item ">
-                        <a class="nav-link text-dark " href="#">{{ 'br_com_supermarket_PRODUCTS' | translate }}</a>
-                    </li>
-                    <li class=" nav-item ">
-                        <a class="nav-link text-dark " [routerLink]="['/establishment/getAll']">{{ 'br_com_supermarket_ESTABLISHMENTS' | translate }}</a>
-                    </li>
-                    <li class=" nav-item ">
-                        <a class="nav-link text-dark " [routerLink]="['/department/getAll']">{{ 'br_com_supermarket_DEPARTMENTS' | translate }}</a>
-                    </li>
-                    <li class=" nav-item ">
-                        <a class="nav-link text-dark " [routerLink]="['/main-section/getAll']">{{ 'br_com_supermarket_MAIN_SECTIONS' | translate }}</a>
                     </li>
                 </ul>
             </div>
