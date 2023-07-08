@@ -1,6 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CreateSubsectionComponent } from './create-subsection.component';
+import { HttpClient, HttpHandler } from '@angular/common/http';
+import { USE_DEFAULT_LANG, USE_STORE, USE_EXTEND, DEFAULT_LANGUAGE, TranslateService, TranslateModule } from '@ngx-translate/core';
+import { ToastrModule } from 'ngx-toastr';
+import { EstablishmentService } from 'src/app/features/establishment/services/establishment.service';
+import { SubsectionService } from '../../services/subsection.service';
 
 describe('CreateSubsectionComponent', () => {
   let component: CreateSubsectionComponent;
@@ -8,7 +13,24 @@ describe('CreateSubsectionComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CreateSubsectionComponent ]
+      declarations: [ 
+        CreateSubsectionComponent 
+      ],
+      providers: [ 
+        { provide: USE_DEFAULT_LANG, useValue: undefined },
+        { provide: USE_STORE, useValue: undefined },
+        { provide: USE_EXTEND, useValue: undefined },
+        { provide: DEFAULT_LANGUAGE, useValue: undefined },
+        SubsectionService,
+        EstablishmentService,
+        HttpClient, 
+        HttpHandler,
+        TranslateService,
+      ],
+      imports: [
+        ToastrModule.forRoot(),
+        TranslateModule.forRoot(), 
+      ]
     })
     .compileComponents();
 
