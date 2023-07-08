@@ -1,5 +1,6 @@
 export interface Provider {
     id: string,
+    code?: number,
     address: string,
     municipalRegistration?: string,
     name: string,
