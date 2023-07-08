@@ -1,1 +1,83 @@
-<p>update-subsection works!</p>
+<div class="container main-container">
+
+    <ngx-spinner 
+        bdColor = "rgba(0, 0, 0, 0.8)" 
+        size = "medium" 
+        color = "#fff" 
+        type = "ball-beat" 
+        [fullScreen] = "true"
+    ><p style="color: white" > {{ 'br_com_supermarket_MSG_WAIT' | translate }} </p>
+    </ngx-spinner>
+
+    <h1>{{ 'br_com_supermarket_SUB_SECTION_EDIT' | translate }}</h1>
+    
+    <hr>
+    <div class="row">
+        <div class="col-md-10">
+            <form novalidate="novalidate" (ngSubmit)="editSubsection()" [formGroup]="subsectionForm">
+
+                <div class="alert alert-danger" *ngIf="errors?.length > 0">
+                    <h3 id="msgRetorno">{{ 'br_com_supermarket_MSG_GENERIC_ERROR' | translate }}</h3>
+                    <ul>
+                        <li *ngFor="let error of errors">{{ error }}</li>
+                    </ul>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-2 control-label">{{ 'br_com_supermarket_SUB_SECTION_NAME' | translate }}</label>
+                    <div class="col-md-10">
+                        <input 
+                            class="form-control" 
+                            id="name" 
+                            type="text" 
+                            placeholder="{{ 'br_com_supermarket_SUB_SECTION_NAME_REQUIRED_PLACEHOLDER' | translate }}" 
+                            formControlName="name" 
+                            [ngClass]="{'is-invalid': displayMessage.name }"
+                        />
+                        <span class="text-danger" *ngIf="displayMessage.name">
+                            <p [innerHTML]="displayMessage.name"></p>
+                        </span>
+                    </div>
+                </div>
+
+                <div formGroupName="mainSection">
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">{{ 'br_com_supermarket_SUB_SECTION_MAIN_SECTION' | translate }}</label>
+                        <div class="col-md-10">
+                            <select
+                                class="form-control" 
+                                id="id" 
+                                formControlName="id" 
+                            >
+                                <option 
+                                    value="{{ subsection?.mainSection.id }}" 
+                                    selected
+                                >{{ subsection?.mainSection.code }} - {{ subsection?.mainSection.name }}
+                                </option>
+                                <option 
+                                    *ngFor="let mainsection of mainsections" 
+                                    value="{{ mainsection.id }}"
+                                >{{ mainsection.code }} - {{ mainsection.name }}
+                                </option>
+                            </select>
+                            <span class="text-danger" *ngIf="displayMessage.id">
+                                <p [innerHTML]="displayMessage.id"></p>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <input 
+                        type="submit" 
+                        value="{{ 'br_com_supermarket_BUTTON_EDIT' | translate }}" 
+                        [disabled]="!subsectionForm.valid || activeButton" 
+                        class="btn btn-primary"
+                        >
+                    &nbsp;
+                    <a class="btn btn-info" [routerLink]="[ '/sub-section/getAll']">{{ 'br_com_supermarket_BUTTON_BACK' | translate }}</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
