@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-provider',
-  templateUrl: './provider.component.html',
-  styleUrls: ['./provider.component.scss']
+  template: '<router-outlet></router-outlet>'
 })
 export class ProviderComponent {
 
