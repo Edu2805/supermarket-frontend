@@ -45,6 +45,7 @@ const maskConfigFunction: () => Partial<IConfig> = () => {
         MainsectionService,
     ],
     imports:[
+        CommonModule,
         SubsectionRoutingModule,
         FormsModule,
         ReactiveFormsModule,

@@ -37,8 +37,8 @@ export class ReadMainsectionComponent implements OnInit {
     this.spinner.show();
     this.mainsectionService.getAllMainsectionsPaged(page, size)
     .subscribe(
-      department => {
-        this.page = department;
+      mainsection => {
+        this.page = mainsection;
         this.mainSections = this.page['content'];
         this.spinner.hide();
       },
