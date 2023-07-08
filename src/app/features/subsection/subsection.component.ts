@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-subsection',
-  templateUrl: './subsection.component.html',
-  styleUrls: ['./subsection.component.scss']
+  template: '<router-outlet></router-outlet>'
 })
 export class SubsectionComponent implements OnInit {
 
