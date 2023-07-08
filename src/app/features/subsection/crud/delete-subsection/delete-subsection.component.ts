@@ -41,7 +41,7 @@ export class DeleteSubsectionComponent {
 
   successExclusion(event: any) {
     const toast = this.toastr.success(
-      this.translateService.instant('br_com_supermarket_MAIN_SECTION_DELETE_SUCCESS'), 
+      this.translateService.instant('br_com_supermarket_SUB_SECTION_DELETE_SUCCESS'), 
       this.translateService.instant('br_com_supermarket_MSG_GENERIC_SUCCESS')
     );
     if (toast) {
