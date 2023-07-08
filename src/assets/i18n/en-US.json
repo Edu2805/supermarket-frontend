@@ -121,6 +121,11 @@
     "br_com_supermarket_MAIN_SECTION_NEW_SUCCESS": "Main Section successfully registered!",
     "br_com_supermarket_SUB_SECTIONS": "Sub Sections",
     "br_com_supermarket_SUB_SECTION_MAIN_SECTION_DETAILS": "Is registered in the main section  ",
+    "br_com_supermarket_SUB_SECTION_NAME": "Name",
+    "br_com_supermarket_SUB_SECTION_CODE": "Code",
+    "br_com_supermarket_SUB_SECTION_MAIN_SECTION": "Main Section",
+    "br_com_supermarket_SUB_SECTION_TOTAL_ELEMENTS": "Total sub sections",
+    "br_com_supermarket_SUB_SECTION_NEW": "New Sub section",
 
     "br_com_supermarket_BUTTON_REGISTER": "Register",
     "br_com_supermarket_BUTTON_EDIT": "Edit",
@@ -131,6 +136,7 @@
     "br_com_supermarket_BUTTON_NEW_PROVIDER": "New provider",
     "br_com_supermarket_BUTTON_NEW_DEPARTMENT": "New department",
     "br_com_supermarket_BUTTON_NEW_MAIN_SECTION": "New Main Section",
+    "br_com_supermarket_BUTTON_NEW_SUB_SECTION": "New Sub Section",
     "br_com_supermarket_BUTTON_BACK": "Back",
     "br_com_supermarket_BUTTON_DELETE": "Delete",
 

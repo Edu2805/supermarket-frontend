@@ -4,5 +4,5 @@ export interface SubSection {
     id: string,
     name: string,
     code?: number,
-    department: MainSection
+    mainSection: MainSection
 }
