@@ -14,13 +14,11 @@
 
 <div class="container main-container">
     <div class="row text-center">
-
-        <div class="col-lg-4 col-md-6 mb-4">
+        <div class="col-lg-2 col-md-6 mb-4">
             <div class="card h-100">
-                <img class="card-img-top" src="../../../assets/images/mystery.jpg" height="164px" width="253px" alt="">
+                <img class="card-img-top" src="../../../assets/images/usuario.jpg" height="164px" width="253px" alt="">
                 <div class="card-body">
-                    <h4 class="card-title">{{ 'br_com_supermarket_HOME_PROFILE_AND_PERSONAL_SERVICES' | translate }}</h4>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
+                    <h5 class="card-title">{{ 'br_com_supermarket_HOME_SEVERAL' | translate }}</h5>
                 </div>
                 <div class="card-footer">
                     <a href="#" class="btn btn-primary">{{ 'br_com_supermarket_BUTTON_ACCESS' | translate }}</a>
@@ -28,12 +26,11 @@
             </div>
         </div>
 
-        <div class="col-lg-4 col-md-6 mb-4">
+        <div class="col-lg-2 col-md-6 mb-4">
             <div class="card h-100">
-                <img class="card-img-top" src="../../../assets/images/operacional.jpg" height="164px" width="253px" alt="">
+                <img class="card-img-top" src="../../../assets/images/fornecedores.png" height="164px" width="253px" alt="">
                 <div class="card-body">
-                    <h4 class="card-title">{{ 'br_com_supermarket_HOME_OPERATIONAL' | translate }}</h4>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
+                    <h5 class="card-title">{{ 'br_com_supermarket_PROVIDERS' | translate }}</h5>
                 </div>
                 <div class="card-footer">
                     <a href="#" class="btn btn-primary">{{ 'br_com_supermarket_BUTTON_ACCESS' | translate }}</a>
@@ -41,12 +38,56 @@
             </div>
         </div>
 
-        <div class="col-lg-4 col-md-6 mb-4">
+        <div class="col-lg-2 col-md-6 mb-4">
             <div class="card h-100">
-                <img class="card-img-top" src="../../../assets/images/Icone-Relatorio.jpg" height="164px" width="253px" alt="">
+                <img class="card-img-top" src="../../../assets/images/produtos.jpeg" height="164px" width="253px" alt="">
                 <div class="card-body">
-                    <h4 class="card-title">{{ 'br_com_supermarket_HOME_SEVERAL' | translate }}</h4>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.</p>
+                    <h5 class="card-title">{{ 'br_com_supermarket_PRODUCTS' | translate }}</h5>
+                </div>
+                <div class="card-footer">
+                    <a href="#" class="btn btn-primary">{{ 'br_com_supermarket_BUTTON_ACCESS' | translate }}</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-2 col-md-6 mb-4">
+            <div class="card h-100">
+                <img class="card-img-top" src="../../../assets/images/lojas.jpeg" height="164px" width="253px" alt="">
+                <div class="card-body">
+                    <h5 class="card-title">{{ 'br_com_supermarket_ESTABLISHMENTS' | translate }}</h5>
+                </div>
+                <div class="card-footer">
+                    <a [routerLink]="['/establishment/getAll']" class="btn btn-primary">{{ 'br_com_supermarket_BUTTON_ACCESS' | translate }}</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-6 mb-4">
+            <div class="card h-100">
+                <img class="card-img-top" src="../../../assets/images/departamentos.jpeg" height="164px" width="253px" alt="">
+                <div class="card-body">
+                    <h5 class="card-title">{{ 'br_com_supermarket_DEPARTMENTS' | translate }}</h5>
+                </div>
+                <div class="card-footer">
+                    <a [routerLink]="['/department/getAll']" class="btn btn-primary">{{ 'br_com_supermarket_BUTTON_ACCESS' | translate }}</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-6 mb-4">
+            <div class="card h-100">
+                <img class="card-img-top" src="../../../assets/images/secao_principal.jpeg" height="164px" width="253px" alt="">
+                <div class="card-body">
+                    <h5 class="card-title">{{ 'br_com_supermarket_MAIN_SECTIONS' | translate }}</h5>
+                </div>
+                <div class="card-footer">
+                    <a [routerLink]="['/main-section/getAll']" class="btn btn-primary">{{ 'br_com_supermarket_BUTTON_ACCESS' | translate }}</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-6 mb-4">
+            <div class="card h-100">
+                <img class="card-img-top" src="../../../assets/images/secao_secundaria.jpeg" height="164px" width="253px" alt="">
+                <div class="card-body">
+                    <h5 class="card-title">{{ 'br_com_supermarket_SUB_SECTIONS' | translate }}</h5>
                 </div>
                 <div class="card-footer">
                     <a href="#" class="btn btn-primary">{{ 'br_com_supermarket_BUTTON_ACCESS' | translate }}</a>
