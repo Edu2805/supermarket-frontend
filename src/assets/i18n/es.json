@@ -150,6 +150,7 @@
     "br_com_supermarket_PROVIDER_TOTAL_ELEMENTS": "Proveedores totales",
     "br_com_supermarket_PROVIDER_DETAILS": "Detalles del proveedor",
     "br_com_supermarket_PROVIDER_NEW": "Nuevo proveedor",
+    "br_com_supermarket_PROVIDER_UPDATE": "Actualizar proveedor",
     "br_com_supermarket_PROVIDER_NAME_REQUIRED_PLACEHOLDER": "Nombre (requerido)",
     "br_com_supermarket_PROVIDER_SUBSCRIPTION_TYPE_REQUIRED_PLACEHOLDER": "Tipo de registro (requerido)",
     "br_com_supermarket_PROVIDER_SUBSCRIPTION_NUMBER_REQUIRED_PLACEHOLDER": "Número de registro (requerido)",
@@ -180,6 +181,8 @@
     "br_com_supermarket_PROVIDER_ERROR_FORM_MUNICIPAL_REGISTRATION_MIN_LENGTH_MESSAGE": "La inscripción municipal no puede tener menos de 2 caracteres.",
     "br_com_supermarket_PROVIDER_ERROR_FORM_MUNICIPAL_REGISTRATION_MAX_LENGTH_MESSAGE": "La inscripción municipal no puede tener menos de 20 caracteres.",
     "br_com_supermarket_PROVIDER_NEW_SUCCESS": "¡Proveedor registrado exitosamente!",
+    "br_com_supermarket_PROVIDER_UPDATE_SUCCESS": "¡Proveedor actualizado con éxito!",
+    "br_com_supermarket_PROVIDER_DELETE_CONFIRMATION": "¿Está seguro de que desea eliminar el proveedor",
 
     "br_com_supermarket_BUTTON_REGISTER": "Registro",
     "br_com_supermarket_BUTTON_EDIT": "Editar",

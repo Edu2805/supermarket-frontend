@@ -150,6 +150,7 @@
     "br_com_supermarket_PROVIDER_TOTAL_ELEMENTS": "Total providers",
     "br_com_supermarket_PROVIDER_DETAILS": "Provider details",
     "br_com_supermarket_PROVIDER_NEW": "New provider",
+    "br_com_supermarket_PROVIDER_UPDATE": "Update Provider",
     "br_com_supermarket_PROVIDER_NAME_REQUIRED_PLACEHOLDER": "Name (required)",
     "br_com_supermarket_PROVIDER_SUBSCRIPTION_TYPE_REQUIRED_PLACEHOLDER": "Subscription type (required)",
     "br_com_supermarket_PROVIDER_SUBSCRIPTION_NUMBER_REQUIRED_PLACEHOLDER": "Subscription number (required)",
@@ -180,6 +181,8 @@
     "br_com_supermarket_PROVIDER_ERROR_FORM_MUNICIPAL_REGISTRATION_MIN_LENGTH_MESSAGE": "The municipal inscription cannot be less than 2 characters long.",
     "br_com_supermarket_PROVIDER_ERROR_FORM_MUNICIPAL_REGISTRATION_MAX_LENGTH_MESSAGE": "The municipal inscription cannot be less than 20 characters.",
     "br_com_supermarket_PROVIDER_NEW_SUCCESS": "Successfully registered supplier!",
+    "br_com_supermarket_PROVIDER_UPDATE_SUCCESS": "Provider updated successfully!",
+    "br_com_supermarket_PROVIDER_DELETE_CONFIRMATION": "Are you sure you want to delete the provider",
 
     "br_com_supermarket_BUTTON_REGISTER": "Register",
     "br_com_supermarket_BUTTON_EDIT": "Edit",
