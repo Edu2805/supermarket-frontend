@@ -1,0 +1,79 @@
+<div class="container main-container">
+    <ngx-spinner 
+        bdColor = "rgba(0, 0, 0, 0.8)" 
+        size = "medium" 
+        color = "#fff" 
+        type = "ball-beat" 
+        [fullScreen] = "true"
+    ><p style="color: white" > {{ 'br_com_supermarket_MSG_WAIT' | translate }} </p>
+    </ngx-spinner>
+
+    <h3>{{ 'br_com_supermarket_PROVIDER_DETAILS' | translate }} {{ provider?.name }}</h3>
+    <hr />
+
+    <div class="alert alert-danger" *ngIf="errors?.length > 0">
+        <h3 id="msgRetorno">{{ 'br_com_supermarket_MSG_GENERIC_ERROR' | translate }}</h3>
+        <ul>
+            <li *ngFor="let error of errors">{{ error }}</li>
+        </ul>
+    </div>
+
+    <div>
+        <dl class="row">
+            <dt class="col-sm-2">
+                <label class="control-label">{{ 'br_com_supermarket_PROVIDER_NAME' | translate }}</label>
+            </dt>
+            <dd class="col-sm-10">
+                {{ provider?.name }}
+            </dd>
+            <dt class="col-sm-2">
+                <label class="control-label">{{ 'br_com_supermarket_PROVIDER_CODE' | translate }}</label>
+            </dt>
+            <dd class="col-sm-10">
+                {{ provider?.code }}
+            </dd>
+            <dt class="col-sm-2">
+                <label class="control-label">{{ 'br_com_supermarket_PROVIDER_SUBSCRIPTION_TYPE' | translate }}</label>
+            </dt>
+            <dd class="col-sm-10">
+                {{ provider?.subscriptionType }}
+            </dd>
+            <dt class="col-sm-2">
+                <label class="control-label">{{ 'br_com_supermarket_PROVIDER_SUBSCRIPTION_NUMBER' | translate }}</label>
+            </dt>
+            <dd class="col-sm-10">
+                {{ provider?.subscriptionType === 'CNPJ' ? (provider?.subscriptionNumber | cnpj) : (provider?.subscriptionNumber | cpf) }}
+            </dd>
+            <dt class="col-sm-2">
+                <label class="control-label">{{ 'br_com_supermarket_PROVIDER_STATE_REGISTRATION' | translate }}</label>
+            </dt>
+            <dd class="col-sm-10">
+                {{ provider?.stateRegistration }}
+            </dd>
+            <dt class="col-sm-2">
+                <label class="control-label">{{ 'br_com_supermarket_PROVIDER_MUNICIPAL_REGISTRATION' | translate }}</label>
+            </dt>
+            <dd class="col-sm-10">
+                {{ provider?.municipalRegistration }}
+            </dd>
+            <dt class="col-sm-2">
+                <label class="control-label">{{ 'br_com_supermarket_PROVIDER_ADDRESS' | translate }}</label>
+            </dt>
+            <dd class="col-sm-10">
+                {{ provider?.address }}
+            </dd>
+            <dt class="col-sm-2">
+                <label class="control-label">{{ 'br_com_supermarket_PROVIDER_PHONE' | translate }}</label>
+            </dt>
+            <dd class="col-sm-10">
+                {{ provider?.phone.length > 10 ? (provider?.phone | cellPhone) : (provider?.phone | phone)}}
+            </dd>
+            <dt class="col-sm-2">
+                <label class="control-label">{{ 'br_com_supermarket_PROVIDER_RESPONSIBLE' | translate }}</label>
+            </dt>
+            <dd class="col-sm-10">
+                {{ provider?.responsible }}
+            </dd>
+        </dl>
+    </div>
+</div>

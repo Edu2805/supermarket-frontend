@@ -6,12 +6,12 @@ export interface ProductData {
     name: string,
     code: number,
     unity: number,
-    purchase_price: number,
-    sale_price: number,
+    purchasePrice: number,
+    salePrice: number,
     margin?: number,
     ean13?: string,
     dun14?: string,
     inventory: number,
-    subsection: SubSection,
-    provider: Provider
+    subSection: SubSection,
+    providerProduct: Provider
 }
