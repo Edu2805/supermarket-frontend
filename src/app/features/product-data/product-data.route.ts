@@ -2,12 +2,12 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { ProductDataComponent } from "./product-data.component";
 import { ReadProductDataComponent } from "./crud/read-product-data/read-product-data.component";
+import { DetailsProductDataComponent } from "./crud/details-product-data/details-product-data.component";
+import { DeleteProductDataComponent } from "./crud/delete-product-data/delete-product-data.component";
 import { ProductDataGuardService } from "./services/product-data.guard";
 import { CreateProductDataComponent } from "./crud/create-product-data/create-product-data.component";
 import { UpdateProductDataComponent } from "./crud/update-product-data/update-product-data.component";
 import { ProductDataResolve } from "./services/product-data.resolve";
-import { DetailsProductDataComponent } from "./crud/details-product-data/details-product-data.component";
-import { DeleteProductDataComponent } from "./crud/delete-product-data/delete-product-data.component";
 
 const productDataRouterConfig: Routes = [
     {
