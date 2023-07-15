@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-product-data',
-  templateUrl: './product-data.component.html',
-  styleUrls: ['./product-data.component.scss']
+  template: '<router-outlet></router-outlet>'
 })
 export class ProductDataComponent implements OnInit {
 
