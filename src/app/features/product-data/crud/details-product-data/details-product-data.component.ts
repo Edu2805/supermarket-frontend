@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ProductData } from '../../model/product-data';
 import { LocalStorageUtils } from 'src/app/utils/localstorage';
 import { ActivatedRoute } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-details-product-data',
@@ -15,6 +16,8 @@ export class DetailsProductDataComponent {
   errors: any[] = [];
   localStorageUtils = new LocalStorageUtils();
   id: any = '';
+  images: string = environment.imagesUrl;
+  defaultId: string = 'cf3f50ba-9d26-46a0-a711-dae2be2a101c';
 
   constructor(
     private route: ActivatedRoute,

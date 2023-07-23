@@ -24,6 +24,7 @@
     "@ngx-translate/core": "^14.0.0",
     "@ngx-translate/http-loader": "^7.0.0",
     "ngx-custom-validators": "^8.0.0",
+    "ngx-image-cropper": "^7.0.2",
     "ngx-mask": "^14.2.4",
     "ngx-pagination": "^6.0.3",
     "ngx-spinner": "^14.0.0",
