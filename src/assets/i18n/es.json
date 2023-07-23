@@ -193,6 +193,11 @@
     "br_com_supermarket_PRODUCT_DATA_EAN_13": "Código de barras EAN 13",
     "br_com_supermarket_PRODUCT_DATA_DUN_14": "Código de barras DUN 14",
     "br_com_supermarket_PRODUCT_DATA_INVENTORY": "Cantidad en inventario",
+    "br_com_supermarket_PRODUCT_LIST": "Lista de productos",
+    "br_com_supermarket_PRODUCT_TOTAL_ELEMENTS": "Productos totales",
+    "br_com_supermarket_PRODUCT_NEW_SUCCESS": "¡Producto registrado con éxito!",
+    "br_com_supermarket_PRODUCT_EDIT_SUCCESS": "¡Producto actualizado con éxito!",
+    "br_com_supermarket_PRODUCT_DELETE_SUCCESS": "¡Producto eliminado con éxito!",
 
     "br_com_supermarket_BUTTON_REGISTER": "Registro",
     "br_com_supermarket_BUTTON_EDIT": "Editar",
@@ -204,6 +209,7 @@
     "br_com_supermarket_BUTTON_NEW_DEPARTMENT": "Nuevo departamento",
     "br_com_supermarket_BUTTON_NEW_MAIN_SECTION": "Nueva Sección Principal",
     "br_com_supermarket_BUTTON_NEW_SUB_SECTION": "Nueva Sección Secundaria",
+    "br_com_supermarket_BUTTON_NEW_PRODUCT": "Nuevo producto",
     "br_com_supermarket_BUTTON_BACK": "Volver",
     "br_com_supermarket_BUTTON_DELETE": "Borrar",
 

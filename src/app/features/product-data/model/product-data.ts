@@ -1,3 +1,4 @@
+import { Attachment } from "src/app/features/attachment/model/attachment-data";
 import { Provider } from "../../provider/model/provider";
 import { SubSection } from "../../subsection/model/subsection";
 
@@ -13,5 +14,6 @@ export interface ProductData {
     dun14?: string,
     inventory: number,
     subSection: SubSection,
-    providerProduct: Provider
+    providerProduct: Provider,
+    productPhoto?: Attachment
 }

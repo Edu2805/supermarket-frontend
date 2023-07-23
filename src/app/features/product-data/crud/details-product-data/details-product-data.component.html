@@ -18,63 +18,70 @@
         </ul>
     </div>
 
-    <div>
-        <dl class="row">
-            <dt class="col-sm-2">
-                <label class="control-label">{{ 'br_com_supermarket_PRODUCT_DATA_NAME' | translate }}</label>
-            </dt>
-            <dd class="col-sm-10">
-                {{ productData?.name }}
-            </dd>
-            <dt class="col-sm-2">
-                <label class="control-label">{{ 'br_com_supermarket_PRODUCT_DATA_CODE' | translate }}</label>
-            </dt>
-            <dd class="col-sm-10">
-                {{ productData?.code }}
-            </dd>
-            <dt class="col-sm-2">
-                <label class="control-label">{{ 'br_com_supermarket_PRODUCT_DATA_UNITY_TYPE' | translate }}</label>
-            </dt>
-            <dd class="col-sm-10">
-                {{ productData?.unity }}
-            </dd>
-            <dt class="col-sm-2">
-                <label class="control-label">{{ 'br_com_supermarket_PRODUCT_DATA_PURCHASE_PRICE' | translate }}</label>
-            </dt>
-            <dd class="col-sm-10">
-                {{ productData?.purchasePrice | currency : 'R$ ' }}
-            </dd>
-            <dt class="col-sm-2">
-                <label class="control-label">{{ 'br_com_supermarket_PRODUCT_DATA_SALE_PRICE' | translate }}</label>
-            </dt>
-            <dd class="col-sm-10">
-                {{ productData?.salePrice | currency : 'R$ ' }}
-            </dd>
-            <dt class="col-sm-2">
-                <label class="control-label">{{ 'br_com_supermarket_PRODUCT_DATA_MARGIN' | translate }}</label>
-            </dt>
-            <dd class="col-sm-10">
-                {{ productData?.margin | percent: '1.2' }}
-            </dd>
-            <dt class="col-sm-2">
-                <label class="control-label">{{ 'br_com_supermarket_PRODUCT_DATA_EAN_13' | translate }}</label>
-            </dt>
-            <dd class="col-sm-10">
-                {{ productData?.ean13 }}
-            </dd>
-            <dt class="col-sm-2">
-                <label class="control-label">{{ 'br_com_supermarket_PRODUCT_DATA_DUN_14' | translate }}</label>
-            </dt>
-            <dd class="col-sm-10">
-                {{ productData?.dun14 }}
-            </dd>
-            <dt class="col-sm-2">
-                <label class="control-label">{{ 'br_com_supermarket_PRODUCT_DATA_INVENTORY' | translate }}</label>
-            </dt>
-            <dd class="col-sm-10">
-                {{ productData?.inventory }}
-            </dd>
-        </dl>
+    <div class="row">
+        <div class="col-md-6">
+            <dl>
+                <dt class="col-sm-10">
+                    <label class="control-label">{{ 'br_com_supermarket_PRODUCT_DATA_NAME' | translate }}</label>
+                </dt>
+                <dd class="col-sm-10">
+                    {{ productData?.name }}
+                </dd>
+                <dt class="col-sm-10">
+                    <label class="control-label">{{ 'br_com_supermarket_PRODUCT_DATA_CODE' | translate }}</label>
+                </dt>
+                <dd class="col-sm-10">
+                    {{ productData?.code }}
+                </dd>
+                <dt class="col-sm-10">
+                    <label class="control-label">{{ 'br_com_supermarket_PRODUCT_DATA_UNITY_TYPE' | translate }}</label>
+                </dt>
+                <dd class="col-sm-10">
+                    {{ productData?.unity }}
+                </dd>
+                <dt class="col-sm-10">
+                    <label class="control-label">{{ 'br_com_supermarket_PRODUCT_DATA_PURCHASE_PRICE' | translate }}</label>
+                </dt>
+                <dd class="col-sm-10">
+                    {{ productData?.purchasePrice | currency : 'R$ ' }}
+                </dd>
+                <dt class="col-sm-10">
+                    <label class="control-label">{{ 'br_com_supermarket_PRODUCT_DATA_SALE_PRICE' | translate }}</label>
+                </dt>
+                <dd class="col-sm-10">
+                    {{ productData?.salePrice | currency : 'R$ ' }}
+                </dd>
+                <dt class="col-sm-10">
+                    <label class="control-label">{{ 'br_com_supermarket_PRODUCT_DATA_MARGIN' | translate }}</label>
+                </dt>
+                <dd class="col-sm-10">
+                    {{ productData?.margin | percent: '1.2' }}
+                </dd>
+                <dt class="col-sm-10">
+                    <label class="control-label">{{ 'br_com_supermarket_PRODUCT_DATA_EAN_13' | translate }}</label>
+                </dt>
+                <dd class="col-sm-10">
+                    {{ productData?.ean13 }}
+                </dd>
+                <dt class="col-sm-10">
+                    <label class="control-label">{{ 'br_com_supermarket_PRODUCT_DATA_DUN_14' | translate }}</label>
+                </dt>
+                <dd class="col-sm-10">
+                    {{ productData?.dun14 }}
+                </dd>
+                <dt class="col-sm-10">
+                    <label class="control-label">{{ 'br_com_supermarket_PRODUCT_DATA_INVENTORY' | translate }}</label>
+                </dt>
+                <dd class="col-sm-10">
+                    {{ productData?.inventory }}
+                </dd>
+            </dl>
+        </div>
+        <div class="col-md-4">
+            <img 
+                src="{{ images }}{{ productData?.productPhoto?.id === null ? defaultId : productData?.productPhoto?.id}}" 
+                style="width: 200px; height: 328px">
+        </div>
     </div>
 
     <div class="accordion-heading" id="f1" (click)="accordion('f1')">

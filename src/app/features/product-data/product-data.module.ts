@@ -20,6 +20,8 @@ import { ProductDataGuardService } from "./services/product-data.guard";
 import { ProductDataService } from "./services/product-data.service";
 import { CreateProductDataComponent } from "./crud/create-product-data/create-product-data.component";
 import { SubsectionProductListComponent } from "./subsection-product-list/subsection-product-list.component";
+import { ImageCropperModule } from "ngx-image-cropper";
+import { AttachmentService } from "../attachment/services/attachment.service";
 
 const maskConfigFunction: () => Partial<IConfig> = () => {
     return {
@@ -55,7 +57,8 @@ const maskConfigFunction: () => Partial<IConfig> = () => {
         NgxSpinnerModule,
         NgxMaskModule.forRoot(maskConfigFunction),
         PaginationModule,
-        PipeModule
+        PipeModule,
+        ImageCropperModule
     ],
     exports:[]
 })
