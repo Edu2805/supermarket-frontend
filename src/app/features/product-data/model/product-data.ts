@@ -3,9 +3,9 @@ import { Provider } from "../../provider/model/provider";
 import { SubSection } from "../../subsection/model/subsection";
 
 export interface ProductData {
-    id: string,
+    id?: string,
     name: string,
-    code: number,
+    code?: number,
     unity: number,
     purchasePrice: number,
     salePrice: number,
