@@ -1,1 +1,250 @@
-<p>update-product-data works!</p>
+<div class="container main-container">
+
+    <ngx-spinner 
+        bdColor = "rgba(0, 0, 0, 0.8)" 
+        size = "medium" 
+        color = "#fff" 
+        type = "ball-beat" 
+        [fullScreen] = "true"
+    ><p style="color: white" > {{ 'br_com_supermarket_MSG_WAIT' | translate }} </p>
+    </ngx-spinner>
+
+    <h1>{{ 'br_com_supermarket_PRODUCT_EDIT' | translate }}</h1>
+    
+    <hr>
+    <div class="row">
+        <div class="col-md-10">
+            <form novalidate="novalidate" (ngSubmit)="updateProduct()" [formGroup]="productForm">
+
+                <div class="alert alert-danger" *ngIf="errors?.length > 0">
+                    <h3 id="msgRetorno">{{ 'br_com_supermarket_MSG_GENERIC_ERROR' | translate }}</h3>
+                    <ul>
+                        <li *ngFor="let error of errors">{{ error }}</li>
+                    </ul>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">{{ 'br_com_supermarket_PRODUCT_DATA_NAME' | translate }}</label>
+                    <div>
+                        <input 
+                            class="form-control" 
+                            id="name" 
+                            type="text" 
+                            placeholder="{{ 'br_com_supermarket_PRODUCT_NAME_REQUIRED_PLACEHOLDER' | translate }}" 
+                            formControlName="name" 
+                            [ngClass]="{'is-invalid': displayMessage.name }"
+                        />
+                        <span class="text-danger" *ngIf="displayMessage.name">
+                            <p [innerHTML]="displayMessage.name"></p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">{{ 'br_com_supermarket_PRODUCT_DATA_UNITY_TYPE' | translate }}</label>
+                        <select
+                            class="form-control" 
+                            id="unity" 
+                            formControlName="unity" 
+                        >
+                            <option value="{{ product?.unity }}" selected>{{ product?.unity }}</option>
+                            <option value="0">{{ 'br_com_supermarket_PRODUCT_ENUM_UNITY' | translate }}</option>
+                            <option value="1">{{ 'br_com_supermarket_PRODUCT_ENUM_LITERS' | translate }}</option>
+                            <option value="2">{{ 'br_com_supermarket_PRODUCT_ENUM_MILLILITERS' | translate }}</option>
+                            <option value="3">{{ 'br_com_supermarket_PRODUCT_ENUM_MILLIGRAMS' | translate }}</option>
+                            <option value="4">{{ 'br_com_supermarket_PRODUCT_ENUM_GRAMS' | translate }}</option>
+                            <option value="5">{{ 'br_com_supermarket_PRODUCT_ENUM_KILOS' | translate }}</option>
+                            <option value="6">{{ 'br_com_supermarket_PRODUCT_ENUM_TONS' | translate }}</option>
+                        </select>
+                        <span class="text-danger" *ngIf="displayMessage.unity">
+                            <p [innerHTML]="displayMessage.unity"></p>
+                        </span>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">{{ 'br_com_supermarket_PRODUCT_DATA_PURCHASE_PRICE' | translate }}</label>
+                    <div>
+                        <input 
+                            class="form-control" 
+                            id="purchasePrice"
+                            type="text" 
+                            placeholder="{{ 'br_com_supermarket_PRODUCT_PURCHASE_PRICE_REQUIRED_PLACEHOLDER' | translate }}" 
+                            formControlName="purchasePrice" 
+                            [allowNegativeNumbers]="false"
+                            mask="separator.2"
+                            thousandSeparator="."
+                            [ngClass]="{'is-invalid': displayMessage.purchasePrice }" 
+                        />
+
+                        <span class="text-danger" *ngIf="displayMessage.purchasePrice">
+                            <p [innerHTML]="displayMessage.purchasePrice"></p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">{{ 'br_com_supermarket_PRODUCT_DATA_SALE_PRICE' | translate }}</label>
+                    <div>
+                        <input 
+                            class="form-control" 
+                            id="salePrice"
+                            type="text" 
+                            placeholder="{{ 'br_com_supermarket_PRODUCT_SALE_PRICE_REQUIRED_PLACEHOLDER' | translate }}" 
+                            formControlName="salePrice" 
+                            [allowNegativeNumbers]="false"
+                            mask="separator.2"
+                            thousandSeparator="."
+                            [ngClass]="{'is-invalid': displayMessage.salePrice }" 
+                        />
+
+                        <span class="text-danger" *ngIf="displayMessage.salePrice">
+                            <p [innerHTML]="displayMessage.salePrice"></p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">{{ 'br_com_supermarket_PRODUCT_DATA_EAN_13' | translate }}</label>
+                    <div>
+                        <input 
+                            class="form-control" 
+                            id="ean13"
+                            type="number" 
+                            formControlName="ean13" 
+                        />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">{{ 'br_com_supermarket_PRODUCT_DATA_DUN_14' | translate }}</label>
+                    <div>
+                        <input 
+                            class="form-control" 
+                            id="dun14"
+                            type="number" 
+                            formControlName="dun14" 
+                        />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">{{ 'br_com_supermarket_PRODUCT_DATA_INVENTORY' | translate }}</label>
+                    <div>
+                        <input 
+                            class="form-control" 
+                            id="inventory"
+                            type="number" 
+                            placeholder="{{ 'br_com_supermarket_PRODUCT_INVENTORY_REQUIRED_PLACEHOLDER' | translate }}" 
+                            formControlName="inventory" 
+                            [ngClass]="{'is-invalid': displayMessage.inventory}" 
+                        />
+
+                        <span class="text-danger" *ngIf="displayMessage.inventory">
+                            <p [innerHTML]="displayMessage.inventory"></p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">{{ 'br_com_supermarket_PRODUCT_PHOTO' | translate }}</label>
+
+                    <div class="custom-file">
+                        <input 
+                            type="file" 
+                            accept="image/jpeg,image/png,image/jpg" 
+                            class="custom-file-input" 
+                            id="productPhoto" 
+                            (change)="fileChangeEvent($event)" 
+                            [ngClass]="{'is-invalid': displayMessage.productPhoto }"
+                        >
+                        <label data-browse="Procurar" style="width: 400px" class="custom-file-label"></label>
+                        <span *ngIf="imageName"><br>{{ imageName }}<br></span>
+                        <span class="text-danger" *ngIf="displayMessage.productPhoto">
+                            <p [innerHTML]="displayMessage.productPhoto"></p>
+                        </span>
+                    </div>
+
+                    <div *ngIf='imageName' class="row">
+                        <div class="col col-md-6">
+                            <image-cropper 
+                                [imageChangedEvent]="imageChangedEvent" 
+                                [maintainAspectRatio]="false" 
+                                [containWithinAspectRatio]="containWithinAspectRatio" 
+                                [aspectRatio]="4 /3" 
+                                [onlyScaleDown]="true" 
+                                [roundCropper]="false"
+                                [canvasRotation]="canvasRotation" 
+                                [transform]="transform" 
+                                [alignImage]="'left'" 
+                                [style.display]="showCropper ? null : 'none'" 
+                                format="png" 
+                                (imageCropped)="imageCropped($event)" 
+                                (imageLoaded)="imageLoaded()" 
+                                (cropperReady)="cropperReady($event)"
+                                (loadImageFailed)="loadImageFailed()"
+                            ></image-cropper>
+                        </div>
+                        <div class="col col-md-6">
+                            <img [src]="croppedImage" [style.border]="croppedImage ? '1px solid black' : 'none'" />
+                        </div>
+                    </div>
+                </div>
+
+                <div formGroupName="subSection">
+                    <div class="form-group">
+                        <label class="control-label">{{ 'br_com_supermarket_PRODUCT_SUB_SECTION' | translate }}</label>
+                        <div>
+                            <select
+                                class="form-control" 
+                                id="id" 
+                                formControlName="id" 
+                            >
+                                <option 
+                                    *ngFor="let subSection of subsections" 
+                                    value="{{ subSection?.id }}"
+                                >{{ subSection?.code }} - {{ subSection?.name }}
+                                </option>
+                            </select>
+                            <span class="text-danger" *ngIf="displayMessage?.id">
+                                <p [innerHTML]="displayMessage?.id"></p>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div formGroupName="providerProduct">
+                    <div class="form-group">
+                        <label class="control-label">{{ 'br_com_supermarket_PRODUCT_PROVIDER' | translate }}</label>
+                        <div>
+                            <select
+                                class="form-control" 
+                                id="id" 
+                                formControlName="id" 
+                            >
+                                <option 
+                                    *ngFor="let providerProduct of providers" 
+                                    value="{{ providerProduct?.id }}"
+                                >{{ providerProduct?.code }} - {{ providerProduct?.name }}
+                                </option>
+                            </select>
+                            <span class="text-danger" *ngIf="displayMessage?.id">
+                                <p [innerHTML]="displayMessage?.id"></p>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <input 
+                        type="submit" 
+                        value="{{ 'br_com_supermarket_BUTTON_EDIT' | translate }}" 
+                        [disabled]="!productForm.valid" 
+                        class="btn btn-primary"
+                        >
+                    &nbsp;
+                    <a class="btn btn-info" [routerLink]="[ '/product-data/getAll']">{{ 'br_com_supermarket_BUTTON_BACK' | translate }}</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

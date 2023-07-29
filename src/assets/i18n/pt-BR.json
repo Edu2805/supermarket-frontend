@@ -220,6 +220,7 @@
     "br_com_supermarket_PRODUCT_ERROR_FORM_INVENTORY_MESSAGE": "Informe a quantidade em estoque.",
     "br_com_supermarket_PRODUCT_ERROR_FORM_FIELD_REQUIRED_MESSAGE": "Este campo precisa ser informado",
     "br_com_supermarket_PRODUCT_NEW": "Novo Produto",
+    "br_com_supermarket_PRODUCT_EDIT": "Editar Produto",
     "br_com_supermarket_PRODUCT_ENUM_UNITY": "Unidade",
     "br_com_supermarket_PRODUCT_ENUM_LITERS": "Litro",
     "br_com_supermarket_PRODUCT_ENUM_MILLILITERS": "Mililitro",

@@ -220,6 +220,7 @@
     "br_com_supermarket_PRODUCT_ERROR_FORM_INVENTORY_MESSAGE": "Introduzca la cantidad en stock.",
     "br_com_supermarket_PRODUCT_ERROR_FORM_FIELD_REQUIRED_MESSAGE": "Este campo necesita ser informado",
     "br_com_supermarket_PRODUCT_NEW": "Nuevo producto",
+    "br_com_supermarket_PRODUCT_EDIT": "Editar producto",
     "br_com_supermarket_PRODUCT_ENUM_UNITY": "Unidad",
     "br_com_supermarket_PRODUCT_ENUM_LITERS": "Litro",
     "br_com_supermarket_PRODUCT_ENUM_MILLILITERS": "Mililitro",

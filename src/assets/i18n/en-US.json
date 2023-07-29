@@ -220,6 +220,7 @@
     "br_com_supermarket_PRODUCT_ERROR_FORM_INVENTORY_MESSAGE": "Enter the quantity in stock.",
     "br_com_supermarket_PRODUCT_ERROR_FORM_FIELD_REQUIRED_MESSAGE": "This field needs to be informed",
     "br_com_supermarket_PRODUCT_NEW": "New Product",
+    "br_com_supermarket_PRODUCT_EDIT": "Product edit",
     "br_com_supermarket_PRODUCT_ENUM_UNITY": "Unity",
     "br_com_supermarket_PRODUCT_ENUM_LITERS": "Liters",
     "br_com_supermarket_PRODUCT_ENUM_MILLILITERS": "Mililiters",
