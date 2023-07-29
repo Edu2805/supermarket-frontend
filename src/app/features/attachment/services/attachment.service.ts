@@ -15,13 +15,21 @@ export class AttachmentService extends BaseService {
     super();
   }
 
-  // uploadAttachment(image: String): Observable<String> {
-  //   return this.http
-  //     .post(`${this.UrlServiceV1}attachment`, image, this.GetHeaderJson())
-  //     .pipe(
-  //       map(super.extractDataAuth),
-  //       catchError(super.serviceError));
-  // }
+  uploadAttachment(file: Attachment): Observable<Attachment> {
+    return this.http
+      .post(`${this.UrlServiceV1}attachment`, file, this.GetHeaderJson())
+      .pipe(
+        map(super.extractDataAuth),
+        catchError(super.serviceError));
+  }
+
+  saveAttachment(file: Attachment): Observable<Attachment> {
+    return this.http
+      .post(`${this.UrlServiceV1}attachment/save`, file, this.GetHeaderJson())
+      .pipe(
+        map(super.extractDataAuth),
+        catchError(super.serviceError));
+  }
 
   getAttachmentById(id: string): Observable<String> {
     return this.http
