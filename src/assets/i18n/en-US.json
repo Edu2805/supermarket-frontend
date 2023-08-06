@@ -228,6 +228,7 @@
     "br_com_supermarket_PRODUCT_ENUM_GRAMS": "Grans",
     "br_com_supermarket_PRODUCT_ENUM_KILOS": "Kilos",
     "br_com_supermarket_PRODUCT_ENUM_TONS": "Tons",
+    "br_com_supermarket_ATTACHMENT_FILE_EXCEEDS_MAXIMUM_SIZE": "The file exceeds the maximum size of 2 MB.",
 
     "br_com_supermarket_BUTTON_REGISTER": "Register",
     "br_com_supermarket_BUTTON_EDIT": "Edit",
