@@ -21,7 +21,6 @@ export class CreateSubsectionComponent extends FormBaseComponent implements OnIn
 
   @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[];
 
-  errors: any[] = [];
   subsectionForm: FormGroup;
   subsection: SubSection;
   mainsections: MainSection[];
@@ -35,11 +34,12 @@ export class CreateSubsectionComponent extends FormBaseComponent implements OnIn
     private subsectionService: SubsectionService,
     private mainsectionService: MainsectionService,
     private router: Router,
-    private toastr: ToastrService,
     private spinner: NgxSpinnerService,
-    private translateService: TranslateService) {
+    protected override translateService: TranslateService,
+    protected override toastr: ToastrService,) {
 
-    super();
+    super(toastr, translateService);
+    
     this.validationMessages = {
       name: {
         required: this.translateService.instant('br_com_supermarket_SUB_SECTION_ERROR_FORM_NAME_REQUIRED_MESSAGE'),

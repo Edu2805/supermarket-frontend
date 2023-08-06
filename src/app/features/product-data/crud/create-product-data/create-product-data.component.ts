@@ -9,14 +9,12 @@ import { ToastrService } from 'ngx-toastr';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable, fromEvent, merge } from 'rxjs';
-import { Dimensions, ImageCroppedEvent, ImageTransform } from 'ngx-image-cropper';
 import { SubSection } from 'src/app/features/subsection/model/subsection';
 import { Provider } from 'src/app/features/provider/model/provider';
 import { SubsectionService } from 'src/app/features/subsection/services/subsection.service';
 import { ProviderService } from 'src/app/features/provider/services/provider.service';
 import { AttachmentService } from 'src/app/features/attachment/services/attachment.service';
 import { Attachment } from 'src/app/features/attachment/model/attachment-data';
-import { Constants } from 'src/app/utils/constants/constants';
 
 @Component({
   selector: 'app-create-product-data',
@@ -27,7 +25,6 @@ export class CreateProductDataComponent extends FormBaseComponent implements OnI
 
   @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[];
 
-  errors: any[] = [];
   productForm: FormGroup;
   product: ProductData;
   localStorageUtils = new LocalStorageUtils();
@@ -41,31 +38,19 @@ export class CreateProductDataComponent extends FormBaseComponent implements OnI
     type: '',
     imageData: ''
   };
-
-  imageChangedEvent: any = '';
-  croppedImage: any = '';
-  croppedImageData: any = '';
-  canvasRotation = 0;
-  rotation = 0;
-  scale = 1;
-  showCropper = false;
-  containWithinAspectRatio = false;
-  transform: ImageTransform = {};
-  imageURL: string;
-  imageName: string;
-  imageType: string;
   
   constructor(private fb: FormBuilder,
     private productService: ProductDataService,
     private subsectionService: SubsectionService,
     private providerService: ProviderService,
+    protected override translateService: TranslateService,
+    protected override toastr: ToastrService,
     private router: Router,
-    private toastr: ToastrService,
     private spinner: NgxSpinnerService,
-    private translateService: TranslateService,
     private attatchmentService: AttachmentService) {
 
-    super();
+    super(toastr, translateService);
+
     this.validationMessages = {
       name: {
         required: this.translateService.instant('br_com_supermarket_PRODUCT_NAME_REQUIRED_PLACEHOLDER'),
@@ -195,33 +180,6 @@ export class CreateProductDataComponent extends FormBaseComponent implements OnI
     }
     this.toastr.error(this.errors.toString(), this.translateService.instant('br_com_supermarket_MSG_ERROR'));
     this.spinner.hide();
-  }
-
-  fileChangeEvent(event: any): void {
-    if (event.currentTarget.files[0].size > Constants.ATTACHMENT_MAXIMUM_SIZE_FILE) {
-      this.toastr.warning(this.errors.toString(), this.translateService.instant('br_com_supermarket_ATTACHMENT_FILE_EXCEEDS_MAXIMUM_SIZE'));
-      return;
-    }
-    this.imageChangedEvent = event;
-    this.imageName = event.currentTarget.files[0].name;
-    this.imageType = event.currentTarget.files[0].type;
-  }
-
-  imageCropped(event: ImageCroppedEvent) {
-    this.croppedImage = event.base64;
-    this.croppedImageData = this.croppedImage.split(',')[1];
-  }
-
-  imageLoaded() {
-    this.showCropper = true;
-  }
-
-  cropperReady(sourceImageDimensions: Dimensions) {
-    console.log('Cropper ready', sourceImageDimensions);
-  }
-
-  loadImageFailed() {
-    this.errors.push('O formato do arquivo ' + this.imageName + ' não é aceito');
   }
 
 }
