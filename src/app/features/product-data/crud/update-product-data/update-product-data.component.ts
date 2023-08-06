@@ -2,12 +2,10 @@ import { Component, ElementRef, OnInit, Provider, ViewChildren } from '@angular/
 import { FormControlName, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { ImageTransform, ImageCroppedEvent, Dimensions } from 'ngx-image-cropper';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { Observable, fromEvent, merge } from 'rxjs';
 import { Attachment } from 'src/app/features/attachment/model/attachment-data';
-import { AttachmentService } from 'src/app/features/attachment/services/attachment.service';
 import { FormBaseComponent } from 'src/app/features/base-components/form-base.component';
 import { ProviderService } from 'src/app/features/provider/services/provider.service';
 import { SubSection } from 'src/app/features/subsection/model/subsection';
@@ -15,7 +13,6 @@ import { SubsectionService } from 'src/app/features/subsection/services/subsecti
 import { LocalStorageUtils } from 'src/app/utils/localstorage';
 import { ProductData } from '../../model/product-data';
 import { ProductDataService } from '../../services/product-data.service';
-import { Constants } from 'src/app/utils/constants/constants';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -26,8 +23,6 @@ import { environment } from 'src/environments/environment';
 export class UpdateProductDataComponent extends FormBaseComponent implements OnInit {
 
   @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[];
-
-  errors: any[] = [];
   productForm: FormGroup;
   product: ProductData;
   localStorageUtils = new LocalStorageUtils();
@@ -42,18 +37,6 @@ export class UpdateProductDataComponent extends FormBaseComponent implements OnI
     imageData: ''
   };
 
-  imageChangedEvent: any = '';
-  croppedImage: any = '';
-  croppedImageData: any = '';
-  canvasRotation = 0;
-  rotation = 0;
-  scale = 1;
-  showCropper = false;
-  containWithinAspectRatio = false;
-  transform: ImageTransform = {};
-  imageURL: string;
-  imageName: string;
-  imageType: string;
   images: string = environment.imagesUrl;
   defaultId: string = 'cf3f50ba-9d26-46a0-a711-dae2be2a101c';
   
@@ -63,12 +46,12 @@ export class UpdateProductDataComponent extends FormBaseComponent implements OnI
     private providerService: ProviderService,
     private router: Router,
     private route: ActivatedRoute,
-    private toastr: ToastrService,
     private spinner: NgxSpinnerService,
-    private translateService: TranslateService,
-    private attatchmentService: AttachmentService) {
+    protected override translateService: TranslateService,
+    protected override toastr: ToastrService) {
 
-    super();
+    super(toastr, translateService);
+
     this.validationMessages = {
       name: {
         required: this.translateService.instant('br_com_supermarket_PRODUCT_NAME_REQUIRED_PLACEHOLDER'),
@@ -217,32 +200,5 @@ export class UpdateProductDataComponent extends FormBaseComponent implements OnI
     }
     this.toastr.error(this.errors.toString(), this.translateService.instant('br_com_supermarket_MSG_ERROR'));
     this.spinner.hide();
-  }
-
-  fileChangeEvent(event: any): void {
-    if (event.currentTarget.files[0].size > Constants.ATTACHMENT_MAXIMUM_SIZE_FILE) {
-      this.toastr.warning(this.errors.toString(), this.translateService.instant('br_com_supermarket_ATTACHMENT_FILE_EXCEEDS_MAXIMUM_SIZE'));
-      return;
-    }
-    this.imageChangedEvent = event;
-    this.imageName = event.currentTarget.files[0].name;
-    this.imageType = event.currentTarget.files[0].type;
-  }
-
-  imageCropped(event: ImageCroppedEvent) {
-    this.croppedImage = event.base64;
-    this.croppedImageData = this.croppedImage.split(',')[1];
-  }
-
-  imageLoaded() {
-    this.showCropper = true;
-  }
-
-  cropperReady(sourceImageDimensions: Dimensions) {
-    console.log('Cropper ready', sourceImageDimensions);
-  }
-
-  loadImageFailed() {
-    this.errors.push('O formato do arquivo ' + this.imageName + ' não é aceito');
   }
 }

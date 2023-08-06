@@ -20,7 +20,6 @@ export class CreateEstablishmentComponent extends FormBaseComponent implements O
 
   @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[];
 
-  errors: any[] = [];
   establishmentForm: FormGroup;
   establishment: Establishment;
   localStorageUtils = new LocalStorageUtils();
@@ -32,11 +31,11 @@ export class CreateEstablishmentComponent extends FormBaseComponent implements O
   constructor(private fb: FormBuilder,
     private establishmentService: EstablishmentService,
     private router: Router,
-    private toastr: ToastrService,
-    private spinner: NgxSpinnerService,
-    private translateService: TranslateService) {
+    protected override translateService: TranslateService,
+    protected override toastr: ToastrService,
+    private spinner: NgxSpinnerService) {
 
-    super();
+    super(toastr, translateService);
     this.validationMessages = {
       name: {
         required: this.translateService.instant('br_com_supermarket_ESTABLISHMENT_ERROR_FORM_NAME_REQUIRED_MESSAGE'),

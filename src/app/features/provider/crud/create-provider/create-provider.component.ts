@@ -9,7 +9,6 @@ import { ToastrService } from 'ngx-toastr';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { TranslateService } from '@ngx-translate/core';
 import { CpfCnpjValidators } from 'src/app/utils/document-validators-form';
-import { Observable, fromEvent, merge } from 'rxjs';
 
 @Component({
   selector: 'app-create-provider',
@@ -20,7 +19,6 @@ export class CreateProviderComponent extends FormBaseComponent implements OnInit
 
   @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[];
 
-  errors: any[] = [];
   providerForm: FormGroup;
   provider: Provider;
   localStorageUtils = new LocalStorageUtils();
@@ -32,11 +30,12 @@ export class CreateProviderComponent extends FormBaseComponent implements OnInit
   constructor(private fb: FormBuilder,
     private providerService: ProviderService,
     private router: Router,
-    private toastr: ToastrService,
     private spinner: NgxSpinnerService,
-    private translateService: TranslateService) {
+    protected override translateService: TranslateService,
+    protected override toastr: ToastrService,) {
 
-    super();
+    super(toastr, translateService);
+
     this.validationMessages = {
       name: {
         required: this.translateService.instant('br_com_supermarket_PROVIDER_ERROR_FORM_NAME_REQUIRED_MESSAGE'),

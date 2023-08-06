@@ -19,7 +19,6 @@ export class UpdateProviderComponent extends FormBaseComponent implements OnInit
 
   @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[];
 
-  errors: any[] = [];
   providerForm: FormGroup;
   provider: Provider;
   localStorageUtils = new LocalStorageUtils();
@@ -32,11 +31,12 @@ export class UpdateProviderComponent extends FormBaseComponent implements OnInit
     private providerService: ProviderService,
     private router: Router,
     private route: ActivatedRoute,
-    private toastr: ToastrService,
     private spinner: NgxSpinnerService,
-    private translateService: TranslateService) {
+    protected override translateService: TranslateService,
+    protected override toastr: ToastrService,) {
 
-    super();
+    super(toastr, translateService);
+
     this.validationMessages = {
       name: {
         required: this.translateService.instant('br_com_supermarket_PROVIDER_ERROR_FORM_NAME_REQUIRED_MESSAGE'),

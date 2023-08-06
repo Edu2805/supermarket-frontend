@@ -21,7 +21,6 @@ export class UpdateMainsectionComponent extends FormBaseComponent implements OnI
 
   @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[];
 
-  errors: any[] = [];
   mainsectionForm: FormGroup;
   mainsection: MainSection;
   departments: Department[];
@@ -36,11 +35,11 @@ export class UpdateMainsectionComponent extends FormBaseComponent implements OnI
     private departmentService: DepartmentService,
     private router: Router,
     private route: ActivatedRoute,
-    private toastr: ToastrService,
     private spinner: NgxSpinnerService,
-    private translateService: TranslateService) {
+    protected override translateService: TranslateService,
+    protected override toastr: ToastrService,) {
 
-    super();
+    super(toastr, translateService);
     this.validationMessages = {
       name: {
         required: this.translateService.instant('br_com_supermarket_MAIN_SECTION_ERROR_FORM_NAME_REQUIRED_MESSAGE'),
