@@ -15,6 +15,8 @@ import { SubsectionService } from 'src/app/features/subsection/services/subsecti
 import { LocalStorageUtils } from 'src/app/utils/localstorage';
 import { ProductData } from '../../model/product-data';
 import { ProductDataService } from '../../services/product-data.service';
+import { Constants } from 'src/app/utils/constants/constants';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-update-product-data',
@@ -52,6 +54,8 @@ export class UpdateProductDataComponent extends FormBaseComponent implements OnI
   imageURL: string;
   imageName: string;
   imageType: string;
+  images: string = environment.imagesUrl;
+  defaultId: string = 'cf3f50ba-9d26-46a0-a711-dae2be2a101c';
   
   constructor(private fb: FormBuilder,
     private productService: ProductDataService,
@@ -165,7 +169,7 @@ export class UpdateProductDataComponent extends FormBaseComponent implements OnI
 
   updateProduct() {
     
-    if (this.productForm.dirty && this.productForm.valid) {
+    if (this.productForm.valid) {
 
       this.spinner.show();
       this.product = Object.assign({}, this.product, this.productForm.value);
@@ -216,6 +220,10 @@ export class UpdateProductDataComponent extends FormBaseComponent implements OnI
   }
 
   fileChangeEvent(event: any): void {
+    if (event.currentTarget.files[0].size > Constants.ATTACHMENT_MAXIMUM_SIZE_FILE) {
+      this.toastr.warning(this.errors.toString(), this.translateService.instant('br_com_supermarket_ATTACHMENT_FILE_EXCEEDS_MAXIMUM_SIZE'));
+      return;
+    }
     this.imageChangedEvent = event;
     this.imageName = event.currentTarget.files[0].name;
     this.imageType = event.currentTarget.files[0].type;

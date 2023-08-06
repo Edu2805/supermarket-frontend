@@ -16,6 +16,7 @@ import { SubsectionService } from 'src/app/features/subsection/services/subsecti
 import { ProviderService } from 'src/app/features/provider/services/provider.service';
 import { AttachmentService } from 'src/app/features/attachment/services/attachment.service';
 import { Attachment } from 'src/app/features/attachment/model/attachment-data';
+import { Constants } from 'src/app/utils/constants/constants';
 
 @Component({
   selector: 'app-create-product-data',
@@ -197,6 +198,10 @@ export class CreateProductDataComponent extends FormBaseComponent implements OnI
   }
 
   fileChangeEvent(event: any): void {
+    if (event.currentTarget.files[0].size > Constants.ATTACHMENT_MAXIMUM_SIZE_FILE) {
+      this.toastr.warning(this.errors.toString(), this.translateService.instant('br_com_supermarket_ATTACHMENT_FILE_EXCEEDS_MAXIMUM_SIZE'));
+      return;
+    }
     this.imageChangedEvent = event;
     this.imageName = event.currentTarget.files[0].name;
     this.imageType = event.currentTarget.files[0].type;

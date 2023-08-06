@@ -228,6 +228,7 @@
     "br_com_supermarket_PRODUCT_ENUM_GRAMS": "Gramas",
     "br_com_supermarket_PRODUCT_ENUM_KILOS": "Kilo",
     "br_com_supermarket_PRODUCT_ENUM_TONS": "Tonelada",
+    "br_com_supermarket_ATTACHMENT_FILE_EXCEEDS_MAXIMUM_SIZE": "O arquivo excede o tamanho máximo de 2 MB.",
 
     "br_com_supermarket_BUTTON_REGISTER": "Cadastrar",
     "br_com_supermarket_BUTTON_EDIT": "Editar",
