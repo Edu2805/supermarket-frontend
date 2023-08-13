@@ -12,12 +12,16 @@ import { NarikCustomValidatorsModule } from '@narik/custom-validators';
 import { TranslateModule } from '@ngx-translate/core';
 import { AccountGuard } from './services/account.guard';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { DetailsUserComponent } from './crud/details-user/details-user.component';
+import { AccountResolve } from './services/account.resolver';
+import { PipeModule } from 'src/app/utils/pipe/pipe.module';
 
 @NgModule({
   declarations: [
     AccountAppComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    DetailsUserComponent
   ],
   imports: [
     CommonModule,
@@ -29,10 +33,12 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     NarikCustomValidatorsModule,
     TranslateModule,
     NgxSpinnerModule,
+    PipeModule
   ],
   providers: [
     AccountService,
-    AccountGuard
+    AccountGuard,
+    AccountResolve
   ]
 })
 export class AccountModule { }

@@ -11,6 +11,21 @@ import { DetailsPersonComponent } from './crud/details-person/details-person.com
 import { PersonGuardService } from "./services/person.guard";
 import { PersonResolve } from "./services/person.resolve";
 import { PersonService } from "./services/person.service";
+import { IConfig, NgxMaskModule } from "ngx-mask";
+import { HttpClientModule } from "@angular/common/http";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { NarikCustomValidatorsModule } from "@narik/custom-validators";
+import { ImageCropperModule } from "ngx-image-cropper";
+import { NgxSpinnerModule } from "ngx-spinner";
+import { PaginationModule } from "src/app/utils/pagination/pagination.module";
+import { PipeModule } from "src/app/utils/pipe/pipe.module";
+import { UserDataListComponent } from "./user-data-list/user-data-list.component";
+
+const maskConfigFunction: () => Partial<IConfig> = () => {
+    return {
+      validation: false,
+    };
+};
 
 @NgModule({
     declarations:[
@@ -19,7 +34,8 @@ import { PersonService } from "./services/person.service";
         UpdatePersonComponent,
         DeletePersonComponent,
         ReadPersonComponent,
-        DetailsPersonComponent
+        DetailsPersonComponent,
+        UserDataListComponent
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     providers: [
@@ -30,7 +46,16 @@ import { PersonService } from "./services/person.service";
     imports:[
         CommonModule,
         PersonRoutingModule,
-        TranslateModule
+        FormsModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        NarikCustomValidatorsModule,
+        TranslateModule,
+        NgxSpinnerModule,
+        NgxMaskModule.forRoot(maskConfigFunction),
+        PaginationModule,
+        PipeModule,
+        ImageCropperModule
     ],
     exports:[]
 })

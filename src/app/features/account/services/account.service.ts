@@ -47,4 +47,10 @@ export class AccountService extends BaseService {
             catchError(this.serviceError));
         return response;
     }
+
+    findUserById(id: string): Observable<UserData> {
+        return this.http
+          .get<UserData>(`${this.UrlServiceV1}user/${id}`, super.GetHeaderJson())
+          .pipe(catchError(super.serviceError));
+      }
  }

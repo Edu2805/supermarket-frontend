@@ -17,5 +17,5 @@ export interface Person {
     motherName: string,
     email: string,
     userData: UserData,
-    productPhoto?: Attachment
+    personPhoto?: Attachment
 }

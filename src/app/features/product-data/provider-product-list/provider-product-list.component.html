@@ -42,7 +42,7 @@
                 <label class="control-label">{{ 'br_com_supermarket_PROVIDER_SUBSCRIPTION_NUMBER' | translate }}</label>
             </dt>
             <dd class="col-sm-10">
-                {{ provider?.subscriptionType === 'CNPJ' ? (provider?.subscriptionNumber | cnpj) : (provider?.subscriptionNumber | cpf) }}
+                {{ provider?.subscriptionNumber.length === 14 ? (provider?.subscriptionNumber | cnpj) : (provider?.subscriptionNumber | cpf) }}
             </dd>
             <dt class="col-sm-2">
                 <label class="control-label">{{ 'br_com_supermarket_PROVIDER_STATE_REGISTRATION' | translate }}</label>

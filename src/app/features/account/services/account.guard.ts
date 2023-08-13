@@ -1,7 +1,6 @@
 import { Injectable } from "@angular/core";
-import { ActivatedRouteSnapshot, CanActivate, CanDeactivate, Router, RouterStateSnapshot, UrlTree } from "@angular/router";
+import { CanActivate, CanDeactivate, Router } from "@angular/router";
 import { RegisterComponent } from "../register/register.component";
-import { Observable } from "rxjs";
 import { TranslateService } from "@ngx-translate/core";
 import { LocalStorageUtils } from "src/app/utils/localstorage";
 
@@ -10,7 +9,8 @@ export class AccountGuard implements CanDeactivate<RegisterComponent>, CanActiva
 
     localStorage = new LocalStorageUtils();
 
-    constructor(private translateService: TranslateService, private router: Router) {}
+    constructor(private translateService: TranslateService, 
+        private router: Router){}
 
     canDeactivate(component: RegisterComponent) {
         if(component.unsaveChanges) {
@@ -20,9 +20,6 @@ export class AccountGuard implements CanDeactivate<RegisterComponent>, CanActiva
     }
 
     canActivate() {
-        if (this.localStorage.getUserToken()) {
-            this.router.navigate(['/home']);
-        }
         return true;
     }
 

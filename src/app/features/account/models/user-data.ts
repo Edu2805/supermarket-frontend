@@ -1,7 +1,9 @@
 export interface UserData {
-    id: string,
+    id?: string,
     userName: string,
     password: string,
     confirmPassword?: string,
-    role: string
+    role: string,
+    registrationDate?: string,
+    employee?: boolean
 }
