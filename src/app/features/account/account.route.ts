@@ -4,13 +4,25 @@ import { AccountAppComponent } from "./account.app.component";
 import { RegisterComponent } from "./register/register.component";
 import { LoginComponent } from "./login/login.component";
 import { AccountGuard } from "./services/account.guard";
+import { DetailsUserComponent } from "./crud/details-user/details-user.component";
+import { AccountResolve } from "./services/account.resolver";
 
 const accountRouterConfig: Routes = [
     {
         path: '', component: AccountAppComponent,
         children: [
             { path: 'register', component: RegisterComponent, canActivate: [AccountGuard], canDeactivate: [AccountGuard] },
-            { path: 'login', component: LoginComponent, canActivate: [AccountGuard] }
+            { path: 'login', component: LoginComponent, canActivate: [AccountGuard] },
+            { 
+                path: 'details/:id', component: DetailsUserComponent,
+                canActivate: [AccountGuard],
+                data: {
+                    roles: ['ADMIN', 'HEAD']
+                },
+                resolve: {
+                    userData: AccountResolve
+                }
+            }
         ]
     }
 ]

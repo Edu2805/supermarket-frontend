@@ -2,13 +2,16 @@ import { NgModule } from "@angular/core";
 import { CnpjPipe, CpfPipe } from "./document";
 import { CellPhonePipe, PhonePipe } from "./phone";
 import { CommonModule } from "@angular/common";
+import { DateHourPipe, SingleDatePipe } from "./date-pipe";
 
 @NgModule({
     declarations: [
         CpfPipe,
         CnpjPipe,
         CellPhonePipe,
-        PhonePipe
+        PhonePipe,
+        DateHourPipe,
+        SingleDatePipe
     ],
     imports: [
         CommonModule,
@@ -17,7 +20,9 @@ import { CommonModule } from "@angular/common";
         CpfPipe,
         CnpjPipe,
         CellPhonePipe,
-        PhonePipe
+        PhonePipe,
+        DateHourPipe,
+        SingleDatePipe
     ]
 })
 export class PipeModule {  }

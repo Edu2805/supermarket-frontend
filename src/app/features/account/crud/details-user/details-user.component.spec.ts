@@ -1,17 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DetailsPersonComponent } from './details-person.component';
-import { PersonService } from '../../services/person.service';
+import { DetailsUserComponent } from './details-user.component';
+import { AccountService } from '../../services/account.service';
 import { HttpClient, HttpHandler } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { USE_DEFAULT_LANG, USE_STORE, USE_EXTEND, DEFAULT_LANGUAGE, TranslateService, TranslateModule } from '@ngx-translate/core';
 import { ToastrModule } from 'ngx-toastr';
-import { CpfPipe } from 'src/app/utils/pipe/document';
-import { SingleDatePipe } from 'src/app/utils/pipe/date-pipe';
+import { DateHourPipe } from 'src/app/utils/pipe/date-pipe';
 
-describe('DetailsPersonComponent', () => {
-  let component: DetailsPersonComponent;
-  let fixture: ComponentFixture<DetailsPersonComponent>;
+describe('DetailsUserComponent', () => {
+  let component: DetailsUserComponent;
+  let fixture: ComponentFixture<DetailsUserComponent>;
   const fakeActivatedRoute = {
     snapshot: { data: { } }
   } as ActivatedRoute;
@@ -19,16 +18,15 @@ describe('DetailsPersonComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ 
-        DetailsPersonComponent,
-        CpfPipe,
-        SingleDatePipe 
+        DetailsUserComponent,
+        DateHourPipe 
       ],
       providers: [ 
         { provide: USE_DEFAULT_LANG, useValue: undefined },
         { provide: USE_STORE, useValue: undefined },
         { provide: USE_EXTEND, useValue: undefined },
         { provide: DEFAULT_LANGUAGE, useValue: undefined },
-        PersonService,
+        AccountService,
         HttpClient, 
         HttpHandler,
         TranslateService,
@@ -41,7 +39,7 @@ describe('DetailsPersonComponent', () => {
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(DetailsPersonComponent);
+    fixture = TestBed.createComponent(DetailsUserComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
