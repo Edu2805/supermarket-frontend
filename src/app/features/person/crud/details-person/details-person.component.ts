@@ -37,14 +37,14 @@ export class DetailsPersonComponent {
 
   fillTitlePersonDetails(): string {
     if(this.person !== undefined && this.person !== null && 
-      this.person.middleName !== undefined && this.person.middleName !== null) {
+      this.person?.middleName !== undefined && this.person?.middleName !== null) {
 
-      return `${this.person.firstName} ${this.person.middleName} ${this.person.lastName}`
+      return `${this.person?.firstName} ${this.person?.middleName} ${this.person?.lastName}`
 
     } else if(this.person !== undefined && this.person !== null && 
-      this.person.middleName === undefined || this.person.middleName === null) {
+      this.person?.middleName === undefined || this.person?.middleName === null) {
 
-      return `${this.person.firstName} ${this.person.lastName}`
+      return `${this.person?.firstName} ${this.person?.lastName}`
       
     }
     return "";
