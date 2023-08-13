@@ -24,13 +24,6 @@ export class DetailsUserComponent {
     private spinner: NgxSpinnerService) {
 
       this.userData = this.route.snapshot.data['userData'];
-      //this.translateRole();
       this.spinner.hide();
   }
-
-  // translateRole() {
-  //   if(this.userData.role === 'ADMIN') {
-  //     this.userData.role = 'Administrador';
-  //   }
-  // }
 }
