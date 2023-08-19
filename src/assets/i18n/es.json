@@ -244,6 +244,9 @@
     "br_com_supermarket_PERSON_FULL_FATHER_NAME": "Nombre del Padre",
     "br_com_supermarket_PERSON_FULL_MOTHER_NAME": "Nombre de la madre",
     "br_com_supermarket_PERSON_FULL_EMAIL": "Dirección de correo electrónico",
+    "br_com_supermarket_PERSON": "Persona",
+    "br_com_supermarket_PERSON_PEOPLE": "Personas",
+    "br_com_supermarket_PERSON_PEOPLE_LIST": "Lista de personas",
 
     "br_com_supermarket_BUTTON_REGISTER": "Registro",
     "br_com_supermarket_BUTTON_EDIT": "Editar",
@@ -256,6 +259,7 @@
     "br_com_supermarket_BUTTON_NEW_MAIN_SECTION": "Nueva Sección Principal",
     "br_com_supermarket_BUTTON_NEW_SUB_SECTION": "Nueva Sección Secundaria",
     "br_com_supermarket_BUTTON_NEW_PRODUCT": "Nuevo producto",
+    "br_com_supermarket_PERSON_NEW_PERSON": "Persona nueva",
     "br_com_supermarket_BUTTON_BACK": "Volver",
     "br_com_supermarket_BUTTON_DELETE": "Borrar",
 
