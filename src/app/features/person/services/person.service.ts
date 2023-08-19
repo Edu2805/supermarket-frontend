@@ -24,13 +24,13 @@ export class PersonService extends BaseService {
         catchError(super.serviceError));
   }
 
-  getAllPersons(): Observable<Person[]> {
+  getAllPeople(): Observable<Person[]> {
     return this.http
       .get<Person[]>(`${this.UrlServiceV1}person`, super.GetHeaderJson())
       .pipe(catchError(super.serviceError));
   }
 
-  getAllPersonsPaged(page, size): Observable<Page<Person>> {
+  getAllPeoplePaged(page, size): Observable<Page<Person>> {
     return this.http
       .get<Page<Person>>(`${this.UrlServiceV1}person?page=${page}&size=${size}`, super.GetHeaderJson())
       .pipe(catchError(super.serviceError));
