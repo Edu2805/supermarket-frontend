@@ -247,6 +247,8 @@
     "br_com_supermarket_PERSON": "Person",
     "br_com_supermarket_PERSON_PEOPLE": "People",
     "br_com_supermarket_PERSON_PEOPLE_LIST": "List of people",
+    "br_com_supermarket_PERSON_DELETE_SUCCESS": "Person deleted successfully!",
+    "br_com_supermarket_PERSON_DELETE_CONFIRMATION": "Are you sure you want to delete",
 
     "br_com_supermarket_BUTTON_REGISTER": "Register",
     "br_com_supermarket_BUTTON_EDIT": "Edit",
