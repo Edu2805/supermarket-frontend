@@ -5,6 +5,7 @@ import { PersonService } from '../../services/person.service';
 import { HttpClient, HttpHandler } from '@angular/common/http';
 import { USE_DEFAULT_LANG, USE_STORE, USE_EXTEND, DEFAULT_LANGUAGE, TranslateService, TranslateModule } from '@ngx-translate/core';
 import { ToastrModule } from 'ngx-toastr';
+import { AccountService } from 'src/app/features/account/services/account.service';
 
 describe('CreatePersonComponent', () => {
   let component: CreatePersonComponent;
@@ -22,6 +23,7 @@ describe('CreatePersonComponent', () => {
         HttpClient, 
         HttpHandler,
         TranslateService,
+        AccountService
       ],
       imports: [
         ToastrModule.forRoot(),

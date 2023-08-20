@@ -14,6 +14,12 @@ export class AccountService extends BaseService {
         super();
     }
 
+    getAllUsersIsNotEmployee(): Observable<UserData[]> {
+        return this.http
+          .get<UserData[]>(`${this.UrlServiceV1}user/user-is-not-employee`, super.GetHeaderJson())
+          .pipe(catchError(super.serviceError));
+      }
+
     registerUser(user: UserData): Observable<UserData> {
         let response = this.http.post(this.UrlServiceV1 + 'user', user, this.GetHeaderJson())
         .pipe(

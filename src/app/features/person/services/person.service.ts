@@ -42,6 +42,14 @@ export class PersonService extends BaseService {
       .pipe(catchError(super.serviceError));
   }
 
+  getAllEducations(){
+    let response = this.http.get<string[]>(`${this.UrlServiceV1}scholarity`)
+    .pipe(
+        map(this.extractData),
+        catchError(this.serviceError));
+    return response;
+}
+
   updatePerson(person: Person): Observable<Person> {
     return this.http
       .put(`${this.UrlServiceV1}person/${person.id}`, person, super.GetHeaderJson())
