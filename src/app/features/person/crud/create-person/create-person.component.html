@@ -1,1 +1,330 @@
-<p>create-person works!</p>
+<div class="container main-container">
+
+    <ngx-spinner 
+        bdColor = "rgba(0, 0, 0, 0.8)" 
+        size = "medium" 
+        color = "#fff" 
+        type = "ball-beat" 
+        [fullScreen] = "true"
+    ><p style="color: white" > {{ 'br_com_supermarket_MSG_WAIT' | translate }} </p>
+    </ngx-spinner>
+
+    <h1>{{ 'br_com_supermarket_PERSON_NEW' | translate }}</h1>
+    
+    <hr>
+    <div class="row">
+        <div class="col-md-10">
+            <form novalidate="novalidate" (ngSubmit)="addPerson()" [formGroup]="personForm">
+
+                <div class="alert alert-danger" *ngIf="errors?.length > 0">
+                    <h3 id="msgRetorno">{{ 'br_com_supermarket_MSG_GENERIC_ERROR' | translate }}</h3>
+                    <ul>
+                        <li *ngFor="let error of errors">{{ error }}</li>
+                    </ul>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">{{ 'br_com_supermarket_PERSON_PHOTO' | translate }}</label>
+
+                    <div class="custom-file">
+                        <input 
+                            type="file" 
+                            accept="image/jpeg,image/png,image/jpg" 
+                            class="custom-file-input" 
+                            id="personPhoto" 
+                            (change)="fileChangeEvent($event)" 
+                            [ngClass]="{'is-invalid': displayMessage.personPhoto }"
+                        >
+                        <label data-browse="Procurar" style="width: 400px" class="custom-file-label"></label>
+                        <span *ngIf="imageName"><br>{{ imageName }}<br></span>
+                        <span class="text-danger" *ngIf="displayMessage.personPhoto">
+                            <p [innerHTML]="displayMessage.personPhoto"></p>
+                        </span>
+                    </div>
+
+                    <div *ngIf='imageName' class="row">
+                        <div class="col col-md-6">
+                            <image-cropper 
+                                [imageChangedEvent]="imageChangedEvent" 
+                                [maintainAspectRatio]="false" 
+                                [containWithinAspectRatio]="containWithinAspectRatio" 
+                                [aspectRatio]="4 /3" 
+                                [onlyScaleDown]="true" 
+                                [roundCropper]="false"
+                                [canvasRotation]="canvasRotation" 
+                                [transform]="transform" 
+                                [alignImage]="'left'" 
+                                [style.display]="showCropper ? null : 'none'" 
+                                format="png" 
+                                (imageCropped)="imageCropped($event)" 
+                                (imageLoaded)="imageLoaded()" 
+                                (cropperReady)="cropperReady($event)"
+                                (loadImageFailed)="loadImageFailed()"
+                            ></image-cropper>
+                        </div>
+                        <div class="col col-md-6">
+                            <img [src]="croppedImage" [style.border]="croppedImage ? '1px solid black' : 'none'" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">{{ 'br_com_supermarket_PERSON_FIRST_NAME' | translate }}</label>
+                    <div>
+                        <input 
+                            class="form-control" 
+                            id="firstName" 
+                            type="text" 
+                            placeholder="{{ 'br_com_supermarket_PRODUCT_NAME_REQUIRED_PLACEHOLDER' | translate }}" 
+                            formControlName="firstName" 
+                            [ngClass]="{'is-invalid': displayMessage.firstName }"
+                        />
+                        <span class="text-danger" *ngIf="displayMessage.firstName">
+                            <p [innerHTML]="displayMessage.firstName"></p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">{{ 'br_com_supermarket_PERSON_MIDDLE_NAME' | translate }}</label>
+                    <div>
+                        <input 
+                            class="form-control" 
+                            id="middleName" 
+                            type="text" 
+                            placeholder="{{ 'br_com_supermarket_PRODUCT_NAME_REQUIRED_PLACEHOLDER' | translate }}" 
+                            formControlName="middleName" 
+                            [ngClass]="{'is-invalid': displayMessage.middleName }"
+                        />
+                        <span class="text-danger" *ngIf="displayMessage.middleName">
+                            <p [innerHTML]="displayMessage.middleName"></p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">{{ 'br_com_supermarket_PERSON_LAST_NAME' | translate }}</label>
+                    <div>
+                        <input 
+                            class="form-control" 
+                            id="lastName" 
+                            type="text" 
+                            placeholder="{{ 'br_com_supermarket_PRODUCT_NAME_REQUIRED_PLACEHOLDER' | translate }}" 
+                            formControlName="lastName" 
+                            [ngClass]="{'is-invalid': displayMessage.lastName }"
+                        />
+                        <span class="text-danger" *ngIf="displayMessage.lastName">
+                            <p [innerHTML]="displayMessage.lastName"></p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">{{ 'br_com_supermarket_PERSON_CPF' | translate }}</label>
+                    <div>
+                        <input 
+                            class="form-control" 
+                            id="cpf" 
+                            type="text" 
+                            mask="000.000.000-00"
+                            placeholder="{{ 'br_com_supermarket_PRODUCT_NAME_REQUIRED_PLACEHOLDER' | translate }}" 
+                            formControlName="cpf" 
+                            [ngClass]="{'is-invalid': displayMessage.cpf }"
+                        />
+                        <span class="text-danger" *ngIf="displayMessage.cpf">
+                            <p [innerHTML]="displayMessage.cpf"></p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">{{ 'br_com_supermarket_PERSON_RG' | translate }}</label>
+                    <div>
+                        <input 
+                            class="form-control" 
+                            id="rg" 
+                            type="text" 
+                            placeholder="{{ 'br_com_supermarket_PRODUCT_NAME_REQUIRED_PLACEHOLDER' | translate }}" 
+                            formControlName="rg" 
+                            [ngClass]="{'is-invalid': displayMessage.rg }"
+                        />
+                        <span class="text-danger" *ngIf="displayMessage.rg">
+                            <p [innerHTML]="displayMessage.rg"></p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">{{ 'br_com_supermarket_PERSON_NATIONALITY' | translate }}</label>
+                    <div>
+                        <input 
+                            class="form-control" 
+                            id="nationality" 
+                            type="text" 
+                            placeholder="{{ 'br_com_supermarket_PRODUCT_NAME_REQUIRED_PLACEHOLDER' | translate }}" 
+                            formControlName="nationality" 
+                            [ngClass]="{'is-invalid': displayMessage.nationality }"
+                        />
+                        <span class="text-danger" *ngIf="displayMessage.nationality">
+                            <p [innerHTML]="displayMessage.nationality"></p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">{{ 'br_com_supermarket_PERSON_NATURALNESS' | translate }}</label>
+                    <div>
+                        <input 
+                            class="form-control" 
+                            id="naturalness" 
+                            type="text" 
+                            placeholder="{{ 'br_com_supermarket_PRODUCT_NAME_REQUIRED_PLACEHOLDER' | translate }}" 
+                            formControlName="naturalness" 
+                            [ngClass]="{'is-invalid': displayMessage.naturalness }"
+                        />
+                        <span class="text-danger" *ngIf="displayMessage.naturalness">
+                            <p [innerHTML]="displayMessage.naturalness"></p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">{{ 'br_com_supermarket_PERSON_BIRTH_DATE' | translate }}</label>
+                    <div>
+                        <input 
+                            class="form-control" 
+                            id="birthDate" 
+                            type="text" 
+                            placeholder="{{ 'br_com_supermarket_PRODUCT_NAME_REQUIRED_PLACEHOLDER' | translate }}" 
+                            mask="d0/M0/0000"
+                            formControlName="birthDate" 
+                            [ngClass]="{'is-invalid': displayMessage.birthDate }"
+                        />
+                        <span class="text-danger" *ngIf="displayMessage.birthDate">
+                            <p [innerHTML]="displayMessage.birthDate"></p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">{{ 'br_com_supermarket_PERSON_SCHOLARITY' | translate }}</label>
+                    <select
+                        class="form-control" 
+                        id="scholarity" 
+                        formControlName="scholarity" 
+                    >
+                        <option value="" selected></option>
+                        <option *ngFor="let scholarity of educations">{{ scholarity }}</option>
+                    </select>
+                    <span class="text-danger" *ngIf="displayMessage.scholarity">
+                        <p [innerHTML]="displayMessage.scholarity"></p>
+                    </span>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">{{ 'br_com_supermarket_PERSON_DEPENDENTS' | translate }}</label>
+                    <select
+                        class="form-control" 
+                        id="dependents" 
+                        formControlName="dependents" 
+                    >
+                        <option selected value="false">{{ 'br_com_supermarket_MSG_GENERIC_NO' | translate }}</option>
+                        <option value="true">{{ 'br_com_supermarket_MSG_GENERIC_YES' | translate }}</option>
+                    </select>
+                    <span class="text-danger" *ngIf="displayMessage.dependents">
+                        <p [innerHTML]="displayMessage.dependents"></p>
+                    </span>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">{{ 'br_com_supermarket_PERSON_FATHER_NAME' | translate }}</label>
+                    <div>
+                        <input 
+                            class="form-control" 
+                            id="fatherName" 
+                            type="text" 
+                            placeholder="{{ 'br_com_supermarket_PRODUCT_NAME_REQUIRED_PLACEHOLDER' | translate }}" 
+                            formControlName="fatherName" 
+                            [ngClass]="{'is-invalid': displayMessage.fatherName }"
+                        />
+                        <span class="text-danger" *ngIf="displayMessage.fatherName">
+                            <p [innerHTML]="displayMessage.fatherName"></p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">{{ 'br_com_supermarket_PERSON_MOTHER_NAME' | translate }}</label>
+                    <div>
+                        <input 
+                            class="form-control" 
+                            id="motherName" 
+                            type="text" 
+                            placeholder="{{ 'br_com_supermarket_PRODUCT_NAME_REQUIRED_PLACEHOLDER' | translate }}" 
+                            formControlName="motherName" 
+                            [ngClass]="{'is-invalid': displayMessage.motherName }"
+                        />
+                        <span class="text-danger" *ngIf="displayMessage.motherName">
+                            <p [innerHTML]="displayMessage.motherName"></p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">{{ 'br_com_supermarket_PERSON_EMAIL' | translate }}</label>
+                    <div>
+                        <input 
+                            class="form-control" 
+                            id="email" 
+                            type="text" 
+                            placeholder="{{ 'br_com_supermarket_PRODUCT_NAME_REQUIRED_PLACEHOLDER' | translate }}" 
+                            formControlName="email" 
+                            [ngClass]="{'is-invalid': displayMessage.email }"
+                        />
+                        <span class="text-danger" *ngIf="displayMessage.email">
+                            <p [innerHTML]="displayMessage.email"></p>
+                        </span>
+                    </div>
+                </div>
+
+                <div formGroupName="userData">
+                    <div class="form-group">
+                        <label class="control-label">{{ 'br_com_supermarket_PERSON_USER' | translate }}</label>
+                        <div>
+                            <select
+                                class="form-control" 
+                                id="id" 
+                                formControlName="id" 
+                            >
+                                <option 
+                                    value="" 
+                                    selected
+                                ></option>
+                                <option 
+                                    *ngFor="let userData of usersData" 
+                                    value="{{ userData?.id }}"
+                                >{{ userData?.userName }}
+                                </option>
+                            </select>
+                            <span class="text-danger" *ngIf="displayMessage?.id">
+                                <p [innerHTML]="displayMessage?.id"></p>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <input 
+                        type="submit" 
+                        value="{{ 'br_com_supermarket_BUTTON_REGISTER' | translate }}" 
+                        [disabled]="!personForm.valid" 
+                        class="btn btn-primary"
+                        >
+                    &nbsp;
+                    <a class="btn btn-info" [routerLink]="[ '/person/getAll']">{{ 'br_com_supermarket_BUTTON_BACK' | translate }}</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

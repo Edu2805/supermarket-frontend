@@ -20,6 +20,7 @@ import { NgxSpinnerModule } from "ngx-spinner";
 import { PaginationModule } from "src/app/utils/pagination/pagination.module";
 import { PipeModule } from "src/app/utils/pipe/pipe.module";
 import { UserDataListComponent } from "./user-data-list/user-data-list.component";
+import { AccountService } from "../account/services/account.service";
 
 const maskConfigFunction: () => Partial<IConfig> = () => {
     return {
@@ -40,6 +41,7 @@ const maskConfigFunction: () => Partial<IConfig> = () => {
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     providers: [
         PersonService,
+        AccountService,
         PersonGuardService,
         PersonResolve
     ],
