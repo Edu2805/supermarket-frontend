@@ -280,8 +280,15 @@
     "br_com_supermarket_PERSON_ERROR_FORM_EMAIL_MAX_LENGTH_MESSAGE": "O e-mail não pode ter mais do que 30 caracteres.",
     "br_com_supermarket_PERSON_ERROR_FORM_INVALID_EMAIL": "O e-mail está no formato inválido.",
     "br_com_supermarket_PERSON_NEW": "Nova Pessoa",
+    "br_com_supermarket_PERSON_MIDDLE_NAME_OPTIONAL_PLACEHOLDER": "Nome do meio (opcional)",
+    "br_com_supermarket_PERSON_RG_OPTIONAL_PLACEHOLDER": "RG (Opcional)",
+    "br_com_supermarket_PERSON_NATIONALITY_OPTIONAL_PLACEHOLDER": "Nacionalidade (opcional)",
+    "br_com_supermarket_PERSON_NATURALNESS_OPTIONAL_PLACEHOLDER": "Naturalidade (opcional)",
+    "br_com_supermarket_PERSON_FATHER_NAME_OPTIONAL_PLACEHOLDER": "Nome do pai (opcional)",
+    "br_com_supermarket_PERSON_SCHOLARITY_OPTIONAL_PLACEHOLDER": "Escolaridade (opcional)",
+    "br_com_supermarket_PERSON_DEPENDENTS_OPTIONAL_PLACEHOLDER": "Dependentes (opcional)",
+    "br_com_supermarket_PERSON_USER_OPTIONAL_PLACEHOLDER": "Usuário de sistema (requerido)",
     
-
     "br_com_supermarket_BUTTON_REGISTER": "Cadastrar",
     "br_com_supermarket_BUTTON_EDIT": "Editar",
     "br_com_supermarket_BUTTON_ACCESS": "Acessar",

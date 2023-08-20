@@ -75,7 +75,7 @@
                             class="form-control" 
                             id="firstName" 
                             type="text" 
-                            placeholder="{{ 'br_com_supermarket_PRODUCT_NAME_REQUIRED_PLACEHOLDER' | translate }}" 
+                            placeholder="{{ 'br_com_supermarket_PERSON_FIRST_NAME_REQUIRED_PLACEHOLDER' | translate }}" 
                             formControlName="firstName" 
                             [ngClass]="{'is-invalid': displayMessage.firstName }"
                         />
@@ -92,7 +92,7 @@
                             class="form-control" 
                             id="middleName" 
                             type="text" 
-                            placeholder="{{ 'br_com_supermarket_PRODUCT_NAME_REQUIRED_PLACEHOLDER' | translate }}" 
+                            placeholder="{{ 'br_com_supermarket_PERSON_MIDDLE_NAME_OPTIONAL_PLACEHOLDER' | translate }}" 
                             formControlName="middleName" 
                             [ngClass]="{'is-invalid': displayMessage.middleName }"
                         />
@@ -109,7 +109,7 @@
                             class="form-control" 
                             id="lastName" 
                             type="text" 
-                            placeholder="{{ 'br_com_supermarket_PRODUCT_NAME_REQUIRED_PLACEHOLDER' | translate }}" 
+                            placeholder="{{ 'br_com_supermarket_PERSON_LAST_NAME_REQUIRED_PLACEHOLDER' | translate }}" 
                             formControlName="lastName" 
                             [ngClass]="{'is-invalid': displayMessage.lastName }"
                         />
@@ -127,7 +127,7 @@
                             id="cpf" 
                             type="text" 
                             mask="000.000.000-00"
-                            placeholder="{{ 'br_com_supermarket_PRODUCT_NAME_REQUIRED_PLACEHOLDER' | translate }}" 
+                            placeholder="{{ 'br_com_supermarket_PERSON_CPF_REQUIRED_PLACEHOLDER' | translate }}" 
                             formControlName="cpf" 
                             [ngClass]="{'is-invalid': displayMessage.cpf }"
                         />
@@ -144,7 +144,7 @@
                             class="form-control" 
                             id="rg" 
                             type="text" 
-                            placeholder="{{ 'br_com_supermarket_PRODUCT_NAME_REQUIRED_PLACEHOLDER' | translate }}" 
+                            placeholder="{{ 'br_com_supermarket_PERSON_RG_OPTIONAL_PLACEHOLDER' | translate }}" 
                             formControlName="rg" 
                             [ngClass]="{'is-invalid': displayMessage.rg }"
                         />
@@ -161,7 +161,7 @@
                             class="form-control" 
                             id="nationality" 
                             type="text" 
-                            placeholder="{{ 'br_com_supermarket_PRODUCT_NAME_REQUIRED_PLACEHOLDER' | translate }}" 
+                            placeholder="{{ 'br_com_supermarket_PERSON_NATIONALITY_OPTIONAL_PLACEHOLDER' | translate }}" 
                             formControlName="nationality" 
                             [ngClass]="{'is-invalid': displayMessage.nationality }"
                         />
@@ -178,7 +178,7 @@
                             class="form-control" 
                             id="naturalness" 
                             type="text" 
-                            placeholder="{{ 'br_com_supermarket_PRODUCT_NAME_REQUIRED_PLACEHOLDER' | translate }}" 
+                            placeholder="{{ 'br_com_supermarket_PERSON_NATURALNESS_OPTIONAL_PLACEHOLDER' | translate }}" 
                             formControlName="naturalness" 
                             [ngClass]="{'is-invalid': displayMessage.naturalness }"
                         />
@@ -195,7 +195,7 @@
                             class="form-control" 
                             id="birthDate" 
                             type="text" 
-                            placeholder="{{ 'br_com_supermarket_PRODUCT_NAME_REQUIRED_PLACEHOLDER' | translate }}" 
+                            placeholder="{{ 'br_com_supermarket_PERSON_BIRTH_DATE_REQUIRED_PLACEHOLDER' | translate }}" 
                             mask="d0/M0/0000"
                             formControlName="birthDate" 
                             [ngClass]="{'is-invalid': displayMessage.birthDate }"
@@ -213,6 +213,7 @@
                         id="scholarity" 
                         formControlName="scholarity" 
                     >
+                        <option value="" disabled selected hidden>{{ 'br_com_supermarket_PERSON_SCHOLARITY_OPTIONAL_PLACEHOLDER' | translate }}</option>
                         <option value="" selected></option>
                         <option *ngFor="let scholarity of educations">{{ scholarity }}</option>
                     </select>
@@ -228,6 +229,7 @@
                         id="dependents" 
                         formControlName="dependents" 
                     >
+                        <option value="" disabled selected hidden>{{ 'br_com_supermarket_PERSON_DEPENDENTS_OPTIONAL_PLACEHOLDER' | translate }}</option>
                         <option selected value="false">{{ 'br_com_supermarket_MSG_GENERIC_NO' | translate }}</option>
                         <option value="true">{{ 'br_com_supermarket_MSG_GENERIC_YES' | translate }}</option>
                     </select>
@@ -243,7 +245,7 @@
                             class="form-control" 
                             id="fatherName" 
                             type="text" 
-                            placeholder="{{ 'br_com_supermarket_PRODUCT_NAME_REQUIRED_PLACEHOLDER' | translate }}" 
+                            placeholder="{{ 'br_com_supermarket_PERSON_FATHER_NAME_OPTIONAL_PLACEHOLDER' | translate }}"
                             formControlName="fatherName" 
                             [ngClass]="{'is-invalid': displayMessage.fatherName }"
                         />
@@ -260,7 +262,7 @@
                             class="form-control" 
                             id="motherName" 
                             type="text" 
-                            placeholder="{{ 'br_com_supermarket_PRODUCT_NAME_REQUIRED_PLACEHOLDER' | translate }}" 
+                            placeholder="{{ 'br_com_supermarket_PERSON_MOTHER_NAME_REQUIRED_PLACEHOLDER' | translate }}" 
                             formControlName="motherName" 
                             [ngClass]="{'is-invalid': displayMessage.motherName }"
                         />
@@ -277,7 +279,7 @@
                             class="form-control" 
                             id="email" 
                             type="text" 
-                            placeholder="{{ 'br_com_supermarket_PRODUCT_NAME_REQUIRED_PLACEHOLDER' | translate }}" 
+                            placeholder="{{ 'br_com_supermarket_PERSON_EMAIL_REQUIRED_PLACEHOLDER' | translate }}" 
                             formControlName="email" 
                             [ngClass]="{'is-invalid': displayMessage.email }"
                         />
@@ -296,6 +298,7 @@
                                 id="id" 
                                 formControlName="id" 
                             >
+                                <option value="" disabled selected hidden>{{ 'br_com_supermarket_PERSON_USER_OPTIONAL_PLACEHOLDER' | translate }}</option>
                                 <option 
                                     value="" 
                                     selected

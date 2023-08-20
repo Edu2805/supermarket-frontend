@@ -91,6 +91,9 @@ export class CreatePersonComponent extends FormBaseComponent implements OnInit {
         maxLength: this.translateService.instant('br_com_supermarket_PERSON_ERROR_FORM_EMAIL_MAX_LENGTH_MESSAGE'),
         invalidEmail: this.translateService.instant('br_com_supermarket_PERSON_ERROR_FORM_INVALID_EMAIL'),
       },
+      id: {
+        required: this.translateService.instant('br_com_supermarket_PERSON_USER_OPTIONAL_PLACEHOLDER'),
+      }
     };
     super.messageConfigValidatorBase(this.validationMessages);
   }
@@ -114,7 +117,7 @@ export class CreatePersonComponent extends FormBaseComponent implements OnInit {
       motherName: ['', Validators.compose([Validators.required, Validators.minLength(2), Validators.maxLength(50)])],
       email: ['', Validators.compose([Validators.required, EmailValidationForm.email])],
       userData: this.fb.group({
-        id: ['']
+        id: ['', Validators.required]
       }),
       productPhoto: [null]
     });
