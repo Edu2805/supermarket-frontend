@@ -15,6 +15,7 @@ import { AttachmentService } from 'src/app/features/attachment/services/attachme
 import { Observable, fromEvent, merge } from 'rxjs';
 import { CpfCnpjValidators } from 'src/app/utils/document-validators-form';
 import { EmailValidationForm } from 'src/app/utils/email-validation-form';
+import { DateValidationForm } from 'src/app/utils/date-validation-form';
 
 @Component({
   selector: 'app-create-person',
@@ -79,6 +80,7 @@ export class CreatePersonComponent extends FormBaseComponent implements OnInit {
       },
       birthDate: {
         required: this.translateService.instant('br_com_supermarket_PERSON_BIRTH_DATE_REQUIRED_PLACEHOLDER'),
+        invalidDate: this.translateService.instant('br_com_supermarket_PERSON_INVALID_BIRTH_DATE'),
       },
       motherName: {
         required: this.translateService.instant('br_com_supermarket_PERSON_MOTHER_NAME_REQUIRED_PLACEHOLDER'),
@@ -110,16 +112,16 @@ export class CreatePersonComponent extends FormBaseComponent implements OnInit {
       rg: [null],
       nationality: ['', Validators.compose([Validators.minLength(2), Validators.maxLength(30)])],
       naturalness: ['', Validators.compose([Validators.minLength(2), Validators.maxLength(30)])],
-      birthDate: ['', Validators.required],
+      birthDate: ['', Validators.compose([Validators.required, DateValidationForm.date])],
       scholarity: [''],
       dependents: [''],
-      fatherName: [null],
+      fatherName: [''],
       motherName: ['', Validators.compose([Validators.required, Validators.minLength(2), Validators.maxLength(50)])],
       email: ['', Validators.compose([Validators.required, EmailValidationForm.email])],
       userData: this.fb.group({
         id: ['', Validators.required]
       }),
-      productPhoto: [null]
+      personPhoto: [null]
     });
   }
 

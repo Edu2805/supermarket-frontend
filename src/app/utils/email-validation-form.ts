@@ -3,7 +3,6 @@ import { AbstractControl } from "@angular/forms";
 export class EmailValidationForm {
 
     static email(controle: AbstractControl) {
-debugger
         const email = controle.value;
         const regex = new RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/);
         let isValid: boolean;

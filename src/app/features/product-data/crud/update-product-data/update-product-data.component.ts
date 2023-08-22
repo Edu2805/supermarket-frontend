@@ -159,7 +159,6 @@ export class UpdateProductDataComponent extends FormBaseComponent implements OnI
       this.attatchment.name = this.imageName;
       this.attatchment.type = this.imageType;
       this.attatchment.imageData = this.croppedImageData;
-
       this.product.productPhoto = this.attatchment;
       
       this.productService.updateProduct(this.product)

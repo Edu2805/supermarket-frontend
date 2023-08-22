@@ -272,6 +272,7 @@
     "br_com_supermarket_PERSON_ERROR_FORM_NATURALNESS_MIN_LENGTH_MESSAGE": "A naturalidade não pode ter menos do que 2 caracteres.",
     "br_com_supermarket_PERSON_ERROR_FORM_NATURALNESS_MAX_LENGTH_MESSAGE": "A naturalidade não pode ter mais do que 30 caracteres.",
     "br_com_supermarket_PERSON_BIRTH_DATE_REQUIRED_PLACEHOLDER": "Data de nascimento (requerido)",
+    "br_com_supermarket_PERSON_INVALID_BIRTH_DATE": "Data inválida",
     "br_com_supermarket_PERSON_MOTHER_NAME_REQUIRED_PLACEHOLDER": "Nome da mãe (requerido)",
     "br_com_supermarket_PERSON_ERROR_FORM_MOTHER_NAME_MIN_LENGTH_MESSAGE": "O nome da mãe não pode ter menos do que 2 caracteres.",
     "br_com_supermarket_PERSON_ERROR_FORM_MOTHER_NAME_MAX_LENGTH_MESSAGE": "O nome da mãe não pode ter mais do que 50 caracteres.",
@@ -288,6 +289,8 @@
     "br_com_supermarket_PERSON_SCHOLARITY_OPTIONAL_PLACEHOLDER": "Escolaridade (opcional)",
     "br_com_supermarket_PERSON_DEPENDENTS_OPTIONAL_PLACEHOLDER": "Dependentes (opcional)",
     "br_com_supermarket_PERSON_USER_OPTIONAL_PLACEHOLDER": "Usuário de sistema (requerido)",
+    "br_com_supermarket_PERSON_EDIT": "Editar Pessoa",
+    "br_com_supermarket_PERSON_EDIT_SUCCESS": "Pessoa atualizada com sucesso!",
     
     "br_com_supermarket_BUTTON_REGISTER": "Cadastrar",
     "br_com_supermarket_BUTTON_EDIT": "Editar",
