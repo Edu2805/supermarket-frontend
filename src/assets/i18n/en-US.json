@@ -272,6 +272,7 @@
     "br_com_supermarket_PERSON_ERROR_FORM_NATURALNESS_MIN_LENGTH_MESSAGE": "Naturalness cannot be less than 2 characters long.",
     "br_com_supermarket_PERSON_ERROR_FORM_NATURALNESS_MAX_LENGTH_MESSAGE": "Naturalness cannot be longer than 30 characters.",
     "br_com_supermarket_PERSON_BIRTH_DATE_REQUIRED_PLACEHOLDER": "Date of birth (required)",
+    "br_com_supermarket_PERSON_INVALID_BIRTH_DATE": "Invalid date",
     "br_com_supermarket_PERSON_MOTHER_NAME_REQUIRED_PLACEHOLDER": "Mother's name (required)",
     "br_com_supermarket_PERSON_ERROR_FORM_MOTHER_NAME_MIN_LENGTH_MESSAGE": "Mother's name cannot be less than 2 characters long.",
     "br_com_supermarket_PERSON_ERROR_FORM_MOTHER_NAME_MAX_LENGTH_MESSAGE": "The mother's name cannot be longer than 50 characters.",
@@ -288,6 +289,8 @@
     "br_com_supermarket_PERSON_SCHOLARITY_OPTIONAL_PLACEHOLDER": "Scholarity (optional)",
     "br_com_supermarket_PERSON_DEPENDENTS_OPTIONAL_PLACEHOLDER": "Dependents (opcional)",
     "br_com_supermarket_PERSON_USER_OPTIONAL_PLACEHOLDER": "System use (requerido)",
+    "br_com_supermarket_PERSON_EDIT": "Edit Person",
+    "br_com_supermarket_PERSON_EDIT_SUCCESS": "Person successfully updated!",
 
     "br_com_supermarket_BUTTON_REGISTER": "Register",
     "br_com_supermarket_BUTTON_EDIT": "Edit",
