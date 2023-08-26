@@ -30,6 +30,7 @@ export class UpdateProductDataComponent extends FormBaseComponent implements OnI
   formResult: string= '';
   subsections: SubSection[];
   providers: Provider[];
+  unities: string[];
   attatchment: Attachment = {
     id: '',
     name: '',
@@ -81,6 +82,7 @@ export class UpdateProductDataComponent extends FormBaseComponent implements OnI
   ngOnInit() {
     this.getSubsections();
     this.getProviders();
+    this.getAllUnitiesSelect();
 
     this.productForm = this.fb.group({
       name: ['', Validators.compose([Validators.required, Validators.minLength(2), Validators.maxLength(50)])],
@@ -121,6 +123,17 @@ export class UpdateProductDataComponent extends FormBaseComponent implements OnI
         this.toastr.error(this.translateService.instant(error.errors));
       }
       this.toastr.error(this.translateService.instant('br_com_supermarket_PRODUCT_AN_ERROR_OCCURRED_WHILE_GET_PROVIDERS'));
+    });
+  }
+
+  getAllUnitiesSelect() {
+    this.productService.getAllUnities().subscribe((response) => {
+      this.unities = response.names;
+    },(error: any) => {
+      if (error && error.errors) {
+        this.toastr.error(this.translateService.instant(error.errors));
+      }
+      this.toastr.error(this.translateService.instant('br_com_supermarket_PRODUCT_AN_ERROR_OCCURRED_WHILE_GET_UNITIES'));
     });
   }
 

@@ -52,14 +52,8 @@
                             id="unity" 
                             formControlName="unity" 
                         >
-                            <option value="{{ product?.unity }}" selected>{{ product?.unity }}</option>
-                            <option value="0">{{ 'br_com_supermarket_PRODUCT_ENUM_UNITY' | translate }}</option>
-                            <option value="1">{{ 'br_com_supermarket_PRODUCT_ENUM_LITERS' | translate }}</option>
-                            <option value="2">{{ 'br_com_supermarket_PRODUCT_ENUM_MILLILITERS' | translate }}</option>
-                            <option value="3">{{ 'br_com_supermarket_PRODUCT_ENUM_MILLIGRAMS' | translate }}</option>
-                            <option value="4">{{ 'br_com_supermarket_PRODUCT_ENUM_GRAMS' | translate }}</option>
-                            <option value="5">{{ 'br_com_supermarket_PRODUCT_ENUM_KILOS' | translate }}</option>
-                            <option value="6">{{ 'br_com_supermarket_PRODUCT_ENUM_TONS' | translate }}</option>
+                        <option selected>{{ product?.unity }}</option>
+                        <option *ngFor="let unity of unities">{{ unity }}</option>
                         </select>
                         <span class="text-danger" *ngIf="displayMessage.unity">
                             <p [innerHTML]="displayMessage.unity"></p>
