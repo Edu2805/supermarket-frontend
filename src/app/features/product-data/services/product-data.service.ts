@@ -36,6 +36,14 @@ export class ProductDataService extends BaseService {
       .pipe(catchError(super.serviceError));
   }
 
+  getAllUnities(){
+    let response = this.http.get<string[]>(`${this.UrlServiceV1}unity`)
+    .pipe(
+        map(this.extractData),
+        catchError(this.serviceError));
+    return response;
+}
+
   findProductById(id: string): Observable<ProductData> {
     return this.http
       .get<ProductData>(`${this.UrlServiceV1}product/${id}`, super.GetHeaderJson())
