@@ -186,18 +186,23 @@ export class UpdatePersonComponent extends FormBaseComponent implements OnInit {
 
       this.spinner.show();
       this.person = Object.assign({}, this.person, this.personForm.value);
-      this.attatchment.name = this.imageName;
-      this.attatchment.type = this.imageType;
-      this.attatchment.imageData = this.croppedImageData;
-
+      this.setImage(this.imageName, this.imageType, this.croppedImageData);
       this.person.birthDate = this.convertDateFrontend(this.personForm.get('birthDate').value);
-      this.person.personPhoto = this.attatchment;
-      
+
       this.personService.updatePerson(this.person)
         .subscribe(
           success => { this.processSuccess(success) },
           fail => { this.processFail(fail) }
         );
+    }
+  }
+
+  setImage(imageName: string, imageType: string, croppedImageData: any) {
+    if (imageName != null && imageType != null && croppedImageData != null) {
+      this.attatchment.name = imageName;
+      this.attatchment.type = imageType;
+      this.attatchment.imageData = croppedImageData;
+      this.person.personPhoto = this.attatchment;
     }
   }
 
