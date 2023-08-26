@@ -156,16 +156,22 @@ export class UpdateProductDataComponent extends FormBaseComponent implements OnI
 
       this.spinner.show();
       this.product = Object.assign({}, this.product, this.productForm.value);
-      this.attatchment.name = this.imageName;
-      this.attatchment.type = this.imageType;
-      this.attatchment.imageData = this.croppedImageData;
-      this.product.productPhoto = this.attatchment;
+      this.setImage(this.imageName, this.imageType, this.croppedImageData);
       
       this.productService.updateProduct(this.product)
         .subscribe(
           success => { this.processSuccess(success) },
           fail => { this.processFail(fail) }
         );
+    }
+  }
+
+  setImage(imageName: string, imageType: string, croppedImageData: any) {
+    if (imageName != null && imageType != null && croppedImageData != null) {
+      this.attatchment.name = imageName;
+      this.attatchment.type = imageType;
+      this.attatchment.imageData = croppedImageData;
+      this.product.productPhoto = this.attatchment;
     }
   }
 
