@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-salary',
-  templateUrl: './salary.component.html',
-  styleUrls: ['./salary.component.scss']
+  template: '<router-outlet></router-outlet>'
 })
 export class SalaryComponent implements OnInit {
 
