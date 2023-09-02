@@ -6,13 +6,13 @@ export interface Salary {
     position: string,
     salaryRange: string,
     grossSalary: number,
-    netSalary: number,
+    netSalary?: number,
     inss?: number,
     fgts?: number,
     salaryAdvance: number,
     benefits: string,
     competenceStart: string,
     finalCompetence: string
-    otherDiscounts: OtherDiscount[],
-    otherAdditions: OtherAddition[]
+    otherDiscounts?: OtherDiscount[],
+    otherAdditions?: OtherAddition[]
 }
