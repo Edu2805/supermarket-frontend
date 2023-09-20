@@ -41,7 +41,9 @@ export class CreateSalaryComponent extends FormBaseComponent implements OnInit {
   vaidateDocument: any;
   formResult: string= '';
   editingIndex: number = - 1;
-  editValues: any;
+  netSalaryValue: number = 0;
+  exceededMaximumDiscount: boolean = false;
+  actionType: any;
   
   constructor(private fb: FormBuilder,
     private salaryService: SalaryService,
@@ -91,6 +93,10 @@ export class CreateSalaryComponent extends FormBaseComponent implements OnInit {
       finalCompetence: ['', Validators.compose([Validators.required, DateValidationForm.date])],
       otherAdditions: this.fb.array([]),
       otherDiscounts: this.fb.array([])
+    });
+
+    this.salaryForm.valueChanges.subscribe(() => {
+      this.calculateNetSalary();
     });
   }
 
@@ -208,6 +214,7 @@ export class CreateSalaryComponent extends FormBaseComponent implements OnInit {
     otherDiscountsArray.at(index).get('discountName').setValue(this.salary.otherDiscounts[index].discountName);
     otherDiscountsArray.at(index).get('discountValue').setValue(this.salary.otherDiscounts[index].discountValue);
     this.sharedDataService.setOtherDiscountData(this.salary.otherDiscounts[index], Constants.ACTION_UPDATE, index);
+    this.actionType = Constants.ACTION_UPDATE;
   }
 
   deleteOtherDiscount(index: number) {
@@ -246,6 +253,37 @@ export class CreateSalaryComponent extends FormBaseComponent implements OnInit {
     }
     this.toastr.error(this.errors.toString(), this.translateService.instant('br_com_supermarket_MSG_ERROR'));
     this.spinner.hide();
+  }
+
+  calculateNetSalary() {
+    const grossSalary = this.salaryForm.get('grossSalary').value || 0;
+    const otherDiscounts = this.salaryForm.get('otherDiscounts').value || [];
+    const otherAdditions = this.salaryForm.get('otherAdditions').value || [];
+    let netSalary = grossSalary;
+    this.exceededMaximumDiscount = false;
+    let maximumDiscount = 0;
+
+    for (const discount of otherDiscounts) {
+      netSalary -= discount.discountValue || 0;
+      maximumDiscount = grossSalary * 0.7;
+
+      if(maximumDiscount > netSalary && this.actionType !== Constants.ACTION_UPDATE) {
+        this.exceededMaximumDiscount = true;
+      }
+    }
+    this.actionType = Constants.ACTION_INSERT;
+
+    if (this.exceededMaximumDiscount) {
+      this.toastr.warning( 
+        "O desconto máximo em folha não pode ultrapassar os 70% do salário bruto, realize o ajuste dos descontos.",
+        "Atenção"
+      );
+    }
+
+    for (const addition of otherAdditions) {
+      netSalary += addition.additionValue || 0;
+    }
+    this.netSalaryValue = netSalary;
   }
 
 }

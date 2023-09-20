@@ -1,5 +1,5 @@
-import { CommonModule } from "@angular/common";
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from "@angular/core";
+import { CommonModule, registerLocaleData } from "@angular/common";
+import { CUSTOM_ELEMENTS_SCHEMA, LOCALE_ID, NgModule } from "@angular/core";
 import { SalaryComponent } from "./salary.component";
 import { SalaryRoutingModule } from "./salary.route";
 import { TranslateModule } from "@ngx-translate/core";
@@ -21,12 +21,15 @@ import { SalaryResolve } from "./services/salary.resolve";
 import { OtherAdditionModule } from "../other-addition/other-addition.module";
 import { OtherAdditionService } from "../other-addition/services/other-addition.service";
 import { OtherDiscountModule } from "../other-discount/other-discount.module";
+import ptBr from '@angular/common/locales/pt';
 
 const maskConfigFunction: () => Partial<IConfig> = () => {
     return {
       validation: false,
     };
 };
+
+registerLocaleData(ptBr);
 
 @NgModule({
     declarations:[
@@ -41,7 +44,8 @@ const maskConfigFunction: () => Partial<IConfig> = () => {
         SalaryService,
         SalaryGuardService,
         SalaryResolve,
-        OtherAdditionService
+        OtherAdditionService,
+        { provide: LOCALE_ID, useValue: 'pt' }
     ],
     imports:[
         CommonModule,
