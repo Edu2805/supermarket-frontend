@@ -14,6 +14,7 @@ import { CustomValidators } from 'ngx-custom-validators';
 import { OtherAddition } from 'src/app/features/other-addition/model/other-addition';
 import { SharedDataService } from '../../services/shared-data.service';
 import { Constants } from 'src/app/utils/constants/constants';
+import { OtherDiscount } from 'src/app/features/other-discount/model/other-discount';
 
 @Component({
   selector: 'app-create-salary',
@@ -33,7 +34,8 @@ export class CreateSalaryComponent extends FormBaseComponent implements OnInit {
     benefits: '',
     competenceStart: '',
     finalCompetence: '',
-    otherAdditions: []
+    otherAdditions: [],
+    otherDiscounts: []
   };
   localStorageUtils = new LocalStorageUtils();
   vaidateDocument: any;
@@ -87,10 +89,8 @@ export class CreateSalaryComponent extends FormBaseComponent implements OnInit {
       benefits: ['', Validators.compose([Validators.required, CustomValidators.rangeLength([2, 100])])],
       competenceStart: ['', Validators.compose([Validators.required, DateValidationForm.date])],
       finalCompetence: ['', Validators.compose([Validators.required, DateValidationForm.date])],
-      otherDiscounts: this.fb.group({
-        id: ['']
-      }),
-      otherAdditions: this.fb.array([])
+      otherAdditions: this.fb.array([]),
+      otherDiscounts: this.fb.array([])
     });
   }
 
@@ -105,11 +105,9 @@ export class CreateSalaryComponent extends FormBaseComponent implements OnInit {
   }
 
   addSalary() {
-    console.log(this.salary.otherAdditions);
     if (this.salaryForm.dirty && this.salaryForm.valid) {
       this.spinner.show();
       this.salary = Object.assign({}, this.salary, this.salaryForm.value);
-      console.log(this.salary.otherAdditions);
       this.salaryService.newSalary(this.salary)
         .subscribe(
           success => { this.processSuccess(success) },
@@ -166,6 +164,56 @@ export class CreateSalaryComponent extends FormBaseComponent implements OnInit {
     this.salary.otherAdditions.splice(index, 1);
     const otherAdditionsArray = this.salaryForm.get('otherAdditions') as FormArray;
     otherAdditionsArray.removeAt(index);
+  }
+
+  onFormOtherDiscountSubmitted(otherDiscount: OtherDiscount) {
+    if (otherDiscount.actionType === Constants.ACTION_INSERT) {
+      this.salary.otherDiscounts.push(otherDiscount);
+      this.setOtherDiscountsFormArrayInsert();
+    } else {
+      this.setOtherDiscountsFormArrayUpdate(otherDiscount);
+    }
+  }
+
+  getOtherDiscountsFormArray(): FormArray {
+    return this.salaryForm.get('otherDiscounts') as FormArray;
+  }
+
+  setOtherDiscountsFormArrayInsert() {
+    const otherDiscountsArray = this.salaryForm.get('otherDiscounts') as FormArray;
+    for (let i = this.salary.otherDiscounts.length - 1; i >= 0; i--) {
+      const formArray = this.fb.group({
+        discountName: this.salary.otherDiscounts[i].discountName,
+        discountValue: this.salary.otherDiscounts[i].discountValue,
+      });
+      otherDiscountsArray.push(formArray);
+      break;
+    }
+  }
+
+  setOtherDiscountsFormArrayUpdate(otherDiscount: OtherDiscount) {
+    const otherDiscountsArray = this.salaryForm.get('otherDiscounts') as FormArray;
+    for (let i = otherDiscountsArray.length - 1; i >= 0; i--) {
+      if (otherDiscount.index === i) {
+        otherDiscountsArray.at(i).get('discountName').setValue(otherDiscount.discountName);
+        otherDiscountsArray.at(i).get('discountValue').setValue(otherDiscount.discountValue);
+        this.salary.otherDiscounts[i].discountName = otherDiscount.discountName;
+        this.salary.otherDiscounts[i].discountValue = otherDiscount.discountValue;
+      }
+    }
+  }
+
+  editOtherDiscount(index: number) {
+    const otherDiscountsArray = this.salaryForm.get('otherDiscounts') as FormArray;
+    otherDiscountsArray.at(index).get('discountName').setValue(this.salary.otherDiscounts[index].discountName);
+    otherDiscountsArray.at(index).get('discountValue').setValue(this.salary.otherDiscounts[index].discountValue);
+    this.sharedDataService.setOtherDiscountData(this.salary.otherDiscounts[index], Constants.ACTION_UPDATE, index);
+  }
+
+  deleteOtherDiscount(index: number) {
+    this.salary.otherDiscounts.splice(index, 1);
+    const otherDiscountsArray = this.salaryForm.get('otherDiscounts') as FormArray;
+    otherDiscountsArray.removeAt(index);
   }
 
   processSuccess(response: any) {

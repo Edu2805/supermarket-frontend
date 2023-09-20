@@ -33,16 +33,18 @@ const maskConfigFunction: () => Partial<IConfig> = () => {
         OtherDiscountService
     ],
     imports:[
-        CommonModule,
-        FormsModule,
-        ReactiveFormsModule,
-        HttpClientModule,
-        NarikCustomValidatorsModule,
-        TranslateModule,
-        NgxSpinnerModule,
-        NgxMaskModule.forRoot(maskConfigFunction),
-        PaginationModule,
+      CommonModule,
+      FormsModule,
+      ReactiveFormsModule,
+      HttpClientModule,
+      NarikCustomValidatorsModule,
+      TranslateModule,
+      NgxSpinnerModule,
+      NgxMaskModule.forRoot(maskConfigFunction),
+      PaginationModule,
     ],
-    exports:[]
+    exports:[
+      CreateOtherDiscountComponent
+    ]
 })
 export class OtherDiscountModule{}

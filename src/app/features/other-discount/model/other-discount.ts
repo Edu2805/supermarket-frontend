@@ -1,5 +1,7 @@
 export interface OtherDiscount {
     id?: string,
     discountName: string,
-    discountValue: number
+    discountValue: number,
+    actionType?: string,
+    index?: number
 }

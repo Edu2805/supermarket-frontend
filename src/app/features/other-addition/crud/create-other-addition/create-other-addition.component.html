@@ -9,7 +9,8 @@
     ><p style="color: white" > {{ 'br_com_supermarket_MSG_WAIT' | translate }} </p>
     </ngx-spinner>
 
-    <h3>{{ 'br_com_supermarket_OTHER_ADDITION_INSERT_NEW' | translate }}</h3>
+    <h3 *ngIf= "action !== 'UPDATE'">{{ 'br_com_supermarket_OTHER_ADDITION_INSERT_NEW' | translate }}</h3>
+    <h3 *ngIf= "action === 'UPDATE'">{{ 'br_com_supermarket_OTHER_ADDITION_INSERT_UPDATE' | translate }}</h3>
     
     <hr>
     <div class="row">
