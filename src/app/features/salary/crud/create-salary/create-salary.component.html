@@ -16,6 +16,17 @@
         <div class="col-md-10">
             <form novalidate="novalidate" (ngSubmit)="addSalary()" [formGroup]="salaryForm">
 
+                <div class="form-group">
+                    <input 
+                        type="submit" 
+                        value="{{ 'br_com_supermarket_BUTTON_REGISTER' | translate }}" 
+                        [disabled]="!salaryForm.valid" 
+                        class="btn btn-primary"
+                        >
+                    &nbsp;
+                    <a class="btn btn-info" [routerLink]="[ '/salary/getAll']">{{ 'br_com_supermarket_BUTTON_BACK' | translate }}</a>
+                </div>
+
                 <div class="alert alert-danger" *ngIf="errors?.length > 0">
                     <h3 id="msgRetorno">{{ 'br_com_supermarket_MSG_GENERIC_ERROR' | translate }}</h3>
                     <ul>
@@ -153,19 +164,27 @@
                     </div>
                 </div>
 
-                <!-- Verificar como implementar o create de other addition e discount -->
+                <app-create-other-addition (formOtherAdditionSubmitted)="onFormOtherAdditionSubmitted($event)"></app-create-other-addition>
 
-                <div class="form-group">
-                    <input 
-                        type="submit" 
-                        value="{{ 'br_com_supermarket_BUTTON_REGISTER' | translate }}" 
-                        [disabled]="!salaryForm.valid" 
-                        class="btn btn-primary"
-                        >
-                    &nbsp;
-                    <a class="btn btn-info" [routerLink]="[ '/salary/getAll']">{{ 'br_com_supermarket_BUTTON_BACK' | translate }}</a>
-                </div>
             </form>
+            <table class="table table-hover">
+                <div *ngIf="salary.otherAdditions.length > 0">
+                    <h4>{{ 'br_com_supermarket_OTHER_ADDITION_NEW_INSERTED' | translate }}</h4>
+                    <tr *ngFor="let other of salary.otherAdditions; let i = index">
+                        <td>
+                            {{ other.additionName }}
+                        </td>
+                        <td>
+                            {{ other.additionValue }}
+                        </td>
+                        <td class="text-right">
+                            <i class="fa fa-pencil-alt" (click)="editOtherAddition(i)"></i>&nbsp;
+                            <i class="fa fa-trash" (click)="deleteOtherAddition(i)"></i>
+                        </td>
+                    </tr>
+                </div>
+            </table>
+            
         </div>
     </div>
 </div>

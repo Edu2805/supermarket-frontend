@@ -1,1 +1,89 @@
-<p>create-other-addition works!</p>
+<div class="container main-container">
+
+    <ngx-spinner 
+        bdColor = "rgba(0, 0, 0, 0.8)" 
+        size = "medium" 
+        color = "#fff" 
+        type = "ball-beat" 
+        [fullScreen] = "true"
+    ><p style="color: white" > {{ 'br_com_supermarket_MSG_WAIT' | translate }} </p>
+    </ngx-spinner>
+
+    <h3>{{ 'br_com_supermarket_OTHER_ADDITION_INSERT_NEW' | translate }}</h3>
+    
+    <hr>
+    <div class="row">
+        <div class="col-md-8">
+            <form novalidate="novalidate" (ngSubmit)="addOtherAdditon()" [formGroup]="otherAdditionForm">
+                <div class="alert alert-danger" *ngIf="errors?.length > 0">
+                    <h3 id="msgRetorno">{{ 'br_com_supermarket_MSG_GENERIC_ERROR' | translate }}</h3>
+                    <ul>
+                        <li *ngFor="let error of errors">{{ error }}</li>
+                    </ul>
+                </div>
+        
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">{{ 'br_com_supermarket_OTHER_ADDITION_ADDITION_NAME' | translate }}</label>
+                            <div>
+                                <input 
+                                class="form-control" 
+                                id="additionName" 
+                                type="text" 
+                                placeholder="{{ 'br_com_supermarket_OTHER_ADDITION_ADDITION_NAME_REQUIRED_PLACEHOLDER' | translate }}" 
+                                formControlName="additionName" 
+                                [ngClass]="{'is-invalid': displayMessage.additionName }"
+                                />
+                                <span class="text-danger" *ngIf="displayMessage.additionName">
+                                <p [innerHTML]="displayMessage.additionName"></p>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">{{ 'br_com_supermarket_OTHER_ADDITION_ADDITION_VALUE' | translate }}</label>
+                            <div>
+                                <input 
+                                class="form-control" 
+                                id="additionValue" 
+                                type="text" 
+                                placeholder="{{ 'br_com_supermarket_OTHER_ADDITION_ADITION_VALUE_REQUIRED_PLACEHOLDER' | translate }}" 
+                                formControlName="additionValue" 
+                                [allowNegativeNumbers]="false"
+                                mask="separator.2"
+                                thousandSeparator="."
+                                [ngClass]="{'is-invalid': displayMessage.additionValue }"
+                                />
+                                <span class="text-danger" *ngIf="displayMessage.additionValue">
+                                <p [innerHTML]="displayMessage.additionValue"></p>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group" *ngIf= "action !== 'UPDATE'" >
+                            <input 
+                                type="submit" 
+                                value="{{ 'br_com_supermarket_BUTTON_INSERT' | translate }}" 
+                                [disabled]="!otherAdditionForm.valid" 
+                                class="btn btn-primary"
+                            >
+                        </div>
+
+                        <div class="form-group" *ngIf= "action === 'UPDATE'" >
+                            <input 
+                                type="submit" 
+                                value="Atualizar" 
+                                [disabled]="!otherAdditionForm.valid" 
+                                class="btn btn-primary"
+                            >
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>      
+</div>

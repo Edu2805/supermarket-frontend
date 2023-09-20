@@ -316,6 +316,15 @@
     "br_com_supermarket_SALARY_FINAL_COMPETENCE_REQUIRED_PLACEHOLDER": "Competência final (requerido)",
     "br_com_supermarket_SALARY_OTHER_ADDITION_REQUIRED_PLACEHOLDER": "Outros proventos (opcional)",
     "br_com_supermarket_SALARY_OTHER_DISCOUNT_REQUIRED_PLACEHOLDER": "Outros descontos (opcional)",
+    "br_com_supermarket_OTHER_ADDITION_INSERT_NEW": "Inserir outros proventos",
+    "br_com_supermarket_OTHER_ADDITION_NEW_INSERTED": "Outros proventos cadastrados",
+    "br_com_supermarket_OTHER_ADDITION_ADDITION_NAME": "Descrição do provento",
+    "br_com_supermarket_OTHER_ADDITION_ADDITION_VALUE": "Valor do provento",
+    "br_com_supermarket_OTHER_ADDITION_ADDITION_NAME_REQUIRED_PLACEHOLDER": "Descrição do provento (requerido)",
+    "br_com_supermarket_OTHER_ADDITION_ADITION_VALUE_REQUIRED_PLACEHOLDER": "Valor do provento (requerido)",
+    "br_com_supermarket_OTHER_ADDITION_ERROR_FORM_ADDITION_NAME_REQUIRED_MESSAGE": "Informe a descrição do provento",
+    "br_com_supermarket_OTHER_ADDITION_ERROR_FORM_ADDITION_NAME_MIN_MAX_LENGTH_MESSAGE": "A descrição do provento não pode ter menos do que 2 e mais do que 100 caracteres.",
+    "br_com_supermarket_OTHER_ADDITION_ERROR_FORM_ADDITION_VALUE_REQUIRED_MESSAGE": "Informe o valor do provento",
     
     "br_com_supermarket_BUTTON_REGISTER": "Cadastrar",
     "br_com_supermarket_BUTTON_EDIT": "Editar",
@@ -331,6 +340,7 @@
     "br_com_supermarket_PERSON_NEW_PERSON": "Nova perssoa",
     "br_com_supermarket_BUTTON_BACK": "Voltar",
     "br_com_supermarket_BUTTON_DELETE": "Excluir",
+    "br_com_supermarket_BUTTON_INSERT": "Inserir",
 
     "br_com_supermarket_MSG_GENERIC_SUCCESS": "Sucesso",
     "br_com_supermarket_MSG_GENERIC_PAGE_NOT_FOUND": "Página não encontrada",
