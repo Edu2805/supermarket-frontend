@@ -165,6 +165,7 @@
                 </div>
 
                 <app-create-other-addition (formOtherAdditionSubmitted)="onFormOtherAdditionSubmitted($event)"></app-create-other-addition>
+                <app-create-other-discount (formOtherDiscountsSubmitted)="onFormOtherDiscountSubmitted($event)"></app-create-other-discount>
 
             </form>
             <table class="table table-hover">
@@ -180,6 +181,24 @@
                         <td class="text-right">
                             <i class="fa fa-pencil-alt" (click)="editOtherAddition(i)"></i>&nbsp;
                             <i class="fa fa-trash" (click)="deleteOtherAddition(i)"></i>
+                        </td>
+                    </tr>
+                </div>
+            </table>
+
+            <table class="table table-hover">
+                <div *ngIf="salary.otherDiscounts.length > 0">
+                    <h4>{{ 'br_com_supermarket_OTHER_ADDITION_NEW_INSERTED' | translate }}</h4>
+                    <tr *ngFor="let other of salary.otherDiscounts; let i = index">
+                        <td>
+                            {{ other.discountName }}
+                        </td>
+                        <td>
+                            {{ other.discountValue }}
+                        </td>
+                        <td class="text-right">
+                            <i class="fa fa-pencil-alt" (click)="editOtherDiscount(i)"></i>&nbsp;
+                            <i class="fa fa-trash" (click)="deleteOtherDiscount(i)"></i>
                         </td>
                     </tr>
                 </div>

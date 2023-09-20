@@ -20,6 +20,7 @@ import { SalaryGuardService } from "./services/salary.guard";
 import { SalaryResolve } from "./services/salary.resolve";
 import { OtherAdditionModule } from "../other-addition/other-addition.module";
 import { OtherAdditionService } from "../other-addition/services/other-addition.service";
+import { OtherDiscountModule } from "../other-discount/other-discount.module";
 
 const maskConfigFunction: () => Partial<IConfig> = () => {
     return {
@@ -54,7 +55,8 @@ const maskConfigFunction: () => Partial<IConfig> = () => {
         NgxMaskModule.forRoot(maskConfigFunction),
         PaginationModule,
         PipeModule,
-        OtherAdditionModule
+        OtherAdditionModule,
+        OtherDiscountModule
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     exports:[]

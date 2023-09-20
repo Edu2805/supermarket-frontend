@@ -1,1 +1,91 @@
-<p>create-other-discount works!</p>
+<div class="container main-container">
+
+    <ngx-spinner 
+        bdColor = "rgba(0, 0, 0, 0.8)" 
+        size = "medium" 
+        color = "#fff" 
+        type = "ball-beat" 
+        [fullScreen] = "true"
+    ><p style="color: white" > {{ 'br_com_supermarket_MSG_WAIT' | translate }} </p>
+    </ngx-spinner>
+
+    <h3 *ngIf= "action !== 'UPDATE'">{{ 'br_com_supermarket_OTHER_DISCOUNT_INSERT_NEW' | translate }}</h3>
+    <h3 *ngIf= "action === 'UPDATE'">{{ 'br_com_supermarket_OTHER_DISCOUNT_INSERT_UPDATE' | translate }}</h3>
+    
+    <hr>
+    <div class="row">
+        <div class="col-md-8">
+            <form novalidate="novalidate" (ngSubmit)="addOtherDiscount()" [formGroup]="otherDiscountForm">
+                <div class="alert alert-danger" *ngIf="errors?.length > 0">
+                    <h3 id="msgRetorno">{{ 'br_com_supermarket_MSG_GENERIC_ERROR' | translate }}</h3>
+                    <ul>
+                        <li *ngFor="let error of errors">{{ error }}</li>
+                    </ul>
+                </div>
+        
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">{{ 'br_com_supermarket_OTHER_DISCOUNT_DISCOUNT_NAME' | translate }}</label>
+                            <div>
+                                <input 
+                                class="form-control" 
+                                id="discountName" 
+                                type="text" 
+                                placeholder="{{ 'br_com_supermarket_OTHER_DISCOUNT_DISCOUNT_NAME_REQUIRED_PLACEHOLDER' | translate }}" 
+                                formControlName="discountName" 
+                                [ngClass]="{'is-invalid': displayMessage.discountName }"
+                                />
+                                <span class="text-danger" *ngIf="displayMessage.discountName">
+                                <p [innerHTML]="displayMessage.discountName"></p>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">{{ 'br_com_supermarket_OTHER_DISCOUNT_DISCOUNT_VALUE' | translate }}</label>
+                            <div>
+                                <input 
+                                class="form-control" 
+                                id="discountValue" 
+                                type="text" 
+                                placeholder="{{ 'br_com_supermarket_OTHER_DISCOUNT_DISCOUNT_VALUE_REQUIRED_PLACEHOLDER' | translate }}" 
+                                formControlName="discountValue" 
+                                [allowNegativeNumbers]="false"
+                                mask="separator.2"
+                                thousandSeparator="."
+                                [ngClass]="{'is-invalid': displayMessage.discountValue }"
+                                />
+                                <span class="text-danger" *ngIf="displayMessage.discountValue">
+                                <p [innerHTML]="displayMessage.discountValue"></p>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group" *ngIf= "action !== 'UPDATE'" >
+                            <input 
+                                type="submit" 
+                                value="{{ 'br_com_supermarket_BUTTON_INSERT' | translate }}" 
+                                [disabled]="!otherDiscountForm.valid" 
+                                class="btn btn-primary"
+                            >
+                        </div>
+
+                        <div class="form-group" *ngIf= "action === 'UPDATE'" >
+                            <input 
+                                type="submit" 
+                                value="Atualizar" 
+                                [disabled]="!otherDiscountForm.valid" 
+                                class="btn btn-primary"
+                            >
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>      
+</div>
+

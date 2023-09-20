@@ -29,6 +29,7 @@ export class CreateOtherAdditionComponent extends FormBaseComponent implements O
   editValues: any;
   actionType: any;
   action: any;
+  totalDiscounts: number;
   
   constructor(private fb: FormBuilder,
     private sharedDataService: SharedDataService,
