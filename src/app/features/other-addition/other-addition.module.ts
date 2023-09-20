@@ -26,7 +26,7 @@ const maskConfigFunction: () => Partial<IConfig> = () => {
     CreateOtherAdditionComponent,
     DeleteOtherAdditionComponent,
     UpdateOtherAdditionComponent,
-    ReadOtherAdditionComponent
+    ReadOtherAdditionComponent,
   ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     providers: [
@@ -43,6 +43,8 @@ const maskConfigFunction: () => Partial<IConfig> = () => {
         NgxMaskModule.forRoot(maskConfigFunction),
         PaginationModule,
     ],
-    exports:[]
+    exports:[
+      CreateOtherAdditionComponent
+    ]
 })
 export class OtherAdditionModule{}

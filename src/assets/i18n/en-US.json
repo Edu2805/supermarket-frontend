@@ -316,6 +316,15 @@
     "br_com_supermarket_SALARY_FINAL_COMPETENCE_REQUIRED_PLACEHOLDER": "Final competence (required)",
     "br_com_supermarket_SALARY_OTHER_ADDITION_REQUIRED_PLACEHOLDER": "Other additions (optional)",
     "br_com_supermarket_SALARY_OTHER_DISCOUNT_REQUIRED_PLACEHOLDER": "Other discounts (optional)",
+    "br_com_supermarket_OTHER_ADDITION_INSERT_NEW": "Insert new other additions",
+    "br_com_supermarket_OTHER_ADDITION_NEW_INSERTED": "Other additions registered",
+    "br_com_supermarket_OTHER_ADDITION_ADDITION_NAME": "Other addition description",
+    "br_com_supermarket_OTHER_ADDITION_ADDITION_VALUE": "Other addition value",
+    "br_com_supermarket_OTHER_ADDITION_ADDITION_NAME_REQUIRED_PLACEHOLDER": "Other addition description (required)",
+    "br_com_supermarket_OTHER_ADDITION_ADITION_VALUE_REQUIRED_PLACEHOLDER": "Other addition value (required)",
+    "br_com_supermarket_OTHER_ADDITION_ERROR_FORM_ADDITION_NAME_REQUIRED_MESSAGE": "Provide a other addition description",
+    "br_com_supermarket_OTHER_ADDITION_ERROR_FORM_ADDITION_NAME_MIN_MAX_LENGTH_MESSAGE": "The other addition description cannot be less than 2 and more than 100 characters.",
+    "br_com_supermarket_OTHER_ADDITION_ERROR_FORM_ADDITION_VALUE_REQUIRED_MESSAGE": "Enter the other addition value",
 
     "br_com_supermarket_BUTTON_REGISTER": "Register",
     "br_com_supermarket_BUTTON_EDIT": "Edit",
@@ -331,6 +340,7 @@
     "br_com_supermarket_PERSON_NEW_PERSON": "New person",
     "br_com_supermarket_BUTTON_BACK": "Back",
     "br_com_supermarket_BUTTON_DELETE": "Delete",
+    "br_com_supermarket_BUTTON_INSERT": "Insert",
 
     "br_com_supermarket_MSG_GENERIC_SUCCESS": "Success!",
     "br_com_supermarket_MSG_GENERIC_PAGE_NOT_FOUND": "Page not found",

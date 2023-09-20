@@ -18,6 +18,8 @@ import { CreateSalaryComponent } from "./crud/create-salary/create-salary.compon
 import { SalaryService } from "./services/salary.service";
 import { SalaryGuardService } from "./services/salary.guard";
 import { SalaryResolve } from "./services/salary.resolve";
+import { OtherAdditionModule } from "../other-addition/other-addition.module";
+import { OtherAdditionService } from "../other-addition/services/other-addition.service";
 
 const maskConfigFunction: () => Partial<IConfig> = () => {
     return {
@@ -37,7 +39,8 @@ const maskConfigFunction: () => Partial<IConfig> = () => {
     providers: [
         SalaryService,
         SalaryGuardService,
-        SalaryResolve
+        SalaryResolve,
+        OtherAdditionService
     ],
     imports:[
         CommonModule,
@@ -50,7 +53,8 @@ const maskConfigFunction: () => Partial<IConfig> = () => {
         NgxSpinnerModule,
         NgxMaskModule.forRoot(maskConfigFunction),
         PaginationModule,
-        PipeModule
+        PipeModule,
+        OtherAdditionModule
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     exports:[]

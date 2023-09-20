@@ -316,6 +316,15 @@
     "br_com_supermarket_SALARY_FINAL_COMPETENCE_REQUIRED_PLACEHOLDER": "Competencia final (obligatoria)",
     "br_com_supermarket_SALARY_OTHER_ADDITION_REQUIRED_PLACEHOLDER": "Otras ganancias (opcional)",
     "br_com_supermarket_SALARY_OTHER_DISCOUNT_REQUIRED_PLACEHOLDER": "Otros descuentos (opcional)",
+    "br_com_supermarket_OTHER_ADDITION_INSERT_NEW": "Introduzca otras ganancias",
+    "br_com_supermarket_OTHER_ADDITION_NEW_INSERTED": "Otras ganancias registradas",
+    "br_com_supermarket_OTHER_ADDITION_ADDITION_NAME": "Descripción de los ingresos",
+    "br_com_supermarket_OTHER_ADDITION_ADDITION_VALUE": "Valor de beneficio",
+    "br_com_supermarket_OTHER_ADDITION_ADDITION_NAME_REQUIRED_PLACEHOLDER": "Descripción de ingresos (requerido)",
+    "br_com_supermarket_OTHER_ADDITION_ADITION_VALUE_REQUIRED_PLACEHOLDER": "Monto de ganancias (requerido)",
+    "br_com_supermarket_OTHER_ADDITION_ERROR_FORM_ADDITION_NAME_REQUIRED_MESSAGE": "Proporcionar una descripción de los ingresos.",
+    "br_com_supermarket_OTHER_ADDITION_ERROR_FORM_ADDITION_NAME_MIN_MAX_LENGTH_MESSAGE": "La descripción de los ingresos no podrá tener menos de 2 ni más de 100 caracteres.",
+    "br_com_supermarket_OTHER_ADDITION_ERROR_FORM_ADDITION_VALUE_REQUIRED_MESSAGE": "Introduzca el importe de las ganancias",
 
     "br_com_supermarket_BUTTON_REGISTER": "Registro",
     "br_com_supermarket_BUTTON_EDIT": "Editar",
@@ -331,6 +340,7 @@
     "br_com_supermarket_PERSON_NEW_PERSON": "Persona nueva",
     "br_com_supermarket_BUTTON_BACK": "Volver",
     "br_com_supermarket_BUTTON_DELETE": "Borrar",
+    "br_com_supermarket_BUTTON_INSERT": "Insertar",
 
     "br_com_supermarket_MSG_GENERIC_SUCCESS": "¡Éxito!",
     "br_com_supermarket_MSG_GENERIC_PAGE_NOT_FOUND": "Página no encontrada",
