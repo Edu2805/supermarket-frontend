@@ -276,9 +276,9 @@ export class CreateSalaryComponent extends FormBaseComponent implements OnInit {
     this.actionType = Constants.ACTION_INSERT;
 
     if (this.exceededMaximumDiscount) {
-      this.toastr.warning( 
-        "O desconto máximo em folha não pode ultrapassar os 70% do salário bruto, realize o ajuste dos descontos.",
-        "Atenção"
+      this.toastr.warning(
+        this.translateService.instant('br_com_supermarket_SALARY_MAXIMUM_DISCOUNT'),
+        this.translateService.instant('br_com_supermarket_MSG_GENERIC_WARNING')
       );
     }
 
