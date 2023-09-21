@@ -114,6 +114,8 @@ export class CreateSalaryComponent extends FormBaseComponent implements OnInit {
     if (this.salaryForm.dirty && this.salaryForm.valid) {
       this.spinner.show();
       this.salary = Object.assign({}, this.salary, this.salaryForm.value);
+      this.salary.competenceStart = this.convertDate(this.salaryForm.get('competenceStart').value);
+      this.salary.finalCompetence = this.convertDate(this.salaryForm.get('finalCompetence').value);
       this.salaryService.newSalary(this.salary)
         .subscribe(
           success => { this.processSuccess(success) },
@@ -284,6 +286,13 @@ export class CreateSalaryComponent extends FormBaseComponent implements OnInit {
       netSalary += addition.additionValue || 0;
     }
     this.netSalaryValue = netSalary;
+  }
+
+  convertDate(date: string): string {
+    const day = date.substr(0, 2);
+    const month = date.substr(2, 2);
+    const year = date.substr(4, 4);
+    return `${year}-${month}-${day}`;
   }
 
 }
