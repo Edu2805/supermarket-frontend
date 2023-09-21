@@ -28,14 +28,14 @@
             <div class="col-md-10">
                 <input 
                     class="form-control" 
-                    id="userName" 
+                    id="login" 
                     type="text" 
                     placeholder="{{ 'br_com_supermarket_USER_NAME_REQUIRED' | translate }}" 
-                    formControlName="userName" 
-                    [ngClass]="{'is-invalid': displayMessage.userName}" 
+                    formControlName="login" 
+                    [ngClass]="{'is-invalid': displayMessage.login}" 
                 />
-                <span class="text-danger" *ngIf="displayMessage.userName">
-                    <p [innerHTML]="displayMessage.userName"></p>
+                <span class="text-danger" *ngIf="displayMessage.login">
+                    <p [innerHTML]="displayMessage.login"></p>
                 </span>
             </div>
         </div>

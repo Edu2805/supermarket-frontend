@@ -1,6 +1,6 @@
 export interface UserData {
     id?: string,
-    userName: string,
+    login: string,
     password: string,
     confirmPassword?: string,
     role: string,

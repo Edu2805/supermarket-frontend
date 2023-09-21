@@ -63,7 +63,7 @@ describe('RegisterComponent', () => {
   });
 
   const REGISTER_USER = {
-    userName: 'test@teste.com',
+    login: 'test@teste.com',
     password: '123456',
     confirmPassword: '123456',
     role: 'ADMIN'
@@ -80,7 +80,7 @@ describe('RegisterComponent', () => {
 
   it('should register successfully', () => {
     const registerForm: FormGroup = component.registerForm;
-    registerForm.get('userName').setValue('test@teste.com');
+    registerForm.get('login').setValue('test@teste.com');
     registerForm.get('password').setValue('123456');
     registerForm.get('confirmPassword').setValue('123456');
     registerForm.get('role').setValue('ADMIN');
@@ -88,7 +88,7 @@ describe('RegisterComponent', () => {
     registerForm.valid;
 
     registerSpy.and.callFake((options: any) => {
-      expect(options.userName).toEqual('test@teste.com');
+      expect(options.login).toEqual('test@teste.com');
       expect(options.password).toEqual('123456');
       expect(options.confirmPassword).toEqual('123456');
       expect(options.role).toEqual('ADMIN');
@@ -111,7 +111,7 @@ describe('RegisterComponent', () => {
 
   it('should not register user when there is an error in registration', () => {
     const registerForm: FormGroup = component.registerForm;
-    registerForm.get('userName').setValue('test@teste.com');
+    registerForm.get('login').setValue('test@teste.com');
     registerForm.get('password').setValue('123456');
     registerForm.get('confirmPassword').setValue('123456');
     registerForm.get('role').setValue('ADMIN');
@@ -137,7 +137,7 @@ describe('RegisterComponent', () => {
 
   it('should not authenticate user when there is an error in authentication proccess', () => {
     const registerForm: FormGroup = component.registerForm;
-    registerForm.get('userName').setValue('test@teste.com');
+    registerForm.get('login').setValue('test@teste.com');
     registerForm.get('password').setValue('123456');
     registerForm.get('confirmPassword').setValue('123456');
     registerForm.get('role').setValue('ADMIN');
@@ -163,33 +163,33 @@ describe('RegisterComponent', () => {
 
   it('should required user', () => {
     const registerForm: FormGroup = component.registerForm;
-    registerForm.get('userName').setValue('');
+    registerForm.get('login').setValue('');
     registerForm.get('password').setValue('123456');
     registerForm.get('confirmPassword').setValue('123456');
     registerForm.get('role').setValue('ADMIN');
     
     component.ngAfterViewInit();
 
-    expect(registerForm.get('userName').valid).toEqual(false);
-    expect(component.validationMessages.userName.required).toEqual('br_com_supermarket_INFORM_THE_USER');
+    expect(registerForm.get('login').valid).toEqual(false);
+    expect(component.validationMessages.login.required).toEqual('br_com_supermarket_INFORM_THE_USER');
   });
 
   it('should invalidate the form when login is incorrect', () => {
     const registerForm: FormGroup = component.registerForm;
-    registerForm.get('userName').setValue('/*&!s');
+    registerForm.get('login').setValue('/*&!s');
     registerForm.get('password').setValue('123456');
     registerForm.get('confirmPassword').setValue('123456');
     registerForm.get('role').setValue('ADMIN');
     
     component.ngAfterViewInit();
 
-    expect(registerForm.get('userName').valid).toEqual(false);
-    expect(component.validationMessages.userName.userName).toEqual('br_com_supermarket_INVALID_USER');
+    expect(registerForm.get('login').valid).toEqual(false);
+    expect(component.validationMessages.login.login).toEqual('br_com_supermarket_INVALID_USER');
   });
 
   it('should required password', () => {
     const registerForm: FormGroup = component.registerForm;
-    registerForm.get('userName').setValue('test@teste.com');
+    registerForm.get('login').setValue('test@teste.com');
     registerForm.get('password').setValue('');
     registerForm.get('confirmPassword').setValue('');
     registerForm.get('role').setValue('ADMIN');
@@ -202,7 +202,7 @@ describe('RegisterComponent', () => {
 
   it('should invalidate password when rangeLength is less than 6 characters', () => {
     const registerForm: FormGroup = component.registerForm;
-    registerForm.get('userName').setValue('test@teste.com');
+    registerForm.get('login').setValue('test@teste.com');
     registerForm.get('password').setValue('1');
     registerForm.get('confirmPassword').setValue('1');
     registerForm.get('role').setValue('ADMIN');
@@ -215,7 +215,7 @@ describe('RegisterComponent', () => {
 
   it('should invalidate password when rangeLength is greater than 8 characters', () => {
     const registerForm: FormGroup = component.registerForm;
-    registerForm.get('userName').setValue('test@teste.com');
+    registerForm.get('login').setValue('test@teste.com');
     registerForm.get('password').setValue('123456789');
     registerForm.get('confirmPassword').setValue('123456789');
     registerForm.get('role').setValue('ADMIN');
@@ -228,7 +228,7 @@ describe('RegisterComponent', () => {
 
   it('should required confirmPassword', () => {
     const registerForm: FormGroup = component.registerForm;
-    registerForm.get('userName').setValue('test@teste.com');
+    registerForm.get('login').setValue('test@teste.com');
     registerForm.get('password').setValue('123456');
     registerForm.get('confirmPassword').setValue('');
     registerForm.get('role').setValue('ADMIN');
@@ -241,7 +241,7 @@ describe('RegisterComponent', () => {
 
   it('should invalidate confirmPassword when rangeLength is less than 6 characters', () => {
     const registerForm: FormGroup = component.registerForm;
-    registerForm.get('userName').setValue('test@teste.com');
+    registerForm.get('login').setValue('test@teste.com');
     registerForm.get('password').setValue('123456');
     registerForm.get('confirmPassword').setValue('1');
     registerForm.get('role').setValue('ADMIN');
@@ -254,7 +254,7 @@ describe('RegisterComponent', () => {
 
   it('should invalidate confirmPassword when rangeLength is greater than 8 characters', () => {
     const registerForm: FormGroup = component.registerForm;
-    registerForm.get('userName').setValue('test@teste.com');
+    registerForm.get('login').setValue('test@teste.com');
     registerForm.get('password').setValue('123456');
     registerForm.get('confirmPassword').setValue('123456789');
     registerForm.get('role').setValue('ADMIN');
@@ -267,7 +267,7 @@ describe('RegisterComponent', () => {
 
   it('should invalidate when password is different of confirmPassword', () => {
     const registerForm: FormGroup = component.registerForm;
-    registerForm.get('userName').setValue('test@teste.com');
+    registerForm.get('login').setValue('test@teste.com');
     registerForm.get('password').setValue('123456');
     registerForm.get('confirmPassword').setValue('1234567');
     registerForm.get('role').setValue('ADMIN');
@@ -280,7 +280,7 @@ describe('RegisterComponent', () => {
 
   it('should required role', () => {
     const registerForm: FormGroup = component.registerForm;
-    registerForm.get('userName').setValue('test@teste.com');
+    registerForm.get('login').setValue('test@teste.com');
     registerForm.get('password').setValue('123456');
     registerForm.get('confirmPassword').setValue('1234567');
     registerForm.get('role').setValue('');

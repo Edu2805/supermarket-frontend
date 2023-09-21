@@ -42,9 +42,9 @@ export class RegisterComponent implements OnInit, AfterViewInit {
     private spinner: NgxSpinnerService) { 
 
       this.validationMessages = {
-        userName: {
+        login: {
           required: this.translateService.instant('br_com_supermarket_INFORM_THE_USER'),
-          userName: this.translateService.instant('br_com_supermarket_INVALID_USER'),
+          login: this.translateService.instant('br_com_supermarket_INVALID_USER'),
         },
         password: {
           required: this.translateService.instant('br_com_supermarket_INFORM_THE_PASSWORD'),
@@ -69,7 +69,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
     let confirmPassword = new FormControl('', [Validators.required, CustomValidators.equalTo(password), CustomValidators.rangeLength([6, 8])]);
 
     this.registerForm = this.fb.group({
-      userName: ['', [Validators.required, Validators.email]],
+      login: ['', [Validators.required, Validators.email]],
       password: password,
       confirmPassword: confirmPassword,
       role: ['', Validators.required]
@@ -105,13 +105,13 @@ export class RegisterComponent implements OnInit, AfterViewInit {
   }
 
   authenticate(user: UserData) {
-    this.auth.login = user.userName;
+    this.auth.login = user.login;
     this.auth.password = user.password;
     this.auth.role = user.role;
     this.accountService.login(this.auth)
       .subscribe(
         success => {
-          this.processSuccessAuth(success, user.userName, user.role);
+          this.processSuccessAuth(success, user.login, user.role);
         },
         fail => {this.processFail(fail)}
       )
