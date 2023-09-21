@@ -25,7 +25,7 @@
     "br_com_supermarket_AN_ERROR_OCCURRED_WHILE_GET_ROLES": "Ocorreu um erro ao buscar a lista de papeis de usuário, tente novamente mais tarde.",
     "br_com_supermarket_PASSWORD_DONOT_MATCH": "As senhas não conferem",
     "br_com_supermarket_ENTER_USE_ROLE": "Informe o papel do usuário",
-    "br_com_supermarket_REGISTER_SUCCESSFUL": "Registro realizado com sucesso!', 'Bem vindo!",
+    "br_com_supermarket_REGISTER_SUCCESSFUL": "Registro realizado com sucesso!, Bem vindo!",
     "br_com_supermarket_AN_ERROR_OCCURRED_WHILE_REGISTERING": "Ocorreu um erro ao realizar o cadastro. Tente novamente em alguns instantes.",
     "br_com_supermarket_CONFIRM_UNSAVE_CHANGES": "Tem certeza que deseja abandonar o preenchimento do formulário?",
     "br_com_supermarket_HOME_PAGE_OPTIONS": "Página de opções",
@@ -35,7 +35,7 @@
     "br_com_supermarket_HOME_SEVERAL": "Diversos",
     "br_com_supermarket_LOGIN_SIGN_IN_TITLE": "Login",
     "br_com_supermarket_LOGIN_SIGN_IN": "Entre com a sua conta",
-    "br_com_supermarket_LOGIN_SUCCESSFUL": "Login realizado com sucesso!', 'Bem vindo!",
+    "br_com_supermarket_LOGIN_SUCCESSFUL": "Login realizado com sucesso!, Bem vindo!",
     "br_com_supermarket_LOGIN_AN_ERROR_OCCURRED_WHILE_LOGGING_IN": "Ocorreu um erro ao realizar o login. Tente novamente em alguns instantes.",
     "br_com_supermarket_LOGIN_AN_ERROR_OCCURRED_EXPIRED_LOGIN": "O tempo de login do seu usuário expirou, faça novamente o login na plataforma.",
     "br_com_supermarket_LOGIN_INVALID_PASSWORD": "A senha informada está incorreta.",
@@ -317,6 +317,7 @@
     "br_com_supermarket_SALARY_OTHER_ADDITION_REQUIRED_PLACEHOLDER": "Outros proventos (opcional)",
     "br_com_supermarket_SALARY_OTHER_DISCOUNT_REQUIRED_PLACEHOLDER": "Outros descontos (opcional)",
     "br_com_supermarket_SALARY_NET_SALARY": "Salário a Receber",
+    "br_com_supermarket_SALARY_MAXIMUM_DISCOUNT": "O desconto máximo em folha não pode ultrapassar os 70% do salário bruto, realize o ajuste dos descontos.",
     "br_com_supermarket_OTHER_ADDITION_INSERT_NEW": "Inserir outros proventos",
     "br_com_supermarket_OTHER_ADDITION_INSERT_UPDATE": "Editar outros proventos",
     "br_com_supermarket_OTHER_ADDITION_NEW_INSERTED": "Outros proventos cadastrados",
@@ -362,5 +363,6 @@
     "br_com_supermarket_MSG_ERROR": "Ocorreu um erro",
     "br_com_supermarket_MSG_UNKNOWN_ERROR": "Ocorreu um erro desconhecido",
     "br_com_supermarket_MSG_WAIT": "Aguarde...",
-    "br_com_supermarket_MSG_ABANDON_FILLING_FORM": "Tem certeza que deseja abandonar o preenchimento do formulário?"
+    "br_com_supermarket_MSG_ABANDON_FILLING_FORM": "Tem certeza que deseja abandonar o preenchimento do formulário?",
+    "br_com_supermarket_MSG_GENERIC_WARNING": "Atenção!"
 }

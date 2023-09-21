@@ -25,7 +25,7 @@
     "br_com_supermarket_AN_ERROR_OCCURRED_WHILE_GET_ROLES": "Se produjo un error al obtener la lista de funciones de usuario. Vuelva a intentarlo más tarde.",
     "br_com_supermarket_PASSWORD_DONOT_MATCH": "Las contraseñas no coinciden",
     "br_com_supermarket_ENTER_USE_ROLE": "Ingrese el rol de usuario",
-    "br_com_supermarket_REGISTER_SUCCESSFUL": "¡Registro exitoso!', '¡Bienvenido!",
+    "br_com_supermarket_REGISTER_SUCCESSFUL": "¡Registro exitoso!, ¡Bienvenido!",
     "br_com_supermarket_AN_ERROR_OCCURRED_WHILE_REGISTERING": "Ocurrió un error durante el registro. Vuelva a intentarlo en un momento.",
     "br_com_supermarket_CONFIRM_UNSAVE_CHANGES": "¿Estás seguro de que quieres dejar de rellenar el formulario?",
     "br_com_supermarket_HOME_PAGE_OPTIONS": "Página de opciones",
@@ -35,7 +35,7 @@
     "br_com_supermarket_HOME_SEVERAL": "Varios",
     "br_com_supermarket_LOGIN_SIGN_IN_TITLE": "Acceso",
     "br_com_supermarket_LOGIN_SIGN_IN": "Inicia sesión con tu cuenta",
-    "br_com_supermarket_LOGIN_SUCCESSFUL": "¡Inicio de sesión exitoso!', '¡Bienvenido!",
+    "br_com_supermarket_LOGIN_SUCCESSFUL": "¡Inicio de sesión exitoso!, ¡Bienvenido!",
     "br_com_supermarket_LOGIN_AN_ERROR_OCCURRED_WHILE_LOGGING_IN": "Ocurrió un error al iniciar sesión. Vuelva a intentarlo en un momento.",
     "br_com_supermarket_LOGIN_AN_ERROR_OCCURRED_EXPIRED_LOGIN": "El tiempo de inicio de sesión de su usuario ha expirado, vuelva a iniciar sesión en la plataforma.",
     "br_com_supermarket_LOGIN_INVALID_PASSWORD": "La contraseña ingresada es incorrecta.",
@@ -317,6 +317,7 @@
     "br_com_supermarket_SALARY_OTHER_ADDITION_REQUIRED_PLACEHOLDER": "Otras ganancias (opcional)",
     "br_com_supermarket_SALARY_OTHER_DISCOUNT_REQUIRED_PLACEHOLDER": "Otros descuentos (opcional)",
     "br_com_supermarket_SALARY_NET_SALARY": "Salario a recibir",
+    "br_com_supermarket_SALARY_MAXIMUM_DISCOUNT": "La deducción máxima de nómina no puede exceder el 70% del salario bruto, ajustar las deducciones.",
     "br_com_supermarket_OTHER_ADDITION_INSERT_NEW": "Introduzca otras ganancias",
     "br_com_supermarket_OTHER_ADDITION_INSERT_UPDATE": "Editar otras ganancias",
     "br_com_supermarket_OTHER_ADDITION_NEW_INSERTED": "Otras ganancias registradas",
@@ -362,5 +363,6 @@
     "br_com_supermarket_MSG_ERROR": "Un error a ocurrido",
     "br_com_supermarket_MSG_UNKNOWN_ERROR": "Un error desconocido a ocurrido",
     "br_com_supermarket_MSG_WAIT": "Esperar...",
-    "br_com_supermarket_MSG_ABANDON_FILLING_FORM": "¿Estás seguro de que quieres dejar de rellenar el formulario?"
+    "br_com_supermarket_MSG_ABANDON_FILLING_FORM": "¿Estás seguro de que quieres dejar de rellenar el formulario?",
+    "br_com_supermarket_MSG_GENERIC_WARNING": "¡Atención!"
 }

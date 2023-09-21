@@ -25,7 +25,7 @@
     "br_com_supermarket_AN_ERROR_OCCURRED_WHILE_GET_ROLES": "There was an error fetching the list of user roles, please try again later.",
     "br_com_supermarket_PASSWORD_DONOT_MATCH": "Passwords don't match",
     "br_com_supermarket_ENTER_USE_ROLE": "Enter user role",
-    "br_com_supermarket_REGISTER_SUCCESSFUL": "Registration successful!', 'Welcome!",
+    "br_com_supermarket_REGISTER_SUCCESSFUL": "Registration successful!, Welcome!",
     "br_com_supermarket_AN_ERROR_OCCURRED_WHILE_REGISTERING": "An error occurred while registering. Please try again in a moment.",
     "br_com_supermarket_CONFIRM_UNSAVE_CHANGES": "Are you sure you want to abandon filling in the form?",
     "br_com_supermarket_HOME_PAGE_OPTIONS": "Options page",
@@ -35,7 +35,7 @@
     "br_com_supermarket_HOME_SEVERAL": "Several",
     "br_com_supermarket_LOGIN_SIGN_IN_TITLE": "Login",
     "br_com_supermarket_LOGIN_SIGN_IN": "Sign in with your account",
-    "br_com_supermarket_LOGIN_SUCCESSFUL": "Login successful!', 'Welcome!",
+    "br_com_supermarket_LOGIN_SUCCESSFUL": "Login successful!, Welcome!",
     "br_com_supermarket_LOGIN_AN_ERROR_OCCURRED_WHILE_LOGGING_IN": "An error occurred when logging in. Try it again in a moment.",
     "br_com_supermarket_LOGIN_AN_ERROR_OCCURRED_EXPIRED_LOGIN": "Your user's login time has expired, log in to the platform again.",
     "br_com_supermarket_LOGIN_INVALID_PASSWORD": "The entered password is incorrect.",
@@ -317,6 +317,7 @@
     "br_com_supermarket_SALARY_OTHER_ADDITION_REQUIRED_PLACEHOLDER": "Other additions (optional)",
     "br_com_supermarket_SALARY_OTHER_DISCOUNT_REQUIRED_PLACEHOLDER": "Other discounts (optional)",
     "br_com_supermarket_SALARY_NET_SALARY": "Salary to be Received",
+    "br_com_supermarket_SALARY_MAXIMUM_DISCOUNT": "The maximum payroll deduction cannot exceed 70% of the gross salary, adjust the deductions.",
     "br_com_supermarket_OTHER_ADDITION_INSERT_NEW": "Insert new other additions",
     "br_com_supermarket_OTHER_ADDITION_INSERT_UPDATE": "Edit other additions",
     "br_com_supermarket_OTHER_ADDITION_NEW_INSERTED": "Other additions registered",
@@ -362,5 +363,6 @@
     "br_com_supermarket_MSG_ERROR": "An error has occurred",
     "br_com_supermarket_MSG_UNKNOWN_ERROR": "An unknown error has occurred",
     "br_com_supermarket_MSG_WAIT": "Wait please...",
-    "br_com_supermarket_MSG_ABANDON_FILLING_FORM": "Are you sure you want to abandon filling in the form?"
+    "br_com_supermarket_MSG_ABANDON_FILLING_FORM": "Are you sure you want to abandon filling in the form?",
+    "br_com_supermarket_MSG_GENERIC_WARNING": "Warning"
 }
