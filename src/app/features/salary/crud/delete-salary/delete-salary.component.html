@@ -1,1 +1,110 @@
-<p>delete-salary works!</p>
+<div class="container main-container">
+    <ngx-spinner 
+        bdColor = "rgba(0, 0, 0, 0.8)" 
+        size = "medium" 
+        color = "#fff" 
+        type = "ball-beat" 
+        [fullScreen] = "true"
+    ><p style="color: white" > {{ 'br_com_supermarket_MSG_WAIT' | translate }} </p>
+    </ngx-spinner>
+
+    <h3>{{ 'br_com_supermarket_SALARY_DETAILS' | translate }} {{ salary?.position }}</h3>
+    <hr />
+
+    <div class="alert alert-danger" *ngIf="errors?.length > 0">
+        <h3 id="msgRetorno">{{ 'br_com_supermarket_MSG_GENERIC_ERROR' | translate }}</h3>
+        <ul>
+            <li *ngFor="let error of errors">{{ error }}</li>
+        </ul>
+    </div>
+
+    <div>
+        <dl class="row">
+            <dt class="col-sm-2">
+                <label class="control-label">{{ 'br_com_supermarket_SALARY_POSITION' | translate }}</label>
+            </dt>
+            <dd class="col-sm-10">
+                {{ salary?.position }}
+            </dd>
+            <dt class="col-sm-2">
+                <label class="control-label">{{ 'br_com_supermarket_SALARY_SALARY_RANGE' | translate }}</label>
+            </dt>
+            <dd class="col-sm-10">
+                {{ salary?.salaryRange }}
+            </dd>
+            <dt class="col-sm-2">
+                <label class="control-label">{{ 'br_com_supermarket_SALARY_GROSS_SALARY' | translate }}</label>
+            </dt>
+            <dd class="col-sm-10">
+                {{ salary?.grossSalary | currency : 'R$ ' }}
+            </dd>
+            <dt class="col-sm-2">
+                <label class="control-label">{{ 'br_com_supermarket_SALARY_NET_SALARY' | translate }}</label>
+            </dt>
+            <dd class="col-sm-10">
+                {{ salary?.netSalary | currency : 'R$ ' }}
+            </dd>
+            <dt class="col-sm-2">
+                <label class="control-label">{{ 'br_com_supermarket_SALARY_INSS' | translate }}</label>
+            </dt>
+            <dd class="col-sm-10">
+                {{ salary?.inss | currency : 'R$ ' }}
+            </dd>
+            <dt class="col-sm-2">
+                <label class="control-label">{{ 'br_com_supermarket_SALARY_FGTS' | translate }}</label>
+            </dt>
+            <dd class="col-sm-10">
+                {{ salary?.fgts | currency : 'R$ ' }}
+            </dd>
+            <dt class="col-sm-2">
+                <label class="control-label">{{ 'br_com_supermarket_SALARY_SALARY_ADVANCE' | translate }}</label>
+            </dt>
+            <dd class="col-sm-10">
+                {{ salary?.salaryAdvance | currency : 'R$ ' }}
+            </dd>
+            <dt class="col-sm-2">
+                <label class="control-label">{{ 'br_com_supermarket_SALARY_BENEFITS' | translate }}</label>
+            </dt>
+            <dd class="col-sm-10">
+                {{ salary?.benefits }}
+            </dd>
+            <dt class="col-sm-2">
+                <label class="control-label">{{ 'br_com_supermarket_SALARY_COMPETENCE_START' | translate }}</label>
+            </dt>
+            <dd class="col-sm-10">
+                {{ salary?.competenceStart | singleDate}}
+            </dd>
+            <dt class="col-sm-2">
+                <label class="control-label">{{ 'br_com_supermarket_SALARY_FINAL_COMPETENCE' | translate }}</label>
+            </dt>
+            <dd class="col-sm-10">
+                {{ salary?.finalCompetence | singleDate}}
+            </dd>
+        </dl>
+    </div>
+
+    <div class="accordion-heading" id="f1" (click)="accordion('f1')">
+        {{ 'br_com_supermarket_PROVIDER_DETAILS' | translate }} <span class="pull-right up-icon" [class.icon]="id === 'f1'"><i class="fa fa-chevron-up"></i></span>
+    </div>
+    <div class="accordion-content" *ngIf="id === 'f1'">
+        <div *ngFor="let otherAddition of salary.otherAdditions">
+            <other-addition-list [otherAddition]="otherAddition"></other-addition-list>
+        </div>
+    </div>
+    
+    <div class="accordion-heading" id="f2" (click)="accordion('f2')">
+        {{ 'br_com_supermarket_SUB_SECTION_DETAILS' | translate }} <span class="pull-right up-icon" [class.icon]="id === 'f2'"><i class="fa fa-chevron-up"></i></span>
+    </div>
+    <div class="accordion-content" *ngIf="id === 'f2'">
+        <div *ngFor="let otherDiscount of salary.otherDiscounts">
+            <other-discount-list [otherDiscount]="otherDiscount"></other-discount-list>
+        </div>
+    </div>
+    
+    <hr />
+
+    <div>
+        <a class="btn btn-danger" href="javascript:void(0)" (click)="deleteSalary()">{{ 'br_com_supermarket_BUTTON_DELETE' | translate }}</a>&nbsp;
+        <a class="btn btn-info" [routerLink]="['/salary/getAll']">{{ 'br_com_supermarket_BUTTON_BACK' | translate }}</a>
+    </div>
+</div>

@@ -22,6 +22,8 @@ import { OtherAdditionModule } from "../other-addition/other-addition.module";
 import { OtherAdditionService } from "../other-addition/services/other-addition.service";
 import { OtherDiscountModule } from "../other-discount/other-discount.module";
 import ptBr from '@angular/common/locales/pt';
+import { OtherAdditionListComponent } from "./other-addition-list/other-addition-list.component";
+import { OtherDiscountListComponent } from "./other-discount-list/other-discount-list.component";
 
 const maskConfigFunction: () => Partial<IConfig> = () => {
     return {
@@ -38,7 +40,9 @@ registerLocaleData(ptBr);
         UpdateSalaryComponent,
         ReadSalaryComponent,
         DetailsSalaryComponent,
-        DeleteSalaryComponent
+        DeleteSalaryComponent,
+        OtherAdditionListComponent,
+        OtherDiscountListComponent
     ],
     providers: [
         SalaryService,
