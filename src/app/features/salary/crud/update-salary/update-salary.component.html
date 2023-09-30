@@ -1,1 +1,218 @@
-<p>update-salary works!</p>
+<div class="container main-container">
+
+    <ngx-spinner 
+        bdColor = "rgba(0, 0, 0, 0.8)" 
+        size = "medium" 
+        color = "#fff" 
+        type = "ball-beat" 
+        [fullScreen] = "true"
+    ><p style="color: white" > {{ 'br_com_supermarket_MSG_WAIT' | translate }} </p>
+    </ngx-spinner>
+
+    <h1>{{ 'br_com_supermarket_SALARY_EDIT' | translate }}</h1>
+    
+    <hr>
+    <div class="row">
+        <div class="col-md-10">
+            <form novalidate="novalidate" (ngSubmit)="updateSalary()" [formGroup]="salaryForm">
+
+                <div class="form-group">
+                    <input 
+                        type="submit" 
+                        value="{{ 'br_com_supermarket_BUTTON_EDIT' | translate }}" 
+                        [disabled]="!salaryForm.valid || exceededMaximumDiscount" 
+                        class="btn btn-primary"
+                        >
+                    &nbsp;
+                    <a class="btn btn-info" [routerLink]="[ '/salary/getAll']">{{ 'br_com_supermarket_BUTTON_BACK' | translate }}</a>
+                </div>
+
+                <div class="alert alert-danger" *ngIf="errors?.length > 0">
+                    <h3 id="msgRetorno">{{ 'br_com_supermarket_MSG_GENERIC_ERROR' | translate }}</h3>
+                    <ul>
+                        <li *ngFor="let error of errors">{{ error }}</li>
+                    </ul>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">{{ 'br_com_supermarket_SALARY_POSITION' | translate }}</label>
+                    <div>
+                        <input 
+                            class="form-control" 
+                            id="position" 
+                            type="text" 
+                            placeholder="{{ 'br_com_supermarket_SALARY_POSITION_REQUIRED_PLACEHOLDER' | translate }}" 
+                            formControlName="position" 
+                            [ngClass]="{'is-invalid': displayMessage.position }"
+                        />
+                        <span class="text-danger" *ngIf="displayMessage.position">
+                            <p [innerHTML]="displayMessage.position"></p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">{{ 'br_com_supermarket_SALARY_SALARY_RANGE' | translate }}</label>
+                    <div>
+                        <input 
+                            class="form-control" 
+                            id="salaryRange" 
+                            type="text" 
+                            placeholder="{{ 'br_com_supermarket_SALARY_SALARY_RANGE_REQUIRED_PLACEHOLDER' | translate }}" 
+                            formControlName="salaryRange" 
+                            [ngClass]="{'is-invalid': displayMessage.salaryRange }"
+                        />
+                        <span class="text-danger" *ngIf="displayMessage.salaryRange">
+                            <p [innerHTML]="displayMessage.salaryRange"></p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">{{ 'br_com_supermarket_SALARY_GROSS_SALARY' | translate }}</label>
+                    <div>
+                        <input 
+                            class="form-control" 
+                            id="grossSalary"
+                            type="text" 
+                            placeholder="{{ 'br_com_supermarket_SALARY_GROSS_SALARY_REQUIRED_PLACEHOLDER' | translate }}" 
+                            formControlName="grossSalary" 
+                            [allowNegativeNumbers]="false"
+                            mask="separator.2"
+                            thousandSeparator="."
+                            [ngClass]="{'is-invalid': displayMessage.grossSalary }" 
+                        />
+
+                        <span class="text-danger" *ngIf="displayMessage.grossSalary">
+                            <p [innerHTML]="displayMessage.grossSalary"></p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">{{ 'br_com_supermarket_SALARY_SALARY_ADVANCE' | translate }}</label>
+                    <div>
+                        <input 
+                            class="form-control" 
+                            id="salaryAdvance"
+                            type="text" 
+                            placeholder="{{ 'br_com_supermarket_SALARY_SALARY_ADVANCE_REQUIRED_PLACEHOLDER' | translate }}" 
+                            formControlName="salaryAdvance" 
+                            [allowNegativeNumbers]="false"
+                            mask="separator.2"
+                            thousandSeparator="."
+                            [ngClass]="{'is-invalid': displayMessage.salaryAdvance }" 
+                        />
+
+                        <span class="text-danger" *ngIf="displayMessage.salaryAdvance">
+                            <p [innerHTML]="displayMessage.salaryAdvance"></p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">{{ 'br_com_supermarket_SALARY_BENEFITS' | translate }}</label>
+                    <div>
+                        <textarea 
+                            class="form-control" 
+                            id="benefits"
+                            type="text" 
+                            placeholder="{{ 'br_com_supermarket_SALARY_BENEFITS_REQUIRED_PLACEHOLDER' | translate }}" 
+                            formControlName="benefits" 
+                            [ngClass]="{'is-invalid': displayMessage.benefits}" 
+                        ></textarea>
+
+                        <span class="text-danger" *ngIf="displayMessage.benefits">
+                            <p [innerHTML]="displayMessage.benefits"></p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">{{ 'br_com_supermarket_SALARY_COMPETENCE_START' | translate }}</label>
+                    <div>
+                        <input 
+                            class="form-control" 
+                            id="competenceStart" 
+                            type="text" 
+                            placeholder="{{ 'br_com_supermarket_SALARY_COMPETENCE_START_REQUIRED_PLACEHOLDER' | translate }}" 
+                            mask="d0/M0/0000"
+                            formControlName="competenceStart" 
+                            [ngClass]="{'is-invalid': displayMessage.competenceStart }"
+                        />
+                        <span class="text-danger" *ngIf="displayMessage.competenceStart">
+                            <p [innerHTML]="displayMessage.competenceStart"></p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">{{ 'br_com_supermarket_SALARY_FINAL_COMPETENCE' | translate }}</label>
+                    <div>
+                        <input 
+                            class="form-control" 
+                            id="finalCompetence" 
+                            type="text" 
+                            placeholder="{{ 'br_com_supermarket_SALARY_FINAL_COMPETENCE_REQUIRED_PLACEHOLDER' | translate }}" 
+                            mask="d0/M0/0000"
+                            formControlName="finalCompetence" 
+                            [ngClass]="{'is-invalid': displayMessage.finalCompetence }"
+                        />
+                        <span class="text-danger" *ngIf="displayMessage.finalCompetence">
+                            <p [innerHTML]="displayMessage.finalCompetence"></p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group text-right w-100">
+                    <label class="control-label increased-font-size" [ngClass]="{'bold-red': exceededMaximumDiscount}">{{ 'br_com_supermarket_SALARY_NET_SALARY' | translate }}</label>
+                    <div>
+                      <span class="net-salary-display" [ngClass]="{'bold-red': exceededMaximumDiscount}">
+                        {{ netSalaryValue | currency:'BRL'}}
+                      </span>
+                    </div>
+                </div>                  
+                  
+                <app-create-other-addition (formOtherAdditionSubmitted)="onFormOtherAdditionSubmitted($event)"></app-create-other-addition>
+                <app-create-other-discount (formOtherDiscountsSubmitted)="onFormOtherDiscountSubmitted($event)"></app-create-other-discount>
+
+            </form>
+            <table class="table table-hover">
+                <div *ngIf="salary?.otherAdditions?.length > 0">
+                    <h4>{{ 'br_com_supermarket_OTHER_ADDITION_NEW_INSERTED' | translate }}</h4>
+                    <tr *ngFor="let other of salary.otherAdditions; let i = index">
+                        <td>
+                            {{ other.additionName }}
+                        </td>
+                        <td>
+                            {{ other.additionValue }}
+                        </td>
+                        <td class="text-right">
+                            <i class="fa fa-pencil-alt" (click)="editOtherAddition(i)"></i>&nbsp;
+                            <i class="fa fa-trash" (click)="deleteOtherAddition(i)"></i>
+                        </td>
+                    </tr>
+                </div>
+            </table>
+
+            <table class="table table-hover">
+                <div *ngIf="salary?.otherDiscounts?.length > 0">
+                    <h4>{{ 'br_com_supermarket_OTHER_ADDITION_NEW_INSERTED' | translate }}</h4>
+                    <tr *ngFor="let other of salary.otherDiscounts; let i = index">
+                        <td>
+                            {{ other.discountName }}
+                        </td>
+                        <td>
+                            {{ other.discountValue }}
+                        </td>
+                        <td class="text-right">
+                            <i class="fa fa-pencil-alt" (click)="editOtherDiscount(i)"></i>&nbsp;
+                            <i class="fa fa-trash" (click)="deleteOtherDiscount(i)"></i>
+                        </td>
+                    </tr>
+                </div>
+            </table>
+            
+        </div>
+    </div>
+</div>
