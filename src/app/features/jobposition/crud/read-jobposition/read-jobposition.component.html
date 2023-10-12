@@ -1,1 +1,47 @@
-<p>read-jobposition works!</p>
+<div class="container main-container">
+
+    <ngx-spinner 
+        bdColor = "rgba(0, 0, 0, 0.8)" 
+        size = "medium" 
+        color = "#fff" 
+        type = "ball-beat" 
+        [fullScreen] = "true"
+    ><p style="color: white" > Aguarde... </p>
+    </ngx-spinner>
+
+    <h1>{{ 'br_com_supermarket_JOB_POSITION' | translate }}</h1>
+
+    <p>
+        <a class="btn btn-info" [routerLink]="['/jobposition/new']">{{ 'br_com_supermarket_BUTTON_NEW_JOB_POSITION' | translate }}</a>
+    </p>
+
+    <table class="table table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th>{{ 'br_com_supermarket_JOB_POSITION_CODE' | translate }}</th>
+                <th>{{ 'br_com_supermarket_JOB_POSITION_NAME' | translate }}</th>
+                <th>{{ 'br_com_supermarket_JOB_POSITION_SALARY_RANGE' | translate }}</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tr *ngFor="let jobPosition of jobPositions">
+            <td>
+                {{ jobPosition.code }}
+            </td>
+            <td>
+                {{ jobPosition.name }}
+            </td>
+            <td>
+                {{ jobPosition.salary.salaryRange }}
+            </td>
+            <td class="text-right">
+                <a class="fa fa-search" [routerLink]="['/jobposition/details',jobPosition.id]"></a>&nbsp;
+                <a class="fa fa-pencil-alt" [routerLink]="['/jobposition/edit',jobPosition.id]"></a>&nbsp;
+                <a class="fa fa-trash" [routerLink]="['/jobposition/delete',jobPosition.id]"></a>
+            </td>
+        </tr>
+    </table>
+    <pagination [page]="page" (paginationEvent)="changePage($event)"></pagination>
+    <p class="count-list">{{ 'br_com_supermarket_JOB_POSITION_TOTAL_ELEMENTS' | translate }} {{ page?.totalElements }}</p>
+</div>
+
