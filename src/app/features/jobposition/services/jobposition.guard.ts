@@ -7,7 +7,6 @@ import { TranslateService } from "@ngx-translate/core";
 @Injectable()
 export class JobPositionGuardService extends BaseGuard implements CanActivate, CanDeactivate<CreateJobpositionComponent> {
 
-
     constructor(protected override router: Router,
         private translateService: TranslateService) { super(router); }
 
