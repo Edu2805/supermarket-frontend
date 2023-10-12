@@ -68,4 +68,3 @@ export class ReadMainsectionComponent implements OnInit {
     this.getAllPaged(event.page, event.size);
    }
 }
-

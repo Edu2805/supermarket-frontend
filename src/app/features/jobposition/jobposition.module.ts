@@ -17,6 +17,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { NarikCustomValidatorsModule } from "@narik/custom-validators";
 import { NgxSpinnerModule } from "ngx-spinner";
+import { PaginationModule } from "src/app/utils/pagination/pagination.module";
 
 const maskConfigFunction: () => Partial<IConfig> = () => {
     return {
@@ -49,6 +50,7 @@ const maskConfigFunction: () => Partial<IConfig> = () => {
         HttpClientModule,
         NarikCustomValidatorsModule,
         NgxSpinnerModule,
+        PaginationModule,
         NgxMaskModule.forRoot(maskConfigFunction),
     ],
     exports:[]
