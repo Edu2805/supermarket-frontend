@@ -11,6 +11,7 @@ import { LocalStorageUtils } from 'src/app/utils/localstorage';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Observable, fromEvent, merge } from 'rxjs';
+import { CustomValidators } from 'ngx-custom-validators';
 
 @Component({
   selector: 'app-create-jobposition',
@@ -40,8 +41,7 @@ export class CreateJobpositionComponent extends FormBaseComponent implements OnI
     this.validationMessages = {
       assignments: {
         required: this.translateService.instant('br_com_supermarket_JOB_POSITION_ERROR_FORM_ASSIGNMENTS_REQUIRED_MESSAGE'),
-        minLength: this.translateService.instant('br_com_supermarket_JOB_POSITION_ERROR_FORM_ASSIGNMENTS_MIN_LENGTH_MESSAGE'),
-        maxLength: this.translateService.instant('br_com_supermarket_JOB_POSITION_ERROR_FORM_ASSIGNMENTS_MAX_LENGTH_MESSAGE'),
+        rangeLength: this.translateService.instant('br_com_supermarket_JOB_POSITION_ERROR_FORM_ASSIGNMENTS_LENGTH_MESSAGE'),
       },
       id: {
         required: this.translateService.instant('br_com_supermarket_JOB_POSITION_ERROR_FORM_SALARY_REQUIRED_MESSAGE'),
@@ -53,7 +53,7 @@ export class CreateJobpositionComponent extends FormBaseComponent implements OnI
   ngOnInit() {
     this.getSalaries();
     this.jobpositionForm = this.fb.group({
-      assignments: ['', Validators.compose([Validators.required, Validators.minLength(2), Validators.maxLength(100)])],
+      assignments: ['', Validators.compose([Validators.required, CustomValidators.rangeLength([2, 100])])],
       salary: this.fb.group({
         id: ['', Validators.required]
       })

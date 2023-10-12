@@ -1,1 +1,80 @@
-<p>update-jobposition works!</p>
+<div class="container main-container">
+
+    <ngx-spinner 
+        bdColor = "rgba(0, 0, 0, 0.8)" 
+        size = "medium" 
+        color = "#fff" 
+        type = "ball-beat" 
+        [fullScreen] = "true"
+    ><p style="color: white" > {{ 'br_com_supermarket_MSG_WAIT' | translate }} </p>
+    </ngx-spinner>
+
+    <h1>{{ 'br_com_supermarket_JOB_POSITION_EDIT' | translate }}</h1>
+    
+    <hr>
+    <div class="row">
+        <div class="col-md-10">
+            <form novalidate="novalidate" (ngSubmit)="updateJobPosition()" [formGroup]="jobpositionForm">
+
+                <div class="alert alert-danger" *ngIf="errors?.length > 0">
+                    <h3 id="msgRetorno">{{ 'br_com_supermarket_MSG_GENERIC_ERROR' | translate }}</h3>
+                    <ul>
+                        <li *ngFor="let error of errors">{{ error }}</li>
+                    </ul>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label">{{ 'br_com_supermarket_JOB_POSITION_ASSIGNMENTS' | translate }}</label>
+                    <div class="col-md-10">
+                        <input 
+                            class="form-control" 
+                            id="assignments" type="text" 
+                            placeholder="{{ 'br_com_supermarket_JOB_POSITION_ASSIGNMENTS_REQUIRED_PLACEHOLDER' | translate }}" 
+                            formControlName="assignments" 
+                            [ngClass]="{'is-invalid': displayMessage.assignments }"
+                        />
+                        <span class="text-danger" *ngIf="displayMessage.assignments">
+                            <p [innerHTML]="displayMessage.assignments"></p>
+                        </span>
+                    </div>
+                </div>
+
+                <div formGroupName="salary">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">{{ 'br_com_supermarket_JOB_POSITION_SALARY' | translate }}</label>
+                        <div class="col-md-10">
+                            <select
+                                class="form-control" 
+                                id="id" 
+                                formControlName="id" 
+                            >
+                                < <option 
+                                value="{{ jobposition?.salary.id }}" 
+                                selected
+                                >{{ jobposition?.salary.position }} - {{ jobposition?.salary.salaryRange }}</option>
+                                <option 
+                                    *ngFor="let salary of salaries" 
+                                    value="{{ salary.id }}"
+                                >{{ salary.position }} - {{ salary.salaryRange }}
+                                </option>
+                            </select>
+                            <span class="text-danger" *ngIf="displayMessage.id">
+                                <p [innerHTML]="displayMessage.id"></p>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input 
+                        type="submit" 
+                        value="{{ 'br_com_supermarket_BUTTON_EDIT' | translate }}" 
+                        [disabled]="!jobpositionForm.valid" 
+                        class="btn btn-primary"
+                        >
+                    &nbsp;
+                    <a class="btn btn-info" [routerLink]="[ '/jobposition/getAll']">{{ 'br_com_supermarket_BUTTON_BACK' | translate }}</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
