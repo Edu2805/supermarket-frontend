@@ -364,6 +364,8 @@
     "br_com_supermarket_JOB_POSITION_EDIT": "Editar título del trabajo",
     "br_com_supermarket_JOB_POSITION_EDIT_SUCCESS": "¡Posición actualizada exitosamente!",
     "br_com_supermarket_JOB_POSITION_TOTAL_ELEMENTS": "Posiciones totales",
+    "br_com_supermarket_JOB_POSITION_DETAILS": "Detalles del trabajo",
+    "br_com_supermarket_JOB_POSITION_DELETE_SUCCESS": "¡Posición eliminada exitosamente!",
 
     "br_com_supermarket_BUTTON_REGISTER": "Registro",
     "br_com_supermarket_BUTTON_EDIT": "Editar",
