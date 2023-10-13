@@ -1,5 +1,5 @@
-import { CommonModule } from "@angular/common";
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from "@angular/core";
+import { CommonModule, registerLocaleData } from "@angular/common";
+import { CUSTOM_ELEMENTS_SCHEMA, LOCALE_ID, NgModule } from "@angular/core";
 import { JobpositionComponent } from "./jobposition.component";
 import { JobpositionRoutingModule } from "./jobposition.route";
 import { TranslateModule } from "@ngx-translate/core";
@@ -18,12 +18,16 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { NarikCustomValidatorsModule } from "@narik/custom-validators";
 import { NgxSpinnerModule } from "ngx-spinner";
 import { PaginationModule } from "src/app/utils/pagination/pagination.module";
+import { PipeModule } from "src/app/utils/pipe/pipe.module";
+import ptBr from '@angular/common/locales/pt';
 
 const maskConfigFunction: () => Partial<IConfig> = () => {
     return {
       validation: false,
     };
 };
+
+registerLocaleData(ptBr);
 
 @NgModule({
     declarations:[
@@ -39,7 +43,8 @@ const maskConfigFunction: () => Partial<IConfig> = () => {
     providers: [
         JobPositionService,
         JobPositionResolve,
-        JobPositionGuardService
+        JobPositionGuardService,
+        { provide: LOCALE_ID, useValue: 'pt' }
     ],
     imports:[
         CommonModule,
@@ -51,6 +56,7 @@ const maskConfigFunction: () => Partial<IConfig> = () => {
         NarikCustomValidatorsModule,
         NgxSpinnerModule,
         PaginationModule,
+        PipeModule,
         NgxMaskModule.forRoot(maskConfigFunction),
     ],
     exports:[]
