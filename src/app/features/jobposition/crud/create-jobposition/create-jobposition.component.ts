@@ -3,7 +3,6 @@ import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 import { FormBaseComponent } from 'src/app/features/base-components/form-base.component';
 import { JobPosition } from '../../model/jobposition';
-import { Salary } from 'src/app/features/salary/model/salary';
 import { FormBuilder, FormControlName, FormGroup, Validators } from '@angular/forms';
 import { JobPositionService } from '../../services/jobposition.service';
 import { SalaryService } from 'src/app/features/salary/services/salary.service';
@@ -12,6 +11,7 @@ import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Observable, fromEvent, merge } from 'rxjs';
 import { CustomValidators } from 'ngx-custom-validators';
+import { SalaryDTO } from 'src/app/features/salary/dto/salaryDTO';
 
 @Component({
   selector: 'app-create-jobposition',
@@ -24,7 +24,7 @@ export class CreateJobpositionComponent extends FormBaseComponent implements OnI
 
   jobpositionForm: FormGroup;
   jobposition: JobPosition;
-  salaries: Salary[];
+  salariesDTO: SalaryDTO[];
   localStorageUtils = new LocalStorageUtils();
   formResult: string= '';
   
@@ -71,8 +71,8 @@ export class CreateJobpositionComponent extends FormBaseComponent implements OnI
   }
 
   getSalaries() {
-    this.salaryService.getAllSalary().subscribe((response) => {
-      this.salaries = response['content'];
+    this.salaryService.getAllSalariesAvailable().subscribe((response) => {
+      this.salariesDTO = response;
     },(error: any) => {
       if (error && error.errors) {
         this.toastr.error(this.translateService.instant(error.errors));
