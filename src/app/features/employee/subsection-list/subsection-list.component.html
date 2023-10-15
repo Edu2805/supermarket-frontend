@@ -1,0 +1,40 @@
+<div class="container main-container">
+    <ngx-spinner 
+        bdColor = "rgba(0, 0, 0, 0.8)" 
+        size = "medium" 
+        color = "#fff" 
+        type = "ball-beat" 
+        [fullScreen] = "true"
+    ><p style="color: white" > {{ 'br_com_supermarket_MSG_WAIT' | translate }} </p>
+    </ngx-spinner>
+
+    <h3>{{ 'br_com_supermarket_SUB_SECTION_DETAILS' | translate }} {{ subsection?.name }}</h3>
+    <hr />
+
+    <div class="alert alert-danger" *ngIf="errors?.length > 0">
+        <h3 id="msgRetorno">{{ 'br_com_supermarket_MSG_GENERIC_ERROR' | translate }}</h3>
+        <ul>
+            <li *ngFor="let error of errors">{{ error }}</li>
+        </ul>
+    </div>
+
+    <div>
+        <dl class="row">
+            <dt class="col-sm-2">
+                <label class="control-label">{{ 'br_com_supermarket_SUB_SECTION_NAME' | translate }}</label>
+            </dt>
+            <dd class="col-sm-10">
+                {{ subsection?.name }}
+            </dd>
+            <dt class="col-sm-2">
+                <label class="control-label">{{ 'br_com_supermarket_SUB_SECTION_CODE' | translate }}</label>
+            </dt>
+            <dd class="col-sm-10">
+                {{ subsection?.code }}
+            </dd>
+        </dl>
+    </div>
+
+    <mainsection-list [mainsection]="subsection?.mainSection"></mainsection-list>
+
+</div>
