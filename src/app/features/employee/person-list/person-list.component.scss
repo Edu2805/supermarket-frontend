@@ -1,0 +1,51 @@
+.accordion-heading {
+    padding: 10px;
+    cursor: pointer;
+    background: rgb(41, 39, 39);
+    color: #fff;
+    font-weight: 600;
+    margin-top: 4px;
+    border-radius: 2px;
+}
+
+.accordion-content {
+    transition: 4s ease-in-out;
+    padding: 10px;
+    background: rgb(252, 243, 243);
+    border: 1px solid rgb(255, 255, 255);
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+    animation-name: slideDown;
+}
+
+@keyframes slideDown {
+    0% {
+        transform: translateY(0%);
+    }
+    50% {
+        transform: translateY(4%);
+    }
+    65% {
+        transform: translateY(4%);
+    }
+    80% {
+        transform: translateY(4%);
+    }
+    95% {
+        transform: translateY(4%);
+    }
+    100% {
+        transform: translateY(0%);
+    }
+}
+
+.up-icon {
+    display: inline-block;
+    transition: 0.2s ease-out;
+}
+
+.icon {
+    animation-name: icon;
+    transform: rotate(180deg);
+    transition: 0.2s ease-out;
+}
