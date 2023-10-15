@@ -4,6 +4,7 @@ import { Salary } from '../model/salary';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map, catchError } from 'rxjs';
 import { Page } from 'src/app/utils/pagination/model/models';
+import { SalaryDTO } from '../dto/salaryDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -39,6 +40,12 @@ export class SalaryService extends BaseService {
   findSalaryById(id: string): Observable<Salary> {
     return this.http
       .get<Salary>(`${this.UrlServiceV1}salary/${id}`, super.GetHeaderJson())
+      .pipe(catchError(super.serviceError));
+  }
+
+  getAllSalariesAvailable(): Observable<SalaryDTO[]> {
+    return this.http
+      .get<SalaryDTO[]>(`${this.UrlServiceV1}salary/salariesavailable`, super.GetHeaderJson())
       .pipe(catchError(super.serviceError));
   }
 
