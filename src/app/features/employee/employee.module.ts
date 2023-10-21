@@ -1,5 +1,5 @@
-import { CommonModule } from "@angular/common";
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from "@angular/core";
+import { CommonModule, registerLocaleData } from "@angular/common";
+import { CUSTOM_ELEMENTS_SCHEMA, LOCALE_ID, NgModule } from "@angular/core";
 import { EmployeeComponent } from "./employee.component";
 import { EmployeeRoutingModule } from "./employee.route";
 import { TranslateModule } from "@ngx-translate/core";
@@ -22,12 +22,17 @@ import { PipeModule } from "src/app/utils/pipe/pipe.module";
 import { JobPositionListComponent } from "./jobposition-list/jobposition-list.component";
 import { PersonListComponent } from "./person-list/person-list.component";
 import { SubSectionListComponent } from "./subsection-list/subsection-list.component";
+import { SubsectionService } from "../subsection/services/subsection.service";
+import { JobPositionService } from "../jobposition/services/jobposition.service";
+import ptBr from '@angular/common/locales/pt';
 
 const maskConfigFunction: () => Partial<IConfig> = () => {
     return {
       validation: false,
     };
 };
+
+registerLocaleData(ptBr);
 
 @NgModule({
     declarations:[
@@ -45,7 +50,10 @@ const maskConfigFunction: () => Partial<IConfig> = () => {
     providers: [
         EmployeeGuardService,
         EmployeeResolve,
-        EmployeeService
+        EmployeeService,
+        SubsectionService,
+        JobPositionService,
+        { provide: LOCALE_ID, useValue: 'pt' }
     ],
     imports:[
         CommonModule,

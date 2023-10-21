@@ -36,6 +36,12 @@ export class JobPositionService extends BaseService {
       .pipe(catchError(super.serviceError));
   }
 
+  getAllJobPositionsAvaiable(): Observable<JobPosition[]> {
+    return this.http
+      .get<JobPosition[]>(`${this.UrlServiceV1}jobposition/jobpositionsavailable`, super.GetHeaderJson())
+      .pipe(catchError(super.serviceError));
+  }
+
   findJobPositionById(id: string): Observable<JobPosition> {
     return this.http
       .get<JobPosition>(`${this.UrlServiceV1}jobposition/${id}`, super.GetHeaderJson())
