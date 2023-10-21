@@ -36,6 +36,12 @@ export class PersonService extends BaseService {
       .pipe(catchError(super.serviceError));
   }
 
+  getAllPeopleAvaiable(): Observable<Person[]> {
+    return this.http
+      .get<Person[]>(`${this.UrlServiceV1}person/peopleavailable`, super.GetHeaderJson())
+      .pipe(catchError(super.serviceError));
+  }
+
   findPersonById(id: string): Observable<Person> {
     return this.http
       .get<Person>(`${this.UrlServiceV1}person/${id}`, super.GetHeaderJson())
