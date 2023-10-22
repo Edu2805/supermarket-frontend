@@ -15,6 +15,7 @@ import { JobPositionService } from 'src/app/features/jobposition/services/jobpos
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Observable, fromEvent, merge } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-create-employee',
@@ -34,6 +35,8 @@ export class CreateEmployeeComponent extends FormBaseComponent implements OnInit
   selectedPerson: any;
   selectedSubsection: any;
   selectedJobPosition: any;
+  images: string = environment.imagesUrl;
+  defaultId: string = 'cf3f50ba-9d26-46a0-a711-dae2be2a101c';
 
   vaidateDocument: any;
 
@@ -93,9 +96,12 @@ export class CreateEmployeeComponent extends FormBaseComponent implements OnInit
   }
 
   getPeople() {
+    this.spinner.show();
     this.personService.getAllPeopleAvaiable().subscribe((response) => {
       this.people = response;
+      this.spinner.hide();
     },(error: any) => {
+      this.spinner.hide();
       if (error && error.errors) {
         this.toastr.error(this.translateService.instant(error.errors));
       }
@@ -104,9 +110,12 @@ export class CreateEmployeeComponent extends FormBaseComponent implements OnInit
   }
 
   getSubSection() {
+    this.spinner.show();
     this.subSectionService.getAllSubsections().subscribe((response) => {
       this.subSections = response['content'];
+      this.spinner.hide();
     },(error: any) => {
+      this.spinner.hide();
       if (error && error.errors) {
         this.toastr.error(this.translateService.instant(error.errors));
       }
@@ -115,9 +124,12 @@ export class CreateEmployeeComponent extends FormBaseComponent implements OnInit
   }
 
   getJobPosition() {
+    this.spinner.show();
     this.jobPositionService.getAllJobPositionsAvaiable().subscribe((response) => {
       this.jobPositions = response;
+      this.spinner.hide();
     },(error: any) => {
+      this.spinner.hide();
       if (error && error.errors) {
         this.toastr.error(this.translateService.instant(error.errors));
       }

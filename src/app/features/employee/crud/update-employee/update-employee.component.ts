@@ -15,6 +15,7 @@ import { SubsectionService } from 'src/app/features/subsection/services/subsecti
 import { LocalStorageUtils } from 'src/app/utils/localstorage';
 import { Employee } from '../../model/employee';
 import { EmployeeService } from '../../services/employee.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-update-employee',
@@ -34,10 +35,10 @@ export class UpdateEmployeeComponent extends FormBaseComponent implements OnInit
   selectedPerson: any;
   selectedSubsection: any;
   selectedJobPosition: any;
-
   vaidateDocument: any;
-
   formResult: string= '';
+  images: string = environment.imagesUrl;
+  defaultId: string = 'cf3f50ba-9d26-46a0-a711-dae2be2a101c';
   
   constructor(private fb: FormBuilder,
     private employeeService: EmployeeService,
