@@ -395,6 +395,8 @@
     "br_com_supermarket_EMPLOYEE_JOB_POSITION_NAME_DETAILS": "Nombre del puesto",
     "br_com_supermarket_EMPLOYEE_JOB_POSITION_ASSIGMENTS_DETAILS": "Responsabilidades del puesto",
     "br_com_supermarket_EMPLOYEE_JOB_POSITION_SALARY_DETAILS": "Salario",
+    "br_com_supermarket_EMPLOYEE_EDIT": "Edit collaborator",
+    "br_com_supermarket_EMPLOYEE_EDIT_SUCCESS": "Contributor updated successfully!",
 
     "br_com_supermarket_BUTTON_REGISTER": "Registro",
     "br_com_supermarket_BUTTON_EDIT": "Editar",

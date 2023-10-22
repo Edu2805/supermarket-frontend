@@ -395,6 +395,8 @@
     "br_com_supermarket_EMPLOYEE_JOB_POSITION_NAME_DETAILS": "Nome do cargo",
     "br_com_supermarket_EMPLOYEE_JOB_POSITION_ASSIGMENTS_DETAILS": "Atribuições do cargo",
     "br_com_supermarket_EMPLOYEE_JOB_POSITION_SALARY_DETAILS": "Salário",
+    "br_com_supermarket_EMPLOYEE_EDIT": "Editar colaborador",
+    "br_com_supermarket_EMPLOYEE_EDIT_SUCCESS": "Colaborador atualizado com sucesso!",
     
     "br_com_supermarket_BUTTON_REGISTER": "Cadastrar",
     "br_com_supermarket_BUTTON_EDIT": "Editar",
