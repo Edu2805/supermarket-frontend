@@ -1,1 +1,161 @@
-<p>update-employee works!</p>
+<div class="container main-container">
+
+    <ngx-spinner 
+        bdColor = "rgba(0, 0, 0, 0.8)" 
+        size = "medium" 
+        color = "#fff" 
+        type = "ball-beat" 
+        [fullScreen] = "true"
+    ><p style="color: white" > {{ 'br_com_supermarket_MSG_WAIT' | translate }} </p>
+    </ngx-spinner>
+
+    <h1>{{ 'br_com_supermarket_EMPLOYEE_EDIT' | translate }}</h1>
+    
+    <hr>
+    <div class="row">
+        <div class="col-md-8">
+            <form novalidate="novalidate" (ngSubmit)="updateEmployee()" [formGroup]="employeeForm">
+
+                <div class="alert alert-danger" *ngIf="errors?.length > 0">
+                    <h3 id="msgRetorno">{{ 'br_com_supermarket_MSG_GENERIC_ERROR' | translate }}</h3>
+                    <ul>
+                        <li *ngFor="let error of errors">{{ error }}</li>
+                    </ul>
+                </div>
+
+                <div formGroupName="person">
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">{{ 'br_com_supermarket_EMPLOYEE_PERSON' | translate }}</label>
+                        <div class="col-md-10">
+                            <select
+                                class="form-control" 
+                                id="idPerson" 
+                                formControlName="idPerson" 
+                                (change)="updateSelectedPerson(findSelectedPerson())"
+                            >
+                                <option 
+                                    value="{{ employee?.person.id }}"
+                                    selected
+                                >
+                                {{ employee?.person.cpf | cpf }} - 
+                                {{ employee?.person.middleName === null ? employee?.person.firstName + " " + employee?.person.lastName : 
+                                employee?.person.firstName + " " + employee?.person.middleName + " " + employee?.person.lastName}}
+                                </option>
+                                <option 
+                                    *ngFor="let person of people" 
+                                    value="{{ person.id }}"
+                                >{{ person.cpf | cpf }} - 
+                                {{ person.middleName === null ? person.firstName + " " + person.lastName : 
+                                person.firstName + " " + person.middleName + " " + person.lastName}}
+                                </option>
+                            </select>
+                            <span class="text-danger" *ngIf="displayMessage.idPerson">
+                                <p [innerHTML]="displayMessage.idPerson"></p>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div formGroupName="subSection">
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">{{ 'br_com_supermarket_EMPLOYEE_SUB_SECTION' | translate }}</label>
+                        <div class="col-md-10">
+                            <select
+                                class="form-control" 
+                                id="idSubsection" 
+                                formControlName="idSubsection"
+                                (change)="updateSelectedSubsection(findSelectedSubSection())"
+                            >
+                                <option 
+                                    value="{{ employee.subSection.id }}" 
+                                    selected
+                                >
+                                 {{ ('br_com_supermarket_EMPLOYEE_SUB_SECTION_CODE_SELECTED_TO_SHOW' | translate) + ": " + employee.subSection?.code }} | 
+                                 {{ ('br_com_supermarket_EMPLOYEE_SUB_SECTION_SELECTED_TO_SHOW' | translate) + ": " + employee.subSection?.name + " | " + 
+                                 ('br_com_supermarket_EMPLOYEE_SUB_SECTION_MAIN_SECTION_SELECTED_TO_SHOW' | translate) + ": " + employee.subSection.mainSection?.name}}
+                                </option>
+                                <option 
+                                    *ngFor="let subsection of subSections" 
+                                    value="{{ subsection.id }}"
+                                >{{ ('br_com_supermarket_EMPLOYEE_SUB_SECTION_CODE_SELECTED_TO_SHOW' | translate) + ": " + subsection?.code }} | 
+                                 {{ ('br_com_supermarket_EMPLOYEE_SUB_SECTION_SELECTED_TO_SHOW' | translate) + ": " + subsection?.name + " | " + 
+                                 ('br_com_supermarket_EMPLOYEE_SUB_SECTION_MAIN_SECTION_SELECTED_TO_SHOW' | translate) + ": " + subsection.mainSection?.name}}
+                                </option>
+                            </select>
+                            <span class="text-danger" *ngIf="displayMessage.idSubsection">
+                                <p [innerHTML]="displayMessage.idSubsection"></p>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div formGroupName="jobPosition">
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">{{ 'br_com_supermarket_EMPLOYEE_JOB_POSITION' | translate }}</label>
+                        <div class="col-md-10">
+                            <select
+                                class="form-control" 
+                                id="idJobposition" 
+                                formControlName="idJobposition"
+                                (change)="updateSelectedJobPosition(findSelectedJobPosition())" 
+                            >
+                                <option 
+                                    value="{{ employee.jobPosition.id }}"
+                                    selected
+                                >{{ employee.jobPosition.code }} - {{ employee.jobPosition.name }}</option>
+                                <option 
+                                    *ngFor="let jobposition of jobPositions" 
+                                    value="{{ jobposition.id }}"
+                                >{{ jobposition.code }} - {{ jobposition.name }}
+                                </option>
+                            </select>
+                            <span class="text-danger" *ngIf="displayMessage.idJobposition">
+                                <p [innerHTML]="displayMessage.idJobposition"></p>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input 
+                        type="submit" 
+                        value="{{ 'br_com_supermarket_BUTTON_EDIT' | translate }}" 
+                        [disabled]="!employeeForm.valid" 
+                        class="btn btn-primary"
+                        >
+                    &nbsp;
+                    <a class="btn btn-info" [routerLink]="[ '/employee/getAll']">{{ 'br_com_supermarket_BUTTON_BACK' | translate }}</a>
+                </div>
+            </form>
+        </div>
+        <div  class="col-md-2">
+            <div *ngIf="selectedPerson" class="details-panel">
+              <h3 class="details-title">{{ 'br_com_supermarket_EMPLOYEE_PERSON_DETAILS' | translate }}</h3>
+              <div class="beige-background">
+                <p><strong>{{ 'br_com_supermarket_EMPLOYEE_PERSON_NAME_DETAILS' | translate }}:</strong> {{ selectedPerson.firstName }} {{ selectedPerson.lastName }}</p>
+                <p><strong>{{ 'br_com_supermarket_EMPLOYEE_PERSON_CPF_DETAILS' | translate }}:</strong> {{ selectedPerson.cpf | cpf }}</p>
+                <p><strong>{{ 'br_com_supermarket_EMPLOYEE_PERSON_EMAIL_DETAILS' | translate }}:</strong> {{ selectedPerson.email }}</p>
+                <p><strong>{{ 'br_com_supermarket_EMPLOYEE_PERSON_USER_DATA_NAME_DETAILS' | translate }}:</strong> {{ selectedPerson.userData.userName }}</p>
+              </div>
+            </div>
+
+            <div *ngIf="selectedSubsection" class="details-panel">
+                <h3 class="details-title">{{ 'br_com_supermarket_EMPLOYEE_SUB_SECTION_DETAILS' | translate }}</h3>
+                <div class="beige-background">
+                  <p><strong>{{ 'br_com_supermarket_EMPLOYEE_SUB_SECTION_CODE_DETAILS' | translate }}:</strong> {{ selectedSubsection.code }}</p>
+                  <p><strong>{{ 'br_com_supermarket_EMPLOYEE_SUB_SECTION_NAME_DETAILS' | translate }}:</strong> {{ selectedSubsection.name }}</p>
+                  <p><strong>{{ 'br_com_supermarket_EMPLOYEE_SUB_SECTION_MAIN_SECTION_NAME_DETAILS' | translate }}:</strong> {{ selectedSubsection.mainSection.name }}</p>
+                </div>
+            </div>
+
+            <div *ngIf="selectedJobPosition" class="details-panel">
+                <h3 class="details-title">{{ 'br_com_supermarket_EMPLOYEE_JOB_POSITION_DETAILS' | translate }}</h3>
+                <div class="beige-background">
+                  <p><strong>{{ 'br_com_supermarket_EMPLOYEE_JOB_POSITION_CODE_DETAILS' | translate }}:</strong> {{ selectedJobPosition.code }}</p>
+                  <p><strong>{{ 'br_com_supermarket_EMPLOYEE_JOB_POSITION_NAME_DETAILS' | translate }}:</strong> {{ selectedJobPosition.name }}</p>
+                  <p><strong>{{ 'br_com_supermarket_EMPLOYEE_JOB_POSITION_ASSIGMENTS_DETAILS' | translate }}:</strong> {{ selectedJobPosition.assignments }}</p>
+                  <p><strong>{{ 'br_com_supermarket_EMPLOYEE_JOB_POSITION_SALARY_DETAILS' | translate }}:</strong> {{ selectedJobPosition.salary.grossSalary | currency : 'R$ '}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

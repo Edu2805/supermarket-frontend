@@ -395,6 +395,8 @@
     "br_com_supermarket_EMPLOYEE_JOB_POSITION_NAME_DETAILS": "Job position name",
     "br_com_supermarket_EMPLOYEE_JOB_POSITION_ASSIGMENTS_DETAILS": "Job position assignments",
     "br_com_supermarket_EMPLOYEE_JOB_POSITION_SALARY_DETAILS": "Salary",
+    "br_com_supermarket_EMPLOYEE_EDIT": "Employee edit",
+    "br_com_supermarket_EMPLOYEE_EDIT_SUCCESS": "Contributor updated successfully!",
 
     "br_com_supermarket_BUTTON_REGISTER": "Register",
     "br_com_supermarket_BUTTON_EDIT": "Edit",
