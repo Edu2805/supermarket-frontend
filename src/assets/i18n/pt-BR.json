@@ -403,6 +403,9 @@
     "br_com_supermarket_EMPLOYEE_ESTABLISHMENT": "Loja",
     "br_com_supermarket_EMPLOYEE_CPF": "Cnpj",
     "br_com_supermarket_EMPLOYEE_TOTAL_ELEMENTS": "Total de colaboradores",
+    "br_com_supermarket_EMPLOYEE_DETAILS": "Detalhes do colaborador",
+    "br_com_supermarket_EMPLOYEE_PERSON_DATA_DETAILS": "Detalhes da pessoa",
+    "br_com_supermarket_EMPLOYEE_DELETE_SUCCESS": "O colaborador foi demitido.",
     
     "br_com_supermarket_BUTTON_REGISTER": "Cadastrar",
     "br_com_supermarket_BUTTON_EDIT": "Editar",

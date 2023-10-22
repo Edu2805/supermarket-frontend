@@ -123,6 +123,11 @@
             <div *ngIf="selectedPerson" class="details-panel">
               <h3 class="details-title">{{ 'br_com_supermarket_EMPLOYEE_PERSON_DETAILS' | translate }}</h3>
               <div class="beige-background">
+                <div class="col-md-4">
+                    <img 
+                        src="{{ images }}{{ selectedPerson?.personPhoto?.id === null ? defaultId : selectedPerson?.personPhoto?.id}}" 
+                        style="width: 120px; height: 168px">
+                </div>
                 <p><strong>{{ 'br_com_supermarket_EMPLOYEE_PERSON_NAME_DETAILS' | translate }}:</strong> {{ selectedPerson.firstName }} {{ selectedPerson.lastName }}</p>
                 <p><strong>{{ 'br_com_supermarket_EMPLOYEE_PERSON_CPF_DETAILS' | translate }}:</strong> {{ selectedPerson.cpf | cpf }}</p>
                 <p><strong>{{ 'br_com_supermarket_EMPLOYEE_PERSON_EMAIL_DETAILS' | translate }}:</strong> {{ selectedPerson.email }}</p>

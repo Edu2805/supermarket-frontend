@@ -95,15 +95,5 @@
                 style="width: 190px; height: 228px">
         </div>
     </div>
-
-    <div *ngIf="person?.userData?.userName && person?.userData?.role">
-        <div class="accordion-heading" id="f1" (click)="accordion('f1')">
-            {{ 'br_com_supermarket_USER_DETAILS' | translate }} <span class="pull-right up-icon" [class.icon]="id === 'f1'"><i class="fa fa-chevron-up"></i></span>
-        </div>
-        <div class="accordion-content" *ngIf="id === 'f1'">
-            <user-data-list [userData]="person.userData"></user-data-list>
-        </div>
-    </div>
-    
     <hr />
 </div>
