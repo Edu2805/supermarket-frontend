@@ -67,12 +67,12 @@
                                 (change)="updateSelectedSubsection(findSelectedSubSection())"
                             >
                                 <option 
-                                    value="{{ employee.subSection.id }}" 
+                                    value="{{ employee?.subSection.id }}" 
                                     selected
                                 >
-                                 {{ ('br_com_supermarket_EMPLOYEE_SUB_SECTION_CODE_SELECTED_TO_SHOW' | translate) + ": " + employee.subSection?.code }} | 
-                                 {{ ('br_com_supermarket_EMPLOYEE_SUB_SECTION_SELECTED_TO_SHOW' | translate) + ": " + employee.subSection?.name + " | " + 
-                                 ('br_com_supermarket_EMPLOYEE_SUB_SECTION_MAIN_SECTION_SELECTED_TO_SHOW' | translate) + ": " + employee.subSection.mainSection?.name}}
+                                 {{ ('br_com_supermarket_EMPLOYEE_SUB_SECTION_CODE_SELECTED_TO_SHOW' | translate) + ": " + employee?.subSection?.code }} | 
+                                 {{ ('br_com_supermarket_EMPLOYEE_SUB_SECTION_SELECTED_TO_SHOW' | translate) + ": " + employee?.subSection?.name + " | " + 
+                                 ('br_com_supermarket_EMPLOYEE_SUB_SECTION_MAIN_SECTION_SELECTED_TO_SHOW' | translate) + ": " + employee?.subSection.mainSection?.name}}
                                 </option>
                                 <option 
                                     *ngFor="let subsection of subSections" 
@@ -100,9 +100,9 @@
                                 (change)="updateSelectedJobPosition(findSelectedJobPosition())" 
                             >
                                 <option 
-                                    value="{{ employee.jobPosition.id }}"
+                                    value="{{ employee?.jobPosition.id }}"
                                     selected
-                                >{{ employee.jobPosition.code }} - {{ employee.jobPosition.name }}</option>
+                                >{{ employee?.jobPosition.code }} - {{ employee?.jobPosition.name }}</option>
                                 <option 
                                     *ngFor="let jobposition of jobPositions" 
                                     value="{{ jobposition.id }}"
