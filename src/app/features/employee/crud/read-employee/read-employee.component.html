@@ -1,1 +1,58 @@
-<p>read-employee works!</p>
+<div class="container main-container">
+
+    <ngx-spinner 
+        bdColor = "rgba(0, 0, 0, 0.8)" 
+        size = "medium" 
+        color = "#fff" 
+        type = "ball-beat" 
+        [fullScreen] = "true"
+    ><p style="color: white" > Aguarde... </p>
+    </ngx-spinner>
+
+    <h1>{{ 'br_com_supermarket_EMPLOYEE_LIST' | translate }}</h1>
+
+    <p>
+        <a class="btn btn-info" [routerLink]="['/employee/new']">{{ 'br_com_supermarket_BUTTON_NEW_EMPLOYEE' | translate }}</a>
+    </p>
+
+    <table class="table table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th>{{ 'br_com_supermarket_EMPLOYEE_REGISTER_NUMBER' | translate }}</th>
+                <th>{{ 'br_com_supermarket_EMPLOYEE_ESTABLISHMENT' | translate }}</th>
+                <th>{{ 'br_com_supermarket_EMPLOYEE_FULL_NAME' | translate }}</th>
+                <th>{{ 'br_com_supermarket_EMPLOYEE_CPF' | translate }}</th>
+                <th>{{ 'br_com_supermarket_EMPLOYEE_SUB_SECTION' | translate }}</th>
+                <th>{{ 'br_com_supermarket_EMPLOYEE_JOB_POSITION' | translate }}</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tr *ngFor="let employee of employees">
+            <td>
+                {{ employee.registerNumber }}
+            </td>
+            <td>
+                {{ employee.subSection.mainSection.department.establishment.code }}
+            </td>
+            <td>
+                {{ employee.fullName }}
+            </td>
+            <td>
+                {{ employee.person.cpf | cpf }}
+            </td>
+            <td>
+                {{ employee.subSection.name }}
+            </td>
+            <td>
+                {{ employee.jobPosition.name }}
+            </td>
+            <td class="text-right">
+                <a class="fa fa-search" [routerLink]="['/employee/details',employee.id]"></a>&nbsp;
+                <a class="fa fa-pencil-alt" [routerLink]="['/employee/edit',employee.id]"></a>&nbsp;
+                <a class="fa fa-trash" [routerLink]="['/employee/delete',employee.id]"></a>
+            </td>
+        </tr>
+    </table>
+    <pagination [page]="page" (paginationEvent)="changePage($event)"></pagination>
+    <p class="count-list">{{ 'br_com_supermarket_EMPLOYEE_TOTAL_ELEMENTS' | translate }} {{ page?.totalElements }}</p>
+</div>
