@@ -404,6 +404,7 @@
     "br_com_supermarket_EMPLOYEE_CPF": "Cnpj",
     "br_com_supermarket_EMPLOYEE_TOTAL_ELEMENTS": "Employee total elements",
     "br_com_supermarket_EMPLOYEE_DELETE_SUCCESS": "The employee was fired.",
+    "br_com_supermarket_GOODS_RECEIPT": "Goods Receipt",
 
     "br_com_supermarket_BUTTON_REGISTER": "Register",
     "br_com_supermarket_BUTTON_EDIT": "Edit",

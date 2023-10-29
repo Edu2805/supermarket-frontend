@@ -404,6 +404,7 @@
     "br_com_supermarket_EMPLOYEE_CPF": "Cnpj",
     "br_com_supermarket_EMPLOYEE_TOTAL_ELEMENTS": "Empleados Totales",
     "br_com_supermarket_EMPLOYEE_DELETE_SUCCESS": "El empleado fue despedido.",
+    "br_com_supermarket_GOODS_RECEIPT": "Recepción de mercancías",
 
     "br_com_supermarket_BUTTON_REGISTER": "Registro",
     "br_com_supermarket_BUTTON_EDIT": "Editar",
