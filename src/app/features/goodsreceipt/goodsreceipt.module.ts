@@ -19,6 +19,7 @@ import { ImageCropperModule } from "ngx-image-cropper";
 import { NgxSpinnerModule } from "ngx-spinner";
 import { PaginationModule } from "src/app/utils/pagination/pagination.module";
 import { PipeModule } from "src/app/utils/pipe/pipe.module";
+import { ProductDataService } from "../product-data/services/product-data.service";
 
 const maskConfigFunction: () => Partial<IConfig> = () => {
     return {
@@ -42,6 +43,7 @@ registerLocaleData(ptBr);
         GoodsReceiptGuardService,
         GoodsReceiptResolve,
         GoodsReceiptGuardService,
+        ProductDataService,
         { provide: LOCALE_ID, useValue: 'pt' }
     ],
     imports:[

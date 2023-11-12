@@ -1,0 +1,114 @@
+.text-right {
+    width: 10%;
+}
+
+.fa-pencil-alt {
+    color: green;
+    cursor: pointer;
+}
+
+.fa-trash {
+    color: red;
+    cursor: pointer;
+}
+
+.count-list {
+    text-align: right;
+}
+
+.net-salary-display {
+    font-size: 24px;
+    margin-left: auto;
+}
+
+.bold-red {
+    font-weight: bold;
+    color: red;
+}
+
+.increased-font-size {
+    font-size: 26px;
+}
+  
+.product-list {
+    list-style-type: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.product-item {
+    padding: 5px;
+    border: 1px solid #ccc;
+    margin: 5px 0;
+    transition: background-color 0.3s;
+}
+
+.product-item:hover {
+    background-color: #f5f5f5;
+}
+
+.selected-products {
+    list-style-type: none;
+    padding: 0;
+}
+
+.selected-products li {
+    margin: 5px 0;
+}
+
+.selected-products-section {
+    margin-top: 20px;
+}
+
+.selected-product-item {
+    background-color: #f5f5f5;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.selected-product-item:hover {
+    background-color: #e0e0e0;
+    transition: background-color 0.3s;
+}
+
+.quantity-input {
+    width: 150px; /* Largura do campo de entrada */
+    padding: 5px; /* Espaçamento interno */
+    border: 1px solid #ccc; /* Borda */
+    border-radius: 5px; /* Borda arredondada */
+    text-align: right; /* Alinhamento do texto no centro */
+    font-size: 14px; /* Tamanho da fonte */
+    background-color: #f5f5f5; /* Cor de fundo */
+    transition: all 0.3s; /* Adicionar transição suave */
+  }
+  
+  .quantity-input:focus {
+    outline: none; /* Remover a borda de foco padrão */
+    border-color: #007bff; /* Cor da borda quando em foco */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Sombra em foco */
+  }
+  
+  .quantity-input:hover {
+    background-color: #e0e0e0; /* Cor de fundo ao passar o mouse */
+  }
+  
+  .selected-products-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 10px; /* Espaçamento entre células */
+}
+
+.selected-products-table th, .selected-products-table td {
+    padding: 10px; /* Espaçamento interno nas células */
+    text-align: center;
+}
+
+a.fa-trash {
+    color: red;
+}
+
+.count-list {
+    text-align: right;
+}
