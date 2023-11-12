@@ -42,7 +42,15 @@ export class ProductDataService extends BaseService {
         map(this.extractData),
         catchError(this.serviceError));
     return response;
-}
+  }
+
+  searchProducts(code?:string, name?: string) {
+    if(code !== null) {
+      return this.http
+        .get<ProductData[]>(`${this.UrlServiceV1}product/filter?ean13=${code}`, super.GetHeaderJson())
+        .pipe(catchError(super.serviceError));
+    } 
+  }
 
   findProductById(id: string): Observable<ProductData> {
     return this.http

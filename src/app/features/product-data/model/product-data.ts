@@ -13,6 +13,10 @@ export interface ProductData {
     ean13?: string,
     dun14?: string,
     inventory: number,
+    newTotalQuantity?: number,
+    newInventory: number,
+    newTotalPurchasePrice?: number,
+    newPurchasePrice: number,
     subSection: SubSection,
     providerProduct: Provider,
     productPhoto?: Attachment
