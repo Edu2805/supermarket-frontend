@@ -7,7 +7,6 @@ import { CreateGoodsreceiptComponent } from './crud/create-goodsreceipt/create-g
 import { DeleteGoodsreceiptComponent } from './crud/delete-goodsreceipt/delete-goodsreceipt.component';
 import { DetailsGoodsreceiptComponent } from './crud/details-goodsreceipt/details-goodsreceipt.component';
 import { ReadGoodsreceiptComponent } from './crud/read-goodsreceipt/read-goodsreceipt.component';
-import { UpdateGoodsreceiptComponent } from './crud/update-goodsreceipt/update-goodsreceipt.component';
 import { IConfig, NgxMaskModule } from "ngx-mask";
 import ptBr from '@angular/common/locales/pt';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
@@ -36,7 +35,6 @@ registerLocaleData(ptBr);
         DeleteGoodsreceiptComponent,
         DetailsGoodsreceiptComponent,
         ReadGoodsreceiptComponent,
-        UpdateGoodsreceiptComponent
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     providers: [

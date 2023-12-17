@@ -4,6 +4,7 @@ import { GoodsReceipt } from '../model/goodsreceipt';
 import { HttpClient } from '@angular/common/http';
 import { Observable, catchError, map } from 'rxjs';
 import { Page } from 'src/app/utils/pagination/model/models';
+import { ProductData } from '../../product-data/model/product-data';
 
 @Injectable({
   providedIn: 'root'

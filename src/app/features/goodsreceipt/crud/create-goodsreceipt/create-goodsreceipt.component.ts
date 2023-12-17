@@ -27,6 +27,7 @@ export class CreateGoodsreceiptComponent extends FormBaseComponent implements On
   searchResults: ProductData[] = [];
   selectedProducts: ProductData[] = [];
   newInventory: number;
+  totalAllProducts: number = 0;
 
   constructor(private fb: FormBuilder,
     private goodsReceiptService: GoodsreceiptService,
@@ -147,6 +148,7 @@ export class CreateGoodsreceiptComponent extends FormBaseComponent implements On
     if (!isNaN(numberFormated)) {
         this.selectedProducts[index].newTotalQuantity = numberFormated;
         this.selectedProducts[index].newInventory = numberFormated + this.selectedProducts[index].inventory;
+        this.updateTotals();
     }
   }
 
@@ -155,6 +157,7 @@ export class CreateGoodsreceiptComponent extends FormBaseComponent implements On
     const numberFormated = parseFloat((Number(parsedPurchasePrice) / 100).toFixed(2));
     if (!isNaN(numberFormated)) {
         this.selectedProducts[index].newPurchasePrice = numberFormated;
+        this.updateTotals();
     }
   }
 
@@ -176,6 +179,7 @@ export class CreateGoodsreceiptComponent extends FormBaseComponent implements On
   removeProduct(index: number) {
     this.selectedProducts.splice(index, 1);
     this.updateTotalInventory();
+    this.updateTotals();
   }
   
   updateInventory(index: number) {
@@ -186,4 +190,16 @@ export class CreateGoodsreceiptComponent extends FormBaseComponent implements On
   updateTotalInventory() {
     this.newInventory = this.selectedProducts.reduce((total, product) => total + product.newTotalQuantity, 0);
   }  
+
+  updateTotals() {
+    let totalAllProducts = 0;
+  
+    this.selectedProducts.forEach(product => {
+      product.total = product.newPurchasePrice * product.newTotalQuantity;
+      totalAllProducts += product.total;
+    });
+  
+    this.totalAllProducts = totalAllProducts;
+  }
+  
 }
