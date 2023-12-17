@@ -71,6 +71,7 @@
                 </div>
                 <div class="form-group selected-products-section">
                     <p class="count-list">{{ 'br_com_supermarket_GOODS_RECEIPT_TOTAL_PRODUCT' | translate }} {{ selectedProducts.length }}</p>
+                    <p class="count-list">{{ 'br_com_supermarket_GOODS_RECEIPT_INVOICE_ACTUAL_TOTAL_VALUE' | translate }} {{ totalAllProducts | currency : 'R$ '}}</p>
                     <label class="control-label" *ngIf="selectedProducts.length > 0">
                         <strong style="display: block; text-align: center;">{{ 'br_com_supermarket_GOODS_RECEIPT_SELECTED_PRODUCTS' | translate }}</strong>
                     </label>
@@ -84,6 +85,7 @@
                                 <th class="text-center">{{ 'br_com_supermarket_GOODS_RECEIPT_PRODUCT_GOODS_RECEIPT' | translate }}</th>
                                 <th class="text-center">{{ 'br_com_supermarket_GOODS_RECEIPT_PRODUCT_INVOICE_COST' | translate }}</th>
                                 <th class="text-center">{{ 'br_com_supermarket_GOODS_RECEIPT_PRODUCT_ACTUAL_INVENTORY' | translate }}</th>
+                                <th class="text-center">{{ 'br_com_supermarket_GOODS_RECEIPT_PRODUCT_ACTUAL_TOTAL_VALUE' | translate }}</th>
                                 <th class="text-center"></th>
                             </tr>
                         </thead>
@@ -117,6 +119,7 @@
                                         >
                                     </td>
                                     <td class="text-center">{{ product.newInventory }}</td>
+                                    <td class="text-center">{{ product.total | currency : 'R$ '}}</td>
                                     <td>
                                         <a class="fa fa-trash" (click)="removeProduct(i)"></a>
                                     </td>

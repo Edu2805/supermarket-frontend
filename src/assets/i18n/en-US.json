@@ -421,6 +421,8 @@
     "br_com_supermarket_GOODS_RECEIPT_PRODUCT_INVOICE_COST": "Invoice cost",
     "br_com_supermarket_GOODS_RECEIPT_PRODUCT_ACTUAL_INVENTORY": "Actual inventory",
     "br_com_supermarket_GOODS_RECEIPT_ADD_AT_LEAST_ONE_PRODUCT_MESSAGE": "Add at least one product",
+    "br_com_supermarket_GOODS_RECEIPT_PRODUCT_ACTUAL_TOTAL_VALUE": "Purchase value per product",
+    "br_com_supermarket_GOODS_RECEIPT_INVOICE_ACTUAL_TOTAL_VALUE": "Total purchase value",
 
     "br_com_supermarket_BUTTON_REGISTER": "Register",
     "br_com_supermarket_BUTTON_EDIT": "Edit",

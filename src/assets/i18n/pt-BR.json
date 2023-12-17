@@ -420,10 +420,12 @@
     "br_com_supermarket_GOODS_RECEIPT_PRODUCT_DESCRIPTION": "Descrição",
     "br_com_supermarket_GOODS_RECEIPT_PRODUCT_ACTUAL_QUANTITY": "Quantidade atual",
     "br_com_supermarket_GOODS_RECEIPT_PRODUCT_ACTUAL_PURCHASE_PRICE": "Preço de compra atual",
-    "br_com_supermarket_GOODS_RECEIPT_PRODUCT_GOODS": "Entrada",
+    "br_com_supermarket_GOODS_RECEIPT_PRODUCT_GOODS_RECEIPT": "Entrada",
     "br_com_supermarket_GOODS_RECEIPT_PRODUCT_INVOICE_COST": "Preço nota",
     "br_com_supermarket_GOODS_RECEIPT_PRODUCT_ACTUAL_INVENTORY": "Estoque atual",
     "br_com_supermarket_GOODS_RECEIPT_ADD_AT_LEAST_ONE_PRODUCT_MESSAGE": "Adicione ao menos um produto no recebimento",
+    "br_com_supermarket_GOODS_RECEIPT_PRODUCT_ACTUAL_TOTAL_VALUE": "Valor da compra por produto",
+    "br_com_supermarket_GOODS_RECEIPT_INVOICE_ACTUAL_TOTAL_VALUE": "Valor total da compra",
     
     "br_com_supermarket_BUTTON_REGISTER": "Cadastrar",
     "br_com_supermarket_BUTTON_EDIT": "Editar",
