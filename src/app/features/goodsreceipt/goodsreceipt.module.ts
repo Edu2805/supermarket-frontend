@@ -4,7 +4,6 @@ import { GoodsreceiptComponent } from "./goodsreceipt.component";
 import { GoodsreceiptRoutingModule } from "./goodsreceipt.route";
 import { TranslateModule } from "@ngx-translate/core";
 import { CreateGoodsreceiptComponent } from './crud/create-goodsreceipt/create-goodsreceipt.component';
-import { DeleteGoodsreceiptComponent } from './crud/delete-goodsreceipt/delete-goodsreceipt.component';
 import { DetailsGoodsreceiptComponent } from './crud/details-goodsreceipt/details-goodsreceipt.component';
 import { ReadGoodsreceiptComponent } from './crud/read-goodsreceipt/read-goodsreceipt.component';
 import { IConfig, NgxMaskModule } from "ngx-mask";
@@ -32,7 +31,6 @@ registerLocaleData(ptBr);
     declarations:[
         GoodsreceiptComponent,
         CreateGoodsreceiptComponent,
-        DeleteGoodsreceiptComponent,
         DetailsGoodsreceiptComponent,
         ReadGoodsreceiptComponent,
     ],

@@ -423,6 +423,11 @@
     "br_com_supermarket_GOODS_RECEIPT_ADD_AT_LEAST_ONE_PRODUCT_MESSAGE": "Add at least one product",
     "br_com_supermarket_GOODS_RECEIPT_PRODUCT_ACTUAL_TOTAL_VALUE": "Purchase value per product",
     "br_com_supermarket_GOODS_RECEIPT_INVOICE_ACTUAL_TOTAL_VALUE": "Total purchase value",
+    "br_com_supermarket_GOODS_RECEIPT_CODE": "Request code",
+    "br_com_supermarket_GOODS_RECEIPT_INVOICE": "Invoice number",
+    "br_com_supermarket_GOODS_RECEIPT_TOTAL_VALUE": "Amount",
+    "br_com_supermarket_GOODS_RECEIPT_IS_RECEIVED": "Received",
+    "br_com_supermarket_GOODS_RECEIPT_TOTAL_ELEMENTS": "Total orders",
 
     "br_com_supermarket_BUTTON_REGISTER": "Register",
     "br_com_supermarket_BUTTON_EDIT": "Edit",
@@ -442,6 +447,7 @@
     "br_com_supermarket_BUTTON_BACK": "Back",
     "br_com_supermarket_BUTTON_DELETE": "Delete",
     "br_com_supermarket_BUTTON_INSERT": "Insert",
+    "br_com_supermarket_BUTTON_NEW_GOODS_RECEIPT": "Receive new merchandise",
 
     "br_com_supermarket_MSG_GENERIC_SUCCESS": "Success!",
     "br_com_supermarket_MSG_GENERIC_PAGE_NOT_FOUND": "Page not found",

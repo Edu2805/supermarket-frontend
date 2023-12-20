@@ -6,7 +6,6 @@ import { GoodsReceiptGuardService } from "./services/goodsreceipt.guard";
 import { CreateGoodsreceiptComponent } from "./crud/create-goodsreceipt/create-goodsreceipt.component";
 import { GoodsReceiptResolve } from "./services/goodsreceipt.resolve";
 import { DetailsGoodsreceiptComponent } from "./crud/details-goodsreceipt/details-goodsreceipt.component";
-import { DeleteGoodsreceiptComponent } from "./crud/delete-goodsreceipt/delete-goodsreceipt.component";
 
 const goodsreceiptRouterConfig: Routes = [
     {
@@ -30,16 +29,6 @@ const goodsreceiptRouterConfig: Routes = [
             },
             { 
                 path: 'details/:id', component: DetailsGoodsreceiptComponent,
-                canActivate: [GoodsReceiptGuardService],
-                data: {
-                    roles: ['ADMIN', 'HEAD']
-                },
-                resolve: {
-                    goodsreceipt: GoodsReceiptResolve
-                }
-            },
-            {
-                path: 'delete/:id', component: DeleteGoodsreceiptComponent,
                 canActivate: [GoodsReceiptGuardService],
                 data: {
                     roles: ['ADMIN', 'HEAD']
