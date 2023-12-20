@@ -1,0 +1,99 @@
+<div class="container main-container">
+    <ngx-spinner 
+        bdColor = "rgba(0, 0, 0, 0.8)" 
+        size = "medium" 
+        color = "#fff" 
+        type = "ball-beat" 
+        [fullScreen] = "true"
+    ><p style="color: white" > {{ 'br_com_supermarket_MSG_WAIT' | translate }} </p>
+    </ngx-spinner>
+
+    <h3>{{ 'br_com_supermarket_HISTORICAL_GOODS_RECEIPT_PRODUCT_DETAILS' | translate }}</h3>
+
+    <hr>
+
+    <div class="alert alert-danger" *ngIf="errors?.length > 0">
+        <h3 id="msgRetorno">{{ 'br_com_supermarket_MSG_GENERIC_ERROR' | translate }}</h3>
+        <ul>
+            <li *ngFor="let error of errors">{{ error }}</li>
+        </ul>
+    </div>
+
+    <div *ngFor="let historicalGoodsReceipt of historicalsGoodsReceipt">
+        <dl class="row">
+            <dt class="col-sm-2">
+                <label class="control-label">{{ 'br_com_supermarket_HISTORICAL_GOODS_RECEIPT_PRODUCT_DATA_CODE' | translate }}</label>
+            </dt>
+            <dd class="col-sm-10">
+                {{ historicalGoodsReceipt?.productCode }}
+            </dd>
+            <dt class="col-sm-2">
+                <label class="control-label">{{ 'br_com_supermarket_HISTORICAL_GOODS_RECEIPT_PRODUCT_DATA_NAME' | translate }}</label>
+            </dt>
+            <dd class="col-sm-10">
+                {{ historicalGoodsReceipt?.name }}
+            </dd>
+            <dt class="col-sm-2">
+                <label class="control-label">{{ 'br_com_supermarket_HISTORICAL_GOODS_RECEIPT_PRODUCT_DATA_PURCHASE_PRICE' | translate }}</label>
+            </dt>
+            <dd class="col-sm-10">
+                {{ historicalGoodsReceipt?.purchasePrice | currency : 'R$ ' }}
+            </dd>
+            <dt class="col-sm-2">
+                <label class="control-label">{{ 'br_com_supermarket_HISTORICAL_GOODS_RECEIPT_PRODUCT_DATA_INVENTORY' | translate }}</label>
+            </dt>
+            <dd class="col-sm-10">
+                {{ historicalGoodsReceipt?.inventory }}
+            </dd>
+            <dt class="col-sm-2">
+                <label class="control-label">{{ 'br_com_supermarket_HISTORICAL_GOODS_RECEIPT_PRODUCT_PROVIDER' | translate }}</label>
+            </dt>
+            <dd class="col-sm-10">
+                {{ historicalGoodsReceipt?.providerProductName }}
+            </dd>
+            <dt class="col-sm-2">
+                <label class="control-label">{{ 'br_com_supermarket_HISTORICAL_GOODS_RECEIPT_PRODUCT_DEPARTMENT' | translate }}</label>
+            </dt>
+            <dd class="col-sm-10">
+                {{ historicalGoodsReceipt?.departmentName }}
+            </dd>
+            <dt class="col-sm-2">
+                <label class="control-label">{{ 'br_com_supermarket_HISTORICAL_GOODS_RECEIPT_PRODUCT_MAIN_SECTION' | translate }}</label>
+            </dt>
+            <dd class="col-sm-10">
+                {{ historicalGoodsReceipt?.mainsectionName }}
+            </dd>
+            <dt class="col-sm-2">
+                <label class="control-label">{{ 'br_com_supermarket_HISTORICAL_GOODS_RECEIPT_PRODUCT_SUB_SECTION' | translate }}</label>
+            </dt>
+            <dd class="col-sm-10">
+                {{ historicalGoodsReceipt?.subsectionName }}
+            </dd>
+            <dt class="col-sm-2">
+                <label class="control-label">{{ 'br_com_supermarket_HISTORICAL_GOODS_RECEIPT_PRODUCT_INVOICE' | translate }}</label>
+            </dt>
+            <dd class="col-sm-10">
+                {{ historicalGoodsReceipt?.invoice }}
+            </dd>
+            <dt class="col-sm-2">
+                <label class="control-label">{{ 'br_com_supermarket_HISTORICAL_GOODS_RECEIPT_PRODUCT_TOTAL_INVOICE' | translate }}</label>
+            </dt>
+            <dd class="col-sm-10">
+                {{ historicalGoodsReceipt?.totalInvoice | currency : 'R$ ' }}
+            </dd>
+            <dt class="col-sm-2">
+                <label class="control-label">{{ 'br_com_supermarket_HISTORICAL_GOODS_RECEIPT_PRODUCT_REGISTRATION_DATE' | translate }}</label>
+            </dt>
+            <dd class="col-sm-10">
+                {{ historicalGoodsReceipt?.registrationDate | singleDate }}
+            </dd>
+            <dt class="col-sm-2">
+                <label class="control-label">{{ 'br_com_supermarket_HISTORICAL_GOODS_RECEIPT_PRODUCT_RECEIVED' | translate }}</label>
+            </dt>
+            <dd class="col-sm-10">
+                {{ historicalGoodsReceipt?.received === true ? ('br_com_supermarket_MSG_GENERIC_YES' | translate) : ('br_com_supermarket_MSG_GENERIC_NO' | translate) }}
+            </dd>
+        </dl>
+        <hr>
+    </div>
+</div>

@@ -6,7 +6,7 @@ export interface GoodsReceipt {
     invoice: string,
     productsTotal: number,
     registrationDate: string,
-    isReceived: boolean,
+    received: boolean,
     productDataList: ProductData[],
     producReceiptList: string[]
 }
