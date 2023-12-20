@@ -18,6 +18,8 @@ import { NgxSpinnerModule } from "ngx-spinner";
 import { PaginationModule } from "src/app/utils/pagination/pagination.module";
 import { PipeModule } from "src/app/utils/pipe/pipe.module";
 import { ProductDataService } from "../product-data/services/product-data.service";
+import { GoodsReceiptProductListComponent } from "./goods-receipt-product-list/goods-receipt-product-list.component";
+import { HistoricalGoodsReceiptService } from "../historical-goods-receipt/services/historical-goods-receipt.service";
 
 const maskConfigFunction: () => Partial<IConfig> = () => {
     return {
@@ -33,6 +35,7 @@ registerLocaleData(ptBr);
         CreateGoodsreceiptComponent,
         DetailsGoodsreceiptComponent,
         ReadGoodsreceiptComponent,
+        GoodsReceiptProductListComponent
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     providers: [
@@ -40,6 +43,7 @@ registerLocaleData(ptBr);
         GoodsReceiptResolve,
         GoodsReceiptGuardService,
         ProductDataService,
+        HistoricalGoodsReceiptService,
         { provide: LOCALE_ID, useValue: 'pt' }
     ],
     imports:[
