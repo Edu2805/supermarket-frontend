@@ -1,17 +1,17 @@
 import { Injectable } from "@angular/core";
-import { ActivatedRouteSnapshot, CanActivate, CanDeactivate, Router } from "@angular/router";
-import { BaseGuard } from "src/app/services/base.guard";
-import { CreateGoodsreceiptComponent } from "../feature/create-goodsreceipt/create-goodsreceipt.component";
+import { CanActivate, CanDeactivate, Router, ActivatedRouteSnapshot } from "@angular/router";
 import { TranslateService } from "@ngx-translate/core";
+import { BaseGuard } from "src/app/services/base.guard";
+import { CreateGoodsIssueComponent } from "../feature/create-goods-issue/create-goods-issue.component";
 
 @Injectable()
-export class GoodsReceiptGuardService extends BaseGuard implements CanActivate, CanDeactivate<CreateGoodsreceiptComponent> {
+export class GoodsIssueGuardService extends BaseGuard implements CanActivate, CanDeactivate<CreateGoodsIssueComponent> {
 
 
     constructor(protected override router: Router,
         private translateService: TranslateService) { super(router); }
 
-    canDeactivate(component: CreateGoodsreceiptComponent) {
+    canDeactivate(component: CreateGoodsIssueComponent) {
         if (component.unsaveChanges) {
             return window.confirm(this.translateService.instant('br_com_supermarket_MSG_ABANDON_FILLING_FORM'));
         }

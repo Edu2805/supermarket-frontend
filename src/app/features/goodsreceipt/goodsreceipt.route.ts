@@ -1,11 +1,11 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { GoodsreceiptComponent } from "./goodsreceipt.component";
-import { ReadGoodsreceiptComponent } from "./crud/read-goodsreceipt/read-goodsreceipt.component";
+import { ReadGoodsreceiptComponent } from "./feature/read-goodsreceipt/read-goodsreceipt.component";
 import { GoodsReceiptGuardService } from "./services/goodsreceipt.guard";
-import { CreateGoodsreceiptComponent } from "./crud/create-goodsreceipt/create-goodsreceipt.component";
+import { CreateGoodsreceiptComponent } from "./feature/create-goodsreceipt/create-goodsreceipt.component";
 import { GoodsReceiptResolve } from "./services/goodsreceipt.resolve";
-import { DetailsGoodsreceiptComponent } from "./crud/details-goodsreceipt/details-goodsreceipt.component";
+import { DetailsGoodsreceiptComponent } from "./feature/details-goodsreceipt/details-goodsreceipt.component";
 
 const goodsreceiptRouterConfig: Routes = [
     {
