@@ -10,6 +10,6 @@ export interface GoodsIssue {
     isEffectiveSale: boolean,
     paymentOptionsType: string,
     registrationDate: string,
-    productDataList: ProductData;
+    productDataList: ProductData[];
     productList: string[];
 }
