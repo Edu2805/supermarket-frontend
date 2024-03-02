@@ -6,7 +6,7 @@ export interface GoodsIssue {
     productsTotal: number,
     subtotal: number,
     totalReceived: number,
-    change: number,
+    change?: number,
     isEffectiveSale: boolean,
     paymentOptionsType: string,
     registrationDate: string,
