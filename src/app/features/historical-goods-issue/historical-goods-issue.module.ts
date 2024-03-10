@@ -8,9 +8,10 @@ import { IConfig, NgxMaskModule } from "ngx-mask";
 import { NgxSpinnerModule } from "ngx-spinner";
 import { PaginationModule } from "src/app/utils/pagination/pagination.module";
 import { PipeModule } from "src/app/utils/pipe/pipe.module";
-import { HistoricalGoodsReceiptService } from "./services/historical-goods-receipt.service";
+import { HistoricalGoodsIssueService } from "./services/historical-goods-issue.service";
 import ptBr from '@angular/common/locales/pt';
-import { HistoricalGoodsReceiptComponent } from "./historical-goods-receipt.component";
+import { HistoricalGoodsIssueComponent } from "./historical-goods-issue.component";
+
 
 const maskConfigFunction: () => Partial<IConfig> = () => {
     return {
@@ -22,11 +23,11 @@ registerLocaleData(ptBr);
 
 @NgModule({
     declarations:[
-        HistoricalGoodsReceiptComponent
+        HistoricalGoodsIssueComponent
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     providers: [
-        HistoricalGoodsReceiptService,
+        HistoricalGoodsIssueService,
         { provide: LOCALE_ID, useValue: 'pt' }
     ],
     imports:[
@@ -43,4 +44,4 @@ registerLocaleData(ptBr);
     ],
     exports:[]
 })
-export class HistoricalGoodsReceiptModule{}
+export class HistoricalGoodsIssueModule{}
