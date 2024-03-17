@@ -27,6 +27,9 @@ export class CreateGoodsIssueComponent extends FormBaseComponent implements OnIn
   selectedProducts: ProductData[] = [];
   newInventory: number;
   totalAllProducts: number = 0;
+  nomeMercado: string = "Supermercado XYZ";
+  cnpjMercado: string = "00.000.000/0000-00";
+  codigoOperador: string = "001";
 
   constructor(private fb: FormBuilder,
     private goodsIssueService: GoodsissueService,
@@ -67,6 +70,11 @@ export class CreateGoodsIssueComponent extends FormBaseComponent implements OnIn
   }
 
   searchProducts(term: string) {
+    if (term.trim() === '') {
+      this.searchResults = [];
+      return;
+    }
+    
     this.productDataService.searchProducts(term).subscribe((products) => {
       this.searchResults = products;
     });
@@ -188,7 +196,17 @@ export class CreateGoodsIssueComponent extends FormBaseComponent implements OnIn
 
   updateTotalInventory() {
     this.newInventory = this.selectedProducts.reduce((total, product) => total + product.newTotalQuantity, 0);
-  }  
+  }
+
+  cancelPurchase() {
+    // Implementar lógica de cancelamento da compra
+    this.selectedProducts = [];
+    this.totalAllProducts = 0;
+  }
+
+  processPayment() {
+    // Implementar lógica de processamento do pagamento
+  }
 
   updateTotals() {
     let totalAllProducts = 0;

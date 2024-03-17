@@ -1,134 +1,73 @@
 <div class="container main-container">
 
     <ngx-spinner 
-        bdColor = "rgba(0, 0, 0, 0.8)" 
-        size = "medium" 
-        color = "#fff" 
-        type = "ball-beat" 
-        [fullScreen] = "true"
-    ><p style="color: white" > {{ 'br_com_supermarket_MSG_WAIT' | translate }} </p>
+        bdColor="rgba(0, 0, 0, 0.8)" 
+        size="medium" 
+        color="#fff" 
+        type="ball-beat" 
+        [fullScreen]="true"
+    ><p style="color: white">{{ 'br_com_supermarket_MSG_WAIT' | translate }}</p>
     </ngx-spinner>
 
     <h1>{{ 'br_com_supermarket_GOODS_RECEIPT_NEW' | translate }}</h1>
     
     <hr>
-    <div class="row">
-        <div class="col-md-10">
-            <form novalidate="novalidate" (ngSubmit)="addGoodsIssue()" [formGroup]="goodsIssueForm">
+    <div class="market-info">
+        <!-- Informações do Mercado -->
+        <h2>{{ nomeMercado }}</h2>
+        <p>CNPJ: {{ cnpjMercado }}</p>
+    </div>
 
-                <div class="form-group">
-                    <input 
-                        type="submit" 
-                        [disabled]="!goodsIssueForm.valid" 
-                        value="{{ 'br_com_supermarket_BUTTON_REGISTER' | translate }}" 
-                        class="btn btn-primary"
-                        >
-                    &nbsp;
-                    <a class="btn btn-info" [routerLink]="[ '/goods-issue/getAll']">{{ 'br_com_supermarket_BUTTON_BACK' | translate }}</a>
-                </div>
+    <div class="info-goods-issue-container">
+        <div class="info-goods-issue-general">
+            <div class="info-goods-issue">
+                <label>Operador:</label>
+                <span>{{ codigoOperador }}</span>
+                <br>
+                <label>Caixa:</label>
+                <span>{{ 001 }}</span>
+                <br>
+                <label>Venda:</label>
+                <span>{{ 001 }}</span>
+            </div>
+            <div class="info-goods-issue-logo">
+                
+                    <img src="caminho/para/logo.png" alt="Logo do Estabelecimento">
+                
+            </div>
+        </div>
 
-                <div class="alert alert-danger" *ngIf="errors?.length > 0">
-                    <h3 id="msgRetorno">{{ 'br_com_supermarket_MSG_GENERIC_ERROR' | translate }}</h3>
-                    <ul>
-                        <li *ngFor="let error of errors">{{ error }}</li>
-                    </ul>
-                </div>
+        <div class="info-goods-issue-registers">
+            <h3>Mercadorias Registradas</h3>
+            <ul>
+                <li *ngFor="let product of selectedProducts">
+                    {{ product.name }} - {{ product.salePrice | currency : 'BRL' }}
+                </li>
+            </ul>
+        </div>
+    </div>
 
-                <div class="form-group">
-                    <label class="control-label">{{ 'br_com_supermarket_GOODS_RECEIPT_INVOICE_KEY' | translate }}</label>
-                    <div>
-                        <input 
-                            class="form-control" 
-                            id="saleNumber" 
-                            type="text" 
-                            placeholder="{{ 'br_com_supermarket_GOODS_RECEIPT_INVOICE_KEY_REQUIRED_PLACEHOLDER' | translate }}" 
-                            formControlName="saleNumber" 
-                            [ngClass]="{'is-invalid': displayMessage.saleNumber }"
-                        />
-                        <span class="text-danger" *ngIf="displayMessage.saleNumber">
-                            <p [innerHTML]="displayMessage.saleNumber"></p>
-                        </span>
-                    </div>
-                </div>
+   <!-- Campo de Busca de Mercadorias -->
+   <div class="search-container">
+        <input type="text" placeholder="Buscar Mercadorias" formControlName="searchProduct">
+        <ul *ngIf="searchResults.length > 0" class="product-list">
+            <li *ngFor="let product of searchResults" (click)="selectProduct(product)" class="product-item">
+                {{ product.ean13 }} - {{ product.name }} - {{ product.inventory }}
+            </li>
+        </ul>
+    </div>
 
-                <div class="form-group">
-                    <label class="control-label">{{ 'br_com_supermarket_GOODS_RECEIPT_PRODUCT_SEARCH' | translate }}</label>
-                    <input
-                        class="form-control"
-                        type="text"
-                        id="searchProduct"
-                        formControlName="searchProduct"
-                        (input)="searchProducts($event.target.value)"
-                    />
-                    <span class="text-danger" *ngIf="displayMessage.searchProduct">
-                        <p [innerHTML]="displayMessage.searchProduct"></p>
-                    </span>
-                    <ul *ngIf="searchResults.length > 0" class="product-list">
-                        <li *ngFor="let product of searchResults" (click)="selectProduct(product)" class="product-item">
-                            {{ product.ean13 }} - {{ product.name }} - {{ product.inventory }}
-                        </li>
-                    </ul>
-                </div>
-                <div class="form-group selected-products-section">
-                    <p class="count-list">{{ 'br_com_supermarket_GOODS_RECEIPT_TOTAL_PRODUCT' | translate }} {{ selectedProducts.length }}</p>
-                    <p class="count-list">{{ 'br_com_supermarket_GOODS_RECEIPT_INVOICE_ACTUAL_TOTAL_VALUE' | translate }} {{ totalAllProducts | currency : 'R$ '}}</p>
-                    <label class="control-label" *ngIf="selectedProducts.length > 0">
-                        <strong style="display: block; text-align: center;">{{ 'br_com_supermarket_GOODS_RECEIPT_SELECTED_PRODUCTS' | translate }}</strong>
-                    </label>
-                    <table class="selected-products-table" *ngIf="selectedProducts.length > 0">
-                        <thead>
-                            <tr>
-                                <th class="text-center">{{ 'br_com_supermarket_GOODS_RECEIPT_PRODUCT_CODE' | translate }}</th>
-                                <th class="text-center">{{ 'br_com_supermarket_GOODS_RECEIPT_PRODUCT_DESCRIPTION' | translate }}</th>
-                                <th class="text-center">{{ 'br_com_supermarket_GOODS_RECEIPT_PRODUCT_ACTUAL_QUANTITY' | translate }}</th>
-                                <th class="text-center">{{ 'br_com_supermarket_GOODS_RECEIPT_PRODUCT_ACTUAL_PURCHASE_PRICE' | translate }}</th>
-                                <th class="text-center">{{ 'br_com_supermarket_GOODS_RECEIPT_PRODUCT_GOODS_RECEIPT' | translate }}</th>
-                                <th class="text-center">{{ 'br_com_supermarket_GOODS_RECEIPT_PRODUCT_INVOICE_COST' | translate }}</th>
-                                <th class="text-center">{{ 'br_com_supermarket_GOODS_RECEIPT_PRODUCT_ACTUAL_INVENTORY' | translate }}</th>
-                                <th class="text-center">{{ 'br_com_supermarket_GOODS_RECEIPT_PRODUCT_ACTUAL_TOTAL_VALUE' | translate }}</th>
-                                <th class="text-center"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <ng-container *ngFor="let product of selectedProducts; let i = index">
-                                <tr class="selected-product-item">
-                                    <td class="text-center">{{ product.ean13 }}</td>
-                                    <td class="text-center">{{ product.name }}</td>
-                                    <td class="text-center">{{ product.saleNumber }}</td>
-                                    <td class="text-center">{{ product.salePrice | currency : 'R$ '}}</td>
-                                    <td>
-                                        <input
-                                            type="text"
-                                            [value]="product.newTotalQuantity"
-                                            (input)="onQuantityChange(i, $event.target.value)"
-                                            [allowNegativeNumbers]="false"
-                                            mask="separator.2"
-                                            thousandSeparator="."
-                                            class="quantity-input"
-                                        >
-                                    </td>
-                                    <td>
-                                        <input
-                                            type="text"
-                                            [value]="product.purchasePrice"
-                                            (input)="onPurchasePriceChange(i, $event.target.value)"
-                                            [allowNegativeNumbers]="false"
-                                            mask="separator.2"
-                                            thousandSeparator="."
-                                            class="quantity-input"
-                                        >
-                                    </td>
-                                    <td class="text-center">{{ product.newInventory }}</td>
-                                    <td class="text-center">{{ product.total | currency : 'R$ '}}</td>
-                                    <td>
-                                        <a class="fa fa-trash" (click)="removeProduct(i)"></a>
-                                    </td>
-                                </tr>
-                            </ng-container>
-                        </tbody>
-                    </table>
-                </div>                                  
-            </form>
+    <!-- Novo contêiner para os elementos de total e botões -->
+    <div class="total-buttons-container">
+        <!-- Exibição do Total da Compra -->
+        <div class="total-container">
+            <h1>Total: {{ totalAllProducts | currency : 'BRL' }}</h1>
+        </div>
+
+        <!-- Botões de Cancelar e Pagamento -->
+        <div class="buttons-container">
+            <button class="btn btn-danger" (click)="cancelPurchase()">Cancelar</button>
+            <button class="btn btn-success" (click)="processPayment()">Pagamento</button>
         </div>
     </div>
 </div>
