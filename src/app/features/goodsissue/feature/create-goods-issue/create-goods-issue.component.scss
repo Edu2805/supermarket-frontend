@@ -1,0 +1,95 @@
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.info-goods-issue-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    height: 400px;
+}
+
+.info-goods-issue-general {
+    flex: 0.5;
+    height: 400px;
+}
+
+.info-goods-issue {
+    flex: 1;
+    margin-right: 20px;
+    background-color: #ADD8E6; /* Azul claro */
+    padding: 10px;
+    border-radius: 5%;
+    border: 1px solid #000; /* Borda fina */
+}
+
+.info-goods-issue-registers {
+    flex: auto;
+    height: 97.5%;
+    border: 1px solid #000; /* Borda fina */
+    border-radius: 5%;
+    background-color: #dfdda1;
+}
+
+.info-goods-issue-registers h3 {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.info-goods-issue-logo {
+    flex: 0.5;
+    height: 260px;
+    display: flex;
+    justify-content: center; /* Centraliza a imagem horizontalmente */
+    align-items: center; /* Centraliza a imagem verticalmente */
+}
+
+img {
+    margin-right: 20px;
+    margin-top: 20px;
+    width: 100%; /* A largura da imagem ocupa 100% do contêiner */
+    height: 100%; /* A altura da imagem ocupa 100% do contêiner */
+    border: 1px solid #000; /* Borda fina */
+    border-radius: 5%;
+    max-width: 100%; /* Garante que a imagem não ultrapasse o contêiner */
+    max-height: 100%; /* Garante que a imagem não ultrapasse o contêiner */
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+}
+
+.search-container input[type="text"] {
+    flex-grow: 1;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.total-buttons-container {
+    display: flex;
+    justify-content: space-between; /* Alinha os itens ao início e ao final do contêiner */
+    margin-top: 20px; /* Adicione margem superior conforme necessário */
+
+}
+
+.total-container {
+    border: 1px solid #000;
+    border-radius: 5px;
+    width: calc(70% - 10px); /* 50% da largura da tela, com margens */
+}
+
+.total-container h1 {
+    text-align: center;
+}
+
+.buttons-container {
+    //display: flex;
+    margin-top: 10px;
+    justify-content: space-between; /* Alinha os itens ao início e ao final do contêiner */
+    width: calc(20% - 10px); /* 50% da largura da tela, com margens */
+}

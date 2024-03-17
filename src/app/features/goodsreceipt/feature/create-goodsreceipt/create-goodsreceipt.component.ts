@@ -68,6 +68,11 @@ export class CreateGoodsreceiptComponent extends FormBaseComponent implements On
   }
 
   searchProducts(term: string) {
+    if (term.trim() === '') {
+      this.searchResults = [];
+      return;
+    }
+    
     this.productDataService.searchProducts(term).subscribe((products) => {
       this.searchResults = products;
     });
