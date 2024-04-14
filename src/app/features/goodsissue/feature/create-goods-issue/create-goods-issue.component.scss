@@ -70,6 +70,57 @@ img {
     border-radius: 5px;
 }
 
+.product-list {
+    list-style-type: none;
+    position: absolute;
+    top: calc(100% + 5px); /* Posiciona a lista abaixo do campo de pesquisa */
+    z-index: 9999;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 5px;
+    width: 100%; /* Ocupa a largura do contêiner pai */
+    max-height: 200px; /* Ajuste conforme necessário */
+    overflow-y: auto;
+    cursor: pointer;
+}
+
+.product-item {
+    padding: 5px;
+    border: 1px solid #ccc;
+    margin: 5px 0;
+    transition: background-color 0.3s;
+}
+
+.product-item:hover {
+    background-color: #f5f5f5;
+}
+
+.selected-products {
+    list-style-type: none;
+    padding: 0;
+}
+
+.selected-products li {
+    margin: 5px 0;
+}
+
+.selected-products-section {
+    margin-top: 20px;
+}
+
+.selected-product-item {
+    background-color: #f5f5f5;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.selected-product-item:hover {
+    background-color: #e0e0e0;
+    transition: background-color 0.3s;
+}
+
 .total-buttons-container {
     display: flex;
     justify-content: space-between; /* Alinha os itens ao início e ao final do contêiner */
@@ -88,8 +139,57 @@ img {
 }
 
 .buttons-container {
-    //display: flex;
     margin-top: 10px;
     justify-content: space-between; /* Alinha os itens ao início e ao final do contêiner */
     width: calc(20% - 10px); /* 50% da largura da tela, com margens */
+}
+
+.buttons-container .btn {
+    margin-right: 5px;
+}
+
+.info-unity-goods-issue-general {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px; /* Adiciona um espaço de 10px entre os campos */
+}
+
+.info-unity-goods-issue-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.info-unity-goods-issue-general label {
+    display: block;
+}
+
+.info-unity-goods-issue-general input {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    box-sizing: border-box;
+    width: 100%; /* Adicionado para garantir que os campos de entrada ocupem todo o espaço disponível */
+}
+
+.info-unity-goods-issue-general > div:nth-child(1) {
+    flex: 1; /* Campo Quantidade ocupa 10% */
+}
+
+.info-unity-goods-issue-general > div:nth-child(2) {
+    flex: 2; /* Campo Preço ocupa 20% */
+}
+
+.info-unity-goods-issue-general > div:nth-child(3) {
+    flex: 5; /* Campo Descrição ocupa o restante */
+}
+
+.info-unity-goods-issue,
+.info-price-goods-issue,
+.info-description-goods-issue {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza os itens verticalmente */
 }

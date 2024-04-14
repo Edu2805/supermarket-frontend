@@ -12,62 +12,114 @@
     <h1>{{ 'br_com_supermarket_GOODS_RECEIPT_NEW' | translate }}</h1>
     
     <hr>
-    <div class="market-info">
-        <!-- Informações do Mercado -->
-        <h2>{{ nomeMercado }}</h2>
-        <p>CNPJ: {{ cnpjMercado }}</p>
-    </div>
 
-    <div class="info-goods-issue-container">
-        <div class="info-goods-issue-general">
-            <div class="info-goods-issue">
-                <label>Operador:</label>
-                <span>{{ codigoOperador }}</span>
-                <br>
-                <label>Caixa:</label>
-                <span>{{ 001 }}</span>
-                <br>
-                <label>Venda:</label>
-                <span>{{ 001 }}</span>
-            </div>
-            <div class="info-goods-issue-logo">
-                
-                    <img src="caminho/para/logo.png" alt="Logo do Estabelecimento">
-                
+    <form novalidate="novalidate" (ngSubmit)="addGoodsIssue()" [formGroup]="goodsIssueForm">
+
+        <div class="form-group">
+            <div class="market-info">
+                <!-- Informações do Mercado -->
+                <h2>{{ nomeMercado }}</h2>
+                <p>CNPJ: {{ cnpjMercado }}</p>
             </div>
         </div>
 
-        <div class="info-goods-issue-registers">
-            <h3>Mercadorias Registradas</h3>
-            <ul>
-                <li *ngFor="let product of selectedProducts">
-                    {{ product.name }} - {{ product.salePrice | currency : 'BRL' }}
-                </li>
-            </ul>
-        </div>
-    </div>
+        <div class="form-group">
+            <div class="info-goods-issue-container">
+                <div class="info-goods-issue-general">
+                    <div class="info-goods-issue">
+                        <label>Operador:</label>
+                        <span>{{ codigoOperador }}</span>
+                        <br>
+                        <label>Caixa:</label>
+                        <span>{{ 001 }}</span>
+                        <br>
+                        <label>Venda:</label>
+                        <span>{{ 001 }}</span>
+                    </div>
+                    <div class="info-goods-issue-logo">
+                        
+                            <img src="caminho/para/logo.png" alt="Logo do Estabelecimento">
+                        
+                    </div>
+                </div>
 
-   <!-- Campo de Busca de Mercadorias -->
-   <div class="search-container">
-        <input type="text" placeholder="Buscar Mercadorias" formControlName="searchProduct">
-        <ul *ngIf="searchResults.length > 0" class="product-list">
-            <li *ngFor="let product of searchResults" (click)="selectProduct(product)" class="product-item">
-                {{ product.ean13 }} - {{ product.name }} - {{ product.inventory }}
-            </li>
-        </ul>
-    </div>
-
-    <!-- Novo contêiner para os elementos de total e botões -->
-    <div class="total-buttons-container">
-        <!-- Exibição do Total da Compra -->
-        <div class="total-container">
-            <h1>Total: {{ totalAllProducts | currency : 'BRL' }}</h1>
+                <div class="info-goods-issue-registers">
+                    <h3>Mercadorias Registradas</h3>
+                    <ul>
+                        <li *ngFor="let product of selectedProducts">
+                            {{ product.name }} - {{ product.salePrice | currency : 'BRL' }}
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
-        <!-- Botões de Cancelar e Pagamento -->
-        <div class="buttons-container">
-            <button class="btn btn-danger" (click)="cancelPurchase()">Cancelar</button>
-            <button class="btn btn-success" (click)="processPayment()">Pagamento</button>
+        <div class="form-group">
+            <div class="info-unity-goods-issue-container">
+                <div class="info-unity-goods-issue-general">
+                    <div class="info-unity-goods-issue">
+                        <label>Quantidade</label>
+                        <input 
+                            type="text" 
+                            formControlName="quantity"
+                            (input)="verifyDefaultValues()"
+                        > <!-- Campo de entrada desativado -->
+                    </div>
+                    <div class="info-price-goods-issue">
+                        <label>Preço</label>
+                        <input 
+                            type="text" 
+                            formControlName="price"
+                            mask="separator.2"
+                            prefix="R$ "
+                            thousandSeparator="."
+                            decimalMarker=","
+                        > <!-- Campo de entrada desativado -->
+                    </div>
+                    <div class="info-description-goods-issue">
+                        <label>Descrição</label>
+                        <input type="text" formControlName="description"> <!-- Campo de entrada desativado -->
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
+
+        <!-- Campo de Busca de Mercadorias -->
+        <div class="form-group">
+            <div class="search-container position-relative">
+                <input
+                    class="form-control"
+                    type="text"
+                    id="searchProduct"
+                    formControlName="searchProduct"
+                    (input)="searchProducts($event.target.value)"
+                />
+                <span class="text-danger" *ngIf="displayMessage.searchProduct">
+                    <p [innerHTML]="displayMessage.searchProduct"></p>
+                </span>
+                <ul *ngIf="searchResults.length > 0" class="product-list">
+                    <li *ngFor="let product of searchResults" (click)="selectProduct(product)" class="product-item">
+                        {{ product.ean13 }} - {{ product.name }} - {{ product.salePrice | currency : 'R$ ' }}
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+
+        <!-- Novo contêiner para os elementos de total e botões -->
+        <div class="form-group">
+            <div class="total-buttons-container">
+                <!-- Exibição do Total da Compra -->
+                <div class="total-container">
+                    <h1>Total: {{ totalAllProducts | currency : 'BRL' }}</h1>
+                </div>
+
+                <!-- Botões de Cancelar e Pagamento -->
+                <div class="buttons-container">
+                    <button class="btn btn-danger" (click)="cancelPurchase()">Cancelar</button>
+                    <button class="btn btn-success" (click)="processPayment()">Pagamento</button>
+                </div>
+            </div>
+        </div>
+    </form>
 </div>
