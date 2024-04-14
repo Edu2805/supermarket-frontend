@@ -55,6 +55,9 @@ export class CreateGoodsIssueComponent extends FormBaseComponent implements OnIn
     this.goodsIssueForm = this.fb.group({
       saleNumber: [''],
       searchProduct: [''],
+      description: { value: '', disabled: true },
+      quantity: { value: '1', disabled: false },
+      price: { value: '', disabled: true },
       productDataList: this.fb.array([]),
     });
   }
@@ -83,7 +86,22 @@ export class CreateGoodsIssueComponent extends FormBaseComponent implements OnIn
   selectProduct(product: ProductData) {
     const productCopy = { ...product, newTotalQuantity: product.inventory };
     this.selectedProducts.push(productCopy);
+    
+    // Armazena o nome do produto para o campo de descrição
+    const productName = product.name;
+    const productPrice = product.salePrice;
+    
+    // Limpa a lista de sugestões e o campo de busca
     this.searchResults = [];
+    this.goodsIssueForm.patchValue({
+        searchProduct: ''
+    });
+    
+    // Atribui o nome do produto ao campo de descrição
+    this.goodsIssueForm.patchValue({
+        description: productName,
+        price: productPrice
+    });
   }
 
   addSelectedProductsToGoodsReceipt() {
@@ -96,6 +114,15 @@ export class CreateGoodsIssueComponent extends FormBaseComponent implements OnIn
       }
       this.goodsIssue.productDataList.push(product);
     });
+  }
+
+  verifyDefaultValues() {
+    const valorCampo = (event.target as HTMLInputElement).value;
+    const regex = /^[0-9]*$/;
+
+    if (!regex.test(valorCampo)) {
+      (event.target as HTMLInputElement).value = '';
+    }
   }
   
   addGoodsIssue() {
