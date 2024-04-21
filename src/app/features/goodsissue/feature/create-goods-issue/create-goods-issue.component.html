@@ -45,12 +45,15 @@
 
                 <div class="info-goods-issue-registers">
                     <h3>Mercadorias Registradas</h3>
-                    <ul>
+                    <ol>
                         <li *ngFor="let product of selectedProducts">
-                            {{ product.name }} - {{ product.salePrice | currency : 'BRL' }}
+                            Descrição: {{ product.name }} - 
+                            Quantidade: {{ product.inventory }} - 
+                            Preço UN: {{ product.salePrice | currency : 'BRL' }} -
+                            Preço Total: {{ product.inventory * product.salePrice | currency : 'BRL' }}
                         </li>
-                    </ul>
-                </div>
+                    </ol>
+                </div>                
             </div>
         </div>
 
@@ -61,7 +64,7 @@
                         <label>Quantidade</label>
                         <input 
                             type="text" 
-                            formControlName="quantity"
+                            formControlName="inventory"
                             (input)="verifyDefaultValues()"
                         > <!-- Campo de entrada desativado -->
                     </div>
@@ -74,11 +77,20 @@
                             prefix="R$ "
                             thousandSeparator="."
                             decimalMarker=","
-                        > <!-- Campo de entrada desativado -->
+                            (input)="checkFieldsNotEmpty()"
+                        >
                     </div>
                     <div class="info-description-goods-issue">
-                        <label>Descrição</label>
-                        <input type="text" formControlName="description"> <!-- Campo de entrada desativado -->
+                        <label class="mr-2">Descrição</label>
+                        <input 
+                            type="text" 
+                            formControlName="description" 
+                            class="mr-2" 
+                            (input)="checkFieldsNotEmpty()"
+                        >
+                    </div>
+                    <div class="info-description-goods-register-button d-flex align-items-end">
+                        <button class="btn btn-primary" [disabled]="isNactiveButtonRegister">Registrar</button>
                     </div>
                 </div>
             </div>
