@@ -21,15 +21,17 @@ export class CreateGoodsIssueComponent extends FormBaseComponent implements OnIn
 
   @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[];
   goodsIssueForm: FormGroup;
-  goodsIssue: GoodsIssue;
+  goodsIssue: GoodsIssue = {} as GoodsIssue;
   localStorageUtils = new LocalStorageUtils();
   searchResults: ProductData[] = [];
   selectedProducts: ProductData[] = [];
+  productData: ProductData;
   newInventory: number;
   totalAllProducts: number = 0;
   nomeMercado: string = "Supermercado XYZ";
   cnpjMercado: string = "00.000.000/0000-00";
   codigoOperador: string = "001";
+  isNactiveButtonRegister: boolean;
 
   constructor(private fb: FormBuilder,
     private goodsIssueService: GoodsissueService,
@@ -52,13 +54,21 @@ export class CreateGoodsIssueComponent extends FormBaseComponent implements OnIn
     }
 
   ngOnInit(): void {
+    this.isNactiveButtonRegister = true;
     this.goodsIssueForm = this.fb.group({
       saleNumber: [''],
       searchProduct: [''],
       description: { value: '', disabled: true },
-      quantity: { value: '1', disabled: false },
+      inventory: { value: '1', disabled: false },
       price: { value: '', disabled: true },
       productDataList: this.fb.array([]),
+    });
+    this.goodsIssueForm.get('price').valueChanges.subscribe(() => {
+      this.checkFieldsNotEmpty();
+    });
+  
+    this.goodsIssueForm.get('description').valueChanges.subscribe(() => {
+      this.checkFieldsNotEmpty();
     });
   }
 
@@ -84,36 +94,25 @@ export class CreateGoodsIssueComponent extends FormBaseComponent implements OnIn
   }
 
   selectProduct(product: ProductData) {
-    const productCopy = { ...product, newTotalQuantity: product.inventory };
-    this.selectedProducts.push(productCopy);
-    
-    // Armazena o nome do produto para o campo de descrição
-    const productName = product.name;
-    const productPrice = product.salePrice;
-    
-    // Limpa a lista de sugestões e o campo de busca
+    this.goodsIssueForm.patchValue({
+        inventory: '1',
+        description: product.name,
+        price: product.salePrice
+    });
+    this.productData = product;
     this.searchResults = [];
-    this.goodsIssueForm.patchValue({
-        searchProduct: ''
-    });
-    
-    // Atribui o nome do produto ao campo de descrição
-    this.goodsIssueForm.patchValue({
-        description: productName,
-        price: productPrice
-    });
   }
 
-  addSelectedProductsToGoodsReceipt() {
-    this.selectedProducts.forEach((product) => {
-      if(product.newPurchasePrice !== undefined) {
-        product.purchasePrice = product.newPurchasePrice;
-      }
-      if(product.newInventory !== undefined) {
-        product.inventory = product.newInventory;
-      }
-      this.goodsIssue.productDataList.push(product);
-    });
+  checkFieldsNotEmpty() {
+    const price = this.goodsIssueForm.get('price').value;
+    const description = this.goodsIssueForm.get('description').value;
+    this.isNactiveButtonRegister = !(price && description);
+  }
+
+  addSelectedProductsToGoodsReceipt(newInventory: any) {
+    this.productData.inventory = newInventory;
+    this.selectedProducts.push(this.productData);
+    this.goodsIssue.productDataList = this.selectedProducts;
   }
 
   verifyDefaultValues() {
@@ -126,11 +125,12 @@ export class CreateGoodsIssueComponent extends FormBaseComponent implements OnIn
   }
   
   addGoodsIssue() {
+    this.registerProduct();
     if (this.goodsIssueForm.dirty && this.goodsIssueForm.valid) {
       if(this.selectedProducts.length !== 0) {
         this.spinner.show();
-        this.goodsIssue = Object.assign({}, this.goodsIssue, this.goodsIssueForm.value);
-        this.addSelectedProductsToGoodsReceipt();
+        this.goodsIssue.totalReceived = 23.99;
+        this.goodsIssue.paymentOptionsType = "OPENED";
         this.goodsIssueService.newGoodsIssue(this.goodsIssue)
           .subscribe(
             success => { this.processSuccess(success) },
@@ -155,7 +155,7 @@ export class CreateGoodsIssueComponent extends FormBaseComponent implements OnIn
     if (toast) {
       toast.onHidden.subscribe(() => {
         this.spinner.hide();
-        this.router.navigate(['/goods-issue/getAll'])
+        //this.router.navigate(['/goods-issue/getAll'])
       });
     }
   }
@@ -210,6 +210,23 @@ export class CreateGoodsIssueComponent extends FormBaseComponent implements OnIn
     return "0";
   }
 
+  registerProduct() {
+    if (this.goodsIssueForm.get('description').value.trim() !== '') {
+        this.newInventory = this.goodsIssueForm.get('inventory').value,
+
+        this.addSelectedProductsToGoodsReceipt(this.newInventory);
+
+        this.goodsIssueForm.patchValue({
+            searchProduct: '',
+            description: '',
+            price: '',
+            inventory: '1'
+        });
+        
+        this.updateTotals();
+    }
+  }
+
   removeProduct(index: number) {
     this.selectedProducts.splice(index, 1);
     this.updateTotalInventory();
@@ -239,7 +256,7 @@ export class CreateGoodsIssueComponent extends FormBaseComponent implements OnIn
     let totalAllProducts = 0;
   
     this.selectedProducts.forEach(product => {
-      product.total = product.newPurchasePrice * product.newTotalQuantity;
+      product.total = product.salePrice * product.inventory;
       totalAllProducts += product.total;
     });
   

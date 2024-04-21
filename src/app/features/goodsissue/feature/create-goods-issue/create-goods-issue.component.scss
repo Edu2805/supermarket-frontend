@@ -30,6 +30,14 @@
     border: 1px solid #000; /* Borda fina */
     border-radius: 5%;
     background-color: #dfdda1;
+    overflow-x: auto; /* Adiciona scroll horizontal */
+    max-height: 400px; /* Define uma altura máxima */
+    overflow-y: auto; /* Adiciona scroll vertical */
+    width: 400px; /* Defina uma largura fixa ou ajuste conforme necessário */
+}
+
+.info-goods-issue-registers ol {
+    max-width: 100%;
 }
 
 .info-goods-issue-registers h3 {
@@ -188,8 +196,13 @@ img {
 
 .info-unity-goods-issue,
 .info-price-goods-issue,
-.info-description-goods-issue {
+.info-description-goods-issue,
+.info-description-goods-register-button {
     display: flex;
     flex-direction: column;
     align-items: center; /* Centraliza os itens verticalmente */
+}
+
+.info-description-goods-register-button button {
+    margin-top: 30px; /* Adicione margem superior conforme necessário */
 }
