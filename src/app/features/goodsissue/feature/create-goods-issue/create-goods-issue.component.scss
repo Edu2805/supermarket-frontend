@@ -206,3 +206,35 @@ img {
 .info-description-goods-register-button button {
     margin-top: 30px; /* Adicione margem superior conforme necessário */
 }
+
+.custom-title,
+.custom-total-change {
+    font-size: 2.5em;
+    text-align: center;
+}
+
+.custom-total-change {
+    color: green;
+}
+
+.modal-header {
+    justify-content: center;
+}
+
+.custom-modal-header,
+.custom-modal-title,
+.custom-modal-body,
+.custom-modal-footer {
+    font-size: 1.5em; /* Ajuste este valor conforme necessário */
+}
+
+/* Aumenta o tamanho do modal */
+.custom-modal-header,
+.custom-modal-body,
+.custom-modal-footer {
+    max-width: 100%; /* Ajuste este valor conforme necessário */
+}
+
+.custom-input {
+    font-size: 1em; /* Ajuste este valor conforme necessário */
+}

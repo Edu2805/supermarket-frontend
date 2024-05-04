@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChildren } from '@angular/core';
+import { Component, ElementRef, OnInit, TemplateRef, ViewChild, ViewChildren } from '@angular/core';
 import { FormBuilder, FormControlName, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
@@ -11,6 +11,7 @@ import { LocalStorageUtils } from 'src/app/utils/localstorage';
 import { ProductData } from 'src/app/features/product-data/model/product-data';
 import { Observable, fromEvent, merge } from 'rxjs';
 import { GoodsissueService } from '../../services/goodsissue.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-create-goods-issue',
@@ -19,6 +20,9 @@ import { GoodsissueService } from '../../services/goodsissue.service';
 })
 export class CreateGoodsIssueComponent extends FormBaseComponent implements OnInit {
 
+  @ViewChild('paymentModal') paymentModal!: TemplateRef<any>;
+  @ViewChild('confirmCancelModal') confirmCancelModal!: TemplateRef<any>;
+  @ViewChild('changeModal') changeModal!: TemplateRef<any>;
   @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[];
   goodsIssueForm: FormGroup;
   goodsIssue: GoodsIssue = {} as GoodsIssue;
@@ -32,6 +36,11 @@ export class CreateGoodsIssueComponent extends FormBaseComponent implements OnIn
   cnpjMercado: string = "00.000.000/0000-00";
   codigoOperador: string = "001";
   isNactiveButtonRegister: boolean;
+  isNactiveButtonEfectivePayment: boolean;
+  paymentOptions: string[] = [];
+  getPurchaseNumber: number;
+  totalReceivedNumeric: number;
+  totalChange: number = 0;
 
   constructor(private fb: FormBuilder,
     private goodsIssueService: GoodsissueService,
@@ -39,7 +48,8 @@ export class CreateGoodsIssueComponent extends FormBaseComponent implements OnIn
     private router: Router,
     protected override translateService: TranslateService,
     protected override toastr: ToastrService,
-    private spinner: NgxSpinnerService) {
+    private spinner: NgxSpinnerService,
+    private modalService: NgbModal) {
 
       super(toastr, translateService);
       this.validationMessages = {
@@ -47,6 +57,12 @@ export class CreateGoodsIssueComponent extends FormBaseComponent implements OnIn
           required: this.translateService.instant('br_com_supermarket_GOODS_RECEIPT_INVOICE_KEY_REQUIRED_MESSAGE'),
         },
         searchProduct: {
+          required: this.translateService.instant('br_com_supermarket_GOODS_RECEIPT_ERROR_FORM_PRODUCT_DATA_REQUIRED_MESSAGE'),
+        },
+        inventory: {
+          required: this.translateService.instant('br_com_supermarket_GOODS_RECEIPT_ERROR_FORM_PRODUCT_DATA_REQUIRED_MESSAGE'),
+        },
+        totalReceived: {
           required: this.translateService.instant('br_com_supermarket_GOODS_RECEIPT_ERROR_FORM_PRODUCT_DATA_REQUIRED_MESSAGE'),
         }
       };
@@ -59,17 +75,29 @@ export class CreateGoodsIssueComponent extends FormBaseComponent implements OnIn
       saleNumber: [''],
       searchProduct: [''],
       description: { value: '', disabled: true },
-      inventory: { value: '1', disabled: false },
+      inventory: ['1', Validators.required],
       price: { value: '', disabled: true },
+      totalReceived: { value: '', disabled: true },
+      paymentOptionsType: ['', Validators.required],
       productDataList: this.fb.array([]),
+    });
+
+    this.goodsIssueForm.get('inventory').valueChanges.subscribe(() => {
+      this.checkFieldsNotEmpty();
     });
     this.goodsIssueForm.get('price').valueChanges.subscribe(() => {
       this.checkFieldsNotEmpty();
+    });
+
+    this.goodsIssueForm.get('totalReceived').valueChanges.subscribe(() => {
+      this.checkTotalReceivedNotEmpty();
     });
   
     this.goodsIssueForm.get('description').valueChanges.subscribe(() => {
       this.checkFieldsNotEmpty();
     });
+
+    this.getAllPaymentOptionsSelect();
   }
 
   ngAfterViewInit(): void {
@@ -104,12 +132,20 @@ export class CreateGoodsIssueComponent extends FormBaseComponent implements OnIn
   }
 
   checkFieldsNotEmpty() {
+    const inventory = this.goodsIssueForm.get('inventory').value;
     const price = this.goodsIssueForm.get('price').value;
     const description = this.goodsIssueForm.get('description').value;
-    this.isNactiveButtonRegister = !(price && description);
+    this.isNactiveButtonRegister = !(price && description && inventory);
   }
 
-  addSelectedProductsToGoodsReceipt(newInventory: any) {
+  checkTotalReceivedNotEmpty() {
+    if (this.goodsIssueForm.get('paymentOptionsType').value === 'Dinheiro') {
+      const totalReceived = this.goodsIssueForm.get('totalReceived').value;
+      this.isNactiveButtonEfectivePayment = !totalReceived;
+    }
+  }
+
+  addSelectedProductsToGoodsIssue(newInventory: any) {
     this.productData.inventory = newInventory;
     this.selectedProducts.push(this.productData);
     this.goodsIssue.productDataList = this.selectedProducts;
@@ -123,14 +159,24 @@ export class CreateGoodsIssueComponent extends FormBaseComponent implements OnIn
       (event.target as HTMLInputElement).value = '';
     }
   }
+
+  getAllPaymentOptionsSelect() {
+    this.goodsIssueService.getAllPaymentOptions().subscribe((response) => {
+      this.paymentOptions = response.names;
+    },(error: any) => {
+      if (error && error.errors) {
+        this.toastr.error(this.translateService.instant(error.errors));
+      }
+      this.toastr.error(this.translateService.instant('br_com_supermarket_GOODS_ISSUE_AN_ERROR_OCCURRED_WHILE_GET_PAYMENT_OPTIONS'));
+    });
+  }
   
   addGoodsIssue() {
     this.registerProduct();
     if (this.goodsIssueForm.dirty && this.goodsIssueForm.valid) {
       if(this.selectedProducts.length !== 0) {
         this.spinner.show();
-        this.goodsIssue.totalReceived = 23.99;
-        this.goodsIssue.paymentOptionsType = "OPENED";
+        this.goodsIssue.totalReceived = this.totalReceivedNumeric;
         this.goodsIssueService.newGoodsIssue(this.goodsIssue)
           .subscribe(
             success => { this.processSuccess(success) },
@@ -155,9 +201,26 @@ export class CreateGoodsIssueComponent extends FormBaseComponent implements OnIn
     if (toast) {
       toast.onHidden.subscribe(() => {
         this.spinner.hide();
-        //this.router.navigate(['/goods-issue/getAll'])
+        this.modalService.dismissAll(this.paymentModal);
+        this.goodsIssueForm.reset();
+        this.goodsIssueForm.setControl('productDataList', this.fb.array([]));
+        this.selectedProducts = [];
+        this.totalAllProducts = 0;
+        this.showChange(response);
       });
     }
+  }
+
+  showChange(response: any) {
+    if (response.change !== 0 && response.paymentOptionsType === 'MONEY') {
+      this.totalChange = response.change;
+      this.modalService.open(this.changeModal);
+    }
+  }
+
+  onCloseChangeModal() {
+    this.modalService.dismissAll(this.changeModal);
+    this.totalChange = 0;
   }
 
   processFail(fail: any) {
@@ -214,7 +277,7 @@ export class CreateGoodsIssueComponent extends FormBaseComponent implements OnIn
     if (this.goodsIssueForm.get('description').value.trim() !== '') {
         this.newInventory = this.goodsIssueForm.get('inventory').value,
 
-        this.addSelectedProductsToGoodsReceipt(this.newInventory);
+        this.addSelectedProductsToGoodsIssue(this.newInventory);
 
         this.goodsIssueForm.patchValue({
             searchProduct: '',
@@ -242,10 +305,69 @@ export class CreateGoodsIssueComponent extends FormBaseComponent implements OnIn
     this.newInventory = this.selectedProducts.reduce((total, product) => total + product.newTotalQuantity, 0);
   }
 
+  openPaymentModal() {
+    this.modalService.open(this.paymentModal);
+  }
+
+  isPaymentButtonDisabled(): boolean {
+    // Verifica se o campo paymentOptionsType está vazio
+    const paymentOptionsTypeControl = this.goodsIssueForm.get('paymentOptionsType');
+    const totalReceived = this.goodsIssueForm.get('totalReceived');
+    return !paymentOptionsTypeControl || !paymentOptionsTypeControl.value 
+      || !totalReceived || !totalReceived.value;
+  }
+
+  checkTotalReceivedValidity(event: any) {
+    const enteredValue = event.target.value;
+    const numericValue = parseFloat(enteredValue.replace(/[^\d,.]/g, '').replace(',', '.'));
+
+    if (!Number.isNaN(numericValue)) {
+      this.totalReceivedNumeric = numericValue;
+      
+      this.goodsIssueForm.get('totalReceived').markAsTouched();
+    } else {
+      this.goodsIssueForm.get('totalReceived').setValue(null);
+      this.goodsIssueForm.get('totalReceived').setValidators(Validators.required);
+    }
+  }
+  
+  checkPaymentOptionsValidity(event) {
+    this.goodsIssueForm.get('paymentOptionsType').setValue(event.target.value);
+    const paymentOption = this.goodsIssueForm.get('paymentOptionsType').value;
+    this.goodsIssue.paymentOptionsType = paymentOption;
+    const paymentOptionsTypeControl = this.goodsIssueForm.get('paymentOptionsType');
+    paymentOptionsTypeControl.markAsTouched();
+    const isMoney = paymentOption === 'Dinheiro' || paymentOption === 'Dinero' || paymentOption === 'Money' ? true : false;
+    if (!isMoney) {
+      this.goodsIssueForm.get('totalReceived').setValue(this.totalAllProducts);
+      this.goodsIssueForm.get('totalReceived').disable();
+      this.goodsIssueForm.get('totalReceived').clearValidators();
+    } else {
+      this.goodsIssueForm.get('totalReceived').setValue(null);
+      this.goodsIssueForm.get('totalReceived').enable();
+      this.goodsIssueForm.get('totalReceived').setValidators(Validators.required);
+      this.goodsIssueForm.get('totalReceived').updateValueAndValidity();
+    }
+  }
+
   cancelPurchase() {
-    // Implementar lógica de cancelamento da compra
+    this.goodsIssueForm.reset();
+    this.goodsIssueForm.setControl('productDataList', this.fb.array([]));
     this.selectedProducts = [];
     this.totalAllProducts = 0;
+  }
+
+  openConfirmCancelModal() {
+    this.modalService.open(this.confirmCancelModal);
+  }
+
+  confirmCancel() {
+    this.cancelPurchase();
+    this.modalService.dismissAll();
+  }
+
+  handleCancelClick() {
+    this.openConfirmCancelModal();
   }
 
   processPayment() {

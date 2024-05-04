@@ -36,6 +36,14 @@ export class GoodsissueService extends BaseService {
       .pipe(catchError(super.serviceError));
   }
 
+  getAllPaymentOptions(){
+    let response = this.http.get<string[]>(this.UrlServiceV1 + 'payment-options')
+    .pipe(
+        map(this.extractData),
+        catchError(this.serviceError));
+    return response;
+  }
+
   findGoodsIssueById(id: string): Observable<GoodsIssue> {
     return this.http
       .get<GoodsIssue>(`${this.UrlServiceV1}goods-issue/${id}`, super.GetHeaderJson())

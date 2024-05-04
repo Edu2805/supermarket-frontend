@@ -13,7 +13,7 @@
     
     <hr>
 
-    <form novalidate="novalidate" (ngSubmit)="addGoodsIssue()" [formGroup]="goodsIssueForm">
+    <form novalidate="novalidate" [formGroup]="goodsIssueForm">
 
         <div class="form-group">
             <div class="market-info">
@@ -67,6 +67,9 @@
                             formControlName="inventory"
                             (input)="verifyDefaultValues()"
                         > <!-- Campo de entrada desativado -->
+                        <span class="text-danger" *ngIf="displayMessage.inventory">
+                            <p [innerHTML]="displayMessage.inventory"></p>
+                        </span>
                     </div>
                     <div class="info-price-goods-issue">
                         <label>Preço</label>
@@ -90,7 +93,7 @@
                         >
                     </div>
                     <div class="info-description-goods-register-button d-flex align-items-end">
-                        <button class="btn btn-primary" [disabled]="isNactiveButtonRegister">Registrar</button>
+                        <button class="btn btn-primary" [disabled]="isNactiveButtonRegister" (click)="registerProduct()">Registrar</button>
                     </div>
                 </div>
             </div>
@@ -128,10 +131,98 @@
 
                 <!-- Botões de Cancelar e Pagamento -->
                 <div class="buttons-container">
-                    <button class="btn btn-danger" (click)="cancelPurchase()">Cancelar</button>
-                    <button class="btn btn-success" (click)="processPayment()">Pagamento</button>
+                    <button class="btn btn-danger" [disabled]="selectedProducts.length == 0" (click)="handleCancelClick()">Cancelar</button>
+                    <button class="btn btn-success" [disabled]="selectedProducts.length == 0" (click)="openPaymentModal()">Pagamento</button>
                 </div>
             </div>
         </div>
+
+                <!-- Modal de Confirmação do cancelamento da compra-->
+        <ng-template #confirmCancelModal let-modal>
+            <div class="modal-header">
+                <h5 class="modal-title">Cancelamento da Compra</h5>
+                <button type="button" class="close" (click)="modal.dismiss()" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Tem certeza de que deseja cancelar a compra?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="modal.dismiss()">Não</button>
+                <button type="button" class="btn btn-danger" (click)="confirmCancel()">Sim</button>
+            </div>
+        </ng-template>
+        
+        <!-- Modal de Pagamento -->
+        <ng-template #paymentModal let-modal>
+            <div class="modal-header custom-modal-header">
+                <h5 class="modal-title custom-modal-title">Efetuar Pagamento</h5>
+                <button type="button" class="close" (click)="modal.dismiss()" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body custom-modal-body">
+                <p>Total da Compra: {{ totalAllProducts | currency : 'BRL' }}</p>
+                <label for="paymentMethod">Selecione o Meio de Pagamento:</label>
+                <select
+                    class="form-control custom-input" 
+                    id="paymentOptionsType" 
+                    formControlName="paymentOptionsType"
+                    (change)="checkPaymentOptionsValidity($event)"
+                    >
+                        <option value="" selected></option>
+                        <option *ngFor="let paymentOption of paymentOptions">{{ paymentOption }}</option>
+                    </select>
+                    <span class="text-danger" *ngIf="goodsIssueForm.get('paymentOptionsType')?.invalid && goodsIssueForm.get('paymentOptionsType')?.touched">
+                        <p>Selecione um meio de pagamento válido.</p>
+                    </span>
+
+                    <div class="form-group">
+                        <label for="totalReceived">Valor recebido:</label>
+                        <input 
+                            type="text" 
+                            class="form-control custom-input" 
+                            id="totalReceived" 
+                            formControlName="totalReceived"
+                            mask="separator.2"
+                            prefix="R$ "
+                            thousandSeparator="."
+                            (input)="checkTotalReceivedNotEmpty()"
+                            (change)="checkTotalReceivedValidity($event)"
+                        >
+                        <span class="text-danger" *ngIf="goodsIssueForm.get('totalReceived')?.invalid && goodsIssueForm.get('totalReceived')?.touched">
+                            <p>Insira o valor.</p>
+                        </span>
+                    </div>
+            </div>
+
+            <div class="modal-footer custom-modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="modal.dismiss()">Cancelar</button>
+                <button 
+                    type="submit" 
+                    class="btn btn-primary" 
+                    [disabled]="isPaymentButtonDisabled()"
+                    (click)="addGoodsIssue()"
+                >
+                    Efetuar Pagamento
+                </button>
+            </div>
+        </ng-template>
+
+        <!-- Modal do troco -->
+        <ng-template #changeModal let-modal>
+            <div class="modal-header">
+                <div style="width: 100%; text-align: center;">
+                    <h5 class="modal-title custom-title">Troco</h5>
+                </div>
+                <button type="button" class="close" (click)="onCloseChangeModal()" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                <p class="custom-total-change">{{ totalChange | currency : 'BRL' }}</p>
+            </div>
+        </ng-template>
     </form>
 </div>
