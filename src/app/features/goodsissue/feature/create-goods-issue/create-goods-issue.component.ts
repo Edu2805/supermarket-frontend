@@ -339,10 +339,13 @@ export class CreateGoodsIssueComponent extends FormBaseComponent implements OnIn
     paymentOptionsTypeControl.markAsTouched();
     const isMoney = paymentOption === 'Dinheiro' || paymentOption === 'Dinero' || paymentOption === 'Money' ? true : false;
     if (!isMoney) {
+      this.totalReceivedNumeric = this.totalAllProducts;
+      this.goodsIssue.totalReceived = this.totalReceivedNumeric;
       this.goodsIssueForm.get('totalReceived').setValue(this.totalAllProducts);
       this.goodsIssueForm.get('totalReceived').disable();
       this.goodsIssueForm.get('totalReceived').clearValidators();
     } else {
+      this.totalReceivedNumeric = 0;
       this.goodsIssueForm.get('totalReceived').setValue(null);
       this.goodsIssueForm.get('totalReceived').enable();
       this.goodsIssueForm.get('totalReceived').setValidators(Validators.required);
