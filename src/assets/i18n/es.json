@@ -445,6 +445,7 @@
     "br_com_supermarket_HISTORICAL_GOODS_RECEIPT_PRODUCT_REGISTRATION_DATE": "Fecha de recepción",
     "br_com_supermarket_HISTORICAL_GOODS_RECEIPT_PRODUCT_RECEIVED": "Recibió",
     "br_com_supermarket_GOODS_ISSUE": "Venta de bienes (Check-out)",
+    "br_com_supermarket_GOODS_ISSUE_AN_ERROR_OCCURRED_WHILE_GET_PAYMENT_OPTIONS": "Ocorrió un error al buscar una lista de medios de pago.",
 
     "br_com_supermarket_BUTTON_REGISTER": "Registro",
     "br_com_supermarket_BUTTON_EDIT": "Editar",
