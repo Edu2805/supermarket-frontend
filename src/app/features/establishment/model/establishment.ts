@@ -1,3 +1,5 @@
+import { Attachment } from "../../attachment/model/attachment-data";
+
 export interface Establishment {
     id: string,
     address: string,
@@ -7,5 +9,6 @@ export interface Establishment {
     name: string,
     code?: number,
     phone: string,
-    stateRegistration: string
+    stateRegistration: string,
+    establismentLogo?: Attachment
 }

@@ -5,6 +5,7 @@ import { HttpClient, HttpHandler } from '@angular/common/http';
 import { USE_DEFAULT_LANG, USE_STORE, USE_EXTEND, DEFAULT_LANGUAGE, TranslateService, TranslateModule } from '@ngx-translate/core';
 import { ToastrModule } from 'ngx-toastr';
 import { GoodsIssueGuardService } from '../../services/goodsissue.guard';
+import { CnpjPipe } from 'src/app/utils/pipe/document';
 
 describe('CreateGoodsIssueComponent', () => {
   let component: CreateGoodsIssueComponent;
@@ -13,7 +14,8 @@ describe('CreateGoodsIssueComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ 
-        CreateGoodsIssueComponent 
+        CreateGoodsIssueComponent,
+        CnpjPipe
       ],
       providers: [ 
         { provide: USE_DEFAULT_LANG, useValue: undefined },

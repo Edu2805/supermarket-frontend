@@ -6,6 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { TranslateService } from '@ngx-translate/core';
 import { LocalStorageUtils } from 'src/app/utils/localstorage';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-delete-establishment',
@@ -17,6 +18,8 @@ export class DeleteEstablishmentComponent {
   establishment: Establishment;
   errors: any[] = [];
   localStorageUtils = new LocalStorageUtils();
+  images: string = environment.imagesUrl;
+  defaultId: string = 'cf3f50ba-9d26-46a0-a711-dae2be2a101c';
 
   constructor(
     private establishmentService: EstablishmentService,

@@ -18,22 +18,22 @@
 .info-goods-issue {
     flex: 1;
     margin-right: 20px;
-    background-color: #ADD8E6; /* Azul claro */
+    background-color: #ADD8E6;
     padding: 10px;
     border-radius: 5%;
-    border: 1px solid #000; /* Borda fina */
+    border: 1px solid #000;
 }
 
 .info-goods-issue-registers {
     flex: auto;
     height: 97.5%;
-    border: 1px solid #000; /* Borda fina */
+    border: 1px solid #000;
     border-radius: 5%;
     background-color: #dfdda1;
-    overflow-x: auto; /* Adiciona scroll horizontal */
-    max-height: 400px; /* Define uma altura máxima */
-    overflow-y: auto; /* Adiciona scroll vertical */
-    width: 400px; /* Defina uma largura fixa ou ajuste conforme necessário */
+    overflow-x: auto;
+    max-height: 400px;
+    overflow-y: auto;
+    width: 400px;
 }
 
 .info-goods-issue-registers ol {
@@ -49,19 +49,19 @@
     flex: 0.5;
     height: 260px;
     display: flex;
-    justify-content: center; /* Centraliza a imagem horizontalmente */
-    align-items: center; /* Centraliza a imagem verticalmente */
+    justify-content: center;
+    align-items: center;
 }
 
 img {
     margin-right: 20px;
     margin-top: 20px;
-    width: 100%; /* A largura da imagem ocupa 100% do contêiner */
-    height: 100%; /* A altura da imagem ocupa 100% do contêiner */
-    border: 1px solid #000; /* Borda fina */
+    width: 100%;
+    height: 100%;
+    border: 1px solid #000;
     border-radius: 5%;
-    max-width: 100%; /* Garante que a imagem não ultrapasse o contêiner */
-    max-height: 100%; /* Garante que a imagem não ultrapasse o contêiner */
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .search-container {
@@ -81,13 +81,13 @@ img {
 .product-list {
     list-style-type: none;
     position: absolute;
-    top: calc(100% + 5px); /* Posiciona a lista abaixo do campo de pesquisa */
+    top: calc(100% + 5px);
     z-index: 9999;
     background-color: white;
     border: 1px solid #ccc;
     padding: 5px;
-    width: 100%; /* Ocupa a largura do contêiner pai */
-    max-height: 200px; /* Ajuste conforme necessário */
+    width: 100%;
+    max-height: 200px;
     overflow-y: auto;
     cursor: pointer;
 }
@@ -131,15 +131,15 @@ img {
 
 .total-buttons-container {
     display: flex;
-    justify-content: space-between; /* Alinha os itens ao início e ao final do contêiner */
-    margin-top: 20px; /* Adicione margem superior conforme necessário */
+    justify-content: space-between;
+    margin-top: 20px;
 
 }
 
 .total-container {
     border: 1px solid #000;
     border-radius: 5px;
-    width: calc(70% - 10px); /* 50% da largura da tela, com margens */
+    width: calc(70% - 10px);
 }
 
 .total-container h1 {
@@ -148,8 +148,8 @@ img {
 
 .buttons-container {
     margin-top: 10px;
-    justify-content: space-between; /* Alinha os itens ao início e ao final do contêiner */
-    width: calc(20% - 10px); /* 50% da largura da tela, com margens */
+    justify-content: space-between;
+    width: calc(20% - 10px);
 }
 
 .buttons-container .btn {
@@ -160,7 +160,7 @@ img {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 10px; /* Adiciona um espaço de 10px entre os campos */
+    gap: 10px;
 }
 
 .info-unity-goods-issue-container {
@@ -179,19 +179,19 @@ img {
     border-radius: 5px;
     padding: 10px;
     box-sizing: border-box;
-    width: 100%; /* Adicionado para garantir que os campos de entrada ocupem todo o espaço disponível */
+    width: 100%;
 }
 
 .info-unity-goods-issue-general > div:nth-child(1) {
-    flex: 1; /* Campo Quantidade ocupa 10% */
+    flex: 1;
 }
 
 .info-unity-goods-issue-general > div:nth-child(2) {
-    flex: 2; /* Campo Preço ocupa 20% */
+    flex: 2;
 }
 
 .info-unity-goods-issue-general > div:nth-child(3) {
-    flex: 5; /* Campo Descrição ocupa o restante */
+    flex: 5;
 }
 
 .info-unity-goods-issue,
@@ -200,11 +200,11 @@ img {
 .info-description-goods-register-button {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centraliza os itens verticalmente */
+    align-items: center;
 }
 
 .info-description-goods-register-button button {
-    margin-top: 30px; /* Adicione margem superior conforme necessário */
+    margin-top: 30px;
 }
 
 .custom-title,
@@ -225,16 +225,20 @@ img {
 .custom-modal-title,
 .custom-modal-body,
 .custom-modal-footer {
-    font-size: 1.5em; /* Ajuste este valor conforme necessário */
+    font-size: 1.5em;
 }
 
-/* Aumenta o tamanho do modal */
 .custom-modal-header,
 .custom-modal-body,
 .custom-modal-footer {
-    max-width: 100%; /* Ajuste este valor conforme necessário */
+    max-width: 100%;
 }
 
 .custom-input {
-    font-size: 1em; /* Ajuste este valor conforme necessário */
+    font-size: 1em;
+}
+
+.invalid-input {
+    border: 2px solid red !important;
+    border-radius: 5px;
 }

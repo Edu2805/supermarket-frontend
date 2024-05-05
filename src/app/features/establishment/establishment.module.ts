@@ -18,6 +18,7 @@ import { EstablishmentResolve } from "./services/establishment.resolve";
 import { DetailsEstablishmentComponent } from './crud/details/details-establishment.component';
 import { PaginationModule } from "src/app/utils/pagination/pagination.module";
 import { PipeModule } from "src/app/utils/pipe/pipe.module";
+import { ImageCropperModule } from "ngx-image-cropper";
 
 const maskConfigFunction: () => Partial<IConfig> = () => {
     return {
@@ -45,7 +46,8 @@ const maskConfigFunction: () => Partial<IConfig> = () => {
         NgxSpinnerModule,
         NgxMaskModule.forRoot(maskConfigFunction),
         PaginationModule,
-        PipeModule
+        PipeModule,
+        ImageCropperModule
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     providers: [

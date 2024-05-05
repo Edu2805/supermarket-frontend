@@ -9,7 +9,7 @@
     ><p style="color: white">{{ 'br_com_supermarket_MSG_WAIT' | translate }}</p>
     </ngx-spinner>
 
-    <h1>{{ 'br_com_supermarket_GOODS_RECEIPT_NEW' | translate }}</h1>
+    <h1>{{ 'br_com_supermarket_GOODS_ISSUE' | translate }}</h1>
     
     <hr>
 
@@ -18,8 +18,8 @@
         <div class="form-group">
             <div class="market-info">
                 <!-- Informações do Mercado -->
-                <h2>{{ nomeMercado }}</h2>
-                <p>CNPJ: {{ cnpjMercado }}</p>
+                <h2>{{ establismentName }}</h2>
+                <p>{{ 'br_com_supermarket_GOODS_ISSUE_ESTABLISHMENT_REGISTER_NUMBER' | translate }}: {{ cnpjStablishment | cnpj }}</p>
             </div>
         </div>
 
@@ -27,30 +27,32 @@
             <div class="info-goods-issue-container">
                 <div class="info-goods-issue-general">
                     <div class="info-goods-issue">
-                        <label>Operador:</label>
-                        <span>{{ codigoOperador }}</span>
+                        <label>{{ 'br_com_supermarket_GOODS_ISSUE_OPERATOR_NUMBER' | translate }}</label>
+                        <span>{{ employeeCode }}</span>
                         <br>
-                        <label>Caixa:</label>
+                        <label>{{ 'br_com_supermarket_GOODS_ISSUE_CASHIER_NUMBER' | translate }}</label>
                         <span>{{ 001 }}</span>
                         <br>
-                        <label>Venda:</label>
-                        <span>{{ 001 }}</span>
+                        <label>{{ 'br_com_supermarket_GOODS_ISSUE_SALE_NUMBER' | translate }}</label>
+                        <span>{{ getPurchaseNumber }}</span>
                     </div>
                     <div class="info-goods-issue-logo">
                         
-                            <img src="caminho/para/logo.png" alt="Logo do Estabelecimento">
+                        <img 
+                        src="{{ images }}{{ attatchment?.id === null ? defaultId : attatchment?.id}}" 
+                        style="width: 190px; height: 228px">
                         
                     </div>
                 </div>
 
                 <div class="info-goods-issue-registers">
-                    <h3>Mercadorias Registradas</h3>
+                    <h3>{{ 'br_com_supermarket_GOODS_ISSUE_REGISTERED_GOODS' | translate }}</h3>
                     <ol>
                         <li *ngFor="let product of selectedProducts">
-                            Descrição: {{ product.name }} - 
-                            Quantidade: {{ product.inventory }} - 
-                            Preço UN: {{ product.salePrice | currency : 'BRL' }} -
-                            Preço Total: {{ product.inventory * product.salePrice | currency : 'BRL' }}
+                            {{ 'br_com_supermarket_GOODS_ISSUE_DESCRIPTION' | translate }}: {{ product.name }} - 
+                            {{ 'br_com_supermarket_GOODS_ISSUE_QUANTITY' | translate }}: {{ product.inventory }} - 
+                            {{ 'br_com_supermarket_GOODS_ISSUE_PRICE' | translate }}: {{ product.salePrice | currency : 'BRL' }} -
+                            {{ 'br_com_supermarket_GOODS_ISSUE_TOTAL_PURCHASE' | translate }}: {{ product.inventory * product.salePrice | currency : 'BRL' }}
                         </li>
                     </ol>
                 </div>                
@@ -61,18 +63,16 @@
             <div class="info-unity-goods-issue-container">
                 <div class="info-unity-goods-issue-general">
                     <div class="info-unity-goods-issue">
-                        <label>Quantidade</label>
+                        <label>{{ 'br_com_supermarket_GOODS_ISSUE_QUANTITY' | translate }}</label>
                         <input 
                             type="text" 
                             formControlName="inventory"
                             (input)="verifyDefaultValues()"
-                        > <!-- Campo de entrada desativado -->
-                        <span class="text-danger" *ngIf="displayMessage.inventory">
-                            <p [innerHTML]="displayMessage.inventory"></p>
-                        </span>
+                            [ngClass]="{ 'invalid-input': goodsIssueForm.get('inventory').invalid && goodsIssueForm.get('inventory').touched }"
+                        >
                     </div>
                     <div class="info-price-goods-issue">
-                        <label>Preço</label>
+                        <label>{{ 'br_com_supermarket_GOODS_ISSUE_PRICE' | translate }}</label>
                         <input 
                             type="text" 
                             formControlName="price"
@@ -84,7 +84,7 @@
                         >
                     </div>
                     <div class="info-description-goods-issue">
-                        <label class="mr-2">Descrição</label>
+                        <label class="mr-2">{{ 'br_com_supermarket_GOODS_ISSUE_DESCRIPTION' | translate }}</label>
                         <input 
                             type="text" 
                             formControlName="description" 
@@ -131,8 +131,8 @@
 
                 <!-- Botões de Cancelar e Pagamento -->
                 <div class="buttons-container">
-                    <button class="btn btn-danger" [disabled]="selectedProducts.length == 0" (click)="handleCancelClick()">Cancelar</button>
-                    <button class="btn btn-success" [disabled]="selectedProducts.length == 0" (click)="openPaymentModal()">Pagamento</button>
+                    <button class="btn btn-danger" [disabled]="selectedProducts.length == 0" (click)="handleCancelClick()">{{ 'br_com_supermarket_BUTTON_CANCEL' | translate }}</button>
+                    <button class="btn btn-success" [disabled]="selectedProducts.length == 0" (click)="openPaymentModal()">{{ 'br_com_supermarket_BUTTON_PAYMENT' | translate }}</button>
                 </div>
             </div>
         </div>
@@ -140,31 +140,31 @@
                 <!-- Modal de Confirmação do cancelamento da compra-->
         <ng-template #confirmCancelModal let-modal>
             <div class="modal-header">
-                <h5 class="modal-title">Cancelamento da Compra</h5>
+                <h5 class="modal-title">{{ 'br_com_supermarket_GOODS_ISSUE_PURCHASE_CANCELLATION' | translate }}</h5>
                 <button type="button" class="close" (click)="modal.dismiss()" aria-label="Fechar">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                Tem certeza de que deseja cancelar a compra?
+                {{ 'br_com_supermarket_GOODS_ISSUE_PURCHASE_CANCELLATION_QUESTION' | translate }}
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" (click)="modal.dismiss()">Não</button>
-                <button type="button" class="btn btn-danger" (click)="confirmCancel()">Sim</button>
+                <button type="button" class="btn btn-secondary" (click)="modal.dismiss()">{{ 'br_com_supermarket_MSG_GENERIC_NO' | translate }}</button>
+                <button type="button" class="btn btn-danger" (click)="confirmCancel()">{{ 'br_com_supermarket_MSG_GENERIC_YES' | translate }}</button>
             </div>
         </ng-template>
         
         <!-- Modal de Pagamento -->
         <ng-template #paymentModal let-modal>
             <div class="modal-header custom-modal-header">
-                <h5 class="modal-title custom-modal-title">Efetuar Pagamento</h5>
+                <h5 class="modal-title custom-modal-title">{{ 'br_com_supermarket_GOODS_ISSUE_PURCHASE_MAKE_THE_PAYMENT' | translate }}</h5>
                 <button type="button" class="close" (click)="modal.dismiss()" aria-label="Fechar">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body custom-modal-body">
                 <p>Total da Compra: {{ totalAllProducts | currency : 'BRL' }}</p>
-                <label for="paymentMethod">Selecione o Meio de Pagamento:</label>
+                <label for="paymentMethod">{{ 'br_com_supermarket_GOODS_ISSUE_PURCHASE_SELECT_PAYMENT_METHOD' | translate }}</label>
                 <select
                     class="form-control custom-input" 
                     id="paymentOptionsType" 
@@ -175,11 +175,11 @@
                         <option *ngFor="let paymentOption of paymentOptions">{{ paymentOption }}</option>
                     </select>
                     <span class="text-danger" *ngIf="goodsIssueForm.get('paymentOptionsType')?.invalid && goodsIssueForm.get('paymentOptionsType')?.touched">
-                        <p>Selecione um meio de pagamento válido.</p>
+                        <p>{{ 'br_com_supermarket_GOODS_ISSUE_PURCHASE_INCORRECT_PAYMENT_METHOD' | translate }}</p>
                     </span>
 
                     <div class="form-group">
-                        <label for="totalReceived">Valor recebido:</label>
+                        <label for="totalReceived">{{ 'br_com_supermarket_GOODS_ISSUE_PURCHASE_AMOUNT_RECEIVED' | translate }}</label>
                         <input 
                             type="text" 
                             class="form-control custom-input" 
@@ -198,14 +198,14 @@
             </div>
 
             <div class="modal-footer custom-modal-footer">
-                <button type="button" class="btn btn-secondary" (click)="modal.dismiss()">Cancelar</button>
+                <button type="button" class="btn btn-secondary" (click)="modal.dismiss()">{{ 'br_com_supermarket_BUTTON_CANCEL' | translate }}</button>
                 <button 
                     type="submit" 
                     class="btn btn-primary" 
                     [disabled]="isPaymentButtonDisabled()"
                     (click)="addGoodsIssue()"
                 >
-                    Efetuar Pagamento
+                {{ 'br_com_supermarket_GOODS_ISSUE_PURCHASE_MAKE_THE_PAYMENT' | translate }}
                 </button>
             </div>
         </ng-template>
@@ -214,7 +214,7 @@
         <ng-template #changeModal let-modal>
             <div class="modal-header">
                 <div style="width: 100%; text-align: center;">
-                    <h5 class="modal-title custom-title">Troco</h5>
+                    <h5 class="modal-title custom-title">{{ 'br_com_supermarket_GOODS_ISSUE_PURCHASE_CHANGE' | translate }}</h5>
                 </div>
                 <button type="button" class="close" (click)="onCloseChangeModal()" aria-label="Fechar">
                     <span aria-hidden="true">&times;</span>
