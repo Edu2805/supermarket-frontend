@@ -44,6 +44,21 @@ export class GoodsissueService extends BaseService {
     return response;
   }
 
+  getSaleInformation(employeeLogin: string): Observable<any> {
+    let response = this.http.post(this.UrlServiceV1 + 'saleinformation', { employeeLogin: employeeLogin }, this.GetHeaderJson())
+    .pipe(
+        map(this.extractData),
+        catchError(this.serviceError));
+
+    return response;
+  }
+
+  getSaleNumber(): Observable<number> {
+    return this.http
+      .get<number>(`${this.UrlServiceV1}salenumber`, super.GetHeaderJson())
+      .pipe(catchError(super.serviceError));
+  }
+
   findGoodsIssueById(id: string): Observable<GoodsIssue> {
     return this.http
       .get<GoodsIssue>(`${this.UrlServiceV1}goods-issue/${id}`, super.GetHeaderJson())

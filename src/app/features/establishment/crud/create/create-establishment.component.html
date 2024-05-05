@@ -24,6 +24,51 @@
                 </div>
 
                 <div class="form-group">
+                    <label class="control-label">{{ 'br_com_supermarket_ESTABLISHMENT_LOGO' | translate }}</label>
+
+                    <div class="custom-file">
+                        <input 
+                            type="file" 
+                            accept="image/jpeg,image/png,image/jpg" 
+                            class="custom-file-input" 
+                            id="establismentLogo" 
+                            (change)="fileChangeEvent($event)" 
+                            [ngClass]="{'is-invalid': displayMessage.establismentLogo }"
+                        >
+                        <label data-browse="Procurar" style="width: 400px" class="custom-file-label"></label>
+                        <span *ngIf="imageName"><br>{{ imageName }}<br></span>
+                        <span class="text-danger" *ngIf="displayMessage.establismentLogo">
+                            <p [innerHTML]="displayMessage.establismentLogo"></p>
+                        </span>
+                    </div>
+
+                    <div *ngIf='imageName' class="row">
+                        <div class="col col-md-6">
+                            <image-cropper 
+                                [imageChangedEvent]="imageChangedEvent" 
+                                [maintainAspectRatio]="false" 
+                                [containWithinAspectRatio]="containWithinAspectRatio" 
+                                [aspectRatio]="4 /3" 
+                                [onlyScaleDown]="true" 
+                                [roundCropper]="false"
+                                [canvasRotation]="canvasRotation" 
+                                [transform]="transform" 
+                                [alignImage]="'left'" 
+                                [style.display]="showCropper ? null : 'none'" 
+                                format="png" 
+                                (imageCropped)="imageCropped($event)" 
+                                (imageLoaded)="imageLoaded()" 
+                                (cropperReady)="cropperReady($event)"
+                                (loadImageFailed)="loadImageFailed()"
+                            ></image-cropper>
+                        </div>
+                        <div class="col col-md-6">
+                            <img [src]="croppedImage" [style.border]="croppedImage ? '1px solid black' : 'none'" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
                     <label class="control-label">{{ 'br_com_supermarket_ESTABLISHMENT_NAME' | translate }}</label>
                     <div>
                         <input 

@@ -12,6 +12,8 @@ import { ProductData } from 'src/app/features/product-data/model/product-data';
 import { Observable, fromEvent, merge } from 'rxjs';
 import { GoodsissueService } from '../../services/goodsissue.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Attachment } from 'src/app/features/attachment/model/attachment-data';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-create-goods-issue',
@@ -32,15 +34,26 @@ export class CreateGoodsIssueComponent extends FormBaseComponent implements OnIn
   productData: ProductData;
   newInventory: number;
   totalAllProducts: number = 0;
-  nomeMercado: string = "Supermercado XYZ";
-  cnpjMercado: string = "00.000.000/0000-00";
-  codigoOperador: string = "001";
+  establismentName: string;
+  cnpjStablishment: string;
+  employeeCode: string;
   isNactiveButtonRegister: boolean;
   isNactiveButtonEfectivePayment: boolean;
   paymentOptions: string[] = [];
   getPurchaseNumber: number;
   totalReceivedNumeric: number;
   totalChange: number = 0;
+  user: any;
+  userName: string;
+  attatchment: Attachment = {
+    id: '',
+    name: '',
+    type: '',
+    imageData: ''
+  };
+
+  defaultId: string = 'cf3f50ba-9d26-46a0-a711-dae2be2a101c';
+  images: string = environment.imagesUrl;
 
   constructor(private fb: FormBuilder,
     private goodsIssueService: GoodsissueService,
@@ -98,6 +111,7 @@ export class CreateGoodsIssueComponent extends FormBaseComponent implements OnIn
     });
 
     this.getAllPaymentOptionsSelect();
+    this.getSaleInformation();
   }
 
   ngAfterViewInit(): void {
@@ -149,6 +163,7 @@ export class CreateGoodsIssueComponent extends FormBaseComponent implements OnIn
     this.productData.inventory = newInventory;
     this.selectedProducts.push(this.productData);
     this.goodsIssue.productDataList = this.selectedProducts;
+    this.getSaleNumber();
   }
 
   verifyDefaultValues() {
@@ -168,6 +183,38 @@ export class CreateGoodsIssueComponent extends FormBaseComponent implements OnIn
         this.toastr.error(this.translateService.instant(error.errors));
       }
       this.toastr.error(this.translateService.instant('br_com_supermarket_GOODS_ISSUE_AN_ERROR_OCCURRED_WHILE_GET_PAYMENT_OPTIONS'));
+    });
+  }
+
+  getSaleInformation() {
+    this.spinner.show();
+    this.user = this.localStorageUtils.getUser();
+    if (this.user && this.user.login){
+      this.userName = this.user.login;
+    }
+    this.goodsIssueService.getSaleInformation(this.userName).subscribe((response) => {
+      this.establismentName = response.establismentName;
+      this.cnpjStablishment = response.establishmentCnpj;
+      this.employeeCode = response.employeeCode;
+      this.attatchment = response.establishmentLogo;
+      this.spinner.hide();
+    },(error: any) => {
+      if (error && error.errors) {
+        this.toastr.error(this.translateService.instant(error.errors));
+      }
+      this.toastr.error(this.translateService.instant('br_com_supermarket_GOODS_ISSUE_AN_ERROR_OCCURRED_WHILE_GET_SALE_INFORMATION'));
+      this.spinner.hide();
+    });
+  }
+
+  getSaleNumber() {
+    this.goodsIssueService.getSaleNumber().subscribe((response) => {
+      this.getPurchaseNumber = response;
+    },(error: any) => {
+      if (error && error.errors) {
+        this.toastr.error(this.translateService.instant(error.errors));
+      }
+      this.toastr.error(this.translateService.instant('br_com_supermarket_GOODS_ISSUE_AN_ERROR_OCCURRED_WHILE_GET_SALE_INFORMATION'));
     });
   }
   
@@ -206,6 +253,7 @@ export class CreateGoodsIssueComponent extends FormBaseComponent implements OnIn
         this.goodsIssueForm.setControl('productDataList', this.fb.array([]));
         this.selectedProducts = [];
         this.totalAllProducts = 0;
+        this.getPurchaseNumber = null;
         this.showChange(response);
       });
     }
@@ -310,7 +358,6 @@ export class CreateGoodsIssueComponent extends FormBaseComponent implements OnIn
   }
 
   isPaymentButtonDisabled(): boolean {
-    // Verifica se o campo paymentOptionsType está vazio
     const paymentOptionsTypeControl = this.goodsIssueForm.get('paymentOptionsType');
     const totalReceived = this.goodsIssueForm.get('totalReceived');
     return !paymentOptionsTypeControl || !paymentOptionsTypeControl.value 
@@ -358,6 +405,7 @@ export class CreateGoodsIssueComponent extends FormBaseComponent implements OnIn
     this.goodsIssueForm.setControl('productDataList', this.fb.array([]));
     this.selectedProducts = [];
     this.totalAllProducts = 0;
+    this.getPurchaseNumber = null;
   }
 
   openConfirmCancelModal() {
@@ -371,10 +419,6 @@ export class CreateGoodsIssueComponent extends FormBaseComponent implements OnIn
 
   handleCancelClick() {
     this.openConfirmCancelModal();
-  }
-
-  processPayment() {
-    // Implementar lógica de processamento do pagamento
   }
 
   updateTotals() {

@@ -10,6 +10,7 @@ import { CpfCnpjValidators } from 'src/app/utils/document-validators-form';
 import { Observable, fromEvent, merge } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 import { LocalStorageUtils } from 'src/app/utils/localstorage';
+import { Attachment } from 'src/app/features/attachment/model/attachment-data';
 
 @Component({
   selector: 'app-create-establishment',
@@ -23,6 +24,12 @@ export class CreateEstablishmentComponent extends FormBaseComponent implements O
   establishmentForm: FormGroup;
   establishment: Establishment;
   localStorageUtils = new LocalStorageUtils();
+  attatchment: Attachment = {
+    id: '',
+    name: '',
+    type: '',
+    imageData: ''
+  };
 
   vaidateDocument: any;
 
@@ -82,7 +89,8 @@ export class CreateEstablishmentComponent extends FormBaseComponent implements O
       municipalRegistration: [null , Validators.compose([Validators.minLength(2), Validators.maxLength(20)])],
       address: ['', Validators.compose([Validators.required, Validators.minLength(2), Validators.maxLength(60)])],
       phone: ['', Validators.compose([Validators.required, Validators.minLength(8), Validators.maxLength(11)])],
-      manager: ['', Validators.compose([Validators.required, Validators.minLength(2), Validators.maxLength(50)])]
+      manager: ['', Validators.compose([Validators.required, Validators.minLength(2), Validators.maxLength(50)])],
+      establismentLogo: [null]
     });
   }
 
@@ -101,7 +109,10 @@ export class CreateEstablishmentComponent extends FormBaseComponent implements O
     if (this.establishmentForm.dirty && this.establishmentForm.valid) {
       this.spinner.show();
       this.establishment = Object.assign({}, this.establishment, this.establishmentForm.value);
-
+      this.attatchment.name = this.imageName;
+      this.attatchment.type = this.imageType;
+      this.attatchment.imageData = this.croppedImageData;
+      this.establishment.establismentLogo = this.attatchment;
       this.establishmentService.newEstablishment(this.establishment)
         .subscribe(
           success => { this.processSuccess(success) },

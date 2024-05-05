@@ -18,57 +18,65 @@
         </ul>
     </div>
 
-    <div>
-        <dl class="row">
-            <dt class="col-sm-2">
-                <label class="control-label">{{ 'br_com_supermarket_ESTABLISHMENT_NAME' | translate }}</label>
-            </dt>
-            <dd class="col-sm-10">
-                {{ establishment?.name }}
-            </dd>
-            <dt class="col-sm-2">
-                <label class="control-label">{{ 'br_com_supermarket_ESTABLISHMENT_CODE' | translate }}</label>
-            </dt>
-            <dd class="col-sm-10">
-                {{ establishment?.code }}
-            </dd>
-            <dt class="col-sm-2">
-                <label class="control-label">{{ 'br_com_supermarket_ESTABLISHMENT_CNPJ' | translate }}</label>
-            </dt>
-            <dd class="col-sm-10">
-                {{ establishment?.cnpj | cnpj }}
-            </dd>
-            <dt class="col-sm-2">
-                <label class="control-label">{{ 'br_com_supermarket_ESTABLISHMENT_STATE_REGISTRATION' | translate }}</label>
-            </dt>
-            <dd class="col-sm-10">
-                {{ establishment?.stateRegistration }}
-            </dd>
-            <dt class="col-sm-2">
-                <label class="control-label">{{ 'br_com_supermarket_ESTABLISHMENT_MUNICIPAL_REGISTRATION' | translate }}</label>
-            </dt>
-            <dd class="col-sm-10">
-                {{ establishment?.municipalRegistration }}
-            </dd>
-            <dt class="col-sm-2">
-                <label class="control-label">{{ 'br_com_supermarket_ESTABLISHMENT_ADDRESS' | translate }}</label>
-            </dt>
-            <dd class="col-sm-10">
-                {{ establishment?.address }}
-            </dd>
-            <dt class="col-sm-2">
-                <label class="control-label">{{ 'br_com_supermarket_ESTABLISHMENT_PHONE' | translate }}</label>
-            </dt>
-            <dd class="col-sm-10">
-                {{ establishment?.phone.length > 10 ? (establishment?.phone | cellPhone) : (establishment?.phone | phone)}}
-            </dd>
-            <dt class="col-sm-2">
-                <label class="control-label">{{ 'br_com_supermarket_ESTABLISHMENT_MANAGER' | translate }}</label>
-            </dt>
-            <dd class="col-sm-10">
-                {{ establishment?.manager }}
-            </dd>
-        </dl>
+    <div class="row">
+        <div class="col-md-4">
+            <img 
+                src="{{ images }}{{ establishment?.establismentLogo?.id === null ? defaultId : establishment?.establismentLogo?.id}}" 
+                style="width: 190px; height: 228px">
+        </div>       
+        <div class="col-md-6">
+            <dl class="row"> 
+
+                <dt class="col-sm-2">
+                    <label class="control-label">{{ 'br_com_supermarket_ESTABLISHMENT_NAME' | translate }}</label>
+                </dt>
+                <dd class="col-sm-10">
+                    {{ establishment?.name }}
+                </dd>
+                <dt class="col-sm-2">
+                    <label class="control-label">{{ 'br_com_supermarket_ESTABLISHMENT_CODE' | translate }}</label>
+                </dt>
+                <dd class="col-sm-10">
+                    {{ establishment?.code }}
+                </dd>
+                <dt class="col-sm-2">
+                    <label class="control-label">{{ 'br_com_supermarket_ESTABLISHMENT_CNPJ' | translate }}</label>
+                </dt>
+                <dd class="col-sm-10">
+                    {{ establishment?.cnpj | cnpj }}
+                </dd>
+                <dt class="col-sm-2">
+                    <label class="control-label">{{ 'br_com_supermarket_ESTABLISHMENT_STATE_REGISTRATION' | translate }}</label>
+                </dt>
+                <dd class="col-sm-10">
+                    {{ establishment?.stateRegistration }}
+                </dd>
+                <dt class="col-sm-2">
+                    <label class="control-label">{{ 'br_com_supermarket_ESTABLISHMENT_MUNICIPAL_REGISTRATION' | translate }}</label>
+                </dt>
+                <dd class="col-sm-10">
+                    {{ establishment?.municipalRegistration }}
+                </dd>
+                <dt class="col-sm-2">
+                    <label class="control-label">{{ 'br_com_supermarket_ESTABLISHMENT_ADDRESS' | translate }}</label>
+                </dt>
+                <dd class="col-sm-10">
+                    {{ establishment?.address }}
+                </dd>
+                <dt class="col-sm-2">
+                    <label class="control-label">{{ 'br_com_supermarket_ESTABLISHMENT_PHONE' | translate }}</label>
+                </dt>
+                <dd class="col-sm-10">
+                    {{ establishment?.phone.length > 10 ? (establishment?.phone | cellPhone) : (establishment?.phone | phone)}}
+                </dd>
+                <dt class="col-sm-2">
+                    <label class="control-label">{{ 'br_com_supermarket_ESTABLISHMENT_MANAGER' | translate }}</label>
+                </dt>
+                <dd class="col-sm-10">
+                    {{ establishment?.manager }}
+                </dd>
+            </dl>
+        </div>
     </div>
 
     <div>

@@ -10,6 +10,8 @@ import { CpfCnpjValidators } from 'src/app/utils/document-validators-form';
 import { Observable, fromEvent, merge } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 import { LocalStorageUtils } from 'src/app/utils/localstorage';
+import { Attachment } from 'src/app/features/attachment/model/attachment-data';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-update-establishment',
@@ -23,10 +25,17 @@ export class UpdateEstablishmentComponent  extends FormBaseComponent implements 
   establishmentForm: FormGroup;
   establishment: Establishment;
   localStorageUtils = new LocalStorageUtils();
-
   vaidateDocument: any;
-
   formResult: string= '';
+  attatchment: Attachment = {
+    id: null,
+    name: null,
+    type: null,
+    imageData: null
+  };
+  images: string = environment.imagesUrl;
+  defaultId: string = 'cf3f50ba-9d26-46a0-a711-dae2be2a101c';
+  
   
   constructor(private fb: FormBuilder,
     private establishmentService: EstablishmentService,
@@ -87,7 +96,8 @@ export class UpdateEstablishmentComponent  extends FormBaseComponent implements 
       municipalRegistration: [null , Validators.compose([Validators.minLength(2), Validators.maxLength(20)])],
       address: ['', Validators.compose([Validators.required, Validators.minLength(2), Validators.maxLength(60)])],
       phone: ['', Validators.compose([Validators.required, Validators.minLength(8), Validators.maxLength(11)])],
-      manager: ['', Validators.compose([Validators.required, Validators.minLength(2), Validators.maxLength(50)])]
+      manager: ['', Validators.compose([Validators.required, Validators.minLength(2), Validators.maxLength(50)])],
+      establismentLogo: [null]
     });
     this.fillForm();
   }
@@ -101,7 +111,8 @@ export class UpdateEstablishmentComponent  extends FormBaseComponent implements 
       municipalRegistration: this.establishment?.municipalRegistration,
       address: this.establishment?.address,
       phone: this.establishment?.phone,
-      manager: this.establishment?.manager
+      manager: this.establishment?.manager,
+      establismentLogo: this.establishment?.establismentLogo,
     });
     this.spinner.hide();
   }
@@ -120,12 +131,21 @@ export class UpdateEstablishmentComponent  extends FormBaseComponent implements 
     if (this.establishmentForm.dirty && this.establishmentForm.valid) {
       this.spinner.show();
       this.establishment = Object.assign({}, this.establishment, this.establishmentForm.value);
-
+      this.setImage(this.imageName, this.imageType, this.croppedImageData);
       this.establishmentService.updateEstablishment(this.establishment)
         .subscribe(
           success => { this.processSuccess(success) },
           fail => { this.processFail(fail) }
         );
+    }
+  }
+
+  setImage(imageName: string, imageType: string, croppedImageData: any) {
+    if (imageName != null && imageType != null && croppedImageData != null) {
+      this.attatchment.name = imageName;
+      this.attatchment.type = imageType;
+      this.attatchment.imageData = croppedImageData;
+      this.establishment.establismentLogo = this.attatchment;
     }
   }
 
