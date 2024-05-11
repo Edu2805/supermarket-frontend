@@ -24,6 +24,7 @@
                 <th>{{ 'br_com_supermarket_PRODUCT_DATA_SALE_PRICE' | translate }}</th>
                 <th>{{ 'br_com_supermarket_PRODUCT_DATA_MARGIN' | translate }}</th>
                 <th>{{ 'br_com_supermarket_PRODUCT_DATA_INVENTORY' | translate }}</th>
+                <th>{{ 'br_com_supermarket_PRODUCT_DATA_STOCK_SITUATION' | translate }}</th>
                 <th></th>
             </tr>
         </thead>
@@ -45,6 +46,24 @@
             </td>
             <td>
                 {{ product.inventory | number }}
+            </td>
+            <td>
+                <div *ngIf="product.inventory > 0" class="positive-inventory">
+                    <span class="material-symbols-outlined">
+                        inventory
+                    </span>
+                </div>
+                <div *ngIf="product.inventory === 0" class="equals-inventory">
+                    <span class="material-symbols-outlined">
+                        warning
+                    </span>
+                </div>
+                <div *ngIf="product.inventory < 0" class="negative-inventory">
+                    <span class="material-symbols-outlined">
+                        error
+                    </span>
+                </div>
+
             </td>
             <td class="text-right">
                 <a class="fa fa-search" [routerLink]="['/product-data/details',product.id]"></a>&nbsp;

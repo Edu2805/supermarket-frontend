@@ -197,6 +197,7 @@
     "br_com_supermarket_PRODUCT_DATA_EAN_13": "Código de barras EAN 13",
     "br_com_supermarket_PRODUCT_DATA_DUN_14": "Código de barras DUN 14",
     "br_com_supermarket_PRODUCT_DATA_INVENTORY": "Quantidade em estoque",
+    "br_com_supermarket_PRODUCT_DATA_STOCK_SITUATION": "Situação estoque",
     "br_com_supermarket_PRODUCT_PHOTO": "Foto do produto",
     "br_com_supermarket_PRODUCT_SUB_SECTION": "Subseção",
     "br_com_supermarket_PRODUCT_PROVIDER": "Fornecedor",

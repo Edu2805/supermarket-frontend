@@ -197,6 +197,7 @@
     "br_com_supermarket_PRODUCT_DATA_EAN_13": "EAN 13 barcode",
     "br_com_supermarket_PRODUCT_DATA_DUN_14": "DUN 14 barcode",
     "br_com_supermarket_PRODUCT_DATA_INVENTORY": "Quantity in stock",
+    "br_com_supermarket_PRODUCT_DATA_STOCK_SITUATION": "Stock situation",
     "br_com_supermarket_PRODUCT_PHOTO": "Product photo",
     "br_com_supermarket_PRODUCT_SUB_SECTION": "Subsection",
     "br_com_supermarket_PRODUCT_PROVIDER": "Provider",
