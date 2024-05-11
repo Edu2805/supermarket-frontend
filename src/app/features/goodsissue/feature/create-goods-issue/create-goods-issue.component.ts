@@ -66,17 +66,14 @@ export class CreateGoodsIssueComponent extends FormBaseComponent implements OnIn
 
       super(toastr, translateService);
       this.validationMessages = {
-        invoice: {
-          required: this.translateService.instant('br_com_supermarket_GOODS_RECEIPT_INVOICE_KEY_REQUIRED_MESSAGE'),
-        },
         searchProduct: {
-          required: this.translateService.instant('br_com_supermarket_GOODS_RECEIPT_ERROR_FORM_PRODUCT_DATA_REQUIRED_MESSAGE'),
+          required: this.translateService.instant('br_com_supermarket_GOODS_ISSUE_ERROR_FORM_PRODUCT_DATA_REQUIRED_MESSAGE'),
         },
         inventory: {
-          required: this.translateService.instant('br_com_supermarket_GOODS_RECEIPT_ERROR_FORM_PRODUCT_DATA_REQUIRED_MESSAGE'),
+          required: this.translateService.instant('br_com_supermarket_GOODS_ISSUE_ERROR_FORM_INVENTORY_REQUIRED_MESSAGE'),
         },
         totalReceived: {
-          required: this.translateService.instant('br_com_supermarket_GOODS_RECEIPT_ERROR_FORM_PRODUCT_DATA_REQUIRED_MESSAGE'),
+          required: this.translateService.instant('br_com_supermarket_GOODS_ISSUE_ERROR_FORM_TOTAL_RECEIVED_REQUIRED_MESSAGE'),
         }
       };
       super.messageConfigValidatorBase(this.validationMessages);
@@ -231,7 +228,7 @@ export class CreateGoodsIssueComponent extends FormBaseComponent implements OnIn
           );
       } else {
         this.toastr.warning(
-          this.translateService.instant('br_com_supermarket_GOODS_RECEIPT_ADD_AT_LEAST_ONE_PRODUCT_MESSAGE'), 
+          this.translateService.instant('br_com_supermarket_GOODS_ISSUE_ADD_AT_LEAST_ONE_PRODUCT_MESSAGE'), 
           this.translateService.instant('br_com_supermarket_MSG_GENERIC_WARNING'));
       }
     }
@@ -243,7 +240,7 @@ export class CreateGoodsIssueComponent extends FormBaseComponent implements OnIn
     this.unsaveChanges = false;
 
     let toast = this.toastr.success(
-        this.translateService.instant('br_com_supermarket_GOODS_RECEIPT_SUCCESS'), 
+        this.translateService.instant('br_com_supermarket_GOODS_ISSUE_SUCCESS'), 
         this.translateService.instant('br_com_supermarket_MSG_GENERIC_SUCCESS'));
     if (toast) {
       toast.onHidden.subscribe(() => {
