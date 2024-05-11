@@ -465,6 +465,11 @@
     "br_com_supermarket_GOODS_ISSUE_PURCHASE_CHANGE": "Cambiar",
     "br_com_supermarket_GOODS_ISSUE_AN_ERROR_OCCURRED_WHILE_GET_PAYMENT_OPTIONS": "Ocorrió un error al buscar una lista de medios de pago.",
     "br_com_supermarket_GOODS_ISSUE_AN_ERROR_OCCURRED_WHILE_GET_SALE_INFORMATION": "Ocurrió un error al obtener la información de venta.",
+    "br_com_supermarket_GOODS_ISSUE_SUCCESS": "Compra completada exitosamente",
+    "br_com_supermarket_GOODS_ISSUE_ADD_AT_LEAST_ONE_PRODUCT_MESSAGE": "Añade al menos un producto a la venta.",
+    "br_com_supermarket_GOODS_ISSUE_ERROR_FORM_PRODUCT_DATA_REQUIRED_MESSAGE": "Informar el producto",
+    "br_com_supermarket_GOODS_ISSUE_ERROR_FORM_INVENTORY_REQUIRED_MESSAGE": "Introduce la cantidad",
+    "br_com_supermarket_GOODS_ISSUE_ERROR_FORM_TOTAL_RECEIVED_REQUIRED_MESSAGE": "Ingrese el total recibido",
 
     "br_com_supermarket_BUTTON_REGISTER": "Registro",
     "br_com_supermarket_BUTTON_EDIT": "Editar",
