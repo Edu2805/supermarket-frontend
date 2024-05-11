@@ -470,6 +470,8 @@
     "br_com_supermarket_GOODS_ISSUE_ERROR_FORM_PRODUCT_DATA_REQUIRED_MESSAGE": "Informar el producto",
     "br_com_supermarket_GOODS_ISSUE_ERROR_FORM_INVENTORY_REQUIRED_MESSAGE": "Introduce la cantidad",
     "br_com_supermarket_GOODS_ISSUE_ERROR_FORM_TOTAL_RECEIVED_REQUIRED_MESSAGE": "Ingrese el total recibido",
+    "br_com_supermarket_FINANCIAL_STATEMENT_REPORTS_SALES": "Informes de ventas",
+    "br_com_supermarket_FINANCIAL_STATEMENT_REPORTS_PURCHASES": "Informes de compra",
 
     "br_com_supermarket_BUTTON_REGISTER": "Registro",
     "br_com_supermarket_BUTTON_EDIT": "Editar",
