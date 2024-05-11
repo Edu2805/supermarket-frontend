@@ -81,6 +81,11 @@ const routes: Routes = [
                         .then(m => m.ProviderModule)
         },
         {
+                path: 'financial-reports',
+                loadChildren: () => import('./features/financial-statement-reports/financial-statement-reports.module')
+                        .then(m => m.FinancialStatementReportsModule)
+        },
+        {
                 path: '**', component: NotFoundComponent
         }
 ];
