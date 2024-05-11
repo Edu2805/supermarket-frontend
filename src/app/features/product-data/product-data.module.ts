@@ -57,7 +57,7 @@ const maskConfigFunction: () => Partial<IConfig> = () => {
         NgxMaskModule.forRoot(maskConfigFunction),
         PaginationModule,
         PipeModule,
-        ImageCropperModule
+        ImageCropperModule,
     ],
     exports:[]
 })
