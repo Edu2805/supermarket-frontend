@@ -102,7 +102,6 @@ export class PurchasesReportsComponent extends FormBaseComponent implements OnIn
   }
 
   processFail(fail: any) {
-    //fail.error.message
     if (fail.error !== null && fail.error !== undefined) {
       this.errors = fail.error.message;
     } else {

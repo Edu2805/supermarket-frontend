@@ -1,65 +1,85 @@
 <div class="container">
-    <h2>Relatório Financeiro de Vendas</h2>
+    <ngx-spinner 
+      bdColor = "rgba(0, 0, 0, 0.8)" 
+      size = "medium" 
+      color = "#fff" 
+      type = "ball-beat" 
+      [fullScreen] = "true"
+      ><p style="color: white" > {{ 'br_com_supermarket_MSG_WAIT' | translate }} </p>
+    </ngx-spinner>
+
+    <h2>{{ 'br_com_supermarket_FINANCIAL_STATEMENT_REPORTS_CONSOLIDATED_SALE_VALUES' | translate }}</h2>
     
-    <form [formGroup]="reportForm" (ngSubmit)="generateReport()">
+    <form [formGroup]="salesReportsForm" (ngSubmit)="generateReport()">
+
       <div class="row">
         <div class="col-md-4">
-          <label for="providerProductName">Nome do Produto/Fornecedor:</label>
+          <label for="providerProductName">{{ 'br_com_supermarket_FINANCIAL_STATEMENT_REPORTS_SALES_PROVIDER_PRODUCT_NAME' | translate }}</label>
           <input type="text" id="providerProductName" formControlName="providerProductName" class="form-control">
         </div>
         <div class="col-md-4">
-          <label for="departmentName">Departamento:</label>
+          <label for="departmentName">{{ 'br_com_supermarket_FINANCIAL_STATEMENT_REPORTS_SALES_DEPARTMENT_NAME' | translate }}</label>
           <input type="text" id="departmentName" formControlName="departmentName" class="form-control">
         </div>
         <div class="col-md-4">
-          <label for="mainsectionName">Seção Principal:</label>
+          <label for="mainsectionName">{{ 'br_com_supermarket_FINANCIAL_STATEMENT_REPORTS_SALES_MAIN_SECTION_NAME' | translate }}</label>
           <input type="text" id="mainsectionName" formControlName="mainsectionName" class="form-control">
         </div>
         <div class="col-md-4">
-            <label for="subsectionName">Sub seção:</label>
+            <label for="subsectionName">{{ 'br_com_supermarket_FINANCIAL_STATEMENT_REPORTS_SALES_SUB_SECTION_NAME' | translate }}</label>
             <input type="text" id="subsectionName" formControlName="subsectionName" class="form-control">
           </div>
           <div class="col-md-4">
-            <label for="productCode">Código do produto:</label>
+            <label for="productCode">{{ 'br_com_supermarket_FINANCIAL_STATEMENT_REPORTS_SALES_PRODUCT_CODE' | translate }}</label>
             <input type="text" id="productCode" formControlName="productCode" class="form-control">
           </div>
           <div class="col-md-4">
-            <label for="ean13">Código de barras varejo:</label>
+            <label for="ean13">{{ 'br_com_supermarket_FINANCIAL_STATEMENT_REPORTS_SALES_PRODUCT_EAN_13' | translate }}</label>
             <input type="text" id="ean13" formControlName="ean13" class="form-control">
           </div>
           <div class="col-md-4">
-            <label for="dun14">Código de barras atacado:</label>
+            <label for="dun14">{{ 'br_com_supermarket_FINANCIAL_STATEMENT_REPORTS_SALES_PRODUCT_DUN_14' | translate }}</label>
             <input type="text" id="dun14" formControlName="dun14" class="form-control">
           </div>
           <div class="col-md-4">
-            <label for="saleNumber">Número do venda:</label>
+            <label for="saleNumber">{{ 'br_com_supermarket_FINANCIAL_STATEMENT_REPORTS_SALES_NUMBER' | translate }}</label>
             <input type="text" id="saleNumber" formControlName="saleNumber" class="form-control">
           </div>
       </div>
       
       <div class="row mt-3">
         <div class="col-md-4">
-          <label for="from">De:</label>
-          <input type="date" id="from" formControlName="from" class="form-control">
+          <label for="from">{{ 'br_com_supermarket_FINANCIAL_STATEMENT_REPORTS_SALES_FROM' | translate }}</label>
+          <input type="date" id="from" formControlName="from" class="form-control"[ngClass]="{'is-invalid': displayMessage.from }"
+          />
+          <span class="text-danger" *ngIf="displayMessage.from">
+              <p [innerHTML]="displayMessage.from"></p>
+          </span>
         </div>
         <div class="col-md-4">
-          <label for="to">Até:</label>
-          <input type="date" id="to" formControlName="to" class="form-control">
+          <label for="to">{{ 'br_com_supermarket_FINANCIAL_STATEMENT_REPORTS_SALES_TO' | translate }}</label>
+          <input type="date" id="to" formControlName="to" class="form-control"/>
+          <span class="text-danger" *ngIf="displayMessage.to">
+              <p [innerHTML]="displayMessage.to"></p>
+          </span>
         </div>
         <div class="col-md-4">
-          <label for="isEffectiveSale">Venda Efetivada?</label>
+          <label for="isEffectiveSale">{{ 'br_com_supermarket_FINANCIAL_STATEMENT_REPORTS_SALES_IS_EFFECTIVE_SALE' | translate }}</label>
           <select id="isEffectiveSale" formControlName="isEffectiveSale" class="form-control">
-            <option value="true">Sim</option>
-            <option value="false">Não</option>
+            <option value="true">{{ 'br_com_supermarket_MSG_GENERIC_YES' | translate }}</option>
+            <option value="false">{{ 'br_com_supermarket_MSG_GENERIC_NO' | translate }}</option>
           </select>
+          <span class="text-danger" *ngIf="displayMessage.isEffectiveSale">
+            <p [innerHTML]="displayMessage.isEffectiveSale"></p>
+          </span>
         </div>
       </div>
       
-      <button type="submit" class="btn btn-primary mt-3">Gerar Relatório</button>
+      <button [disabled]="!salesReportsForm.valid" type="submit" class="btn btn-primary mt-3">{{ 'br_com_supermarket_BUTTON_GENERATE_REPORT' | translate }}</button>
     </form>
     
     <div *ngIf="financialResult !== undefined" class="text-center mt-4">
-        <h3 class="text-center">Resultado Financeiro:</h3>
+        <h3 class="text-center">{{ 'br_com_supermarket_FINANCIAL_STATEMENT_REPORTS_SALES_TOTAL_CONSOLIDATED' | translate }}</h3>
         <p class="display-4 text-success result-value">{{ financialResult | currency: 'BRL' }}</p>
     </div>
   </div>

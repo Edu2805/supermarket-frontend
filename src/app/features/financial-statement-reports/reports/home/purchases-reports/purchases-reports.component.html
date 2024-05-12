@@ -1,24 +1,17 @@
 <div class="container">
     <ngx-spinner 
-    bdColor = "rgba(0, 0, 0, 0.8)" 
-    size = "medium" 
-    color = "#fff" 
-    type = "ball-beat" 
-    [fullScreen] = "true"
-    ><p style="color: white" > {{ 'br_com_supermarket_MSG_WAIT' | translate }} </p>
-  </ngx-spinner>
+      bdColor = "rgba(0, 0, 0, 0.8)" 
+      size = "medium" 
+      color = "#fff" 
+      type = "ball-beat" 
+      [fullScreen] = "true"
+      ><p style="color: white" > {{ 'br_com_supermarket_MSG_WAIT' | translate }} </p>
+    </ngx-spinner>
 
 
     <h2>{{ 'br_com_supermarket_FINANCIAL_STATEMENT_REPORTS_CONSOLIDATED_PURCHASE_VALUES' | translate }}</h2>
     
     <form novalidate="novalidate" [formGroup]="purchaseReportsForm" (ngSubmit)="generateReport()">
-
-      <div class="alert alert-danger" *ngIf="errors?.length > 0">
-        <h3 id="msgRetorno">{{ 'br_com_supermarket_MSG_GENERIC_ERROR' | translate }}</h3>
-        <ul>
-            <li *ngFor="let error of errors">{{ error }}</li>
-        </ul>
-      </div>
 
       <div class="row">
         <div class="col-md-4">
@@ -51,7 +44,7 @@
         <div class="col-md-4">
           <label for="from">{{ 'br_com_supermarket_FINANCIAL_STATEMENT_REPORTS_PURCHASES_FROM' | translate }}</label>
           <input type="date" id="from" formControlName="from" class="form-control"
-          [ngClass]="{'is-invalid': displayMessage.from }"
+            [ngClass]="{'is-invalid': displayMessage.from }"
           />
           <span class="text-danger" *ngIf="displayMessage.from">
               <p [innerHTML]="displayMessage.from"></p>
