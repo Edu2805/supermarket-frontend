@@ -1,0 +1,90 @@
+<div class="container">
+    <ngx-spinner 
+    bdColor = "rgba(0, 0, 0, 0.8)" 
+    size = "medium" 
+    color = "#fff" 
+    type = "ball-beat" 
+    [fullScreen] = "true"
+    ><p style="color: white" > {{ 'br_com_supermarket_MSG_WAIT' | translate }} </p>
+  </ngx-spinner>
+
+
+    <h2>{{ 'br_com_supermarket_FINANCIAL_STATEMENT_REPORTS_CONSOLIDATED_PURCHASE_VALUES' | translate }}</h2>
+    
+    <form novalidate="novalidate" [formGroup]="purchaseReportsForm" (ngSubmit)="generateReport()">
+
+      <div class="alert alert-danger" *ngIf="errors?.length > 0">
+        <h3 id="msgRetorno">{{ 'br_com_supermarket_MSG_GENERIC_ERROR' | translate }}</h3>
+        <ul>
+            <li *ngFor="let error of errors">{{ error }}</li>
+        </ul>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <label for="providerProductName">{{ 'br_com_supermarket_FINANCIAL_STATEMENT_REPORTS_PURCHASES_PROVIDER_PRODUCT_NAME' | translate }}</label>
+          <input type="text" id="providerProductName" formControlName="providerProductName" class="form-control">
+        </div>
+        <div class="col-md-4">
+          <label for="departmentName">{{ 'br_com_supermarket_FINANCIAL_STATEMENT_REPORTS_PURCHASES_DEPARTMENT_NAME' | translate }}</label>
+          <input type="text" id="departmentName" formControlName="departmentName" class="form-control">
+        </div>
+        <div class="col-md-4">
+          <label for="mainsectionName">{{ 'br_com_supermarket_FINANCIAL_STATEMENT_REPORTS_PURCHASES_MAIN_SECTION_NAME' | translate }}</label>
+          <input type="text" id="mainsectionName" formControlName="mainsectionName" class="form-control">
+        </div>
+        <div class="col-md-4">
+            <label for="subsectionName">{{ 'br_com_supermarket_FINANCIAL_STATEMENT_REPORTS_PURCHASES_SUB_SECTION_NAME' | translate }}</label>
+            <input type="text" id="subsectionName" formControlName="subsectionName" class="form-control">
+          </div>
+          <div class="col-md-4">
+            <label for="productCode">{{ 'br_com_supermarket_FINANCIAL_STATEMENT_REPORTS_PURCHASES_PRODUCT_CODE' | translate }}</label>
+            <input type="text" id="productCode" formControlName="productCode" class="form-control">
+          </div>
+          <div class="col-md-4">
+            <label for="invoice">{{ 'br_com_supermarket_FINANCIAL_STATEMENT_REPORTS_PURCHASES_INVOICE' | translate }}</label>
+            <input type="text" id="invoice" formControlName="invoice" class="form-control">
+          </div>
+      </div>
+      
+      <div class="row mt-3">
+        <div class="col-md-4">
+          <label for="from">{{ 'br_com_supermarket_FINANCIAL_STATEMENT_REPORTS_PURCHASES_FROM' | translate }}</label>
+          <input type="date" id="from" formControlName="from" class="form-control"
+          [ngClass]="{'is-invalid': displayMessage.from }"
+          />
+          <span class="text-danger" *ngIf="displayMessage.from">
+              <p [innerHTML]="displayMessage.from"></p>
+          </span>
+        </div>
+        <div class="col-md-4">
+          <label for="to">{{ 'br_com_supermarket_FINANCIAL_STATEMENT_REPORTS_PURCHASES_TO' | translate }}</label>
+          <input type="date" id="to" formControlName="to" class="form-control"
+          [ngClass]="{'is-invalid': displayMessage.to }"
+          />
+          <span class="text-danger" *ngIf="displayMessage.to">
+              <p [innerHTML]="displayMessage.to"></p>
+          </span>
+        </div>
+        <div class="col-md-4">
+          <label for="isReceived">{{ 'br_com_supermarket_FINANCIAL_STATEMENT_REPORTS_PURCHASES_IS_RECEIVED' | translate }}</label>
+          <select id="isReceived" formControlName="isReceived" class="form-control">
+            <option value="" disabled selected></option>
+            <option value="true">{{ 'br_com_supermarket_MSG_GENERIC_YES' | translate }}</option>
+            <option value="false">{{ 'br_com_supermarket_MSG_GENERIC_NO' | translate }}</option>
+          </select>
+          <span class="text-danger" *ngIf="displayMessage.isReceived">
+            <p [innerHTML]="displayMessage.isReceived"></p>
+          </span>
+        </div>
+      </div>
+      
+      <button [disabled]="!purchaseReportsForm.valid" type="submit" class="btn btn-primary mt-3">{{ 'br_com_supermarket_BUTTON_GENERATE_REPORT' | translate }}</button>
+    </form>
+    
+    <div *ngIf="financialResult !== undefined" class="text-center mt-4">
+        <h3 class="text-center">{{ 'br_com_supermarket_FINANCIAL_STATEMENT_REPORTS_PURCHASES_IS_TOTAL_CONSOLIDATED' | translate }}</h3>
+        <p class="display-4 result-value">{{ financialResult | currency: 'BRL' }}</p>
+    </div>
+  </div>
+  

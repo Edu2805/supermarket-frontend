@@ -1,7 +1,7 @@
 import { RouterModule, Routes } from "@angular/router";
 import { FinancialStatementReportsComponent } from "./financial-statement-reports.component";
-import { PurchasesReportsComponent } from "./reports/purchases-reports/purchases-reports.component";
-import { SalesReportsComponent } from "./reports/sales-reports/sales-reports.component";
+import { PurchasesReportsComponent } from "./reports/home/purchases-reports/purchases-reports.component";
+import { SalesReportsComponent } from "./reports/home/sales-reports/sales-reports.component";
 import { FinancialStatementReportsGuardService } from "./services/financial-statement-reports.guard";
 import { NgModule } from "@angular/core";
 
