@@ -10,11 +10,14 @@ import { PaginationModule } from "src/app/utils/pagination/pagination.module";
 import { PipeModule } from "src/app/utils/pipe/pipe.module";
 import { FinancialStatementReportsComponent } from "./financial-statement-reports.component";
 import ptBr from '@angular/common/locales/pt';
-import { SalesReportsComponent } from './reports/home/sales-reports/sales-reports.component';
-import { PurchasesReportsComponent } from './reports/home/purchases-reports/purchases-reports.component';
+import { SalesReportsComponent } from './reports/sales-reports/sales-reports.component';
+import { PurchasesReportsComponent } from './reports/purchases-reports/purchases-reports.component';
 import { FinancialStatementReportsGuardService } from "./services/financial-statement-reports.guard";
 import { FinancialStatementReportsService } from "./services/financial-statement-reports.service";
 import { FinancialStatementReportsRoute } from "./financial-statement-reports.route";
+import { FinancialStatementHomeComponent } from './reports/financial-statement-home/financial-statement-home.component';
+import { ResultsReportsComponent } from './reports/results-reports/results-reports.component';
+import { HistoricalReportsComponent } from './reports/historical-reports/historical-reports.component';
 
 const maskConfigFunction: () => Partial<IConfig> = () => {
     return {
@@ -29,6 +32,9 @@ registerLocaleData(ptBr);
         FinancialStatementReportsComponent,
         SalesReportsComponent,
         PurchasesReportsComponent,
+        FinancialStatementHomeComponent,
+        ResultsReportsComponent,
+        HistoricalReportsComponent,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     providers: [
@@ -47,7 +53,7 @@ registerLocaleData(ptBr);
         NgxMaskModule.forRoot(maskConfigFunction),
         PaginationModule,
         PipeModule,
-        FinancialStatementReportsRoute
+        FinancialStatementReportsRoute,
     ],
     exports:[]
 })
