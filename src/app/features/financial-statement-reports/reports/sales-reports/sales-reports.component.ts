@@ -3,8 +3,8 @@ import { FormBuilder, FormControlName, FormGroup, Validators } from '@angular/fo
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 import { FormBaseComponent } from 'src/app/features/base-components/form-base.component';
-import { FinancialSaleReport } from '../../../model/financial-sale-reports';
-import { FinancialStatementReportsService } from '../../../services/financial-statement-reports.service';
+import { FinancialSaleReport } from '../../model/financial-sale-reports';
+import { FinancialStatementReportsService } from '../../services/financial-statement-reports.service';
 import { LocalStorageUtils } from 'src/app/utils/localstorage';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Router } from '@angular/router';

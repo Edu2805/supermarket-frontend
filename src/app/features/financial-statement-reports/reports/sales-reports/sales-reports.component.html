@@ -75,7 +75,11 @@
         </div>
       </div>
       
-      <button [disabled]="!salesReportsForm.valid" type="submit" class="btn btn-primary mt-3">{{ 'br_com_supermarket_BUTTON_GENERATE_REPORT' | translate }}</button>
+      <div class="form-group">
+        <button [disabled]="!salesReportsForm.valid" type="submit" class="btn btn-primary mt-3">{{ 'br_com_supermarket_BUTTON_GENERATE_REPORT' | translate }}</button>
+        &nbsp;
+        <button class="btn btn-info mt-3" [routerLink]="['/financial-reports/home']">{{ 'br_com_supermarket_BUTTON_BACK' | translate }}</button>
+      </div>
     </form>
     
     <div *ngIf="financialResult !== undefined" class="text-center mt-4">

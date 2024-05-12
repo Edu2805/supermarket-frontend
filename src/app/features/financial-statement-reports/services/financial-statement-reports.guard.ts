@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { CanActivate, Router, ActivatedRouteSnapshot, CanDeactivate } from "@angular/router";
 import { BaseGuard } from "src/app/services/base.guard";
-import { SalesReportsComponent } from "../reports/home/sales-reports/sales-reports.component";
+import { SalesReportsComponent } from "../reports/sales-reports/sales-reports.component";
 import { TranslateService } from "@ngx-translate/core";
 
 @Injectable()
