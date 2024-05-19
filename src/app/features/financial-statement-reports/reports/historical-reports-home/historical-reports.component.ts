@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-historical-reports',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./historical-reports.component.scss']
 })
 export class HistoricalReportsComponent {
-
+  constructor(private translateService: TranslateService,) { }
 }

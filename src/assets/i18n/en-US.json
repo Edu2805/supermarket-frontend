@@ -500,6 +500,8 @@
     "br_com_supermarket_FINANCIAL_STATEMENT_REPORTS_PURCHASES_IS_RECEIVED": "Received?",
     "br_com_supermarket_FINANCIAL_STATEMENT_REPORTS_PURCHASES_IS_TOTAL_CONSOLIDATED": "Consolidated total",
     "br_com_supermarket_FINANCIAL_STATEMENT_REPORTS_MENU": "Reports page",
+    "br_com_supermarket_FINANCIAL_STATEMENT_HISTORICAL_SALES": "Sales history",
+    "br_com_supermarket_FINANCIAL_STATEMENT_HISTORICAL_PURCHASES": "Purchases historic",
 
     "br_com_supermarket_BUTTON_REGISTER": "Register",
     "br_com_supermarket_BUTTON_EDIT": "Edit",

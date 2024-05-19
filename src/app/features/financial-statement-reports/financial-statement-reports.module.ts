@@ -17,7 +17,10 @@ import { FinancialStatementReportsService } from "./services/financial-statement
 import { FinancialStatementReportsRoute } from "./financial-statement-reports.route";
 import { FinancialStatementHomeComponent } from './reports/financial-statement-home/financial-statement-home.component';
 import { ResultsReportsComponent } from './reports/results-reports/results-reports.component';
-import { HistoricalReportsComponent } from './reports/historical-reports/historical-reports.component';
+import { HistoricalReportsComponent } from './reports/historical-reports-home/historical-reports.component';
+import { HistoricalPurchasesReportsComponent } from "./reports/historical-purchases-reports/historical-purchases-reports.component";
+import { HistoricalSalesReportsComponent } from "./reports/historical-sales-reports/historical-sales-reports.component";
+import { GoodsIssueGuardService } from "../goodsissue/services/goodsissue.guard";
 
 const maskConfigFunction: () => Partial<IConfig> = () => {
     return {
@@ -35,11 +38,14 @@ registerLocaleData(ptBr);
         FinancialStatementHomeComponent,
         ResultsReportsComponent,
         HistoricalReportsComponent,
+        HistoricalPurchasesReportsComponent,
+        HistoricalSalesReportsComponent
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     providers: [
         FinancialStatementReportsGuardService,
         FinancialStatementReportsService,
+        GoodsIssueGuardService,
         { provide: LOCALE_ID, useValue: 'pt' }
     ],
     imports:[
