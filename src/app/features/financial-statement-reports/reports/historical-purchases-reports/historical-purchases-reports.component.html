@@ -1,0 +1,80 @@
+<div class="container">
+    <ngx-spinner 
+      bdColor="rgba(0, 0, 0, 0.8)" 
+      size="medium" 
+      color="#fff" 
+      type="ball-beat" 
+      [fullScreen]="true"
+    ><p style="color: white">{{ 'br_com_supermarket_MSG_WAIT' | translate }}</p>
+    </ngx-spinner>
+
+    <h2>{{ 'br_com_supermarket_FINANCIAL_STATEMENT_REPORTS_HISTORIC_PURCHASES' | translate }}</h2>
+    
+    <form novalidate="novalidate" [formGroup]="historicalPurchaseReportsForm" (ngSubmit)="generateReport()">
+        <div class="row mt-3">
+            <div class="col-md-4">
+              <label for="from">{{ 'br_com_supermarket_FINANCIAL_STATEMENT_REPORTS_HISTORIC_PURCHASES_FROM' | translate }}</label>
+              <input type="date" id="from" formControlName="from" class="form-control"
+                [ngClass]="{'is-invalid': displayMessage.from }"
+              />
+              <span class="text-danger" *ngIf="displayMessage.from">
+                  <p [innerHTML]="displayMessage.from"></p>
+              </span>
+            </div>
+            <div class="col-md-4">
+              <label for="to">{{ 'br_com_supermarket_FINANCIAL_STATEMENT_REPORTS_HISTORIC_PURCHASES_TO' | translate }}</label>
+              <input type="date" id="to" formControlName="to" class="form-control"
+              [ngClass]="{'is-invalid': displayMessage.to }"
+              />
+              <span class="text-danger" *ngIf="displayMessage.to">
+                  <p [innerHTML]="displayMessage.to"></p>
+              </span>
+            </div>
+          
+          <div class="form-group">
+            <button [disabled]="!historicalPurchaseReportsForm.valid" type="submit" class="btn btn-primary mt-3">{{ 'br_com_supermarket_BUTTON_GENERATE_REPORT' | translate }}</button>
+            &nbsp;
+            <button class="btn btn-info mt-3" [routerLink]="['/financial-reports/historical-reports']">{{ 'br_com_supermarket_BUTTON_BACK' | translate }}</button>
+          </div>
+        </div>
+        <div class="container mt-4">
+            <button [disabled]="!historicalPurchaseReportsForm.valid" class="btn btn-danger" (click)="exportPDF()">{{ 'br_com_supermarket_BUTTON_EXPORT_REPORT_PDF' | translate }}</button>
+            &nbsp;
+            <button [disabled]="!historicalPurchaseReportsForm.valid" class="btn btn-success" (click)="exportExcel()">{{ 'br_com_supermarket_BUTTON_EXPORT_REPORT_EXCEL' | translate }}</button>
+            <div class="table-responsive mt-3">
+                <table class="table table-bordered table-striped">
+                    <thead class="thead-dark">
+                        <tr *ngIf="historicalPurchaseReports?.length > 0">
+                            <th>{{ 'br_com_supermarket_FINANCIAL_STATEMENT_REPORTS_HISTORIC_PURCHASES_PRODUCT_NAME' | translate }}</th>
+                            <th>{{ 'br_com_supermarket_FINANCIAL_STATEMENT_REPORTS_HISTORIC_PURCHASES_PRODUCT_CODE' | translate }}</th>
+                            <th>{{ 'br_com_supermarket_FINANCIAL_STATEMENT_REPORTS_HISTORIC_PURCHASES_PRODUCT_INVENTORY' | translate }}</th>
+                            <th>{{ 'br_com_supermarket_FINANCIAL_STATEMENT_REPORTS_HISTORIC_PURCHASES_PROVIDER_PRODUCT_NAME' | translate }}</th>
+                            <th>{{ 'br_com_supermarket_FINANCIAL_STATEMENT_REPORTS_HISTORIC_PURCHASES_DEPARTMENT_NAME' | translate }}</th>
+                            <th>{{ 'br_com_supermarket_FINANCIAL_STATEMENT_REPORTS_HISTORIC_PURCHASES_MAIN_SECTION_NAME' | translate }}</th>
+                            <th>{{ 'br_com_supermarket_FINANCIAL_STATEMENT_REPORTS_HISTORIC_PURCHASES_SUB_SECTION_NAME' | translate }}</th>
+                            <th>{{ 'br_com_supermarket_FINANCIAL_STATEMENT_REPORTS_HISTORIC_PURCHASES_INVOICE' | translate }}</th>
+                            <th>{{ 'br_com_supermarket_FINANCIAL_STATEMENT_REPORTS_HISTORIC_PURCHASES_INVOICE_TOTAL' | translate }}</th>
+                            <th>{{ 'br_com_supermarket_FINANCIAL_STATEMENT_REPORTS_HISTORIC_PURCHASES_DATE_RECEIPT' | translate }}</th>
+                            <th>{{ 'br_com_supermarket_FINANCIAL_STATEMENT_REPORTS_HISTORIC_PURCHASES_IS_RECEIVED' | translate }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let historicalPurchase of historicalPurchaseReports">
+                            <td>{{ historicalPurchase.name }}</td>
+                            <td>{{ historicalPurchase.productCode }}</td>
+                            <td>{{ historicalPurchase.inventory }}</td>
+                            <td>{{ historicalPurchase.providerProductName }}</td>
+                            <td>{{ historicalPurchase.departmentName }}</td>
+                            <td>{{ historicalPurchase.mainsectionName }}</td>
+                            <td>{{ historicalPurchase.subsectionName }}</td>
+                            <td>{{ historicalPurchase.invoiceNumber }}</td>
+                            <td>{{ historicalPurchase.totalInvoice | currency: 'BRL' }}</td>
+                            <td>{{ historicalPurchase.registrationDate | dateHour }}</td>
+                            <td>{{ historicalPurchase.received === true ? ('br_com_supermarket_MSG_GENERIC_YES' | translate) : ('br_com_supermarket_MSG_GENERIC_NO' | translate) }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </form>
+</div>

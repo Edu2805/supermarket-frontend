@@ -5,8 +5,10 @@ import { SalesReportsComponent } from "./reports/sales-reports/sales-reports.com
 import { FinancialStatementReportsGuardService } from "./services/financial-statement-reports.guard";
 import { NgModule } from "@angular/core";
 import { FinancialStatementHomeComponent } from "./reports/financial-statement-home/financial-statement-home.component";
-import { HistoricalReportsComponent } from "./reports/historical-reports/historical-reports.component";
+import { HistoricalReportsComponent } from "./reports/historical-reports-home/historical-reports.component";
 import { ResultsReportsComponent } from "./reports/results-reports/results-reports.component";
+import { HistoricalSalesReportsComponent } from "./reports/historical-sales-reports/historical-sales-reports.component";
+import { HistoricalPurchasesReportsComponent } from "./reports/historical-purchases-reports/historical-purchases-reports.component";
 
 const FinancialStatementReportsRouterConfig: Routes = [
     {
@@ -45,6 +47,22 @@ const FinancialStatementReportsRouterConfig: Routes = [
             },
             { 
                 path: 'result-reports', component: ResultsReportsComponent,
+                canDeactivate: [FinancialStatementReportsGuardService],
+                canActivate: [FinancialStatementReportsGuardService],
+                data: {
+                    roles: ['ADMIN', 'HEAD']
+                } 
+            },
+            { 
+                path: 'historical-sale-reports', component: HistoricalSalesReportsComponent,
+                canDeactivate: [FinancialStatementReportsGuardService],
+                canActivate: [FinancialStatementReportsGuardService],
+                data: {
+                    roles: ['ADMIN', 'HEAD']
+                } 
+            },
+            { 
+                path: 'historical-purchase-reports', component: HistoricalPurchasesReportsComponent,
                 canDeactivate: [FinancialStatementReportsGuardService],
                 canActivate: [FinancialStatementReportsGuardService],
                 data: {
