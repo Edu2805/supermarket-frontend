@@ -149,6 +149,7 @@ export class HistoricalPurchasesReportsComponent extends FormBaseComponent imple
   }
 
   exportExcel() {
-    ReportGeneratorUtils.exportExcel(this.historicalPurchaseReports);
+    ReportGeneratorUtils.exportExcel(this.translateService.instant('br_com_supermarket_FINANCIAL_STATEMENT_REPORTS_HISTORIC_PURCHASES'), 
+      this.historicalPurchaseReports);
   }
 }

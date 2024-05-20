@@ -48,11 +48,11 @@ export class ReportGeneratorUtils {
         doc.save(filename);
       }
     
-      static exportExcel(data: any[]): void {
+      static exportExcel(reportTitle: string, data: any[]): void {
         const worksheet = XLSX.utils.json_to_sheet(data);
         const workbook = { Sheets: { 'data': worksheet }, SheetNames: ['data'] };
         const excelBuffer: any = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
-        this.saveAsExcelFile(excelBuffer, 'historical_purchases_report');
+        this.saveAsExcelFile(excelBuffer, reportTitle);
       }
     
       private static saveAsExcelFile(buffer: any, fileName: string): void {

@@ -38,9 +38,9 @@
           </div>
         </div>
         <div class="container mt-4">
-            <button [disabled]="!historicalPurchaseReportsForm.valid" class="btn btn-danger" (click)="exportPDF()">{{ 'br_com_supermarket_BUTTON_EXPORT_REPORT_PDF' | translate }}</button>
+            <button [disabled]="historicalPurchaseReports?.length <= 0" class="btn btn-danger" (click)="exportPDF()">{{ 'br_com_supermarket_BUTTON_EXPORT_REPORT_PDF' | translate }}</button>
             &nbsp;
-            <button [disabled]="!historicalPurchaseReportsForm.valid" class="btn btn-success" (click)="exportExcel()">{{ 'br_com_supermarket_BUTTON_EXPORT_REPORT_EXCEL' | translate }}</button>
+            <button [disabled]="historicalPurchaseReports?.length <= 0" class="btn btn-success" (click)="exportExcel()">{{ 'br_com_supermarket_BUTTON_EXPORT_REPORT_EXCEL' | translate }}</button>
             <div class="table-responsive mt-3">
                 <table class="table table-bordered table-striped">
                     <thead class="thead-dark">
