@@ -149,10 +149,14 @@ export class HistoricalSalesReportsComponent extends FormBaseComponent implement
       this.translateService.instant('br_com_supermarket_FINANCIAL_STATEMENT_REPORTS_HISTORIC_SALES'), 
       columnNames, this.establismentName, this.localStorageUtils.getUser().login
     );
+
+    this.historicalSaleReports = [];
   }
 
   exportExcel() {
     ReportGeneratorUtils.exportExcel(this.translateService.instant('br_com_supermarket_FINANCIAL_STATEMENT_REPORTS_HISTORIC_SALES'), 
       this.historicalSaleReports);
+
+    this.historicalSaleReports = [];
   }
 }

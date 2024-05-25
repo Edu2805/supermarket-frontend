@@ -3,6 +3,7 @@ import { CnpjPipe, CpfPipe } from "./document";
 import { CellPhonePipe, PhonePipe } from "./phone";
 import { CommonModule } from "@angular/common";
 import { DateHourPipe, SingleDatePipe } from "./date-pipe";
+import { CustomCurrencyPipe } from "./custom-currency-pipe";
 
 @NgModule({
     declarations: [
@@ -11,7 +12,8 @@ import { DateHourPipe, SingleDatePipe } from "./date-pipe";
         CellPhonePipe,
         PhonePipe,
         DateHourPipe,
-        SingleDatePipe
+        SingleDatePipe,
+        CustomCurrencyPipe
     ],
     imports: [
         CommonModule,
@@ -22,7 +24,8 @@ import { DateHourPipe, SingleDatePipe } from "./date-pipe";
         CellPhonePipe,
         PhonePipe,
         DateHourPipe,
-        SingleDatePipe
+        SingleDatePipe,
+        CustomCurrencyPipe
     ]
 })
 export class PipeModule {  }

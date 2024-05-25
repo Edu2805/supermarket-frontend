@@ -1,1 +1,86 @@
-<p>results-reports works!</p>
+<div class="container">
+    <ngx-spinner 
+      bdColor="rgba(0, 0, 0, 0.8)" 
+      size="medium" 
+      color="#fff" 
+      type="ball-beat" 
+      [fullScreen]="true"
+    ><p style="color: white">{{ 'br_com_supermarket_MSG_WAIT' | translate }}</p>
+    </ngx-spinner>
+
+    <h2>{{ 'br_com_supermarket_FINANCIAL_STATEMENT_REPORTS_DRE' | translate }}</h2>
+    
+    <form novalidate="novalidate" [formGroup]="resultsReportsForm" (ngSubmit)="generateReport()">
+        <div class="row mt-3">
+            <div class="col-md-4">
+              <label for="from">{{ 'br_com_supermarket_FINANCIAL_STATEMENT_REPORTS_DRE_FROM' | translate }}</label>
+              <input type="date" id="from" formControlName="from" class="form-control"
+                [ngClass]="{'is-invalid': displayMessage.from }"
+              />
+              <span class="text-danger" *ngIf="displayMessage.from">
+                  <p [innerHTML]="displayMessage.from"></p>
+              </span>
+            </div>
+            <div class="col-md-4">
+              <label for="to">{{ 'br_com_supermarket_FINANCIAL_STATEMENT_REPORTS_DRE_TO' | translate }}</label>
+              <input type="date" id="to" formControlName="to" class="form-control"
+              [ngClass]="{'is-invalid': displayMessage.to }"
+              />
+              <span class="text-danger" *ngIf="displayMessage.to">
+                  <p [innerHTML]="displayMessage.to"></p>
+              </span>
+            </div>
+          
+          <div class="form-group">
+            <button [disabled]="!resultsReportsForm.valid" type="submit" class="btn btn-primary mt-3">{{ 'br_com_supermarket_BUTTON_GENERATE_REPORT' | translate }}</button>
+            &nbsp;
+            <button class="btn btn-info mt-3" [routerLink]="['/financial-reports/home']">{{ 'br_com_supermarket_BUTTON_BACK' | translate }}</button>
+          </div>
+        </div>
+        <div class="financial-results mt-4" *ngIf="isResultAppear">
+            <button [disabled]="!isResultAppear" class="btn btn-danger" (click)="exportPDF()">{{ 'br_com_supermarket_BUTTON_EXPORT_REPORT_PDF' | translate }}</button>
+            &nbsp;
+            <button [disabled]="!isResultAppear" class="btn btn-success" (click)="exportExcel()">{{ 'br_com_supermarket_BUTTON_EXPORT_REPORT_EXCEL' | translate }}</button>
+            <table class="table table-bordered">
+                <thead class="thead-light">
+                    <tr>
+                        {{ 'br_com_supermarket_FINANCIAL_STATEMENT_REPORTS_DRE_FROM' | translate }} {{ resultsReportsForm.get('from').value | singleDate }}
+                        {{ 'br_com_supermarket_FINANCIAL_STATEMENT_REPORTS_DRE_TO' | translate }} {{ resultsReportsForm.get('to').value | singleDate }}
+                    </tr>
+                    <tr>
+                        <th>{{ 'br_com_supermarket_FINANCIAL_STATEMENT_REPORTS_DESCRIPTION' | translate }}</th>
+                        <th>{{ 'br_com_supermarket_FINANCIAL_STATEMENT_REPORTS_AMOUNT' | translate }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="title-field">{{ 'br_com_supermarket_FINANCIAL_STATEMENT_REPORTS_TOTAL_REVENUES' | translate }}</td>
+                        <td class="text-right">{{ financialDreReport?.totalRevenues | currency: 'BRL' }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ 'br_com_supermarket_FINANCIAL_STATEMENT_REPORTS_TOTAL_DIRECT_EXPENSIES' | translate }}</td>
+                        <td class="text-right">{{ financialDreReport?.directExpensesResult | currency: 'BRL' }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ 'br_com_supermarket_FINANCIAL_STATEMENT_REPORTS_TOTAL_INDIRECT_EXPENSIES' | translate }}</td>
+                        <td class="text-right">{{ financialDreReport?.indirectExpensesResult | currency: 'BRL' }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ 'br_com_supermarket_FINANCIAL_STATEMENT_REPORTS_TOTAL_TAXES' | translate }}</td>
+                        <td class="text-right">{{ financialDreReport?.taxesResult | currency: 'BRL' }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ 'br_com_supermarket_FINANCIAL_STATEMENT_REPORTS_TOTAL_EXPENSIES_RESULT' | translate }}</td>
+                        <td class="text-right">{{ financialDreReport?.financialExpensesResult | currency: 'BRL' }}</td>
+                    </tr>
+                    <tr>
+                        <td class="bold-text">{{ 'br_com_supermarket_FINANCIAL_STATEMENT_REPORTS_PERIOD_RESULT' | translate }}</td>
+                        <td class="text-right bold-text" [ngClass]="{'red-text': financialDreReport?.periodResult < 0}">
+                          {{ financialDreReport?.periodResult | customCurrency }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </form>
+</div>
