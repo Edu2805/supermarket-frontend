@@ -33,15 +33,6 @@ export class FinancialStatementReportsService extends BaseService {
     return response;
   }
 
-  getSalesDreReport(input: InputReportsDate): Observable<any> {
-    let response = this.http.post(this.UrlServiceV1 + 'financial-report/revenues/dre', input, this.GetHeaderJson())
-    .pipe(
-        map(this.extractData),
-        catchError(this.serviceError));
-
-    return response;
-  }
-
   getPurchaseReport(financialPurchaseReport: FinancialPurchaseReport): Observable<any> {
     let response = this.http.post(this.UrlServiceV1 + 'financial-report/expensies', financialPurchaseReport, this.GetHeaderJson())
     .pipe(
@@ -62,6 +53,15 @@ export class FinancialStatementReportsService extends BaseService {
 
   getExpensiesDreReport(input: InputReportsDate): Observable<any> {
     let response = this.http.post(this.UrlServiceV1 + 'financial-report/expensies/dre', input, this.GetHeaderJson())
+    .pipe(
+        map(this.extractData),
+        catchError(this.serviceError));
+
+    return response;
+  }
+
+  getSalesDreReport(input: InputReportsDate): Observable<any> {
+    let response = this.http.post(this.UrlServiceV1 + 'financial-report/revenues/dre', input, this.GetHeaderJson())
     .pipe(
         map(this.extractData),
         catchError(this.serviceError));

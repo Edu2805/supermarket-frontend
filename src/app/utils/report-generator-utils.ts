@@ -22,7 +22,7 @@ export class ReportGeneratorUtils {
             doc.setTextColor(40);
             doc.setFont('helvetica', 'normal');
             const textWidth = doc.getStringUnitWidth(establishmentName) * fontSize / doc.internal.scaleFactor;
-            const textHeight = fontSize;
+            const textHeight = 7;
             const marginLeft = (doc.internal.pageSize.width - textWidth) / 2;
             doc.text(establishmentName, marginLeft, textHeight);
         };
