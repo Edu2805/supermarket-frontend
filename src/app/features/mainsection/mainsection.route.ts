@@ -18,7 +18,7 @@ const mainsectionRouterConfig: Routes = [
                 canDeactivate: [MainSectionGuardService],
                 canActivate: [MainSectionGuardService],
                 data: {
-                    roles: ['ADMIN', 'HEAD']
+                    roles: ['ADMIN', 'HEAD', 'MANAGER', 'DEPARTMENT_MANAGER', 'SECTION_MANAGER', 'BUYER', 'HR']
                 } 
             },
             {
@@ -26,14 +26,14 @@ const mainsectionRouterConfig: Routes = [
                 canDeactivate: [MainSectionGuardService],
                 canActivate: [MainSectionGuardService],
                 data: {
-                    roles: ['ADMIN', 'HEAD']
+                    roles: ['ADMIN', 'HEAD', 'MANAGER', 'DEPARTMENT_MANAGER', 'SECTION_MANAGER', 'BUYER', 'HR']
                 }
             },
             {
                 path: 'edit/:id', component: UpdateMainsectionComponent,
                 canActivate: [MainSectionGuardService],
                 data: {
-                    roles: ['ADMIN', 'HEAD']
+                    roles: ['ADMIN', 'HEAD', 'MANAGER', 'DEPARTMENT_MANAGER', 'SECTION_MANAGER', 'BUYER', 'HR']
                 },
                 resolve: {
                     mainsection: MainSectionResolve
@@ -43,7 +43,7 @@ const mainsectionRouterConfig: Routes = [
                 path: 'details/:id', component: DetailsMainsectionComponent,
                 canActivate: [MainSectionGuardService],
                 data: {
-                    roles: ['ADMIN', 'HEAD']
+                    roles: ['ADMIN', 'HEAD', 'MANAGER', 'DEPARTMENT_MANAGER', 'SECTION_MANAGER', 'BUYER', 'HR']
                 },
                 resolve: {
                     mainsection: MainSectionResolve
@@ -53,7 +53,7 @@ const mainsectionRouterConfig: Routes = [
                 path: 'delete/:id', component: DeleteMainsectionComponent,
                 canActivate: [MainSectionGuardService],
                 data: {
-                    roles: ['ADMIN', 'HEAD']
+                    roles: ['ADMIN', 'HEAD', 'MANAGER', 'DEPARTMENT_MANAGER', 'SECTION_MANAGER', 'BUYER', 'HR']
                 },
                 resolve: {
                     mainsection: MainSectionResolve

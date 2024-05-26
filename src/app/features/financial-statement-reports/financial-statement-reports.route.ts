@@ -18,7 +18,7 @@ const FinancialStatementReportsRouterConfig: Routes = [
                 path: 'home', component: FinancialStatementHomeComponent,
                 canActivate: [FinancialStatementReportsGuardService],
                 data: {
-                    roles: ['ADMIN', 'HEAD']
+                    roles: ['ADMIN', 'HEAD', 'MANAGER', 'FINANCE', 'DEPARTMENT_MANAGER', 'BUYER', 'SECTION_MANAGER', 'RECEIPT']
                 } 
             },
             { 
@@ -26,7 +26,7 @@ const FinancialStatementReportsRouterConfig: Routes = [
                 canDeactivate: [FinancialStatementReportsGuardService],
                 canActivate: [FinancialStatementReportsGuardService],
                 data: {
-                    roles: ['ADMIN', 'HEAD']
+                    roles: ['ADMIN', 'HEAD', 'MANAGER', 'FINANCE', 'DEPARTMENT_MANAGER', 'BUYER', 'SECTION_MANAGER', 'RECEIPT']
                 } 
             },
             { 
@@ -34,7 +34,7 @@ const FinancialStatementReportsRouterConfig: Routes = [
                 canDeactivate: [FinancialStatementReportsGuardService],
                 canActivate: [FinancialStatementReportsGuardService],
                 data: {
-                    roles: ['ADMIN', 'HEAD']
+                    roles: ['ADMIN', 'HEAD', 'MANAGER', 'FINANCE', 'DEPARTMENT_MANAGER', 'BUYER', 'SECTION_MANAGER', 'RECEIPT']
                 } 
             },
             { 
@@ -42,7 +42,7 @@ const FinancialStatementReportsRouterConfig: Routes = [
                 canDeactivate: [FinancialStatementReportsGuardService],
                 canActivate: [FinancialStatementReportsGuardService],
                 data: {
-                    roles: ['ADMIN', 'HEAD']
+                    roles: ['ADMIN', 'HEAD', 'MANAGER', 'FINANCE', 'DEPARTMENT_MANAGER', 'BUYER', 'SECTION_MANAGER', 'RECEIPT']
                 } 
             },
             { 
@@ -50,7 +50,7 @@ const FinancialStatementReportsRouterConfig: Routes = [
                 canDeactivate: [FinancialStatementReportsGuardService],
                 canActivate: [FinancialStatementReportsGuardService],
                 data: {
-                    roles: ['ADMIN', 'HEAD']
+                    roles: ['ADMIN', 'HEAD', 'MANAGER', 'FINANCE']
                 } 
             },
             { 
@@ -58,7 +58,7 @@ const FinancialStatementReportsRouterConfig: Routes = [
                 canDeactivate: [FinancialStatementReportsGuardService],
                 canActivate: [FinancialStatementReportsGuardService],
                 data: {
-                    roles: ['ADMIN', 'HEAD']
+                    roles: ['ADMIN', 'HEAD', 'MANAGER', 'FINANCE', 'DEPARTMENT_MANAGER', 'BUYER', 'SECTION_MANAGER', 'RECEIPT']
                 } 
             },
             { 
@@ -66,7 +66,7 @@ const FinancialStatementReportsRouterConfig: Routes = [
                 canDeactivate: [FinancialStatementReportsGuardService],
                 canActivate: [FinancialStatementReportsGuardService],
                 data: {
-                    roles: ['ADMIN', 'HEAD']
+                    roles: ['ADMIN', 'HEAD', 'MANAGER', 'FINANCE', 'DEPARTMENT_MANAGER', 'BUYER', 'SECTION_MANAGER', 'RECEIPT']
                 } 
             },
         ]

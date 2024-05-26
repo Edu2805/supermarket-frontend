@@ -18,7 +18,7 @@ const departmentRouterConfig: Routes = [
                 canDeactivate: [DepartmentGuardService],
                 canActivate: [DepartmentGuardService],
                 data: {
-                    roles: ['ADMIN', 'HEAD']
+                    roles: ['ADMIN', 'HEAD', 'DEPARTMENT_MANAGER', 'MANAGER', 'BUYER', 'HR']
                 } 
             },
             {
@@ -26,14 +26,14 @@ const departmentRouterConfig: Routes = [
                 canDeactivate: [DepartmentGuardService],
                 canActivate: [DepartmentGuardService],
                 data: {
-                    roles: ['ADMIN', 'HEAD']
+                    roles: ['ADMIN', 'HEAD', 'DEPARTMENT_MANAGER', 'MANAGER', 'BUYER', 'HR']
                 }
             },
             {
                 path: 'edit/:id', component: UpdateDepartmentComponent,
                 canActivate: [DepartmentGuardService],
                 data: {
-                    roles: ['ADMIN', 'HEAD']
+                    roles: ['ADMIN', 'HEAD', 'DEPARTMENT_MANAGER', 'MANAGER', 'BUYER', 'HR']
                 },
                 resolve: {
                     department: DepartmentResolve
@@ -43,7 +43,7 @@ const departmentRouterConfig: Routes = [
                 path: 'details/:id', component: DetailsDepartmentComponent,
                 canActivate: [DepartmentGuardService],
                 data: {
-                    roles: ['ADMIN', 'HEAD']
+                    roles: ['ADMIN', 'HEAD', 'DEPARTMENT_MANAGER', 'MANAGER', 'BUYER', 'HR']
                 },
                 resolve: {
                     department: DepartmentResolve
@@ -53,7 +53,7 @@ const departmentRouterConfig: Routes = [
                 path: 'delete/:id', component: DeleteDepartmentComponent,
                 canActivate: [DepartmentGuardService],
                 data: {
-                    roles: ['ADMIN', 'HEAD']
+                    roles: ['ADMIN', 'HEAD', 'DEPARTMENT_MANAGER', 'MANAGER', 'BUYER', 'HR']
                 },
                 resolve: {
                     department: DepartmentResolve

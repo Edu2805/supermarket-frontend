@@ -18,7 +18,7 @@ const productDataRouterConfig: Routes = [
                 canDeactivate: [ProductDataGuardService],
                 canActivate: [ProductDataGuardService],
                 data: {
-                    roles: ['ADMIN', 'HEAD']
+                    roles: ['ADMIN', 'HEAD', 'MANAGER', 'DEPARTMENT_MANAGER', 'SECTION_MANAGER', 'BUYER']
                 } 
             },
             {
@@ -26,14 +26,14 @@ const productDataRouterConfig: Routes = [
                 canDeactivate: [ProductDataGuardService],
                 canActivate: [ProductDataGuardService],
                 data: {
-                    roles: ['ADMIN', 'HEAD']
+                    roles: ['ADMIN', 'HEAD', 'MANAGER', 'DEPARTMENT_MANAGER', 'SECTION_MANAGER', 'BUYER']
                 }
             },
             {
                 path: 'edit/:id', component: UpdateProductDataComponent,
                 canActivate: [ProductDataGuardService],
                 data: {
-                    roles: ['ADMIN', 'HEAD']
+                    roles: ['ADMIN', 'HEAD', 'MANAGER', 'DEPARTMENT_MANAGER', 'SECTION_MANAGER', 'BUYER']
                 },
                 resolve: {
                     product: ProductDataResolve
@@ -43,7 +43,7 @@ const productDataRouterConfig: Routes = [
                 path: 'details/:id', component: DetailsProductDataComponent,
                 canActivate: [ProductDataGuardService],
                 data: {
-                    roles: ['ADMIN', 'HEAD']
+                    roles: ['ADMIN', 'HEAD', 'MANAGER', 'DEPARTMENT_MANAGER', 'SECTION_MANAGER', 'BUYER']
                 },
                 resolve: {
                     product: ProductDataResolve
@@ -53,7 +53,7 @@ const productDataRouterConfig: Routes = [
                 path: 'delete/:id', component: DeleteProductDataComponent,
                 canActivate: [ProductDataGuardService],
                 data: {
-                    roles: ['ADMIN', 'HEAD']
+                    roles: ['ADMIN', 'HEAD', 'MANAGER', 'DEPARTMENT_MANAGER', 'SECTION_MANAGER', 'BUYER']
                 },
                 resolve: {
                     product: ProductDataResolve

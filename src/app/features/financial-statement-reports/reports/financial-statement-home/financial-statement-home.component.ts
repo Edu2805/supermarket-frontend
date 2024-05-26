@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { LocalStorageUtils } from 'src/app/utils/localstorage';
 
 @Component({
   selector: 'app-financial-statement-home',
@@ -8,6 +9,12 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class FinancialStatementHomeComponent {
 
+  private localStorageUtils = new LocalStorageUtils();
+
   constructor(private translateService: TranslateService,) { }
 
+  verifyUserAccess(...holes: string[]): boolean {
+      let user = this.localStorageUtils.getUser();
+      return holes.includes(user.roleType);
+  }
 }

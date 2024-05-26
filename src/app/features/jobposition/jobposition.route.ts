@@ -18,7 +18,7 @@ const jobpositionRouterConfig: Routes = [
                 canDeactivate: [JobPositionGuardService],
                 canActivate: [JobPositionGuardService],
                 data: {
-                    roles: ['ADMIN', 'HEAD']
+                    roles: ['ADMIN', 'HEAD', 'HR']
                 } 
             },
             {
@@ -26,14 +26,14 @@ const jobpositionRouterConfig: Routes = [
                 canDeactivate: [JobPositionGuardService],
                 canActivate: [JobPositionGuardService],
                 data: {
-                    roles: ['ADMIN', 'HEAD']
+                    roles: ['ADMIN', 'HEAD', 'HR']
                 }
             },
             {
                 path: 'edit/:id', component: UpdateJobpositionComponent,
                 canActivate: [JobPositionGuardService],
                 data: {
-                    roles: ['ADMIN', 'HEAD']
+                    roles: ['ADMIN', 'HEAD', 'HR']
                 },
                 resolve: {
                     jobposition: JobPositionResolve
@@ -43,7 +43,7 @@ const jobpositionRouterConfig: Routes = [
                 path: 'details/:id', component: DetailsJobpositionComponent,
                 canActivate: [JobPositionGuardService],
                 data: {
-                    roles: ['ADMIN', 'HEAD']
+                    roles: ['ADMIN', 'HEAD', 'HR']
                 },
                 resolve: {
                     jobposition: JobPositionResolve
@@ -53,7 +53,7 @@ const jobpositionRouterConfig: Routes = [
                 path: 'delete/:id', component: DeleteJobpositionComponent,
                 canActivate: [JobPositionGuardService],
                 data: {
-                    roles: ['ADMIN', 'HEAD']
+                    roles: ['ADMIN', 'HEAD', 'HR']
                 },
                 resolve: {
                     jobposition: JobPositionResolve

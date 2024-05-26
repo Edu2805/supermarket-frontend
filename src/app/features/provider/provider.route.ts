@@ -18,7 +18,7 @@ const providerRouterConfig: Routes = [
                 canDeactivate: [ProviderGuardService],
                 canActivate: [ProviderGuardService],
                 data: {
-                    roles: ['ADMIN', 'HEAD']
+                    roles: ['ADMIN', 'HEAD', 'MANAGER', 'DEPARTMENT_MANAGER', 'BUYER']
                 } 
             },
             {
@@ -26,14 +26,14 @@ const providerRouterConfig: Routes = [
                 canDeactivate: [ProviderGuardService],
                 canActivate: [ProviderGuardService],
                 data: {
-                    roles: ['ADMIN', 'HEAD']
+                    roles: ['ADMIN', 'HEAD', 'MANAGER', 'DEPARTMENT_MANAGER', 'BUYER']
                 }
             },
             {
                 path: 'edit/:id', component: UpdateProviderComponent,
                 canActivate: [ProviderGuardService],
                 data: {
-                    roles: ['ADMIN', 'HEAD']
+                    roles: ['ADMIN', 'HEAD', 'MANAGER', 'DEPARTMENT_MANAGER', 'BUYER']
                 },
                 resolve: {
                     provider: ProviderResolve
@@ -43,7 +43,7 @@ const providerRouterConfig: Routes = [
                 path: 'details/:id', component: DetailsProviderComponent,
                 canActivate: [ProviderGuardService],
                 data: {
-                    roles: ['ADMIN', 'HEAD']
+                    roles: ['ADMIN', 'HEAD', 'MANAGER', 'DEPARTMENT_MANAGER', 'BUYER']
                 },
                 resolve: {
                     provider: ProviderResolve
@@ -53,7 +53,7 @@ const providerRouterConfig: Routes = [
                 path: 'delete/:id', component: DeleteProviderComponent,
                 canActivate: [ProviderGuardService],
                 data: {
-                    roles: ['ADMIN', 'HEAD']
+                    roles: ['ADMIN', 'HEAD', 'MANAGER', 'DEPARTMENT_MANAGER', 'BUYER']
                 },
                 resolve: {
                     provider: ProviderResolve

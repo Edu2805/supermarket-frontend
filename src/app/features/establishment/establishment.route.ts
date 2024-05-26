@@ -18,7 +18,7 @@ const establishmentRouterConfig: Routes = [
                 canDeactivate: [EstablishmentGuardService],
                 canActivate: [EstablishmentGuardService],
                 data: {
-                    roles: ['ADMIN', 'HEAD']
+                    roles: ['ADMIN', 'HEAD', 'MANAGER', 'HR']
                 } 
             },
             {
@@ -26,14 +26,14 @@ const establishmentRouterConfig: Routes = [
                 canDeactivate: [EstablishmentGuardService],
                 canActivate: [EstablishmentGuardService],
                 data: {
-                    roles: ['ADMIN', 'HEAD']
+                    roles: ['ADMIN', 'HEAD', 'MANAGER', 'HR']
                 }
             },
             {
                 path: 'edit/:id', component: UpdateEstablishmentComponent,
                 canActivate: [EstablishmentGuardService],
                 data: {
-                    roles: ['ADMIN', 'HEAD']
+                    roles: ['ADMIN', 'HEAD', 'MANAGER', 'HR']
                 },
                 resolve: {
                     establishment: EstablishmentResolve
@@ -43,7 +43,7 @@ const establishmentRouterConfig: Routes = [
                 path: 'details/:id', component: DetailsEstablishmentComponent,
                 canActivate: [EstablishmentGuardService],
                 data: {
-                    roles: ['ADMIN', 'HEAD']
+                    roles: ['ADMIN', 'HEAD', 'MANAGER', 'HR']
                 },
                 resolve: {
                     establishment: EstablishmentResolve
@@ -53,7 +53,7 @@ const establishmentRouterConfig: Routes = [
                 path: 'delete/:id', component: DeleteEstablishmentComponent,
                 canActivate: [EstablishmentGuardService],
                 data: {
-                    roles: ['ADMIN', 'HEAD']
+                    roles: ['ADMIN', 'HEAD', 'MANAGER', 'HR']
                 },
                 resolve: {
                     establishment: EstablishmentResolve

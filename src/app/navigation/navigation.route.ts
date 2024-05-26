@@ -8,7 +8,7 @@ const navigationRouterConfig: Routes = [
         path: '', component: HomeComponent,
         canActivate: [NavigationGuard],
         data: {
-            roles: ['ADMIN', 'HEAD']
+            roles: ['ADMIN', 'HEAD', 'MANAGER', 'FINANCE', 'DEPARTMENT_MANAGER', 'BUYER', 'SECTION_MANAGER', 'EMPLOYEE', 'HR', 'RECEIPT']
         },
     }
 ];
