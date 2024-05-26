@@ -18,7 +18,7 @@ const subsectionRouterConfig: Routes = [
                 canDeactivate: [SubSectionGuardService],
                 canActivate: [SubSectionGuardService],
                 data: {
-                    roles: ['ADMIN', 'HEAD']
+                    roles: ['ADMIN', 'HEAD', 'MANAGER', 'DEPARTMENT_MANAGER', 'SECTION_MANAGER', 'BUYER', 'HR']
                 } 
             },
             {
@@ -26,14 +26,14 @@ const subsectionRouterConfig: Routes = [
                 canDeactivate: [SubSectionGuardService],
                 canActivate: [SubSectionGuardService],
                 data: {
-                    roles: ['ADMIN', 'HEAD']
+                    roles: ['ADMIN', 'HEAD', 'MANAGER', 'DEPARTMENT_MANAGER', 'SECTION_MANAGER', 'BUYER', 'HR']
                 }
             },
             {
                 path: 'edit/:id', component: UpdateSubsectionComponent,
                 canActivate: [SubSectionGuardService],
                 data: {
-                    roles: ['ADMIN', 'HEAD']
+                    roles: ['ADMIN', 'HEAD', 'MANAGER', 'DEPARTMENT_MANAGER', 'SECTION_MANAGER', 'BUYER', 'HR']
                 },
                 resolve: {
                     subsection: SubSectionResolve
@@ -43,7 +43,7 @@ const subsectionRouterConfig: Routes = [
                 path: 'details/:id', component: DetailsSubsectionComponent,
                 canActivate: [SubSectionGuardService],
                 data: {
-                    roles: ['ADMIN', 'HEAD']
+                    roles: ['ADMIN', 'HEAD', 'MANAGER', 'DEPARTMENT_MANAGER', 'SECTION_MANAGER', 'BUYER', 'HR']
                 },
                 resolve: {
                     subsection: SubSectionResolve
@@ -53,7 +53,7 @@ const subsectionRouterConfig: Routes = [
                 path: 'delete/:id', component: DeleteSubsectionComponent,
                 canActivate: [SubSectionGuardService],
                 data: {
-                    roles: ['ADMIN', 'HEAD']
+                    roles: ['ADMIN', 'HEAD', 'MANAGER', 'DEPARTMENT_MANAGER', 'SECTION_MANAGER', 'BUYER', 'HR']
                 },
                 resolve: {
                     subsection: SubSectionResolve

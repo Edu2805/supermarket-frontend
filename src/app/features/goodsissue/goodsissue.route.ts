@@ -16,7 +16,7 @@ const goodsissueRouterConfig: Routes = [
                 canDeactivate: [GoodsIssueGuardService],
                 canActivate: [GoodsIssueGuardService],
                 data: {
-                    roles: ['ADMIN', 'HEAD']
+                    roles: ['ADMIN', 'MANAGER', 'EMPLOYEE']
                 } 
             },
             {
@@ -24,14 +24,14 @@ const goodsissueRouterConfig: Routes = [
                 canDeactivate: [GoodsIssueGuardService],
                 canActivate: [GoodsIssueGuardService],
                 data: {
-                    roles: ['ADMIN', 'HEAD']
+                    roles: ['ADMIN', 'MANAGER', 'EMPLOYEE']
                 }
             },
             { 
                 path: 'details/:id', component: DetailsGoodsIssueComponent,
                 canActivate: [GoodsIssueGuardService],
                 data: {
-                    roles: ['ADMIN', 'HEAD']
+                    roles: ['ADMIN', 'MANAGER', 'EMPLOYEE']
                 },
                 resolve: {
                     goodsissue: GoodsIssueResolve

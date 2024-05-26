@@ -18,7 +18,7 @@ const personRouterConfig: Routes = [
                 canDeactivate: [PersonGuardService],
                 canActivate: [PersonGuardService],
                 data: {
-                    roles: ['ADMIN', 'HEAD']
+                    roles: ['ADMIN', 'HEAD', 'HR']
                 } 
             },
             {
@@ -26,14 +26,14 @@ const personRouterConfig: Routes = [
                 canDeactivate: [PersonGuardService],
                 canActivate: [PersonGuardService],
                 data: {
-                    roles: ['ADMIN', 'HEAD']
+                    roles: ['ADMIN', 'HEAD', 'HR']
                 }
             },
             {
                 path: 'edit/:id', component: UpdatePersonComponent,
                 canActivate: [PersonGuardService],
                 data: {
-                    roles: ['ADMIN', 'HEAD']
+                    roles: ['ADMIN', 'HEAD', 'HR']
                 },
                 resolve: {
                     person: PersonResolve
@@ -43,7 +43,7 @@ const personRouterConfig: Routes = [
                 path: 'details/:id', component: DetailsPersonComponent,
                 canActivate: [PersonGuardService],
                 data: {
-                    roles: ['ADMIN', 'HEAD']
+                    roles: ['ADMIN', 'HEAD', 'HR']
                 },
                 resolve: {
                     person: PersonResolve
@@ -53,7 +53,7 @@ const personRouterConfig: Routes = [
                 path: 'delete/:id', component: DeletePersonComponent,
                 canActivate: [PersonGuardService],
                 data: {
-                    roles: ['ADMIN', 'HEAD']
+                    roles: ['ADMIN', 'HEAD', 'HR']
                 },
                 resolve: {
                     person: PersonResolve

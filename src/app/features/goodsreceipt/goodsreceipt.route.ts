@@ -16,7 +16,7 @@ const goodsreceiptRouterConfig: Routes = [
                 canDeactivate: [GoodsReceiptGuardService],
                 canActivate: [GoodsReceiptGuardService],
                 data: {
-                    roles: ['ADMIN', 'HEAD']
+                    roles: ['ADMIN', 'BUYER', 'RECEIPT']
                 } 
             },
             {
@@ -24,14 +24,14 @@ const goodsreceiptRouterConfig: Routes = [
                 canDeactivate: [GoodsReceiptGuardService],
                 canActivate: [GoodsReceiptGuardService],
                 data: {
-                    roles: ['ADMIN', 'HEAD']
+                    roles: ['ADMIN', 'BUYER', 'RECEIPT']
                 }
             },
             { 
                 path: 'details/:id', component: DetailsGoodsreceiptComponent,
                 canActivate: [GoodsReceiptGuardService],
                 data: {
-                    roles: ['ADMIN', 'HEAD']
+                    roles: ['ADMIN', 'BUYER', 'RECEIPT']
                 },
                 resolve: {
                     goodsreceipt: GoodsReceiptResolve

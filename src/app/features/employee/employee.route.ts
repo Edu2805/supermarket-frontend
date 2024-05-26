@@ -18,7 +18,7 @@ const employeeRouterConfig: Routes = [
                 canDeactivate: [EmployeeGuardService],
                 canActivate: [EmployeeGuardService],
                 data: {
-                    roles: ['ADMIN', 'HEAD']
+                    roles: ['ADMIN', 'HEAD', 'HR']
                 } 
             },
             {
@@ -26,14 +26,14 @@ const employeeRouterConfig: Routes = [
                 canDeactivate: [EmployeeGuardService],
                 canActivate: [EmployeeGuardService],
                 data: {
-                    roles: ['ADMIN', 'HEAD']
+                    roles: ['ADMIN', 'HEAD', 'HR']
                 }
             },
             {
                 path: 'edit/:id', component: UpdateEmployeeComponent,
                 canActivate: [EmployeeGuardService],
                 data: {
-                    roles: ['ADMIN', 'HEAD']
+                    roles: ['ADMIN', 'HEAD', 'HR']
                 },
                 resolve: {
                     employee: EmployeeResolve
@@ -43,7 +43,7 @@ const employeeRouterConfig: Routes = [
                 path: 'details/:id', component: DetailsEmployeeComponent,
                 canActivate: [EmployeeGuardService],
                 data: {
-                    roles: ['ADMIN', 'HEAD']
+                    roles: ['ADMIN', 'HEAD', 'HR']
                 },
                 resolve: {
                     employee: EmployeeResolve
@@ -53,7 +53,7 @@ const employeeRouterConfig: Routes = [
                 path: 'delete/:id', component: DeleteEmployeeComponent,
                 canActivate: [EmployeeGuardService],
                 data: {
-                    roles: ['ADMIN', 'HEAD']
+                    roles: ['ADMIN', 'HEAD', 'HR']
                 },
                 resolve: {
                     employee: EmployeeResolve

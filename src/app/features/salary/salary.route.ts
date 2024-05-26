@@ -18,7 +18,7 @@ const salaryRouterConfig: Routes = [
                 canDeactivate: [SalaryGuardService],
                 canActivate: [SalaryGuardService],
                 data: {
-                    roles: ['ADMIN', 'HEAD']
+                    roles: ['ADMIN', 'HEAD', 'HR']
                 } 
             },
             {
@@ -26,14 +26,14 @@ const salaryRouterConfig: Routes = [
                 canDeactivate: [SalaryGuardService],
                 canActivate: [SalaryGuardService],
                 data: {
-                    roles: ['ADMIN', 'HEAD']
+                    roles: ['ADMIN', 'HEAD', 'HR']
                 }
             },
             {
                 path: 'edit/:id', component: UpdateSalaryComponent,
                 canActivate: [SalaryGuardService],
                 data: {
-                    roles: ['ADMIN', 'HEAD']
+                    roles: ['ADMIN', 'HEAD', 'HR']
                 },
                 resolve: {
                     salary: SalaryResolve
@@ -43,7 +43,7 @@ const salaryRouterConfig: Routes = [
                 path: 'details/:id', component: DetailsSalaryComponent,
                 canActivate: [SalaryGuardService],
                 data: {
-                    roles: ['ADMIN', 'HEAD']
+                    roles: ['ADMIN', 'HEAD', 'HR']
                 },
                 resolve: {
                     salary: SalaryResolve
@@ -53,7 +53,7 @@ const salaryRouterConfig: Routes = [
                 path: 'delete/:id', component: DeleteSalaryComponent,
                 canActivate: [SalaryGuardService],
                 data: {
-                    roles: ['ADMIN', 'HEAD']
+                    roles: ['ADMIN', 'HEAD', 'HR']
                 },
                 resolve: {
                     salary: SalaryResolve
