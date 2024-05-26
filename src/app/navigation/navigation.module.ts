@@ -9,6 +9,8 @@ import { NotFoundComponent } from "./not-found/not-found.component";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { MenuLoginComponent } from "./menu-login/menu-login.component";
 import { TranslateModule } from "@ngx-translate/core";
+import { NavigationGuard } from "./services/navigation.guard";
+import { NavigationRoutingModule } from "./navigation.route";
 
 @NgModule({
     declarations: [
@@ -22,7 +24,8 @@ import { TranslateModule } from "@ngx-translate/core";
         CommonModule,
         RouterModule,
         NgbModule,
-        TranslateModule
+        TranslateModule,
+        NavigationRoutingModule
     ],
     exports: [
         MenuComponent,
@@ -30,6 +33,9 @@ import { TranslateModule } from "@ngx-translate/core";
         HomeComponent,
         FooterComponent,
         NotFoundComponent
+    ],
+    providers: [
+        NavigationGuard
     ]
 })
 export class NavigationModule {  }

@@ -5,10 +5,12 @@ import { NotFoundComponent } from './navigation/not-found/not-found.component';
 
 const routes: Routes = [
         {
-                path: '', redirectTo: '/home', pathMatch: 'full'
+                path: '', redirectTo: '/account/login', pathMatch: 'full'
         },
         {
-                path: 'home', component: HomeComponent
+                path: 'home',
+                loadChildren: () => import('./navigation/navigation.module')
+                        .then(m => m.NavigationModule)
         },
         {
                 path: 'account',
