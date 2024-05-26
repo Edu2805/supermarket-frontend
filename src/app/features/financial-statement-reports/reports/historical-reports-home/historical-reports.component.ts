@@ -15,6 +15,6 @@ export class HistoricalReportsComponent {
 
   verifyUserAccess(...holes: string[]): boolean {
     let user = this.localStorageUtils.getUser();
-    return holes.includes(user.roleType);
+    return holes.includes(user?.roleType);
 }
 }
