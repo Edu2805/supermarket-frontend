@@ -31,6 +31,6 @@ export class MenuLoginComponent {
 
   logout() {
     this.localStorageUtils.clearUserLocationData();
-    this.router.navigate(['/home']);
+    this.router.navigate(['/account/login']);
   }
 }
