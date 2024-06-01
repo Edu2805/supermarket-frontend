@@ -10,6 +10,7 @@ import { AuthUser } from '../models/auth-user';
 import { ToastrService } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { LocalStorageUtils } from 'src/app/utils/localstorage';
 
 @Component({
   selector: 'app-register',
@@ -32,6 +33,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
   genericValidator: GenericValidator;
   displayMessage: DisplayMessage = {};
   roles: string[];
+  localStorageUtils = new LocalStorageUtils();
 
   unsaveChanges: boolean;
 
@@ -64,6 +66,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
      }
 
   ngOnInit() {
+    this.localStorageUtils = new LocalStorageUtils();
     this.getAllRolesSelect();
     let password = new FormControl('', [Validators.required, CustomValidators.rangeLength([6, 8])]);
     let confirmPassword = new FormControl('', [Validators.required, CustomValidators.equalTo(password), CustomValidators.rangeLength([6, 8])]);

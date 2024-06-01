@@ -6,6 +6,7 @@ import { catchError, map } from 'rxjs/operators'
 import { BaseService } from "src/app/services/base.service";
 import { AuthUser } from "../models/auth-user";
 import { UserNameData } from "../models/username-data";
+import { UserDataDetailsOutput } from "../models/user-data-details-output";
 
 @Injectable()
 export class AccountService extends BaseService { 
@@ -54,9 +55,9 @@ export class AccountService extends BaseService {
         return response;
     }
 
-    findUserById(id: string): Observable<UserData> {
+    findUserById(id: string): Observable<UserDataDetailsOutput> {
         return this.http
-          .get<UserData>(`${this.UrlServiceV1}user/${id}`, super.GetHeaderJson())
+          .get<UserDataDetailsOutput>(`${this.UrlServiceV1}user/${id}`, super.GetHeaderJson())
           .pipe(catchError(super.serviceError));
       }
  }

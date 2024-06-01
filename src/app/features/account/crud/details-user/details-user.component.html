@@ -8,7 +8,7 @@
     ><p style="color: white" > {{ 'br_com_supermarket_MSG_WAIT' | translate }} </p>
     </ngx-spinner>
 
-    <h3>{{ 'br_com_supermarket_USER_DETAILS' | translate }} {{ userData?.login }}</h3>
+    <h3>{{ 'br_com_supermarket_USER_DETAILS' | translate }} {{ userData?.userName }}</h3>
     <hr />
 
     <div class="alert alert-danger" *ngIf="errors?.length > 0">
@@ -25,7 +25,7 @@
                     <label class="control-label">{{ 'br_com_supermarket_USER_NAME' | translate }}</label>
                 </dt>
                 <dd class="col-sm-10">
-                    {{ userData?.login }}
+                    {{ userData?.userName }}
                 </dd>
                 <dt class="col-sm-10">
                     <label class="control-label">{{ 'br_com_supermarket_USER_ROLE' | translate }}</label>
@@ -52,7 +52,7 @@
     <hr />
 
     <div>
-        <a class="btn btn-info" [routerLink]="['/account/getAll']">{{ 'br_com_supermarket_BUTTON_BACK' | translate }}</a>
+        <a class="btn btn-info" [routerLink]="['/home']">{{ 'br_com_supermarket_BUTTON_BACK' | translate }}</a>
     </div>
 </div>
 

@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { LocalStorageUtils } from 'src/app/utils/localstorage';
 import { environment } from 'src/environments/environment';
-import { UserData } from '../../models/user-data';
+import { UserDataDetailsOutput } from '../../models/user-data-details-output';
 
 @Component({
   selector: 'app-details-user',
@@ -12,7 +12,7 @@ import { UserData } from '../../models/user-data';
 })
 export class DetailsUserComponent {
 
-  userData: UserData;
+  userData: UserDataDetailsOutput;
   errors: any[] = [];
   localStorageUtils = new LocalStorageUtils();
   id: any = '';

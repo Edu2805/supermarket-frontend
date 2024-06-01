@@ -1,10 +1,10 @@
 import { ActivatedRouteSnapshot, Resolve } from "@angular/router";
-import { UserData } from "../models/user-data";
 import { AccountService } from "./account.service";
 import { Injectable } from "@angular/core";
+import { UserDataDetailsOutput } from "../models/user-data-details-output";
 
 @Injectable()
-export class AccountResolve implements Resolve<UserData> {
+export class AccountResolve implements Resolve<UserDataDetailsOutput> {
 
     constructor(private userDataService: AccountService) {}
 

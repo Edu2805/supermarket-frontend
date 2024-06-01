@@ -10,6 +10,7 @@ import { ToastrService } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
 import { UserNameData } from '../models/username-data';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { LocalStorageUtils } from 'src/app/utils/localstorage';
 
 
 @Component({
@@ -35,6 +36,7 @@ export class LoginComponent {
   validationMessages: ValidationMessages;
   genericValidator: GenericValidator;
   displayMessage: DisplayMessage = {};
+  localStorageUtils = new LocalStorageUtils();
 
   constructor(private fb: FormBuilder, 
     private accountService: AccountService, private router: Router, 
@@ -60,6 +62,7 @@ export class LoginComponent {
      }
 
   ngOnInit() {
+    this.localStorageUtils.clearUserLocationData();
     this.getAllRolesSelect();
     this.loginForm = this.fb.group({
       login: ['', [Validators.required, Validators.email]],
