@@ -15,13 +15,15 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { DetailsUserComponent } from './crud/details-user/details-user.component';
 import { AccountResolve } from './services/account.resolver';
 import { PipeModule } from 'src/app/utils/pipe/pipe.module';
+import { UpdatePasswordComponent } from './crud/update-password/update-password.component';
 
 @NgModule({
   declarations: [
     AccountAppComponent,
     RegisterComponent,
     LoginComponent,
-    DetailsUserComponent
+    DetailsUserComponent,
+    UpdatePasswordComponent
   ],
   imports: [
     CommonModule,

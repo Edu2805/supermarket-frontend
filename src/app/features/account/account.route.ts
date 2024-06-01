@@ -6,6 +6,7 @@ import { LoginComponent } from "./login/login.component";
 import { AccountGuard } from "./services/account.guard";
 import { DetailsUserComponent } from "./crud/details-user/details-user.component";
 import { AccountResolve } from "./services/account.resolver";
+import { UpdatePasswordComponent } from "./crud/update-password/update-password.component";
 
 const accountRouterConfig: Routes = [
     {
@@ -15,6 +16,16 @@ const accountRouterConfig: Routes = [
             { path: 'login', component: LoginComponent, canActivate: [AccountGuard] },
             { 
                 path: 'details/:id', component: DetailsUserComponent,
+                canActivate: [AccountGuard],
+                data: {
+                    roles: ['ADMIN', 'EMPLOYEE', 'SECTION_MANAGER', 'DEPARTMENT_MANAGER', 'MANAGER', 'BUYER', 'HEAD', 'HR', 'FINANCE', 'RECEIPT']
+                },
+                resolve: {
+                    userData: AccountResolve
+                }
+            },
+            { 
+                path: 'update-password/:id', component: UpdatePasswordComponent,
                 canActivate: [AccountGuard],
                 data: {
                     roles: ['ADMIN', 'EMPLOYEE', 'SECTION_MANAGER', 'DEPARTMENT_MANAGER', 'MANAGER', 'BUYER', 'HEAD', 'HR', 'FINANCE', 'RECEIPT']
