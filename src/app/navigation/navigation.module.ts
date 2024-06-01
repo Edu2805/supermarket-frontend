@@ -8,9 +8,12 @@ import { FooterComponent } from "./footer/footer.component";
 import { NotFoundComponent } from "./not-found/not-found.component";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { MenuLoginComponent } from "./menu-login/menu-login.component";
-import { TranslateModule } from "@ngx-translate/core";
+import { TranslateModule, TranslateService } from "@ngx-translate/core";
 import { NavigationGuard } from "./services/navigation.guard";
 import { NavigationRoutingModule } from "./navigation.route";
+import { AccountService } from "../features/account/services/account.service";
+import { NgxSpinnerService } from "ngx-spinner";
+import { ToastrService } from "ngx-toastr";
 
 @NgModule({
     declarations: [
@@ -35,7 +38,12 @@ import { NavigationRoutingModule } from "./navigation.route";
         NotFoundComponent
     ],
     providers: [
-        NavigationGuard
+        NavigationGuard,
+        AccountService,
+        TranslateService,
+        ToastrService,
+        NgxSpinnerService
+
     ]
 })
 export class NavigationModule {  }

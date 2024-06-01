@@ -17,7 +17,7 @@ const accountRouterConfig: Routes = [
                 path: 'details/:id', component: DetailsUserComponent,
                 canActivate: [AccountGuard],
                 data: {
-                    roles: ['ADMIN', 'HEAD']
+                    roles: ['ADMIN', 'EMPLOYEE', 'SECTION_MANAGER', 'DEPARTMENT_MANAGER', 'MANAGER', 'BUYER', 'HEAD', 'HR', 'FINANCE', 'RECEIPT']
                 },
                 resolve: {
                     userData: AccountResolve
