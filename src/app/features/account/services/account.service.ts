@@ -7,6 +7,7 @@ import { BaseService } from "src/app/services/base.service";
 import { AuthUser } from "../models/auth-user";
 import { UserNameData } from "../models/username-data";
 import { UserDataDetailsOutput } from "../models/user-data-details-output";
+import { ChangePassword } from "../models/change-password";
 
 @Injectable()
 export class AccountService extends BaseService { 
@@ -59,5 +60,12 @@ export class AccountService extends BaseService {
         return this.http
           .get<UserDataDetailsOutput>(`${this.UrlServiceV1}user/${id}`, super.GetHeaderJson())
           .pipe(catchError(super.serviceError));
-      }
+    }
+
+    updatePassword(changePassword: ChangePassword, userDataDetailsOutput: UserDataDetailsOutput): Observable<void> {
+        return this.http
+          .put<void>(`${this.UrlServiceV1}user/change-password/${userDataDetailsOutput.id}`, changePassword, super.GetHeaderJson())
+          .pipe(
+            catchError(super.serviceError));
+    }
  }

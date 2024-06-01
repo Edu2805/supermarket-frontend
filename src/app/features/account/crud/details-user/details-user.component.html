@@ -53,6 +53,8 @@
 
     <div>
         <a class="btn btn-info" [routerLink]="['/home']">{{ 'br_com_supermarket_BUTTON_BACK' | translate }}</a>
+        &nbsp;
+        <a class="btn btn-primary" [routerLink]="['/account/update-password', userData?.id]">{{ 'br_com_supermarket_BUTTON_CHANGE_PASSWORD' | translate }}</a>
     </div>
 </div>
 
