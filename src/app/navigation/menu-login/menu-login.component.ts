@@ -27,13 +27,16 @@ export class MenuLoginComponent implements OnInit {
     private spinner: NgxSpinnerService) {  }
 
   ngOnInit(): void {
-    this.accountService.getUserRole({ 
-        userName: this.localStorageUtils.getUser().login 
-    }).subscribe(
-        success => { this.processSuccess(success) },
-        fail => { this.processFail(fail) }
-    )
-} 
+    const user = this.localStorageUtils.getUser();
+    if (user) {
+      this.accountService.getUserRole({ 
+          userName: user.login 
+      }).subscribe(
+          success => { this.processSuccess(success) },
+          fail => { this.processFail(fail) }
+      )
+    }
+  } 
 
   loggedUser(): boolean {
     this.token = this.localStorageUtils.getUserToken();

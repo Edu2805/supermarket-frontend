@@ -1,1 +1,55 @@
-<p>get-all-users works!</p>
+<div class="container main-container">
+
+    <ngx-spinner 
+        bdColor = "rgba(0, 0, 0, 0.8)" 
+        size = "medium" 
+        color = "#fff" 
+        type = "ball-beat" 
+        [fullScreen] = "true"
+    ><p style="color: white" > Aguarde... </p>
+    </ngx-spinner>
+
+    <h1>{{ 'br_com_supermarket_USER_DATA_APPROVE' | translate }}</h1>
+
+    <table class="table table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th>{{ 'br_com_supermarket_USER_NAME' | translate }}</th>
+                <th>{{ 'br_com_supermarket_USER_ROLE' | translate }}</th>
+                <th>{{ 'br_com_supermarket_USER_REGISTRATION_DATE' | translate }}</th>
+                <th>{{ 'br_com_supermarket_USER_IS_EMPLOYEE' | translate }}</th>
+                <th>{{ 'br_com_supermarket_USER_IS_APPROVED' | translate }}</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tr *ngFor="let userDataDetailsOutput of usersDataDetailsOutput">
+            <td>
+                {{ userDataDetailsOutput.userName }}
+            </td>
+            <td>
+                {{ userDataDetailsOutput.role }}
+            </td>
+            <td>
+                {{ userDataDetailsOutput.registrationDate | dateHour }}
+            </td>
+            <td>
+                {{ userDataDetailsOutput.isEmployee === true ? ('br_com_supermarket_MSG_GENERIC_YES' | translate) : ('br_com_supermarket_MSG_GENERIC_NO' | translate) }}
+            </td>
+            <td>
+                {{ userDataDetailsOutput.isApproved === true ? ('br_com_supermarket_MSG_GENERIC_YES' | translate) : ('br_com_supermarket_MSG_GENERIC_NO' | translate) }}
+            </td>
+            <td class="text-right">
+                <a class="fa fa-pencil-alt" [routerLink]="['/user-data/approve-user', userDataDetailsOutput?.id]"></a>
+            </td>
+        </tr>
+        <tr *ngIf="usersDataDetailsOutput.length === 0">
+            <td colspan="6">{{ 'br_com_supermarket_USER_NO_USER_FOUND_TO_APPROVE' | translate }}</td>
+        </tr>
+    </table>
+    <pagination [page]="page" (paginationEvent)="changePage($event)"></pagination>
+    <div>
+        <a class="btn btn-info" [routerLink]="['/home']">{{ 'br_com_supermarket_BUTTON_BACK' | translate }}</a>
+    </div>
+    &nbsp;
+    <p class="count-list">{{ 'br_com_supermarket_USER_IS_APPROVED_TOTAL_ELEMENTS' | translate }} {{ page?.totalElements }}</p>
+</div>

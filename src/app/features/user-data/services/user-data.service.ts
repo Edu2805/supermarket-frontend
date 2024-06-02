@@ -4,6 +4,8 @@ import { BaseService } from 'src/app/services/base.service';
 import { HttpClient } from '@angular/common/http';
 import { Observable, catchError, map } from 'rxjs';
 import { Page } from 'src/app/utils/pagination/model/models';
+import { ApproveUserInput } from '../model/approve-user-input';
+import { ApproveUserDataOutput } from '../model/approve-user-output';
 
 @Injectable({
   providedIn: 'root'
@@ -16,21 +18,21 @@ export class UserDataService extends BaseService {
     super();
   }
 
-  getAllUsersDataPaged(page, size): Observable<Page<UserDataDetailsOutput>> {
+  getAllUsersDataPaged(page, size): Observable<Page<ApproveUserDataOutput>> {
     return this.http
-      .get<Page<UserDataDetailsOutput>>(`${this.UrlServiceV1}subsection?page=${page}&size=${size}`, super.GetHeaderJson())
+      .get<Page<ApproveUserDataOutput>>(`${this.UrlServiceV1}user/get-users-not-approved?page=${page}&size=${size}`, super.GetHeaderJson())
       .pipe(catchError(super.serviceError));
   }
 
-  findUserDataById(id: string): Observable<UserDataDetailsOutput> {
+  findUserDataById(id: string): Observable<ApproveUserDataOutput> {
     return this.http
-      .get<UserDataDetailsOutput>(`${this.UrlServiceV1}subsection/${id}`, super.GetHeaderJson())
+      .get<ApproveUserDataOutput>(`${this.UrlServiceV1}user/hr/${id}`, super.GetHeaderJson())
       .pipe(catchError(super.serviceError));
   }
 
-  updateUserData(userDataDetailsOutput: UserDataDetailsOutput): Observable<UserDataDetailsOutput> {
+  updateUserData(id: string, approveUserInput: ApproveUserInput): Observable<ApproveUserDataOutput> {
     return this.http
-      .put(`${this.UrlServiceV1}subsection/${userDataDetailsOutput.id}`, userDataDetailsOutput, super.GetHeaderJson())
+      .put(`${this.UrlServiceV1}user/change-approve-status/${id}`, approveUserInput, super.GetHeaderJson())
       .pipe(
         map(super.extractDataAuth),
         catchError(super.serviceError));

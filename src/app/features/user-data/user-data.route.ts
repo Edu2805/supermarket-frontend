@@ -25,7 +25,7 @@ const userDataRouterConfig: Routes = [
                     roles: ['ADMIN', 'HEAD', 'MANAGER', 'HR']
                 },
                 resolve: {
-                    subsection: UserDataResolve
+                    userApprove: UserDataResolve
                 }
             },
         ]
