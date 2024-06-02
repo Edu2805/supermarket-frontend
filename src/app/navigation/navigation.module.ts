@@ -12,7 +12,7 @@ import { TranslateModule, TranslateService } from "@ngx-translate/core";
 import { NavigationGuard } from "./services/navigation.guard";
 import { NavigationRoutingModule } from "./navigation.route";
 import { AccountService } from "../features/account/services/account.service";
-import { NgxSpinnerService } from "ngx-spinner";
+import { NgxSpinnerModule, NgxSpinnerService } from "ngx-spinner";
 import { ToastrService } from "ngx-toastr";
 
 @NgModule({
@@ -28,7 +28,8 @@ import { ToastrService } from "ngx-toastr";
         RouterModule,
         NgbModule,
         TranslateModule,
-        NavigationRoutingModule
+        NavigationRoutingModule,
+        NgxSpinnerModule,
     ],
     exports: [
         MenuComponent,
@@ -42,7 +43,7 @@ import { ToastrService } from "ngx-toastr";
         AccountService,
         TranslateService,
         ToastrService,
-        NgxSpinnerService
+        NgxSpinnerService,
 
     ]
 })

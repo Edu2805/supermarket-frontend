@@ -23,6 +23,7 @@ export class HomeComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
+      this.spinner.show();
         this.accountService.getUserRole({ 
             userName: this.localStorageUtils.getUser().login 
         }).subscribe(
