@@ -581,6 +581,7 @@
     "br_com_supermarket_BUTTON_EXPORT_REPORT_PDF": "Export to PDF",
     "br_com_supermarket_BUTTON_EXPORT_REPORT_EXCEL": "Export to Excel",
     "br_com_supermarket_BUTTON_CHANGE_PASSWORD": "Change password",
+    "br_com_supermarket_USER_DATA_APPROVE": "Approval of new users",
 
     "br_com_supermarket_MSG_GENERIC_SUCCESS": "Success!",
     "br_com_supermarket_MSG_GENERIC_PAGE_NOT_FOUND": "Page not found",
