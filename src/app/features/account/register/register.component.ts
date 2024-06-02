@@ -99,7 +99,6 @@ export class RegisterComponent implements OnInit, AfterViewInit {
         .subscribe(
           success => {
             this.processSuccessAccount(success);
-            this.authenticate(this.user);
           },
           fail => {this.processFail(fail)}
         );
@@ -107,38 +106,17 @@ export class RegisterComponent implements OnInit, AfterViewInit {
     }
   }
 
-  authenticate(user: UserData) {
-    this.auth.login = user.login;
-    this.auth.password = user.password;
-    this.auth.role = user.role;
-    this.accountService.login(this.auth)
-      .subscribe(
-        success => {
-          this.processSuccessAuth(success, user.login, user.role);
-        },
-        fail => {this.processFail(fail)}
-      )
-  }
-
   processSuccessAccount(response: any) {
     this.errors = [];
-    this.accountService.LocalStorage.saveLocalDataUser(response);
-
-  }
-
-  processSuccessAuth(response: any, user: any, role: any) {
-    this.errors = [];
-    this.accountService.LocalStorage.saveLocalDataToken(response);
     this.registerForm.reset();
-
     let toast = this.toastr.success(this.translateService.instant('br_com_supermarket_REGISTER_SUCCESSFUL'));
     if (toast) {
       toast.onHidden.subscribe(() => {
         this.spinner.hide();
-        this.router.navigate(['/home']);
+        this.router.navigate(['/account/login']);
       })
     }
-    
+
   }
 
   processFail(fail: any) {

@@ -94,18 +94,11 @@ describe('RegisterComponent', () => {
       expect(options.role).toEqual('ADMIN');
       return of(REGISTER_USER);
     });
-
-    loginSpy.and.callFake((options: any) => {
-      expect(options.login).toEqual('test@teste.com');
-      expect(options.password).toEqual('123456');
-      return of(USER_TOKEN);
-    });
     
     fixture.detectChanges();
     component.addAccount();
 
     expect(registerSpy).toHaveBeenCalled();
-    expect(loginSpy).toHaveBeenCalled();
     expect(showSuccess).toHaveBeenCalledWith('br_com_supermarket_REGISTER_SUCCESSFUL');
   });
 

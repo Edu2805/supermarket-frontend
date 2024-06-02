@@ -132,6 +132,12 @@ export class LoginComponent {
     }
     if (fail && fail.error && fail.error.errors) {
       fail.error.errors.forEach(error => {
+
+        if (fail && fail.status === 404) {
+          this.toastr.warning(this.translateService.instant(error));
+          return;
+        }
+
         this.toastr.error(this.translateService.instant(error));
       });
       return;
