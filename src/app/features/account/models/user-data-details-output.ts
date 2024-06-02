@@ -5,5 +5,6 @@ export interface UserDataDetailsOutput {
     confirmPassword?: string,
     role: string,
     registrationDate?: string,
-    employee?: boolean
+    isEmployee?: boolean,
+    isApproved?: boolean,
 }
