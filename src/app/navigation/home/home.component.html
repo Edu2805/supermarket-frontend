@@ -1,181 +1,192 @@
-<header class="bg-primary py-5 mb-5">
-    <div class="container h-100">
-        <div class="row h-100 align-items-center">
-            <div class="col-lg-2">
-                <img src="../../../assets/images/supermarket_cart.jpg" />
-            </div>
-            <div class="col-lg-10">
-                <h1 class="display-5 text-white mt-5 mb-2">{{ 'br_com_supermarket_HOME_SUPERMARKET_SYSTEM' | translate }}</h1>
-                <p class="lead mb-5 text-white">{{ 'br_com_supermarket_HOME_PAGE_OPTIONS' | translate }}</p>
-            </div>
-        </div>
-    </div>
-</header>
+<div>
+    <ngx-spinner 
+        bdColor = "rgba(0, 0, 0, 0.8)" 
+        size = "medium" 
+        color = "#fff" 
+        type = "ball-beat" 
+        [fullScreen] = "true"
+    ><p style="color: white" > Aguarde... </p>
+    </ngx-spinner>
 
-<div class="container main-container">
-    <div class="row text-center">
-        <div class="col-lg-2 col-md-6 mb-4" 
-            *ngIf="verifyUserAccess('ADMIN', 'HEAD', 'MANAGER', 'FINANCE', 'DEPARTMENT_MANAGER', 'BUYER', 'SECTION_MANAGER', 'EMPLOYEE', 'HR', 'RECEIPT')">
-            <div class="card h-100">
-                <img class="card-img-top" src="../../../assets/images/usuario.jpg" height="164px" width="253px" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">{{ 'br_com_supermarket_HOME_SEVERAL' | translate }}</h5>
+    <header class="bg-primary py-5 mb-5">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-lg-2">
+                    <img src="../../../assets/images/supermarket_cart.jpg" />
                 </div>
-                <div class="card-footer">
-                    <a [routerLink]="['/account/details', userId]" class="btn btn-primary">{{ 'br_com_supermarket_BUTTON_ACCESS' | translate }}</a>
+                <div class="col-lg-10">
+                    <h1 class="display-5 text-white mt-5 mb-2">{{ 'br_com_supermarket_HOME_SUPERMARKET_SYSTEM' | translate }}</h1>
+                    <p class="lead mb-5 text-white">{{ 'br_com_supermarket_HOME_PAGE_OPTIONS' | translate }}</p>
                 </div>
             </div>
         </div>
+    </header>
 
-        <div class="col-lg-2 col-md-6 mb-4">
-            <div class="card h-100" 
-                *ngIf="verifyUserAccess('ADMIN', 'HEAD', 'MANAGER', 'DEPARTMENT_MANAGER', 'BUYER')">
-                <img class="card-img-top" src="../../../assets/images/fornecedores.png" height="164px" width="253px" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">{{ 'br_com_supermarket_PROVIDERS' | translate }}</h5>
-                </div>
-                <div class="card-footer">
-                    <a [routerLink]="['/provider/getAll']" class="btn btn-primary" class="btn btn-primary">{{ 'br_com_supermarket_BUTTON_ACCESS' | translate }}</a>
+    <div class="container main-container">
+        <div class="row text-center">
+            <div class="col-lg-2 col-md-6 mb-4" 
+                *ngIf="verifyUserAccess('ADMIN', 'HEAD', 'MANAGER', 'FINANCE', 'DEPARTMENT_MANAGER', 'BUYER', 'SECTION_MANAGER', 'EMPLOYEE', 'HR', 'RECEIPT')">
+                <div class="card h-100">
+                    <img class="card-img-top" src="../../../assets/images/usuario.jpg" height="164px" width="253px" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ 'br_com_supermarket_HOME_SEVERAL' | translate }}</h5>
+                    </div>
+                    <div class="card-footer">
+                        <a [routerLink]="['/account/details', userId]" class="btn btn-primary">{{ 'br_com_supermarket_BUTTON_ACCESS' | translate }}</a>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="col-lg-2 col-md-6 mb-4">
-            <div class="card h-100" 
-                *ngIf="verifyUserAccess('ADMIN', 'HEAD', 'MANAGER', 'DEPARTMENT_MANAGER', 'BUYER', 'SECTION_MANAGER')">
-                <img class="card-img-top" src="../../../assets/images/produtos.jpeg" height="164px" width="253px" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">{{ 'br_com_supermarket_PRODUCTS' | translate }}</h5>
-                </div>
-                <div class="card-footer">
-                    <a [routerLink]="['/product-data/getAll']" class="btn btn-primary">{{ 'br_com_supermarket_BUTTON_ACCESS' | translate }}</a>
+            <div class="col-lg-2 col-md-6 mb-4">
+                <div class="card h-100" 
+                    *ngIf="verifyUserAccess('ADMIN', 'HEAD', 'MANAGER', 'DEPARTMENT_MANAGER', 'BUYER')">
+                    <img class="card-img-top" src="../../../assets/images/fornecedores.png" height="164px" width="253px" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ 'br_com_supermarket_PROVIDERS' | translate }}</h5>
+                    </div>
+                    <div class="card-footer">
+                        <a [routerLink]="['/provider/getAll']" class="btn btn-primary" class="btn btn-primary">{{ 'br_com_supermarket_BUTTON_ACCESS' | translate }}</a>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="col-lg-2 col-md-6 mb-4">
-            <div class="card h-100" 
-                *ngIf="verifyUserAccess('ADMIN', 'HEAD', 'MANAGER', 'HR')">
-                <img class="card-img-top" src="../../../assets/images/lojas.jpeg" height="164px" width="253px" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">{{ 'br_com_supermarket_ESTABLISHMENTS' | translate }}</h5>
-                </div>
-                <div class="card-footer">
-                    <a [routerLink]="['/establishment/getAll']" class="btn btn-primary">{{ 'br_com_supermarket_BUTTON_ACCESS' | translate }}</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-2 col-md-6 mb-4">
-            <div class="card h-100" 
-                *ngIf="verifyUserAccess('ADMIN', 'HEAD', 'DEPARTMENT_MANAGER', 'MANAGER', 'BUYER', 'HR')">
-                <img class="card-img-top" src="../../../assets/images/departamentos.jpeg" height="164px" width="253px" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">{{ 'br_com_supermarket_DEPARTMENTS' | translate }}</h5>
-                </div>
-                <div class="card-footer">
-                    <a [routerLink]="['/department/getAll']" class="btn btn-primary">{{ 'br_com_supermarket_BUTTON_ACCESS' | translate }}</a>
+            <div class="col-lg-2 col-md-6 mb-4">
+                <div class="card h-100" 
+                    *ngIf="verifyUserAccess('ADMIN', 'HEAD', 'MANAGER', 'DEPARTMENT_MANAGER', 'BUYER', 'SECTION_MANAGER')">
+                    <img class="card-img-top" src="../../../assets/images/produtos.jpeg" height="164px" width="253px" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ 'br_com_supermarket_PRODUCTS' | translate }}</h5>
+                    </div>
+                    <div class="card-footer">
+                        <a [routerLink]="['/product-data/getAll']" class="btn btn-primary">{{ 'br_com_supermarket_BUTTON_ACCESS' | translate }}</a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-lg-2 col-md-6 mb-4">
-            <div class="card h-100" 
-                *ngIf="verifyUserAccess('ADMIN', 'HEAD', 'DEPARTMENT_MANAGER', 'MANAGER', 'BUYER', 'HR', 'SECTION_MANAGER')">
-                <img class="card-img-top" src="../../../assets/images/secao_principal.jpeg" height="164px" width="253px" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">{{ 'br_com_supermarket_MAIN_SECTIONS' | translate }}</h5>
-                </div>
-                <div class="card-footer">
-                    <a [routerLink]="['/main-section/getAll']" class="btn btn-primary">{{ 'br_com_supermarket_BUTTON_ACCESS' | translate }}</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-2 col-md-6 mb-4">
-            <div class="card h-100" 
-                *ngIf="verifyUserAccess('ADMIN', 'HEAD', 'DEPARTMENT_MANAGER', 'MANAGER', 'BUYER', 'HR', 'SECTION_MANAGER')">
-                <img class="card-img-top" src="../../../assets/images/secao_secundaria.jpeg" height="164px" width="253px" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">{{ 'br_com_supermarket_SUB_SECTIONS' | translate }}</h5>
-                </div>
-                <div class="card-footer">
-                    <a [routerLink]="['/sub-section/getAll']" class="btn btn-primary" class="btn btn-primary">{{ 'br_com_supermarket_BUTTON_ACCESS' | translate }}</a>
+
+            <div class="col-lg-2 col-md-6 mb-4">
+                <div class="card h-100" 
+                    *ngIf="verifyUserAccess('ADMIN', 'HEAD', 'MANAGER', 'HR')">
+                    <img class="card-img-top" src="../../../assets/images/lojas.jpeg" height="164px" width="253px" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ 'br_com_supermarket_ESTABLISHMENTS' | translate }}</h5>
+                    </div>
+                    <div class="card-footer">
+                        <a [routerLink]="['/establishment/getAll']" class="btn btn-primary">{{ 'br_com_supermarket_BUTTON_ACCESS' | translate }}</a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-lg-2 col-md-6 mb-4">
-            <div class="card h-100" 
-                *ngIf="verifyUserAccess('ADMIN', 'HEAD', 'HR')">
-                <img class="card-img-top" src="../../../assets/images/person.jpeg" height="164px" width="253px" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">{{ 'br_com_supermarket_PERSON_PEOPLE' | translate }}</h5>
-                </div>
-                <div class="card-footer">
-                    <a [routerLink]="['/person/getAll']" class="btn btn-primary" class="btn btn-primary">{{ 'br_com_supermarket_BUTTON_ACCESS' | translate }}</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-2 col-md-6 mb-4">
-            <div class="card h-100" *ngIf="verifyUserAccess('ADMIN', 'HEAD', 'HR')">
-                <img class="card-img-top" src="../../../assets/images/salary.jpeg" height="164px" width="253px" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">{{ 'br_com_supermarket_SALARY' | translate }}</h5>
-                </div>
-                <div class="card-footer">
-                    <a [routerLink]="['/salary/getAll']" class="btn btn-primary" class="btn btn-primary">{{ 'br_com_supermarket_BUTTON_ACCESS' | translate }}</a>
+            <div class="col-lg-2 col-md-6 mb-4">
+                <div class="card h-100" 
+                    *ngIf="verifyUserAccess('ADMIN', 'HEAD', 'DEPARTMENT_MANAGER', 'MANAGER', 'BUYER', 'HR')">
+                    <img class="card-img-top" src="../../../assets/images/departamentos.jpeg" height="164px" width="253px" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ 'br_com_supermarket_DEPARTMENTS' | translate }}</h5>
+                    </div>
+                    <div class="card-footer">
+                        <a [routerLink]="['/department/getAll']" class="btn btn-primary">{{ 'br_com_supermarket_BUTTON_ACCESS' | translate }}</a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-lg-2 col-md-6 mb-4">
-            <div class="card h-100" *ngIf="verifyUserAccess('ADMIN', 'HEAD', 'HR')">
-                <img class="card-img-top" src="../../../assets/images/jobposition.jpeg" height="164px" width="253px" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">{{ 'br_com_supermarket_JOB_POSITION' | translate }}</h5>
-                </div>
-                <div class="card-footer">
-                    <a [routerLink]="['/jobposition/getAll']" class="btn btn-primary" class="btn btn-primary">{{ 'br_com_supermarket_BUTTON_ACCESS' | translate }}</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-2 col-md-6 mb-4">
-            <div class="card h-100" *ngIf="verifyUserAccess('ADMIN', 'HEAD', 'HR')">
-                <img class="card-img-top" src="../../../assets/images/employee.jpg" height="164px" width="253px" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">{{ 'br_com_supermarket_EMPLOYEE' | translate }}</h5>
-                </div>
-                <div class="card-footer">
-                    <a [routerLink]="['/employee/getAll']" class="btn btn-primary" class="btn btn-primary">{{ 'br_com_supermarket_BUTTON_ACCESS' | translate }}</a>
+            <div class="col-lg-2 col-md-6 mb-4">
+                <div class="card h-100" 
+                    *ngIf="verifyUserAccess('ADMIN', 'HEAD', 'DEPARTMENT_MANAGER', 'MANAGER', 'BUYER', 'HR', 'SECTION_MANAGER')">
+                    <img class="card-img-top" src="../../../assets/images/secao_principal.jpeg" height="164px" width="253px" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ 'br_com_supermarket_MAIN_SECTIONS' | translate }}</h5>
+                    </div>
+                    <div class="card-footer">
+                        <a [routerLink]="['/main-section/getAll']" class="btn btn-primary">{{ 'br_com_supermarket_BUTTON_ACCESS' | translate }}</a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-lg-2 col-md-6 mb-4">
-            <div class="card h-100" *ngIf="verifyUserAccess('ADMIN', 'BUYER', 'RECEIPT')">
-                <img class="card-img-top" src="../../../assets/images/goods-receipt.png" height="164px" width="253px" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">{{ 'br_com_supermarket_GOODS_RECEIPT' | translate }}</h5>
-                </div>
-                <div class="card-footer">
-                    <a [routerLink]="['/goods-receipt/getAll']" class="btn btn-primary" class="btn btn-primary">{{ 'br_com_supermarket_BUTTON_ACCESS' | translate }}</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-2 col-md-6 mb-4">
-            <div class="card h-100" *ngIf="verifyUserAccess('ADMIN', 'MANAGER', 'EMPLOYEE')">
-                <img class="card-img-top" src="../../../assets/images/goods-issue.jpeg" height="164px" width="253px" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">{{ 'br_com_supermarket_GOODS_ISSUE' | translate }}</h5>
-                </div>
-                <div class="card-footer">
-                    <a [routerLink]="['/goods-issue/new']" class="btn btn-primary" class="btn btn-primary">{{ 'br_com_supermarket_BUTTON_ACCESS' | translate }}</a>
+            <div class="col-lg-2 col-md-6 mb-4">
+                <div class="card h-100" 
+                    *ngIf="verifyUserAccess('ADMIN', 'HEAD', 'DEPARTMENT_MANAGER', 'MANAGER', 'BUYER', 'HR', 'SECTION_MANAGER')">
+                    <img class="card-img-top" src="../../../assets/images/secao_secundaria.jpeg" height="164px" width="253px" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ 'br_com_supermarket_SUB_SECTIONS' | translate }}</h5>
+                    </div>
+                    <div class="card-footer">
+                        <a [routerLink]="['/sub-section/getAll']" class="btn btn-primary" class="btn btn-primary">{{ 'br_com_supermarket_BUTTON_ACCESS' | translate }}</a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-lg-2 col-md-6 mb-4">
-            <div class="card h-100" *ngIf="verifyUserAccess('ADMIN', 'HEAD', 'MANAGER', 'FINANCE', 'DEPARTMENT_MANAGER', 'BUYER', 'SECTION_MANAGER', 'RECEIPT')">
-                <img class="card-img-top" src="../../../assets/images/financial-statement-home.jpeg" height="164px" width="253px" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">{{ 'br_com_supermarket_FINANCIAL_STATEMENT_REPORTS_SALES' | translate }}</h5>
+            <div class="col-lg-2 col-md-6 mb-4">
+                <div class="card h-100" 
+                    *ngIf="verifyUserAccess('ADMIN', 'HEAD', 'HR')">
+                    <img class="card-img-top" src="../../../assets/images/person.jpeg" height="164px" width="253px" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ 'br_com_supermarket_PERSON_PEOPLE' | translate }}</h5>
+                    </div>
+                    <div class="card-footer">
+                        <a [routerLink]="['/person/getAll']" class="btn btn-primary" class="btn btn-primary">{{ 'br_com_supermarket_BUTTON_ACCESS' | translate }}</a>
+                    </div>
                 </div>
-                <div class="card-footer">
-                    <a [routerLink]="['/financial-reports/home']" class="btn btn-primary" class="btn btn-primary">{{ 'br_com_supermarket_BUTTON_ACCESS' | translate }}</a>
+            </div>
+            <div class="col-lg-2 col-md-6 mb-4">
+                <div class="card h-100" *ngIf="verifyUserAccess('ADMIN', 'HEAD', 'HR')">
+                    <img class="card-img-top" src="../../../assets/images/salary.jpeg" height="164px" width="253px" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ 'br_com_supermarket_SALARY' | translate }}</h5>
+                    </div>
+                    <div class="card-footer">
+                        <a [routerLink]="['/salary/getAll']" class="btn btn-primary" class="btn btn-primary">{{ 'br_com_supermarket_BUTTON_ACCESS' | translate }}</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-6 mb-4">
+                <div class="card h-100" *ngIf="verifyUserAccess('ADMIN', 'HEAD', 'HR')">
+                    <img class="card-img-top" src="../../../assets/images/jobposition.jpeg" height="164px" width="253px" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ 'br_com_supermarket_JOB_POSITION' | translate }}</h5>
+                    </div>
+                    <div class="card-footer">
+                        <a [routerLink]="['/jobposition/getAll']" class="btn btn-primary" class="btn btn-primary">{{ 'br_com_supermarket_BUTTON_ACCESS' | translate }}</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-6 mb-4">
+                <div class="card h-100" *ngIf="verifyUserAccess('ADMIN', 'HEAD', 'HR')">
+                    <img class="card-img-top" src="../../../assets/images/employee.jpg" height="164px" width="253px" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ 'br_com_supermarket_EMPLOYEE' | translate }}</h5>
+                    </div>
+                    <div class="card-footer">
+                        <a [routerLink]="['/employee/getAll']" class="btn btn-primary" class="btn btn-primary">{{ 'br_com_supermarket_BUTTON_ACCESS' | translate }}</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-6 mb-4">
+                <div class="card h-100" *ngIf="verifyUserAccess('ADMIN', 'BUYER', 'RECEIPT')">
+                    <img class="card-img-top" src="../../../assets/images/goods-receipt.png" height="164px" width="253px" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ 'br_com_supermarket_GOODS_RECEIPT' | translate }}</h5>
+                    </div>
+                    <div class="card-footer">
+                        <a [routerLink]="['/goods-receipt/getAll']" class="btn btn-primary" class="btn btn-primary">{{ 'br_com_supermarket_BUTTON_ACCESS' | translate }}</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-6 mb-4">
+                <div class="card h-100" *ngIf="verifyUserAccess('ADMIN', 'MANAGER', 'EMPLOYEE')">
+                    <img class="card-img-top" src="../../../assets/images/goods-issue.jpeg" height="164px" width="253px" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ 'br_com_supermarket_GOODS_ISSUE' | translate }}</h5>
+                    </div>
+                    <div class="card-footer">
+                        <a [routerLink]="['/goods-issue/new']" class="btn btn-primary" class="btn btn-primary">{{ 'br_com_supermarket_BUTTON_ACCESS' | translate }}</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-6 mb-4">
+                <div class="card h-100" *ngIf="verifyUserAccess('ADMIN', 'HEAD', 'MANAGER', 'FINANCE', 'DEPARTMENT_MANAGER', 'BUYER', 'SECTION_MANAGER', 'RECEIPT')">
+                    <img class="card-img-top" src="../../../assets/images/financial-statement-home.jpeg" height="164px" width="253px" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ 'br_com_supermarket_FINANCIAL_STATEMENT_REPORTS_SALES' | translate }}</h5>
+                    </div>
+                    <div class="card-footer">
+                        <a [routerLink]="['/financial-reports/home']" class="btn btn-primary" class="btn btn-primary">{{ 'br_com_supermarket_BUTTON_ACCESS' | translate }}</a>
+                    </div>
                 </div>
             </div>
         </div>
