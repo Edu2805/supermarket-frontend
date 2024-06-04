@@ -3,11 +3,17 @@
         <a class="btn btn-success" [routerLink]="['/account/register']">{{ 'br_com_supermarket_BUTTON_CREATE_YOUR_ACCOUNT' | translate }}</a>
     </li>
 
+    <ul *ngSwitchCase="true" class="navbar-nav flex-grow-1">
+        <li class="nav-item">
+            <a class="nav-link text-dark" [routerLink]="['/home']">{{ 'br_com_supermarket_HOME' | translate }}</a>
+        </li>
+    </ul>
+
     <li *ngSwitchCase="true" class="nav-item">
         <a class="nav-link text-dark" id="saudacaoUsuario" [routerLink]="['/account/details', userId]">{{ userName }}</a>
     </li>
     <li *ngSwitchCase="true" class="nav-item">
         <a class="nav-link text-dark" href="javascript:void(0)" (click)="logout()">
-            Sair <span class="fas fa-sign-out-alt"></span></a>
+            {{ 'br_com_supermarket_MSG_GENERIC_EXIT' | translate }} <span class="fas fa-sign-out-alt"></span></a>
     </li>
 </ul>

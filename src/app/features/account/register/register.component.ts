@@ -109,14 +109,10 @@ export class RegisterComponent implements OnInit, AfterViewInit {
   processSuccessAccount(response: any) {
     this.errors = [];
     this.registerForm.reset();
-    let toast = this.toastr.success(this.translateService.instant('br_com_supermarket_REGISTER_SUCCESSFUL'));
-    if (toast) {
-      toast.onHidden.subscribe(() => {
-        this.spinner.hide();
-        this.router.navigate(['/account/login']);
-      })
-    }
-
+    this.toastr.success(this.translateService.instant('br_com_supermarket_REGISTER_SUCCESSFUL'), 
+      '', {timeOut: 0, extendedTimeOut: 0, closeButton: true, tapToDismiss: false});
+    this.spinner.hide();
+    this.router.navigate(['/account/login']);
   }
 
   processFail(fail: any) {

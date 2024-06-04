@@ -29,7 +29,7 @@
     "br_com_supermarket_UPDATE_OLD_PASSWORD_REQUIRED": "Se requiere contraseña antigua",
     "br_com_supermarket_INFORM_THE_NEW_PASSWORD": "Ingrese la nueva contraseña",
     "br_com_supermarket_INFORM_THE_OLD_PASSWORD": "Ingrese la contraseña anterior",
-    "br_com_supermarket_NEW_PASSWORD_IS_NOT_THE_SAME_TO_OLD": "La nueva contraseña no es igual a la anterior",
+    "br_com_supermarket_NEW_PASSWORD_IS_NOT_THE_SAME_TO_OLD": "Las contraseñas no pueden ser las mismas",
     "br_com_supermarket_NEW_PASSWORD_REGISTER_SUCCESSFUL": "¡Contraseña actualizada con éxito!",
     "br_com_supermarket_AN_ERROR_OCCURRED_WHILE_REGISTER_THE_NEW_PASSWORD": "Ocurrió un error al actualizar la contraseña. Vuelva a intentarlo en un momento.",
     "br_com_supermarket_INFORM_THE_ROLE": "Ingrese el rol de usuario",
@@ -599,5 +599,6 @@
     "br_com_supermarket_MSG_UNKNOWN_ERROR": "Un error desconocido a ocurrido",
     "br_com_supermarket_MSG_WAIT": "Esperar...",
     "br_com_supermarket_MSG_ABANDON_FILLING_FORM": "¿Estás seguro de que quieres dejar de rellenar el formulario?",
-    "br_com_supermarket_MSG_GENERIC_WARNING": "¡Atención!"
+    "br_com_supermarket_MSG_GENERIC_WARNING": "¡Atención!",
+    "br_com_supermarket_MSG_GENERIC_EXIT": "Salir"
 }

@@ -42,13 +42,13 @@ export class UpdatePasswordComponent implements OnInit, AfterViewInit {
 
       this.validationMessages = {
         oldPassword: {
-          required: this.translateService.instant('br_com_supermarket_INFORM_THE_NEW_PASSWORD'),
+          required: this.translateService.instant('br_com_supermarket_INFORM_THE_OLD_PASSWORD'),
           rangeLength: this.translateService.instant('br_com_supermarket_PASSWORD_CANNOT_BE_LESS_THAN_6_AND_GREATER_THAN_8')
         },
         newPassword: {
-          required: this.translateService.instant('br_com_supermarket_INFORM_THE_OLD_PASSWORD'),
+          required: this.translateService.instant('br_com_supermarket_INFORM_THE_NEW_PASSWORD'),
           rangeLength: this.translateService.instant('br_com_supermarket_PASSWORD_CANNOT_BE_LESS_THAN_6_AND_GREATER_THAN_8'),
-          notEqual: this.translateService.instant('br_com_supermarket_NEW_PASSWORD_IS_NOT_THE_SAME_TO_OLD')
+          notEqualTo: this.translateService.instant('br_com_supermarket_NEW_PASSWORD_IS_NOT_THE_SAME_TO_OLD')
         }
       };
 
@@ -113,6 +113,10 @@ export class UpdatePasswordComponent implements OnInit, AfterViewInit {
       fail.error.errors.forEach(error => {
         this.toastr.error(this.translateService.instant(error));
       });
+      return;
+    }
+    if (fail && fail.error && fail.error.message) {
+      this.toastr.error(this.translateService.instant(fail.error.message));
       return;
     }
     this.toastr.error(this.translateService.instant('br_com_supermarket_AN_ERROR_OCCURRED_WHILE_REGISTER_THE_NEW_PASSWORD'));
