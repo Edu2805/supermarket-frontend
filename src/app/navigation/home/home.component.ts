@@ -5,6 +5,7 @@ import { NgxSpinnerService } from "ngx-spinner";
 import { ToastrService } from "ngx-toastr";
 import { AccountService } from "src/app/features/account/services/account.service";
 import { LocalStorageUtils } from "src/app/utils/localstorage";
+import { NavigationService } from "../services/navigation.service";
 
 @Component({
     selector: 'app-home',
@@ -20,6 +21,7 @@ export class HomeComponent implements OnInit {
         private toastr: ToastrService,
         private spinner: NgxSpinnerService,
         private router: Router,
+        private navigationService: NavigationService
     ) {}
 
     ngOnInit(): void {
@@ -42,6 +44,7 @@ export class HomeComponent implements OnInit {
         this.spinner.hide();
         if (response) {
             this.userId = response.id;
+            this.navigationService.changeUserId(this.userId);
         }
     }
 
