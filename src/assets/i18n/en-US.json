@@ -29,7 +29,7 @@
     "br_com_supermarket_UPDATE_OLD_PASSWORD_REQUIRED": "Old password required",
     "br_com_supermarket_INFORM_THE_NEW_PASSWORD": "Inform new password",
     "br_com_supermarket_INFORM_THE_OLD_PASSWORD": "Inform old password",
-    "br_com_supermarket_NEW_PASSWORD_IS_NOT_THE_SAME_TO_OLD": "The new password is not the same as the old one",
+    "br_com_supermarket_NEW_PASSWORD_IS_NOT_THE_SAME_TO_OLD": "Passwords cannot be the same",
     "br_com_supermarket_NEW_PASSWORD_REGISTER_SUCCESSFUL": "New password registered successfully!",
     "br_com_supermarket_AN_ERROR_OCCURRED_WHILE_REGISTER_THE_NEW_PASSWORD": "An error occurred while registering the new password, please try again later.",
     "br_com_supermarket_INFORM_THE_ROLE": "Enter user role",
@@ -599,5 +599,6 @@
     "br_com_supermarket_MSG_UNKNOWN_ERROR": "An unknown error has occurred",
     "br_com_supermarket_MSG_WAIT": "Wait please...",
     "br_com_supermarket_MSG_ABANDON_FILLING_FORM": "Are you sure you want to abandon filling in the form?",
-    "br_com_supermarket_MSG_GENERIC_WARNING": "Warning"
+    "br_com_supermarket_MSG_GENERIC_WARNING": "Warning",
+    "br_com_supermarket_MSG_GENERIC_EXIT": "Exit"
 }

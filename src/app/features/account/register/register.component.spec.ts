@@ -12,6 +12,8 @@ import {
   USE_DEFAULT_LANG, USE_EXTEND, USE_STORE 
 } from '@ngx-translate/core';
 import { of, throwError } from 'rxjs';
+import { RouterTestingModule } from '@angular/router/testing';
+import { Component } from '@angular/core';
 
 describe('RegisterComponent', () => {
   let component: RegisterComponent;
@@ -42,7 +44,10 @@ describe('RegisterComponent', () => {
       ],
       imports: [
         ToastrModule.forRoot(),
-        TranslateModule.forRoot()
+        TranslateModule.forRoot(),
+        RouterTestingModule.withRoutes([
+          { path: 'account/login', component: DummyComponent }
+        ]),
       ]
     })
     .compileComponents();
@@ -99,7 +104,8 @@ describe('RegisterComponent', () => {
     component.addAccount();
 
     expect(registerSpy).toHaveBeenCalled();
-    expect(showSuccess).toHaveBeenCalledWith('br_com_supermarket_REGISTER_SUCCESSFUL');
+    expect(showSuccess).toHaveBeenCalledWith('br_com_supermarket_REGISTER_SUCCESSFUL', '', 
+      Object({ timeOut: 0, extendedTimeOut: 0, closeButton: true, tapToDismiss: false }));
   });
 
   it('should not register user when there is an error in registration', () => {
@@ -284,3 +290,8 @@ describe('RegisterComponent', () => {
     expect(component.validationMessages.role.required).toEqual('br_com_supermarket_ENTER_USE_ROLE');
   });
 });
+
+@Component({
+  template: ''
+})
+class DummyComponent { }
