@@ -205,7 +205,7 @@
                     <input 
                         type="submit" 
                         value="{{ 'br_com_supermarket_BUTTON_EDIT' | translate }}" 
-                        [disabled]="!establishmentForm.valid || activeButton" 
+                        [disabled]="detectChangesFieldsControlWithImage(establishmentForm)"
                         class="btn btn-primary"
                         >
                     &nbsp;

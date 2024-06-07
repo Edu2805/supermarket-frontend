@@ -8,6 +8,6 @@ import { UserData } from "../../account/models/user-data";
 export class UserDataListComponent {
 
     @Input()
-    userData: UserData;
+    userData: any;
     errors: any[] = [];
 }

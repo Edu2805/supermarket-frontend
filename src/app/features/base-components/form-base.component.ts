@@ -26,6 +26,7 @@ export abstract class FormBaseComponent {
     imageURL: string;
     imageName: string;
     imageType: string;
+    changeImage: boolean = false;
 
     unsaveChanges: boolean;
 
@@ -61,6 +62,8 @@ export abstract class FormBaseComponent {
         this.imageChangedEvent = event;
         this.imageName = event.currentTarget.files[0].name;
         this.imageType = event.currentTarget.files[0].type;
+        this.changeImage = true;
+        console.log(this.changeImage);
       }
     
       protected imageCropped(event: ImageCroppedEvent) {
@@ -78,6 +81,16 @@ export abstract class FormBaseComponent {
     
       protected loadImageFailed() {
         this.errors.push('O formato do arquivo ' + this.imageName + ' não é aceito');
+      }
+
+      protected detectChangesFieldsControlWithImage(formGroup: FormGroup): boolean {
+        if (this.changeImage) {
+          return false;
+        } else if (formGroup.valid && formGroup.dirty) {
+          return false;
+        } else {
+          return true;
+        }
       }
     
 }

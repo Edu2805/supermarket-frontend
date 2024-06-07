@@ -25,6 +25,7 @@ import { SubSectionListComponent } from "./subsection-list/subsection-list.compo
 import { SubsectionService } from "../subsection/services/subsection.service";
 import { JobPositionService } from "../jobposition/services/jobposition.service";
 import ptBr from '@angular/common/locales/pt';
+import { EmployeeDetailsResolve } from "./services/employee-details.resolve";
 
 const maskConfigFunction: () => Partial<IConfig> = () => {
     return {
@@ -50,6 +51,7 @@ registerLocaleData(ptBr);
     providers: [
         EmployeeGuardService,
         EmployeeResolve,
+        EmployeeDetailsResolve,
         EmployeeService,
         SubsectionService,
         JobPositionService,

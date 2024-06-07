@@ -165,7 +165,7 @@ export class UpdateProductDataComponent extends FormBaseComponent implements OnI
 
   updateProduct() {
     
-    if (this.productForm.valid) {
+    if (!this.detectChangesFieldsControlWithImage(this.productForm)) {
 
       this.spinner.show();
       this.product = Object.assign({}, this.product, this.productForm.value);

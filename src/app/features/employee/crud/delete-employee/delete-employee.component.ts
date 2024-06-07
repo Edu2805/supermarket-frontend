@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { LocalStorageUtils } from 'src/app/utils/localstorage';
-import { Employee } from '../../model/employee';
 import { EmployeeService } from '../../services/employee.service';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
+import { EmployeeDetailsOutput } from '../../model/employee-details-output';
 
 @Component({
   selector: 'app-delete-employee',
@@ -14,7 +14,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class DeleteEmployeeComponent {
 
-  employee: Employee;
+  employee: EmployeeDetailsOutput;
   errors: any[] = [];
   localStorageUtils = new LocalStorageUtils();
   id: any = '';

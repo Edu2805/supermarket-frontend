@@ -4,6 +4,7 @@ import { Employee } from '../model/employee';
 import { HttpClient } from '@angular/common/http';
 import { Observable, catchError, map } from 'rxjs';
 import { Page } from 'src/app/utils/pagination/model/models';
+import { EmployeeDetailsOutput } from '../model/employee-details-output';
 
 @Injectable({
   providedIn: 'root'
@@ -39,6 +40,12 @@ export class EmployeeService extends BaseService {
   findEmployeeById(id: string): Observable<Employee> {
     return this.http
       .get<Employee>(`${this.UrlServiceV1}employee/${id}`, super.GetHeaderJson())
+      .pipe(catchError(super.serviceError));
+  }
+
+  findEmployeeDetailsOutputById(id: string): Observable<EmployeeDetailsOutput> {
+    return this.http
+      .get<EmployeeDetailsOutput>(`${this.UrlServiceV1}employee/employee-detail/${id}`, super.GetHeaderJson())
       .pipe(catchError(super.serviceError));
   }
 

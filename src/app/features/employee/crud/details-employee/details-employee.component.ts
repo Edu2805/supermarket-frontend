@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { Employee } from '../../model/employee';
 import { LocalStorageUtils } from 'src/app/utils/localstorage';
 import { ActivatedRoute } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { EmployeeDetailsOutput } from '../../model/employee-details-output';
 
 @Component({
   selector: 'app-details-employee',
@@ -11,7 +11,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 })
 export class DetailsEmployeeComponent {
 
-  employee: Employee;
+  employee: EmployeeDetailsOutput;
   errors: any[] = [];
   localStorageUtils = new LocalStorageUtils();
   id: any = '';

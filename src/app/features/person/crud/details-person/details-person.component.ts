@@ -4,6 +4,8 @@ import { LocalStorageUtils } from 'src/app/utils/localstorage';
 import { environment } from 'src/environments/environment';
 import { ActivatedRoute } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { UserData } from 'src/app/features/account/models/user-data';
+import { UserDataDetailsOutput } from 'src/app/features/account/models/user-data-details-output';
 
 @Component({
   selector: 'app-details-person',

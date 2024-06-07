@@ -128,7 +128,7 @@ export class UpdateEstablishmentComponent  extends FormBaseComponent implements 
   }
 
   editEstablishment() {
-    if (this.establishmentForm.dirty && this.establishmentForm.valid) {
+    if (!this.detectChangesFieldsControlWithImage(this.establishmentForm)) {
       this.spinner.show();
       this.establishment = Object.assign({}, this.establishment, this.establishmentForm.value);
       this.setImage(this.imageName, this.imageType, this.croppedImageData);
