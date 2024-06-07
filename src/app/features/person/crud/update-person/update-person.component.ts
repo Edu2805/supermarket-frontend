@@ -182,7 +182,7 @@ export class UpdatePersonComponent extends FormBaseComponent implements OnInit {
 
   updatePerson() {
     
-    if (this.personForm.dirty && this.personForm.valid) {
+    if (!this.detectChangesFieldsControlWithImage(this.personForm)) {
 
       this.spinner.show();
       this.person = Object.assign({}, this.person, this.personForm.value);

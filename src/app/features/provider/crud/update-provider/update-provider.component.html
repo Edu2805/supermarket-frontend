@@ -168,7 +168,7 @@
                     <input 
                         type="submit" 
                         value="{{ 'br_com_supermarket_BUTTON_EDIT' | translate }}" 
-                        [disabled]="!providerForm.valid" 
+                        [disabled]="!providerForm.dirty && providerForm.valid" 
                         class="btn btn-primary"
                         >
                     &nbsp;

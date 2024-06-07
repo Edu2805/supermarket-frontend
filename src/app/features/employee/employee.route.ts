@@ -8,6 +8,7 @@ import { DetailsEmployeeComponent } from "./crud/details-employee/details-employ
 import { DeleteEmployeeComponent } from "./crud/delete-employee/delete-employee.component";
 import { EmployeeGuardService } from "./services/employee.guard";
 import { EmployeeResolve } from "./services/employee.resolve";
+import { EmployeeDetailsResolve } from "./services/employee-details.resolve";
 
 const employeeRouterConfig: Routes = [
     {
@@ -46,7 +47,7 @@ const employeeRouterConfig: Routes = [
                     roles: ['ADMIN', 'HEAD', 'HR']
                 },
                 resolve: {
-                    employee: EmployeeResolve
+                    employee: EmployeeDetailsResolve
                 }
             },
             {
@@ -56,7 +57,7 @@ const employeeRouterConfig: Routes = [
                     roles: ['ADMIN', 'HEAD', 'HR']
                 },
                 resolve: {
-                    employee: EmployeeResolve
+                    employee: EmployeeDetailsResolve
                 }
             }
         ]

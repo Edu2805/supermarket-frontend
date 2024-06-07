@@ -1,6 +1,6 @@
 import { Component, Input } from "@angular/core";
-import { Person } from "../../person/model/person";
 import { environment } from "src/environments/environment";
+import { PersonScholarityTypeStringDto } from "../../person/model/person-scholarity-type-string-dto";
 
 @Component({
     selector: 'person-list',
@@ -10,7 +10,7 @@ import { environment } from "src/environments/environment";
 export class PersonListComponent {
 
     @Input()
-    person: Person;
+    person: PersonScholarityTypeStringDto;
     errors: any[] = [];
     id: any = '';
     images: string = environment.imagesUrl;

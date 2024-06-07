@@ -44,6 +44,7 @@ export class UpdateSalaryComponent extends FormBaseComponent implements OnInit {
   netSalaryValue: number = 0;
   exceededMaximumDiscount: boolean = false;
   actionType: any;
+  detectChangesToEnableButton: boolean = true;
   
   constructor(private fb: FormBuilder,
     private salaryService: SalaryService,
@@ -135,7 +136,7 @@ export class UpdateSalaryComponent extends FormBaseComponent implements OnInit {
   }
 
   updateSalary() {
-    if (this.salaryForm.dirty && this.salaryForm.valid) {
+    if (!this.detectChangesToEnableButton && this.salaryForm.valid) {
       this.spinner.show();
       this.salary = Object.assign({}, this.salary, this.salaryForm.value);
       this.salary.competenceStart = this.convertDate(this.salaryForm.get('competenceStart').value);
@@ -155,6 +156,7 @@ export class UpdateSalaryComponent extends FormBaseComponent implements OnInit {
     } else {
       this.setOtherAdditionsFormArrayUpdate(otherAddition);
     }
+    this.detectChangesToEnableButton = false;
   }
 
   getOtherAdditionsFormArray(): FormArray {
@@ -205,6 +207,7 @@ export class UpdateSalaryComponent extends FormBaseComponent implements OnInit {
     } else {
       this.setOtherDiscountsFormArrayUpdate(otherDiscount);
     }
+    this.detectChangesToEnableButton = false;
   }
 
   getOtherDiscountsFormArray(): FormArray {
