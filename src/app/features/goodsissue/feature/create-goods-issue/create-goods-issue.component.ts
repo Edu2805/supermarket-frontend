@@ -176,10 +176,12 @@ export class CreateGoodsIssueComponent extends FormBaseComponent implements OnIn
     this.goodsIssueService.getAllPaymentOptions().subscribe((response) => {
       this.paymentOptions = response.names;
     },(error: any) => {
-      if (error && error.errors) {
-        this.toastr.error(this.translateService.instant(error.errors));
+      if (error && error.error && error.error.errors) {
+        const errorMessage = error.error.errors.map(err => err.message || JSON.stringify(err)).join(', ');
+        this.toastr.error(this.translateService.instant(errorMessage));
+      } else {
+        this.toastr.error(this.translateService.instant('br_com_supermarket_GOODS_ISSUE_AN_ERROR_OCCURRED_WHILE_GET_PAYMENT_OPTIONS'));
       }
-      this.toastr.error(this.translateService.instant('br_com_supermarket_GOODS_ISSUE_AN_ERROR_OCCURRED_WHILE_GET_PAYMENT_OPTIONS'));
     });
   }
 
@@ -196,11 +198,14 @@ export class CreateGoodsIssueComponent extends FormBaseComponent implements OnIn
       this.attatchment = response.establishmentLogo;
       this.spinner.hide();
     },(error: any) => {
-      if (error && error.errors) {
-        this.toastr.error(this.translateService.instant(error.errors));
+      if (error && error.error && error.error.errors) {
+        const errorMessage = error.error.errors.map(err => err.message || JSON.stringify(err)).join(', ');
+        this.toastr.error(this.translateService.instant(errorMessage));
+      } else {
+        this.toastr.error(this.translateService.instant('br_com_supermarket_GOODS_ISSUE_AN_ERROR_OCCURRED_WHILE_GET_SALE_INFORMATION'));
       }
-      this.toastr.error(this.translateService.instant('br_com_supermarket_GOODS_ISSUE_AN_ERROR_OCCURRED_WHILE_GET_SALE_INFORMATION'));
       this.spinner.hide();
+      this.router.navigate(['/home']);
     });
   }
 
@@ -208,10 +213,13 @@ export class CreateGoodsIssueComponent extends FormBaseComponent implements OnIn
     this.goodsIssueService.getSaleNumber().subscribe((response) => {
       this.getPurchaseNumber = response;
     },(error: any) => {
-      if (error && error.errors) {
-        this.toastr.error(this.translateService.instant(error.errors));
+      if (error && error.error && error.error.errors) {
+        const errorMessage = error.error.errors.map(err => err.message || JSON.stringify(err)).join(', ');
+        this.toastr.error(this.translateService.instant(errorMessage));
+      } else {
+        this.toastr.error(this.translateService.instant('br_com_supermarket_GOODS_ISSUE_AN_ERROR_OCCURRED_WHILE_GET_SALE_INFORMATION'));
       }
-      this.toastr.error(this.translateService.instant('br_com_supermarket_GOODS_ISSUE_AN_ERROR_OCCURRED_WHILE_GET_SALE_INFORMATION'));
+      this.router.navigate(['/home']);
     });
   }
   
