@@ -4,6 +4,7 @@ import { Page } from 'src/app/utils/pagination/model/models';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map, catchError } from 'rxjs';
 import { BaseService } from 'src/app/services/base.service';
+import { PaymentOption } from '../model/payment-option';
 
 @Injectable({
   providedIn: 'root'
@@ -37,7 +38,7 @@ export class GoodsissueService extends BaseService {
   }
 
   getAllPaymentOptions(){
-    let response = this.http.get<string[]>(this.UrlServiceV1 + 'payment-options')
+    let response = this.http.get<PaymentOption[]>(this.UrlServiceV1 + 'payment-options')
     .pipe(
         map(this.extractData),
         catchError(this.serviceError));

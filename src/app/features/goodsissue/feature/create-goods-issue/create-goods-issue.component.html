@@ -172,7 +172,7 @@
                     (change)="checkPaymentOptionsValidity($event)"
                     >
                         <option value="" selected></option>
-                        <option *ngFor="let paymentOption of paymentOptions">{{ paymentOption }}</option>
+                        <option *ngFor="let paymentOption of paymentOptions" value="{{paymentOption.key}}">{{ paymentOption.name }}</option>
                     </select>
                     <span class="text-danger" *ngIf="goodsIssueForm.get('paymentOptionsType')?.invalid && goodsIssueForm.get('paymentOptionsType')?.touched">
                         <p>{{ 'br_com_supermarket_GOODS_ISSUE_PURCHASE_INCORRECT_PAYMENT_METHOD' | translate }}</p>
