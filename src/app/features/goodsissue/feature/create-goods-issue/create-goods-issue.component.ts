@@ -14,6 +14,7 @@ import { GoodsissueService } from '../../services/goodsissue.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Attachment } from 'src/app/features/attachment/model/attachment-data';
 import { environment } from 'src/environments/environment';
+import { PaymentOption } from '../../model/payment-option';
 
 @Component({
   selector: 'app-create-goods-issue',
@@ -39,7 +40,7 @@ export class CreateGoodsIssueComponent extends FormBaseComponent implements OnIn
   employeeCode: string;
   isNactiveButtonRegister: boolean;
   isNactiveButtonEfectivePayment: boolean;
-  paymentOptions: string[] = [];
+  paymentOptions: PaymentOption[] = [];
   getPurchaseNumber: number;
   totalReceivedNumeric: number;
   totalChange: number = 0;
@@ -150,7 +151,7 @@ export class CreateGoodsIssueComponent extends FormBaseComponent implements OnIn
   }
 
   checkTotalReceivedNotEmpty() {
-    if (this.goodsIssueForm.get('paymentOptionsType').value === 'Dinheiro') {
+    if (this.goodsIssueForm.get('paymentOptionsType').value === 'MONEY') {
       const totalReceived = this.goodsIssueForm.get('totalReceived').value;
       this.isNactiveButtonEfectivePayment = !totalReceived;
     }
@@ -174,7 +175,7 @@ export class CreateGoodsIssueComponent extends FormBaseComponent implements OnIn
 
   getAllPaymentOptionsSelect() {
     this.goodsIssueService.getAllPaymentOptions().subscribe((response) => {
-      this.paymentOptions = response.names;
+      this.paymentOptions = response;
     },(error: any) => {
       if (error && error.error && error.error.errors) {
         const errorMessage = error.error.errors.map(err => err.message || JSON.stringify(err)).join(', ');
@@ -389,7 +390,7 @@ export class CreateGoodsIssueComponent extends FormBaseComponent implements OnIn
     this.goodsIssue.paymentOptionsType = paymentOption;
     const paymentOptionsTypeControl = this.goodsIssueForm.get('paymentOptionsType');
     paymentOptionsTypeControl.markAsTouched();
-    const isMoney = paymentOption === 'Dinheiro' || paymentOption === 'Dinero' || paymentOption === 'Money' ? true : false;
+    const isMoney = paymentOption === 'MONEY' ? true : false;
     if (!isMoney) {
       this.totalReceivedNumeric = this.totalAllProducts;
       this.goodsIssue.totalReceived = this.totalReceivedNumeric;
