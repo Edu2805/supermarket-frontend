@@ -182,7 +182,7 @@ export class UpdatePersonComponent extends FormBaseComponent implements OnInit {
   }
 
   updatePerson() {
-    
+    super.normalizeFieldType(this.personForm, 'scholarity', this.educations);
     if (!this.detectChangesFieldsControlWithImage(this.personForm)) {
 
       this.spinner.show();

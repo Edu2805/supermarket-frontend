@@ -109,7 +109,7 @@ export class CreateProviderComponent extends FormBaseComponent implements OnInit
       if (error && error.errors) {
         this.toastr.error(this.translateService.instant(error.errors));
       }
-      this.toastr.error(this.translateService.instant('br_com_supermarket_PERSON_AN_ERROR_OCCURRED_WHILE_GET_EDUCATIONS'));
+      this.toastr.error(this.translateService.instant('br_com_supermarket_PROVIDER_ERROR_AN_ERROR_OCCURRED_WHILE_GET_SUBSCRIPTIONS_TYPES'));
     });
   }
 

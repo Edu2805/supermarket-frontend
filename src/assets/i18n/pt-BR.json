@@ -195,6 +195,7 @@
     "br_com_supermarket_PROVIDER_ERROR_FORM_MANAGER_MAX_LENGTH_MESSAGE": "O nome do responsável não pode ter mais do que 20 caracteres.",
     "br_com_supermarket_PROVIDER_ERROR_FORM_MUNICIPAL_REGISTRATION_MIN_LENGTH_MESSAGE": "A inscrição municipal não pode ter menos do que 2 caracteres.",
     "br_com_supermarket_PROVIDER_ERROR_FORM_MUNICIPAL_REGISTRATION_MAX_LENGTH_MESSAGE": "A inscrição municipal não pode ter menos do que 20 caracteres.",
+    "br_com_supermarket_PROVIDER_ERROR_AN_ERROR_OCCURRED_WHILE_GET_SUBSCRIPTIONS_TYPES": "Ocorreu um erro ao buscar os tipos de inscrição, tente novamente mais tarde",
     "br_com_supermarket_PROVIDER_NEW_SUCCESS": "Fornecedor cadastrado com sucesso!",
     "br_com_supermarket_PROVIDER_UPDATE_SUCCESS": "Fornecedor atualizado com sucesso!",
     "br_com_supermarket_PROVIDER_DELETE_CONFIRMATION": "Tem certeza que deseja excluir o forcenedor",

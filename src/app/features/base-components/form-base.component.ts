@@ -4,6 +4,7 @@ import { TranslateService } from "@ngx-translate/core";
 import { Dimensions, ImageCroppedEvent, ImageTransform } from "ngx-image-cropper";
 import { ToastrService } from "ngx-toastr";
 import { fromEvent, merge, Observable } from "rxjs";
+import { BaseType } from "src/app/utils/base-type";
 import { Constants } from "src/app/utils/constants/constants";
 import { DisplayMessage, GenericValidator, ValidationMessages } from 'src/app/utils/generic-form-validation';
 
@@ -64,33 +65,42 @@ export abstract class FormBaseComponent {
         this.imageType = event.currentTarget.files[0].type;
         this.changeImage = true;
         console.log(this.changeImage);
-      }
-    
-      protected imageCropped(event: ImageCroppedEvent) {
-        this.croppedImage = event.base64;
-        this.croppedImageData = this.croppedImage.split(',')[1];
-      }
-    
-      protected imageLoaded() {
-        this.showCropper = true;
-      }
-    
-      protected cropperReady(sourceImageDimensions: Dimensions) {
-        console.log('Cropper ready', sourceImageDimensions);
-      }
-    
-      protected loadImageFailed() {
-        this.errors.push('O formato do arquivo ' + this.imageName + ' não é aceito');
-      }
+    }
+  
+    protected imageCropped(event: ImageCroppedEvent) {
+      this.croppedImage = event.base64;
+      this.croppedImageData = this.croppedImage.split(',')[1];
+    }
+  
+    protected imageLoaded() {
+      this.showCropper = true;
+    }
+  
+    protected cropperReady(sourceImageDimensions: Dimensions) {
+      console.log('Cropper ready', sourceImageDimensions);
+    }
+  
+    protected loadImageFailed() {
+      this.errors.push('O formato do arquivo ' + this.imageName + ' não é aceito');
+    }
 
-      protected detectChangesFieldsControlWithImage(formGroup: FormGroup): boolean {
-        if (this.changeImage) {
-          return false;
-        } else if (formGroup.valid && formGroup.dirty) {
-          return false;
-        } else {
-          return true;
-        }
+    protected detectChangesFieldsControlWithImage(formGroup: FormGroup): boolean {
+      if (this.changeImage) {
+        return false;
+      } else if (formGroup.valid && formGroup.dirty) {
+        return false;
+      } else {
+        return true;
       }
+    }
+
+    protected normalizeFieldType(formGroup: FormGroup, formField: string, items: BaseType[]) {
+      items.forEach((item) => {
+        if (item.name === formGroup.get(formField).value) {
+          formGroup.get(formField).setValue(item.key);
+          return;
+        }
+      });
+    }
     
 }

@@ -165,7 +165,7 @@ export class UpdateProductDataComponent extends FormBaseComponent implements OnI
   }
 
   updateProduct() {
-    
+    super.normalizeFieldType(this.productForm, 'unity', this.unities);
     if (!this.detectChangesFieldsControlWithImage(this.productForm)) {
 
       this.spinner.show();
