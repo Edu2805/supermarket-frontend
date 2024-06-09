@@ -1,4 +1,4 @@
-export interface PaymentOption {
-    key: string;
-    name: string;
+import { BaseType } from "src/app/utils/base-type";
+
+export interface PaymentOption extends BaseType {
 }

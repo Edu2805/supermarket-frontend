@@ -150,7 +150,7 @@ export class UpdateProviderComponent extends FormBaseComponent implements OnInit
   }
 
   updateProvider() {
-    
+    super.normalizeFieldType(this.providerForm, 'subscriptionType', this.subscriptionTypes);
     if (this.providerForm.dirty && this.providerForm.valid) {
       this.spinner.show();
       this.provider = Object.assign({}, this.provider, this.providerForm.value);

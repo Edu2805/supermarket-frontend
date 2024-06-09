@@ -195,6 +195,7 @@
     "br_com_supermarket_PROVIDER_ERROR_FORM_MANAGER_MAX_LENGTH_MESSAGE": "The responsible name cannot be longer than 20 characters.",
     "br_com_supermarket_PROVIDER_ERROR_FORM_MUNICIPAL_REGISTRATION_MIN_LENGTH_MESSAGE": "The municipal inscription cannot be less than 2 characters long.",
     "br_com_supermarket_PROVIDER_ERROR_FORM_MUNICIPAL_REGISTRATION_MAX_LENGTH_MESSAGE": "The municipal inscription cannot be less than 20 characters.",
+    "br_com_supermarket_PROVIDER_ERROR_AN_ERROR_OCCURRED_WHILE_GET_SUBSCRIPTIONS_TYPES": "An error occurred while fetching the list of subscription types, please try again later.",
     "br_com_supermarket_PROVIDER_NEW_SUCCESS": "Successfully registered supplier!",
     "br_com_supermarket_PROVIDER_UPDATE_SUCCESS": "Provider updated successfully!",
     "br_com_supermarket_PROVIDER_DELETE_CONFIRMATION": "Are you sure you want to delete the provider",
