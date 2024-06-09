@@ -4,6 +4,7 @@ import { Provider } from '../model/provider';
 import { HttpClient } from '@angular/common/http';
 import { Observable, catchError, map } from 'rxjs';
 import { Page } from 'src/app/utils/pagination/model/models';
+import { SubscriptionType } from '../model/subscription-type';
 
 @Injectable({
   providedIn: 'root'
@@ -34,6 +35,14 @@ export class ProviderService extends BaseService {
     return this.http
       .get<Page<Provider>>(`${this.UrlServiceV1}provider?page=${page}&size=${size}`, super.GetHeaderJson())
       .pipe(catchError(super.serviceError));
+  }
+
+  getAllSubscriptionTypes(){
+    let response = this.http.get<SubscriptionType[]>(`${this.UrlServiceV1}subscription-type`)
+    .pipe(
+        map(this.extractData),
+        catchError(this.serviceError));
+    return response;
   }
 
   findProviderById(id: string): Observable<Provider> {

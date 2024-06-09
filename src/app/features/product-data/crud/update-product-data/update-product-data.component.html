@@ -53,7 +53,7 @@
                             formControlName="unity" 
                         >
                         <option selected>{{ product?.unity }}</option>
-                        <option *ngFor="let unity of unities">{{ unity }}</option>
+                        <option *ngFor="let unity of unities" value="{{unity.key}}">{{ unity.name }}</option>
                         </select>
                         <span class="text-danger" *ngIf="displayMessage.unity">
                             <p [innerHTML]="displayMessage.unity"></p>

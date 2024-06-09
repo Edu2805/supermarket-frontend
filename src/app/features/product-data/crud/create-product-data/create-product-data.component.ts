@@ -15,6 +15,7 @@ import { SubsectionService } from 'src/app/features/subsection/services/subsecti
 import { ProviderService } from 'src/app/features/provider/services/provider.service';
 import { AttachmentService } from 'src/app/features/attachment/services/attachment.service';
 import { Attachment } from 'src/app/features/attachment/model/attachment-data';
+import { UnityType } from '../../model/unity-type';
 
 @Component({
   selector: 'app-create-product-data',
@@ -32,7 +33,7 @@ export class CreateProductDataComponent extends FormBaseComponent implements OnI
   formResult: string= '';
   subsections: SubSection[];
   providers: Provider[];
-  unities: string[];
+  unities: UnityType[];
   attatchment: Attachment = {
     id: '',
     name: '',
@@ -124,7 +125,7 @@ export class CreateProductDataComponent extends FormBaseComponent implements OnI
 
   getAllUnitiesSelect() {
     this.productService.getAllUnities().subscribe((response) => {
-      this.unities = response.names;
+      this.unities = response;
     },(error: any) => {
       if (error && error.errors) {
         this.toastr.error(this.translateService.instant(error.errors));

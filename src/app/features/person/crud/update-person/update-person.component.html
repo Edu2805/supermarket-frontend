@@ -221,7 +221,7 @@
                         formControlName="scholarity" 
                     >
                         <option selected>{{ person?.scholarity }}</option>
-                        <option *ngFor="let scholarity of educations">{{ scholarity }}</option>
+                        <option *ngFor="let scholarity of educations" value="{{scholarity.key}}">{{ scholarity.name }}</option>
                     </select>
                     <span class="text-danger" *ngIf="displayMessage?.scholarity">
                         <p [innerHTML]="displayMessage?.scholarity"></p>

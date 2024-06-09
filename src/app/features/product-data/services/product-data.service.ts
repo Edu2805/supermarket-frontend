@@ -4,6 +4,7 @@ import { ProductData } from '../model/product-data';
 import { HttpClient } from '@angular/common/http';
 import { Observable, catchError, map } from 'rxjs';
 import { Page } from 'src/app/utils/pagination/model/models';
+import { UnityType } from '../model/unity-type';
 
 @Injectable({
   providedIn: 'root'
@@ -37,7 +38,7 @@ export class ProductDataService extends BaseService {
   }
 
   getAllUnities(){
-    let response = this.http.get<string[]>(`${this.UrlServiceV1}unity`)
+    let response = this.http.get<UnityType[]>(`${this.UrlServiceV1}unity`)
     .pipe(
         map(this.extractData),
         catchError(this.serviceError));
