@@ -9,6 +9,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { TranslateService } from '@ngx-translate/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CpfCnpjValidators } from 'src/app/utils/document-validators-form';
+import { SubscriptionType } from '../../model/subscription-type';
 
 @Component({
   selector: 'app-update-provider',
@@ -22,10 +23,9 @@ export class UpdateProviderComponent extends FormBaseComponent implements OnInit
   providerForm: FormGroup;
   provider: Provider;
   localStorageUtils = new LocalStorageUtils();
-
   validateDocument: any;
-
   formResult: string= '';
+  subscriptionTypes: SubscriptionType[];
   
   constructor(private fb: FormBuilder,
     private providerService: ProviderService,
@@ -82,6 +82,7 @@ export class UpdateProviderComponent extends FormBaseComponent implements OnInit
   }
 
   ngOnInit() {
+    this.getAllSubscriptionTypesForSelect();
     this.providerForm = this.fb.group({
       name: ['', Validators.compose([Validators.required, Validators.minLength(2), Validators.maxLength(50)])],
       subscriptionNumber: ['', Validators.compose([Validators.required, CpfCnpjValidators.cnpj])],
@@ -102,6 +103,17 @@ export class UpdateProviderComponent extends FormBaseComponent implements OnInit
       super.validateForm(this.providerForm);
     });
     super.formConfigValidatorsBase(this.formInputElements, this.providerForm);
+  }
+
+  getAllSubscriptionTypesForSelect() {
+    this.providerService.getAllSubscriptionTypes().subscribe((response) => {
+      this.subscriptionTypes = response;
+    },(error: any) => {
+      if (error && error.errors) {
+        this.toastr.error(this.translateService.instant(error.errors));
+      }
+      this.toastr.error(this.translateService.instant('br_com_supermarket_PERSON_AN_ERROR_OCCURRED_WHILE_GET_EDUCATIONS'));
+    });
   }
 
   fillForm() {

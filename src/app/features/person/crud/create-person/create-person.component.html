@@ -215,7 +215,7 @@
                     >
                         <option value="" disabled selected hidden>{{ 'br_com_supermarket_PERSON_SCHOLARITY_OPTIONAL_PLACEHOLDER' | translate }}</option>
                         <option value="" selected></option>
-                        <option *ngFor="let scholarity of educations">{{ scholarity }}</option>
+                        <option *ngFor="let scholarity of educations" value="{{scholarity.key}}">{{ scholarity.name }}</option>
                     </select>
                     <span class="text-danger" *ngIf="displayMessage.scholarity">
                         <p [innerHTML]="displayMessage.scholarity"></p>

@@ -46,8 +46,8 @@
                             id="subscriptionType" 
                             formControlName="subscriptionType" 
                         >
-                            <option value="CNPJ">CNPJ</option>
-                            <option value="CPF">CPF</option>
+                            <option selected>{{ provider?.subscriptionType }}</option>
+                            <option *ngFor="let subscriptionType of subscriptionTypes" value="{{subscriptionType.key}}">{{ subscriptionType.name }}</option>
                         </select>
                         <span class="text-danger" *ngIf="displayMessage.subscriptionType">
                             <p [innerHTML]="displayMessage.subscriptionType"></p>

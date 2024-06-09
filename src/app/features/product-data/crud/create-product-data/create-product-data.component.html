@@ -49,7 +49,7 @@
                         >
                             <option value="" disabled selected hidden>{{ 'br_com_supermarket_PRODUCT_UNITY_TYPE_REQUIRED_PLACEHOLDER' | translate }}</option>
                             <option value="" selected></option>
-                            <option *ngFor="let unity of unities">{{ unity }}</option>
+                            <option *ngFor="let unity of unities" value="{{unity.key}}">{{ unity.name }}</option>
                         </select>
                         <span class="text-danger" *ngIf="displayMessage.unity">
                             <p [innerHTML]="displayMessage.unity"></p>

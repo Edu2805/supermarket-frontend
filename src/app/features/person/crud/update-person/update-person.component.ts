@@ -17,6 +17,7 @@ import { DateValidationForm } from 'src/app/utils/date-validation-form';
 import { EmailValidationForm } from 'src/app/utils/email-validation-form';
 import { Observable, fromEvent, merge } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { ScholarityType } from '../../model/scholarity-type';
 
 @Component({
   selector: 'app-update-person',
@@ -33,7 +34,7 @@ export class UpdatePersonComponent extends FormBaseComponent implements OnInit {
   validateDocument: any;
   formResult: string= '';
   usersData: UserData[];
-  educations: string[];
+  educations: ScholarityType[];
   attatchment: Attachment = {
     id: null,
     name: null,
@@ -161,7 +162,7 @@ export class UpdatePersonComponent extends FormBaseComponent implements OnInit {
 
   getAllEducationsSelect() {
     this.personService.getAllEducations().subscribe((response) => {
-      this.educations = response.names;
+      this.educations = response;
     },(error: any) => {
       if (error && error.errors) {
         this.toastr.error(this.translateService.instant(error.errors));

@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { BaseService } from 'src/app/services/base.service';
 import { Observable, catchError, map } from 'rxjs';
 import { Page } from 'src/app/utils/pagination/model/models';
+import { ScholarityType } from '../model/scholarity-type';
 
 @Injectable({
   providedIn: 'root'
@@ -49,7 +50,7 @@ export class PersonService extends BaseService {
   }
 
   getAllEducations(){
-    let response = this.http.get<string[]>(`${this.UrlServiceV1}scholarity`)
+    let response = this.http.get<ScholarityType[]>(`${this.UrlServiceV1}scholarity`)
     .pipe(
         map(this.extractData),
         catchError(this.serviceError));

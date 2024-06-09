@@ -14,6 +14,7 @@ import { LocalStorageUtils } from 'src/app/utils/localstorage';
 import { ProductData } from '../../model/product-data';
 import { ProductDataService } from '../../services/product-data.service';
 import { environment } from 'src/environments/environment';
+import { UnityType } from '../../model/unity-type';
 
 @Component({
   selector: 'app-update-product-data',
@@ -30,7 +31,7 @@ export class UpdateProductDataComponent extends FormBaseComponent implements OnI
   formResult: string= '';
   subsections: SubSection[];
   providers: Provider[];
-  unities: string[];
+  unities: UnityType[];
   attatchment: Attachment = {
     id: '',
     name: '',
@@ -128,7 +129,7 @@ export class UpdateProductDataComponent extends FormBaseComponent implements OnI
 
   getAllUnitiesSelect() {
     this.productService.getAllUnities().subscribe((response) => {
-      this.unities = response.names;
+      this.unities = response;
     },(error: any) => {
       if (error && error.errors) {
         this.toastr.error(this.translateService.instant(error.errors));

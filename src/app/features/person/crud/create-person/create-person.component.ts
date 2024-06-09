@@ -16,6 +16,7 @@ import { Observable, fromEvent, merge } from 'rxjs';
 import { CpfCnpjValidators } from 'src/app/utils/document-validators-form';
 import { EmailValidationForm } from 'src/app/utils/email-validation-form';
 import { DateValidationForm } from 'src/app/utils/date-validation-form';
+import { ScholarityType } from '../../model/scholarity-type';
 
 @Component({
   selector: 'app-create-person',
@@ -32,7 +33,7 @@ export class CreatePersonComponent extends FormBaseComponent implements OnInit {
   validateDocument: any;
   formResult: string= '';
   usersData: UserData[];
-  educations: string[];
+  educations: ScholarityType[];
   attatchment: Attachment = {
     id: '',
     name: '',
@@ -138,7 +139,7 @@ export class CreatePersonComponent extends FormBaseComponent implements OnInit {
 
   getAllEducationsSelect() {
     this.personService.getAllEducations().subscribe((response) => {
-      this.educations = response.names;
+      this.educations = response;
     },(error: any) => {
       if (error && error.errors) {
         this.toastr.error(this.translateService.instant(error.errors));
