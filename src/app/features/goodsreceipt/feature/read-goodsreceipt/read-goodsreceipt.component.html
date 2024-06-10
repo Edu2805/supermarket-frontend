@@ -36,7 +36,7 @@
                 {{ goodsReceipt.productsTotal  | currency : 'R$ '}}
             </td>
             <td>
-                {{ goodsReceipt?.isReceived === true ? ('br_com_supermarket_MSG_GENERIC_YES' | translate) : ('br_com_supermarket_MSG_GENERIC_NO' | translate) }}
+                {{ goodsReceipt?.received === true ? ('br_com_supermarket_MSG_GENERIC_YES' | translate) : ('br_com_supermarket_MSG_GENERIC_NO' | translate) }}
             </td>
             <td class="text-right">
                 <a class="fa fa-search" [routerLink]="['/goods-receipt/details', goodsReceipt.id]"></a>&nbsp;
