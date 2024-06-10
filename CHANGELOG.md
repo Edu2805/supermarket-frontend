@@ -3,7 +3,8 @@
 ## Alterações não lançadas
 
 Jun 10, 2024
-- [#documentation/05](https://gitlab.com/Edu2805/supermarket-frontend/-/merge_requests/133) - #documentation/04 - Inclusão do LICENSE
+- [#documentation/06](https://gitlab.com/Edu2805/supermarket-frontend/-/merge_requests/134) - #documentation/06 - Inclusão do CONTRIBUTING
+- [#documentation/05](https://gitlab.com/Edu2805/supermarket-frontend/-/merge_requests/133) - #documentation/05 - Inclusão do LICENSE
 - [#documentation/04](https://gitlab.com/Edu2805/supermarket-frontend/-/merge_requests/132) - #documentation/04 - Inclusão do CHANGELOG
 - [#documentation/03](https://gitlab.com/Edu2805/supermarket-frontend/-/merge_requests/131) - #documentation/03 - Atualização do README
 - [#bugfix/04](https://gitlab.com/Edu2805/supermarket-frontend/-/merge_requests/130) - #bugfix/04 - Ajuste no nome do atributo received de GoodsReceipt
