@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Department } from '../model/department';
 import { BaseService } from 'src/app/services/base.service';
 import { HttpClient } from '@angular/common/http';
-import { Observable, catchError, map } from 'rxjs';
+import { Observable, catchError, map, mergeMap, of } from 'rxjs';
 import { Page } from 'src/app/utils/pagination/model/models';
 
 @Injectable({
@@ -24,10 +24,18 @@ export class DepartmentService extends BaseService {
         catchError(super.serviceError));
   }
 
-  getAllDepartments(): Observable<Department[]> {
-    return this.http
-      .get<Department[]>(`${this.UrlServiceV1}department`, super.GetHeaderJson())
-      .pipe(catchError(super.serviceError));
+  getAllDepartments(page: number = 1, department: any[] = []): Observable<any[]> {
+    return this.http.get<{content: any[], totalElements: number, size: number}>(`${this.UrlServiceV1}department?page=${page}`).pipe(
+      mergeMap(response => {
+        const retrieve = department.concat(response.content);
+        const totalPages = Math.ceil(response.totalElements / response.size);
+        if (page < totalPages) {
+          return this.getAllDepartments(page + 1, retrieve);
+        } else {
+          return of(retrieve);
+        }
+      })
+    );
   }
 
   getAllDepartmentsPaged(page, size): Observable<Page<Department>> {

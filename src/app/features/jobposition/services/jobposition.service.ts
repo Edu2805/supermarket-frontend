@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BaseService } from 'src/app/services/base.service';
 import { JobPosition } from '../model/jobposition';
 import { HttpClient } from '@angular/common/http';
-import { Observable, catchError, map } from 'rxjs';
+import { Observable, catchError, map, mergeMap, of } from 'rxjs';
 import { Page } from 'src/app/utils/pagination/model/models';
 
 @Injectable({
@@ -24,10 +24,18 @@ export class JobPositionService extends BaseService {
         catchError(super.serviceError));
   }
 
-  getAllJobPositions(): Observable<JobPosition[]> {
-    return this.http
-      .get<JobPosition[]>(`${this.UrlServiceV1}jobposition`, super.GetHeaderJson())
-      .pipe(catchError(super.serviceError));
+  getAllJobPositions(page: number = 1, jobposition: any[] = []): Observable<any[]> {
+    return this.http.get<{content: any[], totalElements: number, size: number}>(`${this.UrlServiceV1}jobposition?page=${page}`).pipe(
+      mergeMap(response => {
+        const retrieve = jobposition.concat(response.content);
+        const totalPages = Math.ceil(response.totalElements / response.size);
+        if (page < totalPages) {
+          return this.getAllJobPositions(page + 1, retrieve);
+        } else {
+          return of(retrieve);
+        }
+      })
+    );
   }
 
   getAllJobPositionsPaged(page, size): Observable<Page<JobPosition>> {

@@ -11,6 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { LocalStorageUtils } from 'src/app/utils/localstorage';
+import { EmailValidationForm } from 'src/app/utils/email-validation-form';
 
 @Component({
   selector: 'app-register',
@@ -46,7 +47,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
       this.validationMessages = {
         login: {
           required: this.translateService.instant('br_com_supermarket_INFORM_THE_USER'),
-          login: this.translateService.instant('br_com_supermarket_INVALID_USER'),
+          invalidEmail: this.translateService.instant('br_com_supermarket_INVALID_USER'),
         },
         password: {
           required: this.translateService.instant('br_com_supermarket_INFORM_THE_PASSWORD'),
@@ -72,7 +73,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
     let confirmPassword = new FormControl('', [Validators.required, CustomValidators.equalTo(password), CustomValidators.rangeLength([6, 8])]);
 
     this.registerForm = this.fb.group({
-      login: ['', [Validators.required, Validators.email]],
+      login: ['', Validators.compose([Validators.required, EmailValidationForm.email])],
       password: password,
       confirmPassword: confirmPassword,
       role: ['', Validators.required]

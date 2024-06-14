@@ -75,7 +75,7 @@ export class CreateSubsectionComponent extends FormBaseComponent implements OnIn
 
   getMainsections() {
     this.mainsectionService.getAllMainsections().subscribe((response) => {
-      this.mainsections = response['content'];
+      this.mainsections = response;
     },(error: any) => {
       if (error && error.errors) {
         this.toastr.error(this.translateService.instant(error.errors));

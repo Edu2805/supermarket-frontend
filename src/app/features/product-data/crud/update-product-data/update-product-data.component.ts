@@ -107,7 +107,7 @@ export class UpdateProductDataComponent extends FormBaseComponent implements OnI
 
   getSubsections() {
     this.subsectionService.getAllSubsections().subscribe((response) => {
-      this.subsections = response['content'];
+      this.subsections = response;
     },(error: any) => {
       if (error && error.errors) {
         this.toastr.error(this.translateService.instant(error.errors));
@@ -118,7 +118,7 @@ export class UpdateProductDataComponent extends FormBaseComponent implements OnI
 
   getProviders() {
     this.providerService.getAllProviders().subscribe((response) => {
-      this.providers = response['content'];
+      this.providers = response;
     },(error: any) => {
       if (error && error.errors) {
         this.toastr.error(this.translateService.instant(error.errors));

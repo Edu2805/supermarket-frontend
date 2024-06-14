@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BaseService } from 'src/app/services/base.service';
 import { ProductData } from '../model/product-data';
 import { HttpClient } from '@angular/common/http';
-import { Observable, catchError, map } from 'rxjs';
+import { Observable, catchError, map, mergeMap, of } from 'rxjs';
 import { Page } from 'src/app/utils/pagination/model/models';
 import { UnityType } from '../model/unity-type';
 
@@ -25,10 +25,18 @@ export class ProductDataService extends BaseService {
         catchError(super.serviceError));
   }
 
-  getAllProducts(): Observable<ProductData[]> {
-    return this.http
-      .get<ProductData[]>(`${this.UrlServiceV1}product`, super.GetHeaderJson())
-      .pipe(catchError(super.serviceError));
+  getAllProducts(page: number = 1, product: any[] = []): Observable<any[]> {
+    return this.http.get<{content: any[], totalElements: number, size: number}>(`${this.UrlServiceV1}product?page=${page}`).pipe(
+      mergeMap(response => {
+        const retrieve = product.concat(response.content);
+        const totalPages = Math.ceil(response.totalElements / response.size);
+        if (page < totalPages) {
+          return this.getAllProducts(page + 1, retrieve);
+        } else {
+          return of(retrieve);
+        }
+      })
+    );
   }
 
   getAllProductsPaged(page, size): Observable<Page<ProductData>> {

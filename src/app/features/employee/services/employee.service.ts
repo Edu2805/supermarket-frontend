@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BaseService } from 'src/app/services/base.service';
 import { Employee } from '../model/employee';
 import { HttpClient } from '@angular/common/http';
-import { Observable, catchError, map } from 'rxjs';
+import { Observable, catchError, map, mergeMap, of } from 'rxjs';
 import { Page } from 'src/app/utils/pagination/model/models';
 import { EmployeeDetailsOutput } from '../model/employee-details-output';
 
@@ -25,10 +25,18 @@ export class EmployeeService extends BaseService {
         catchError(super.serviceError));
   }
 
-  getAllEmployee(): Observable<Employee[]> {
-    return this.http
-      .get<Employee[]>(`${this.UrlServiceV1}employee`, super.GetHeaderJson())
-      .pipe(catchError(super.serviceError));
+  getAllEmployee(page: number = 1, employee: any[] = []): Observable<any[]> {
+    return this.http.get<{content: any[], totalElements: number, size: number}>(`${this.UrlServiceV1}employee?page=${page}`).pipe(
+      mergeMap(response => {
+        const retrieve = employee.concat(response.content);
+        const totalPages = Math.ceil(response.totalElements / response.size);
+        if (page < totalPages) {
+          return this.getAllEmployee(page + 1, retrieve);
+        } else {
+          return of(retrieve);
+        }
+      })
+    );
   }
 
   getAllEmployeePaged(page, size): Observable<Page<Employee>> {

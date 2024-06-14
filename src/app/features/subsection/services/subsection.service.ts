@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BaseService } from 'src/app/services/base.service';
 import { SubSection } from '../model/subsection';
 import { HttpClient } from '@angular/common/http';
-import { Observable, catchError, map } from 'rxjs';
+import { Observable, catchError, map, mergeMap, of } from 'rxjs';
 import { Page } from 'src/app/utils/pagination/model/models';
 
 @Injectable({
@@ -24,10 +24,18 @@ export class SubsectionService extends BaseService {
         catchError(super.serviceError));
   }
 
-  getAllSubsections(): Observable<SubSection[]> {
-    return this.http
-      .get<SubSection[]>(`${this.UrlServiceV1}subsection`, super.GetHeaderJson())
-      .pipe(catchError(super.serviceError));
+  getAllSubsections(page: number = 1, subSections: any[] = []): Observable<any[]> {
+    return this.http.get<{content: any[], totalElements: number, size: number}>(`${this.UrlServiceV1}subsection?page=${page}`).pipe(
+      mergeMap(response => {
+        const retrievedSubSections = subSections.concat(response.content);
+        const totalPages = Math.ceil(response.totalElements / response.size);
+        if (page < totalPages) {
+          return this.getAllSubsections(page + 1, retrievedSubSections);
+        } else {
+          return of(retrievedSubSections);
+        }
+      })
+    );
   }
 
   getAllSubsectionsPaged(page, size): Observable<Page<SubSection>> {

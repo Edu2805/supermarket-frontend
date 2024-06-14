@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BaseService } from 'src/app/services/base.service';
 import { Establishment } from '../model/establishment';
 import { HttpClient } from '@angular/common/http';
-import { Observable, catchError, map } from 'rxjs';
+import { Observable, catchError, map, mergeMap, of } from 'rxjs';
 import { Page } from 'src/app/utils/pagination/model/models';
 
 @Injectable()
@@ -22,10 +22,18 @@ export class EstablishmentService extends BaseService {
         catchError(super.serviceError));
   }
 
-  getAllEstablishments(): Observable<Establishment[]> {
-    return this.http
-      .get<Establishment[]>(`${this.UrlServiceV1}establishment`, super.GetHeaderJson())
-      .pipe(catchError(super.serviceError));
+  getAllEstablishments(page: number = 1, establishment: any[] = []): Observable<any[]> {
+    return this.http.get<{content: any[], totalElements: number, size: number}>(`${this.UrlServiceV1}establishment?page=${page}`).pipe(
+      mergeMap(response => {
+        const retrieve = establishment.concat(response.content);
+        const totalPages = Math.ceil(response.totalElements / response.size);
+        if (page < totalPages) {
+          return this.getAllEstablishments(page + 1, retrieve);
+        } else {
+          return of(retrieve);
+        }
+      })
+    );
   }
 
   getAllEstablishmentsPaged(page, size): Observable<Page<Establishment>> {

@@ -112,7 +112,7 @@ export class CreateEmployeeComponent extends FormBaseComponent implements OnInit
   getSubSection() {
     this.spinner.show();
     this.subSectionService.getAllSubsections().subscribe((response) => {
-      this.subSections = response['content'];
+      this.subSections = response;
       this.spinner.hide();
     },(error: any) => {
       this.spinner.hide();

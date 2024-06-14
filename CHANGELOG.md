@@ -2,6 +2,9 @@
 
 ## Alterações não lançadas
 
+Jun 14, 2024
+- [#bugfix/05](https://gitlab.com/Edu2805/supermarket-frontend/-/merge_requests/135) - #bugfix/05 - Correção das das chamadas para APIs que buscam dados para completar campos.
+
 Jun 10, 2024
 - [#documentation/06](https://gitlab.com/Edu2805/supermarket-frontend/-/merge_requests/134) - #documentation/06 - Inclusão do CONTRIBUTING
 - [#documentation/05](https://gitlab.com/Edu2805/supermarket-frontend/-/merge_requests/133) - #documentation/05 - Inclusão do LICENSE
