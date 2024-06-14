@@ -128,7 +128,7 @@ export class UpdateEmployeeComponent extends FormBaseComponent implements OnInit
 
   getSubSection() {
     this.subSectionService.getAllSubsections().subscribe((response) => {
-      this.subSections = response['content'];
+      this.subSections = response;
     },(error: any) => {
       if (error && error.errors) {
         this.toastr.error(this.translateService.instant(error.errors));

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BaseService } from 'src/app/services/base.service';
 import { Provider } from '../model/provider';
 import { HttpClient } from '@angular/common/http';
-import { Observable, catchError, map } from 'rxjs';
+import { Observable, catchError, map, mergeMap, of } from 'rxjs';
 import { Page } from 'src/app/utils/pagination/model/models';
 import { SubscriptionType } from '../model/subscription-type';
 
@@ -25,10 +25,18 @@ export class ProviderService extends BaseService {
         catchError(super.serviceError));
   }
 
-  getAllProviders(): Observable<Provider[]> {
-    return this.http
-      .get<Provider[]>(`${this.UrlServiceV1}provider`, super.GetHeaderJson())
-      .pipe(catchError(super.serviceError));
+  getAllProviders(page: number = 1, provider: any[] = []): Observable<any[]> {
+    return this.http.get<{content: any[], totalElements: number, size: number}>(`${this.UrlServiceV1}provider?page=${page}`).pipe(
+      mergeMap(response => {
+        const retrieve = provider.concat(response.content);
+        const totalPages = Math.ceil(response.totalElements / response.size);
+        if (page < totalPages) {
+          return this.getAllProviders(page + 1, retrieve);
+        } else {
+          return of(retrieve);
+        }
+      })
+    );
   }
 
   getAllProvidersPaged(page, size): Observable<Page<Provider>> {

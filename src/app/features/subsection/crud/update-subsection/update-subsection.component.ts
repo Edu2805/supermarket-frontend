@@ -91,7 +91,7 @@ export class UpdateSubsectionComponent extends FormBaseComponent implements OnIn
 
   getMainSections() {
     this.mainsectionService.getAllMainsections().subscribe((response) => {
-      this.mainsections = response['content'];
+      this.mainsections = response;
     },(error: any) => {
       if (error && error.errors) {
         this.toastr.error(this.translateService.instant(error.errors));

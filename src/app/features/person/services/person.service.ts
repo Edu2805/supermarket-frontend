@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Person } from '../model/person';
 import { HttpClient } from '@angular/common/http';
 import { BaseService } from 'src/app/services/base.service';
-import { Observable, catchError, map } from 'rxjs';
+import { Observable, catchError, map, mergeMap, of } from 'rxjs';
 import { Page } from 'src/app/utils/pagination/model/models';
 import { ScholarityType } from '../model/scholarity-type';
 
@@ -25,10 +25,18 @@ export class PersonService extends BaseService {
         catchError(super.serviceError));
   }
 
-  getAllPeople(): Observable<Person[]> {
-    return this.http
-      .get<Person[]>(`${this.UrlServiceV1}person`, super.GetHeaderJson())
-      .pipe(catchError(super.serviceError));
+  getAllPeople(page: number = 1, people: any[] = []): Observable<any[]> {
+    return this.http.get<{content: any[], totalElements: number, size: number}>(`${this.UrlServiceV1}person?page=${page}`).pipe(
+      mergeMap(response => {
+        const retrieve = people.concat(response.content);
+        const totalPages = Math.ceil(response.totalElements / response.size);
+        if (page < totalPages) {
+          return this.getAllPeople(page + 1, retrieve);
+        } else {
+          return of(retrieve);
+        }
+      })
+    );
   }
 
   getAllPeoplePaged(page, size): Observable<Page<Person>> {

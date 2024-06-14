@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BaseService } from 'src/app/services/base.service';
 import { Salary } from '../model/salary';
 import { HttpClient } from '@angular/common/http';
-import { Observable, map, catchError } from 'rxjs';
+import { Observable, map, catchError, mergeMap, of } from 'rxjs';
 import { Page } from 'src/app/utils/pagination/model/models';
 import { SalaryDTO } from '../dto/salaryDTO';
 
@@ -25,10 +25,22 @@ export class SalaryService extends BaseService {
         catchError(super.serviceError));
   }
 
-  getAllSalary(): Observable<Salary[]> {
-    return this.http
-      .get<Salary[]>(`${this.UrlServiceV1}salary`, super.GetHeaderJson())
-      .pipe(catchError(super.serviceError));
+  getAllSalary(page: number = 1, salary: any[] = []): Observable<any[]> {
+    return this.http.get<{content: any[], totalElements: number, size: number}>(`${this.UrlServiceV1}salary?page=${page}`).pipe(
+      mergeMap(response => {
+        const retrieve = salary.concat(response.content);
+        const totalPages = Math.ceil(response.totalElements / response.size);
+        if (page < totalPages) {
+          return this.getAllSalary(page + 1, retrieve);
+        } else {
+          return of(retrieve);
+        }
+      })
+    );
+  }
+  
+  getAllDepartments(arg0: number, retrieve: any[]): any {
+    throw new Error('Method not implemented.');
   }
 
   getAllSalaryPaged(page, size): Observable<Page<Salary>> {

@@ -91,7 +91,7 @@ export class UpdateDepartmentComponent extends FormBaseComponent implements OnIn
 
   getEstablishments() {
     this.establishmentService.getAllEstablishments().subscribe((response) => {
-      this.establishments = response['content'];
+      this.establishments = response;
     },(error: any) => {
       if (error && error.errors) {
         this.toastr.error(this.translateService.instant(error.errors));

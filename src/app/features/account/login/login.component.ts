@@ -11,6 +11,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { UserNameData } from '../models/username-data';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { LocalStorageUtils } from 'src/app/utils/localstorage';
+import { EmailValidationForm } from 'src/app/utils/email-validation-form';
 
 
 @Component({
@@ -47,7 +48,7 @@ export class LoginComponent {
       this.validationMessages = {
         login: {
           required: this.translateService.instant('br_com_supermarket_INFORM_THE_USER'),
-          userName: this.translateService.instant('br_com_supermarket_INVALID_USER'),
+          invalidEmail: this.translateService.instant('br_com_supermarket_INVALID_USER'),
         },
         password: {
           required: this.translateService.instant('br_com_supermarket_INFORM_THE_PASSWORD'),
@@ -65,7 +66,7 @@ export class LoginComponent {
     this.localStorageUtils.clearUserLocationData();
     this.getAllRolesSelect();
     this.loginForm = this.fb.group({
-      login: ['', [Validators.required, Validators.email]],
+      login: ['', Validators.compose([Validators.required, EmailValidationForm.email])],
       password: ['', [Validators.required, CustomValidators.rangeLength([6, 8])]],
       role: ['', [Validators.required]]
     });

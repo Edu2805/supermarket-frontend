@@ -87,7 +87,7 @@ export class UpdateJobpositionComponent extends FormBaseComponent implements OnI
 
   getSalaries() {
     this.salaryService.getAllSalary().subscribe((response) => {
-      this.salaries = response['content'];
+      this.salaries = response;
     },(error: any) => {
       if (error && error.errors) {
         this.toastr.error(this.translateService.instant(error.errors));

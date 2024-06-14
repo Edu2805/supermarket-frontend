@@ -90,7 +90,7 @@ export class UpdateMainsectionComponent extends FormBaseComponent implements OnI
 
   getDepartments() {
     this.departmentService.getAllDepartments().subscribe((response) => {
-      this.departments = response['content'];
+      this.departments = response;
     },(error: any) => {
       if (error && error.errors) {
         this.toastr.error(this.translateService.instant(error.errors));
