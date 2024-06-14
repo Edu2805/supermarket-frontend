@@ -133,7 +133,7 @@ describe('LoginComponent', () => {
     component.ngAfterViewInit();
 
     expect(loginForm.get('login').valid).toEqual(false);
-    expect(component.validationMessages.login.userName).toEqual('br_com_supermarket_INVALID_USER');
+    expect(component.validationMessages.login.invalidEmail).toEqual('br_com_supermarket_INVALID_USER');
   });
 
   it('should required password', () => {

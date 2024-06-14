@@ -183,7 +183,7 @@ describe('RegisterComponent', () => {
     component.ngAfterViewInit();
 
     expect(registerForm.get('login').valid).toEqual(false);
-    expect(component.validationMessages.login.login).toEqual('br_com_supermarket_INVALID_USER');
+    expect(component.validationMessages.login.invalidEmail).toEqual('br_com_supermarket_INVALID_USER');
   });
 
   it('should required password', () => {
