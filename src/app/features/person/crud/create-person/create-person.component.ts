@@ -17,6 +17,7 @@ import { CpfCnpjValidators } from 'src/app/utils/document-validators-form';
 import { EmailValidationForm } from 'src/app/utils/email-validation-form';
 import { DateValidationForm } from 'src/app/utils/date-validation-form';
 import { ScholarityType } from '../../model/scholarity-type';
+import { CustomValidators } from 'ngx-custom-validators';
 
 @Component({
   selector: 'app-create-person',
@@ -55,29 +56,28 @@ export class CreatePersonComponent extends FormBaseComponent implements OnInit {
     this.validationMessages = {
       firstName: {
         required: this.translateService.instant('br_com_supermarket_PERSON_FIRST_NAME_REQUIRED_PLACEHOLDER'),
-        minLength: this.translateService.instant('br_com_supermarket_PERSON_ERROR_FORM_FIRST_NAME_MIN_LENGTH_MESSAGE'),
-        maxLength: this.translateService.instant('br_com_supermarket_PERSON_ERROR_FORM_FIRST_NAME_MAX_LENGTH_MESSAGE'),
+        rangeLength: `${this.translateService.instant('br_com_supermarket_PERSON_ERROR_FORM_FIRST_NAME_MIN_LENGTH_MESSAGE')} 
+          ${this.translateService.instant('br_com_supermarket_PERSON_ERROR_FORM_FIRST_NAME_MAX_LENGTH_MESSAGE')}`,
       },
       middleName: {
-        minLength: this.translateService.instant('br_com_supermarket_PERSON_ERROR_FORM_MIDDLE_NAME_MIN_LENGTH_MESSAGE'),
-        maxLength: this.translateService.instant('br_com_supermarket_PERSON_ERROR_FORM_MIDDLE_NAME_MAX_LENGTH_MESSAGE'),
+        rangeLength: this.translateService.instant('br_com_supermarket_PERSON_ERROR_FORM_MIDDLE_NAME_MAX_LENGTH_MESSAGE'),
       },
       lastName: {
         required: this.translateService.instant('br_com_supermarket_PERSON_LAST_NAME_REQUIRED_PLACEHOLDER'),
-        minLength: this.translateService.instant('br_com_supermarket_PERSON_ERROR_FORM_LAST_NAME_MIN_LENGTH_MESSAGE'),
-        maxLength: this.translateService.instant('br_com_supermarket_PERSON_ERROR_FORM_FLAST_NAME_MAX_LENGTH_MESSAGE'),
+        rangeLength: `${this.translateService.instant('br_com_supermarket_PERSON_ERROR_FORM_LAST_NAME_MIN_LENGTH_MESSAGE')} 
+          ${this.translateService.instant('br_com_supermarket_PERSON_ERROR_FORM_FLAST_NAME_MAX_LENGTH_MESSAGE')}`,
       },
       cpf: {
         required: this.translateService.instant('br_com_supermarket_PERSON_CPF_REQUIRED_PLACEHOLDER'),
         cpfInvalido: this.translateService.instant('br_com_supermarket_PERSON_ERROR_FORM_INVALID_CPF_MESSAGE'),
       },
       nationality: {
-        minLength: this.translateService.instant('br_com_supermarket_PERSON_ERROR_FORM_NATIONNALITY_MIN_LENGTH_MESSAGE'),
-        maxLength: this.translateService.instant('br_com_supermarket_PERSON_ERROR_FORM_NATIONNALITY_MAX_LENGTH_MESSAGE'),
+        rangeLength: `${this.translateService.instant('br_com_supermarket_PERSON_ERROR_FORM_NATIONNALITY_MIN_LENGTH_MESSAGE')} 
+          ${this.translateService.instant('br_com_supermarket_PERSON_ERROR_FORM_NATIONNALITY_MAX_LENGTH_MESSAGE')}`,
       },
       naturalness: {
-        minLength: this.translateService.instant('br_com_supermarket_PERSON_ERROR_FORM_NATURALNESS_MIN_LENGTH_MESSAGE'),
-        maxLength: this.translateService.instant('br_com_supermarket_PERSON_ERROR_FORM_NATURALNESS_MAX_LENGTH_MESSAGE'),
+        rangeLength: `${this.translateService.instant('br_com_supermarket_PERSON_ERROR_FORM_NATURALNESS_MIN_LENGTH_MESSAGE')} 
+          ${this.translateService.instant('br_com_supermarket_PERSON_ERROR_FORM_NATURALNESS_MAX_LENGTH_MESSAGE')}`,
       },
       birthDate: {
         required: this.translateService.instant('br_com_supermarket_PERSON_BIRTH_DATE_REQUIRED_PLACEHOLDER'),
@@ -85,13 +85,17 @@ export class CreatePersonComponent extends FormBaseComponent implements OnInit {
       },
       motherName: {
         required: this.translateService.instant('br_com_supermarket_PERSON_MOTHER_NAME_REQUIRED_PLACEHOLDER'),
-        minLength: this.translateService.instant('br_com_supermarket_PERSON_ERROR_FORM_MOTHER_NAME_MIN_LENGTH_MESSAGE'),
-        maxLength: this.translateService.instant('br_com_supermarket_PERSON_ERROR_FORM_MOTHER_NAME_MAX_LENGTH_MESSAGE'),
+        rangeLength: `${this.translateService.instant('br_com_supermarket_PERSON_ERROR_FORM_MOTHER_NAME_MIN_LENGTH_MESSAGE')} 
+          ${this.translateService.instant('br_com_supermarket_PERSON_ERROR_FORM_MOTHER_NAME_MAX_LENGTH_MESSAGE')}`,
+      },
+      fatherName: {
+        rangeLength: `${this.translateService.instant('br_com_supermarket_PERSON_ERROR_FORM_FATHER_NAME_MIN_LENGTH_MESSAGE')} 
+          ${this.translateService.instant('br_com_supermarket_PERSON_ERROR_FORM_FATHER_NAME_MAX_LENGTH_MESSAGE')}`,
       },
       email: {
         required: this.translateService.instant('br_com_supermarket_PERSON_EMAIL_REQUIRED_PLACEHOLDER'),
-        minLength: this.translateService.instant('br_com_supermarket_PERSON_ERROR_FORM_EMAIL_MIN_LENGTH_MESSAGE'),
-        maxLength: this.translateService.instant('br_com_supermarket_PERSON_ERROR_FORM_EMAIL_MAX_LENGTH_MESSAGE'),
+        rangeLength: `${this.translateService.instant('br_com_supermarket_PERSON_ERROR_FORM_EMAIL_MIN_LENGTH_MESSAGE')} 
+          ${this.translateService.instant('br_com_supermarket_PERSON_ERROR_FORM_EMAIL_MAX_LENGTH_MESSAGE')}`,
         invalidEmail: this.translateService.instant('br_com_supermarket_PERSON_ERROR_FORM_INVALID_EMAIL'),
       },
       id: {
@@ -106,18 +110,18 @@ export class CreatePersonComponent extends FormBaseComponent implements OnInit {
     this.getAllEducationsSelect();
 
     this.personForm = this.fb.group({
-      firstName: ['', Validators.compose([Validators.required, Validators.minLength(2), Validators.maxLength(30)])],
-      middleName: ['', Validators.maxLength(30)],
-      lastName: ['', Validators.compose([Validators.required, Validators.minLength(2), Validators.maxLength(30)])],
+      firstName: ['', Validators.compose([Validators.required, CustomValidators.rangeLength([2, 30])])],
+      middleName: ['', Validators.compose([CustomValidators.rangeLength([0, 30])])],
+      lastName: ['', Validators.compose([Validators.required, CustomValidators.rangeLength([2, 30])])],
       cpf: ['', Validators.compose([Validators.required, CpfCnpjValidators.cpf])],
       rg: [null],
-      nationality: ['', Validators.compose([Validators.minLength(2), Validators.maxLength(30)])],
-      naturalness: ['', Validators.compose([Validators.minLength(2), Validators.maxLength(30)])],
+      nationality: ['', Validators.compose([CustomValidators.rangeLength([2, 30])])],
+      naturalness: ['', Validators.compose([CustomValidators.rangeLength([2, 30])])],
       birthDate: ['', Validators.compose([Validators.required, DateValidationForm.date])],
       scholarity: [''],
       dependents: [''],
-      fatherName: [''],
-      motherName: ['', Validators.compose([Validators.required, Validators.minLength(2), Validators.maxLength(50)])],
+      fatherName: ['', Validators.compose([CustomValidators.rangeLength([2, 50])])],
+      motherName: ['', Validators.compose([Validators.required, CustomValidators.rangeLength([2, 50])])],
       email: ['', Validators.compose([Validators.required, EmailValidationForm.email])],
       userData: this.fb.group({
         id: ['', Validators.required]

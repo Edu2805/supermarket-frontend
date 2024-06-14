@@ -15,6 +15,7 @@ import { ProductData } from '../../model/product-data';
 import { ProductDataService } from '../../services/product-data.service';
 import { environment } from 'src/environments/environment';
 import { UnityType } from '../../model/unity-type';
+import { CustomValidators } from 'ngx-custom-validators';
 
 @Component({
   selector: 'app-update-product-data',
@@ -57,8 +58,8 @@ export class UpdateProductDataComponent extends FormBaseComponent implements OnI
     this.validationMessages = {
       name: {
         required: this.translateService.instant('br_com_supermarket_PRODUCT_NAME_REQUIRED_PLACEHOLDER'),
-        minLength: this.translateService.instant('br_com_supermarket_PRODUCT_ERROR_FORM_NAME_MIN_LENGTH_MESSAGE'),
-        maxLength: this.translateService.instant('br_com_supermarket_PRODUCT_ERROR_FORM_NAME_MAX_LENGTH_MESSAGE'),
+        rangeLength: `${this.translateService.instant('br_com_supermarket_PRODUCT_ERROR_FORM_NAME_MIN_LENGTH_MESSAGE')} 
+          ${this.translateService.instant('br_com_supermarket_PRODUCT_ERROR_FORM_NAME_MAX_LENGTH_MESSAGE')}`,
       },
       unity: {
         required: this.translateService.instant('br_com_supermarket_PRODUCT_UNITY_TYPE_REQUIRED_PLACEHOLDER'),
@@ -86,7 +87,7 @@ export class UpdateProductDataComponent extends FormBaseComponent implements OnI
     this.getAllUnitiesSelect();
 
     this.productForm = this.fb.group({
-      name: ['', Validators.compose([Validators.required, Validators.minLength(2), Validators.maxLength(50)])],
+      name: ['', Validators.compose([Validators.required, CustomValidators.rangeLength([2, 50])])],
       unity: ['', Validators.required],
       purchasePrice: [null , Validators.required],
       salePrice: ['', Validators.required],

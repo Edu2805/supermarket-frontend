@@ -11,6 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable, fromEvent, merge } from 'rxjs';
+import { CustomValidators } from 'ngx-custom-validators';
 
 @Component({
   selector: 'app-create-mainsection',
@@ -43,8 +44,8 @@ export class CreateMainsectionComponent extends FormBaseComponent implements OnI
     this.validationMessages = {
       name: {
         required: this.translateService.instant('br_com_supermarket_MAIN_SECTION_ERROR_FORM_NAME_REQUIRED_MESSAGE'),
-        minLength: this.translateService.instant('br_com_supermarket_MAIN_SECTION_ERROR_FORM_NAME_MIN_LENGTH_MESSAGE'),
-        maxLength: this.translateService.instant('br_com_supermarket_MAIN_SECTION_ERROR_FORM_NAME_MAX_LENGTH_MESSAGE'),
+        rangeLength: `${this.translateService.instant('br_com_supermarket_MAIN_SECTION_ERROR_FORM_NAME_MIN_LENGTH_MESSAGE')} 
+          ${this.translateService.instant('br_com_supermarket_MAIN_SECTION_ERROR_FORM_NAME_MAX_LENGTH_MESSAGE')}`,
       },
       id: {
         required: this.translateService.instant('br_com_supermarket_MAIN_SECTION_ERROR_FORM_DEPARTMENT_REQUIRED_MESSAGE'),
@@ -56,7 +57,7 @@ export class CreateMainsectionComponent extends FormBaseComponent implements OnI
   ngOnInit() {
     this.getDepartments();
     this.mainsectionForm = this.fb.group({
-      name: ['', Validators.compose([Validators.required, Validators.minLength(2), Validators.maxLength(50)])],
+      name: ['', Validators.compose([Validators.required, CustomValidators.rangeLength([2, 50])])],
       department: this.fb.group({
         id: ['', Validators.required]
       })

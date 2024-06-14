@@ -3,6 +3,7 @@
 ## Alterações não lançadas
 
 Jun 14, 2024
+- [#bugfix/06](https://gitlab.com/Edu2805/supermarket-frontend/-/merge_requests/136) - #bugfix/06 - Correção dos validadores de limites de caracteres que não estavam disparando evento para emissão de mensagens no formulário.
 - [#bugfix/05](https://gitlab.com/Edu2805/supermarket-frontend/-/merge_requests/135) - #bugfix/05 - Correção das das chamadas para APIs que buscam dados para completar campos.
 
 Jun 10, 2024

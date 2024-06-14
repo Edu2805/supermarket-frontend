@@ -12,6 +12,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { LocalStorageUtils } from 'src/app/utils/localstorage';
 import { Attachment } from 'src/app/features/attachment/model/attachment-data';
 import { environment } from 'src/environments/environment';
+import { CustomValidators } from 'ngx-custom-validators';
 
 @Component({
   selector: 'app-update-establishment',
@@ -50,8 +51,8 @@ export class UpdateEstablishmentComponent  extends FormBaseComponent implements 
     this.validationMessages = {
       name: {
         required: this.translateService.instant('br_com_supermarket_ESTABLISHMENT_ERROR_FORM_NAME_REQUIRED_MESSAGE'),
-        minLength: this.translateService.instant('br_com_supermarket_ESTABLISHMENT_ERROR_FORM_NAME_MIN_LENGTH_MESSAGE'),
-        maxLength: this.translateService.instant('br_com_supermarket_ESTABLISHMENT_ERROR_FORM_NAME_MAX_LENGTH_MESSAGE'),
+        rangeLength: `${this.translateService.instant('br_com_supermarket_ESTABLISHMENT_ERROR_FORM_NAME_MIN_LENGTH_MESSAGE')} 
+          ${this.translateService.instant('br_com_supermarket_ESTABLISHMENT_ERROR_FORM_NAME_MAX_LENGTH_MESSAGE')}`,
       },
       cnpj: {
         required: this.translateService.instant('br_com_supermarket_ESTABLISHMENT_ERROR_FORM_DOCUMENT_REQUIRED_MESSAGE'),
@@ -59,27 +60,27 @@ export class UpdateEstablishmentComponent  extends FormBaseComponent implements 
       },
       stateRegistration: {
         required: this.translateService.instant('br_com_supermarket_ESTABLISHMENT_ERROR_FORM_STATE_REGISTRATION_REQUIRED_MESSAGE'),
-        minLength: this.translateService.instant('br_com_supermarket_ESTABLISHMENT_ERROR_FORM_STATE_REGISTRATION_MIN_LENGTH_MESSAGE'),
-        maxLength: this.translateService.instant('br_com_supermarket_ESTABLISHMENT_ERROR_FORM_STATE_REGISTRATION_MAX_LENGTH_MESSAGE'),
+        rangeLength: `${this.translateService.instant('br_com_supermarket_ESTABLISHMENT_ERROR_FORM_STATE_REGISTRATION_MIN_LENGTH_MESSAGE')} 
+          ${this.translateService.instant('br_com_supermarket_ESTABLISHMENT_ERROR_FORM_STATE_REGISTRATION_MAX_LENGTH_MESSAGE')}`,
       },
       municipalRegistration: {
-        minLength: this.translateService.instant('br_com_supermarket_ESTABLISHMENT_ERROR_FORM_MUNICIPAL_REGISTRATION_MIN_LENGTH_MESSAGE'),
-        maxLength: this.translateService.instant('br_com_supermarket_ESTABLISHMENT_ERROR_FORM_MUNICIPAL_REGISTRATION_MAX_LENGTH_MESSAGE'),
+        rangeLength: `${this.translateService.instant('br_com_supermarket_ESTABLISHMENT_ERROR_FORM_MUNICIPAL_REGISTRATION_MIN_LENGTH_MESSAGE')} 
+          ${this.translateService.instant('br_com_supermarket_ESTABLISHMENT_ERROR_FORM_MUNICIPAL_REGISTRATION_MAX_LENGTH_MESSAGE')}`,
       },
       address: {
         required: this.translateService.instant('br_com_supermarket_ESTABLISHMENT_ERROR_FORM_ADDRESS_REQUIRED_MESSAGE'),
-        minLength: this.translateService.instant('br_com_supermarket_ESTABLISHMENT_ERROR_FORM_ADDRESS_MIN_LENGTH_MESSAGE'),
-        maxLength: this.translateService.instant('br_com_supermarket_ESTABLISHMENT_ERROR_FORM_ADDRESS_MAX_LENGTH_MESSAGE'),
+        rangeLength: `${this.translateService.instant('br_com_supermarket_ESTABLISHMENT_ERROR_FORM_ADDRESS_MIN_LENGTH_MESSAGE')} 
+          ${this.translateService.instant('br_com_supermarket_ESTABLISHMENT_ERROR_FORM_ADDRESS_MAX_LENGTH_MESSAGE')}`,
       },
       phone: {
         required: this.translateService.instant('br_com_supermarket_ESTABLISHMENT_ERROR_FORM_PHONE_REQUIRED_MESSAGE'),
-        minLength: this.translateService.instant('br_com_supermarket_ESTABLISHMENT_ERROR_FORM_PHONE_MIN_LENGTH_MESSAGE'),
-        maxLength: this.translateService.instant('br_com_supermarket_ESTABLISHMENT_ERROR_FORM_PHONE_MAX_LENGTH_MESSAGE'),
+        rangeLength: `${this.translateService.instant('br_com_supermarket_ESTABLISHMENT_ERROR_FORM_PHONE_MIN_LENGTH_MESSAGE')} 
+          ${this.translateService.instant('br_com_supermarket_ESTABLISHMENT_ERROR_FORM_PHONE_MAX_LENGTH_MESSAGE')}`,
       },
       manager: {
         required: this.translateService.instant('br_com_supermarket_ESTABLISHMENT_ERROR_FORM_MANAGER_REQUIRED_MESSAGE'),
-        minLength: this.translateService.instant('br_com_supermarket_ESTABLISHMENT_ERROR_FORM_MANAGER_MIN_LENGTH_MESSAGE'),
-        maxLength: this.translateService.instant('br_com_supermarket_ESTABLISHMENT_ERROR_FORM_MANAGER_MAX_LENGTH_MESSAGE'),
+        rangeLength: `${this.translateService.instant('br_com_supermarket_ESTABLISHMENT_ERROR_FORM_MANAGER_MIN_LENGTH_MESSAGE')} 
+          ${this.translateService.instant('br_com_supermarket_ESTABLISHMENT_ERROR_FORM_MANAGER_MAX_LENGTH_MESSAGE')}`,
       }
     };
     super.messageConfigValidatorBase(this.validationMessages);
@@ -90,13 +91,13 @@ export class UpdateEstablishmentComponent  extends FormBaseComponent implements 
   ngOnInit() {
     this.spinner.show();
     this.establishmentForm = this.fb.group({
-      name: ['', Validators.compose([Validators.required, Validators.minLength(2), Validators.maxLength(50)])],
+      name: ['', Validators.compose([Validators.required, CustomValidators.rangeLength([2, 50])])],
       cnpj: ['', Validators.compose([Validators.required, CpfCnpjValidators.cnpj])],
-      stateRegistration: ['', Validators.compose([Validators.required, Validators.minLength(2), Validators.maxLength(20)])],
-      municipalRegistration: [null , Validators.compose([Validators.minLength(2), Validators.maxLength(20)])],
-      address: ['', Validators.compose([Validators.required, Validators.minLength(2), Validators.maxLength(60)])],
-      phone: ['', Validators.compose([Validators.required, Validators.minLength(8), Validators.maxLength(11)])],
-      manager: ['', Validators.compose([Validators.required, Validators.minLength(2), Validators.maxLength(50)])],
+      stateRegistration: ['', Validators.compose([Validators.required, CustomValidators.rangeLength([2, 20])])],
+      municipalRegistration: [null , Validators.compose([CustomValidators.rangeLength([2, 20])])],
+      address: ['', Validators.compose([Validators.required, CustomValidators.rangeLength([2, 60])])],
+      phone: ['', Validators.compose([Validators.required, CustomValidators.rangeLength([8, 11])])],
+      manager: ['', Validators.compose([Validators.required, CustomValidators.rangeLength([2, 50])])],
       establismentLogo: [null]
     });
     this.fillForm();
