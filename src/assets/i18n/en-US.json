@@ -284,6 +284,8 @@
     "br_com_supermarket_PERSON_MOTHER_NAME_REQUIRED_PLACEHOLDER": "Mother's name (required)",
     "br_com_supermarket_PERSON_ERROR_FORM_MOTHER_NAME_MIN_LENGTH_MESSAGE": "Mother's name cannot be less than 2 characters long.",
     "br_com_supermarket_PERSON_ERROR_FORM_MOTHER_NAME_MAX_LENGTH_MESSAGE": "The mother's name cannot be longer than 50 characters.",
+    "br_com_supermarket_PERSON_ERROR_FORM_FATHER_NAME_MIN_LENGTH_MESSAGE": "The father's name cannot be less than 2 characters long.",
+    "br_com_supermarket_PERSON_ERROR_FORM_FATHER_NAME_MAX_LENGTH_MESSAGE": "The father's name cannot be longer than 50 characters.",
     "br_com_supermarket_PERSON_EMAIL_REQUIRED_PLACEHOLDER": "Email (required)",
     "br_com_supermarket_PERSON_ERROR_FORM_EMAIL_MIN_LENGTH_MESSAGE": "The email cannot be less than 2 characters long.",
     "br_com_supermarket_PERSON_ERROR_FORM_EMAIL_MAX_LENGTH_MESSAGE": "The email cannot be longer than 30 characters.",
