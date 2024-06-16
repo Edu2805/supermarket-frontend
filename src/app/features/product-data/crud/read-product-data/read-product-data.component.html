@@ -48,17 +48,17 @@
                 {{ product.inventory | number }}
             </td>
             <td>
-                <div *ngIf="product.inventory > 0" class="positive-inventory">
+                <div *ngIf="product.inventory > 0" class="positive-inventory" title="{{ 'br_com_supermarket_PRODUCT_TOOLTIP_INVENTORY_OK' | translate }}">
                     <span class="material-symbols-outlined">
                         inventory
                     </span>
                 </div>
-                <div *ngIf="product.inventory === 0" class="equals-inventory">
+                <div *ngIf="product.inventory === 0" class="equals-inventory" title="{{ 'br_com_supermarket_PRODUCT_TOOLTIP_INVENTORY_WARNING' | translate }}">
                     <span class="material-symbols-outlined">
                         warning
                     </span>
                 </div>
-                <div *ngIf="product.inventory < 0" class="negative-inventory">
+                <div *ngIf="product.inventory < 0" class="negative-inventory" title="{{ 'br_com_supermarket_PRODUCT_TOOLTIP_INVENTORY_ERROR' | translate }}">
                     <span class="material-symbols-outlined">
                         error
                     </span>
